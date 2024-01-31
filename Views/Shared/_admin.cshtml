@@ -1,0 +1,178 @@
+﻿@using GISMVC.Models;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+
+    @RenderSection("metas", required: false)
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/vendors.bundle.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/app.bundle.css")">
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content("~/Content/smartadmin/img/favicon/apple-touch-icon.png")">
+    <link rel="icon" type="image/png" sizes="32x32" href="@Url.Content("~/Content/smartadmin/img/favicon/favicon-32x32.png")">
+    <link rel="mask-icon" href="@Url.Content("~/Content/smartadmin/img/favicon/safari-pinned-tab.svg")" color="#5bbad5">
+
+    <link rel="stylesheet" href="~/Content/css/vendor.css" asp-append-version="true" />
+    @*<script src="~/js/vendor.js" asp-append-version="true"></script>*@
+    <script src="@Url.Content("~/Content/plugins/jquery/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/vendors.bundle.js")"></script>
+    @RenderSection("PreDevExpress", required: false)
+    <script src="@Url.Content("~/Content/smartadmin/js/DevExpress.js")"></script>
+    @RenderSection("Styles", required: false)
+
+    <link href="@Url.Content("~/Content/css/admin.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/adminresponsive.css")" rel="stylesheet">
+
+    @RenderSection("CTMStyles", required: false)
+    <style>
+        /*html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .full-height {
+            height: 100%;
+            background: #fff;
+        }*/
+    </style>
+    @RenderSection("permisos", required: false)
+</head>
+<body class="mod-bg-1 mod-nav-link ">
+    <script>
+        'use strict';
+        var classHolder = document.getElementsByTagName("BODY")[0],
+            themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+                {},
+            themeURL = themeSettings.themeURL || '',
+            themeOptions = themeSettings.themeOptions || '';
+        if (themeSettings.themeOptions) {
+            classHolder.className = themeSettings.themeOptions;
+            console.log("%c✔ Theme settings loaded", "color: #148f32");
+        }
+        else {
+            console.log("Heads up! Theme settings is empty or does not exist, loading default settings...");
+        }
+        if (themeSettings.themeURL && !document.getElementById('mytheme')) {
+            var cssfile = document.createElement('link');
+            cssfile.id = 'mytheme';
+            cssfile.rel = 'stylesheet';
+            cssfile.href = themeURL;
+            document.getElementsByTagName('head')[0].appendChild(cssfile);
+        }
+        var saveSettings = function () {
+            themeSettings.themeOptions = String(classHolder.className).split(/[^\w-]+/).filter(function (item) {
+                return /^(nav|header|mod|display)-/i.test(item);
+            }).join(' ');
+            if (document.getElementById('mytheme')) {
+                themeSettings.themeURL = document.getElementById('mytheme').getAttribute("href");
+            };
+            localStorage.setItem('themeSettings', JSON.stringify(themeSettings));
+        }
+        var resetSettings = function () {
+            localStorage.setItem("themeSettings", "");
+        }
+    </script>
+    <div class="page-wrapper">
+        <div class="page-inner">
+            @Html.Partial("~/Views/Shared/_aside.cshtml")
+            <div class="page-content-wrapper">
+                @Html.Partial("~/Views/Shared/_header.cshtml")
+
+                <main id="js-page-content" role="main" class="page-content">
+                    <div id=ctm-fondo></div>
+                    @RenderSection("ol", required: false)
+
+                    @RenderBody()
+                </main>
+
+                <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    @RenderSection("Modals", required: false)
+
+    <div class="toast fade hide" id="toast-carrito" role="alert" aria-live="assertive" aria-atomic="true" data-toggle="toast" data-autohide="false">
+        <div class="toast-header">
+            <button type="button" class="ml-2 close" onclick="cerrar_notif()" aria-label="Close">
+                <span aria-hidden="true">×</span> Cerrar
+            </button>
+        </div>
+        <div class="toast-body notificaciones">
+            <div class="notificacion">
+                <a href="#">Ejemplo de texto largo con enlace de la noificación</a>
+            </div>
+            <div class="notificacion">
+                <a href="#">Ejemplo de texto largo con enlace de la noificación</a>
+            </div>
+            <div class="notificacion">
+                <a href="#">Ejemplo de texto largo con enlace de la noificación</a>
+            </div>
+            @*<div class="row">
+                    @*<div class="col-lg-6">
+                        <div class="info-img">
+                            <img src="~/images/bg-layoutout.jpg" />
+                        </div>
+                    </div><div class="col-lg-12">
+                        <div class="info-data">
+                            <h4>Cantidad: <span id="toast-cantidad"></span></h4>
+                            <h4>Total: <span id="toast-total"></span></h4>
+                        </div>
+                    </div>
+                </div>
+                <a class="ctm-btn-dark btn btn-block" href="">VER LA BOLSA</a>*@
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var dt_language_es = {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "_MENU_",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "_START_ al _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "<i class='fa fa-search'></i>",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": ">",
+                "sPrevious": "<"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        };
+        //"sLengthMenu": "Mostrar _MENU_ registros", "sSearch": "Buscar:",
+    </script>
+
+    <script src="@Url.Content("~/Content/js/jquery-ui.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/app.bundle.js")"></script>
+    <script src="@Url.Content("~/Content/plugins/moment.js")"></script>
+    <script type="text/javascript">
+        var hosturl = "@Html.Raw(Utility.hosturl)";
+    </script>
+    <script>
+        var services_url = hosturl + "api/WebAPI/";
+        var services2_url = hosturl + "ws2/";
+        var app_url = hosturl + "App/";
+    </script>
+    <script src="@Url.Content("~/Content/js/admin.js")"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

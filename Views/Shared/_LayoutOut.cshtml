@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    @*<title>Login</title>*@
+    <title>@ViewData["Title"]</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @* Uncomment to use the HtmlEditor control *@
+    @* <script src="https://unpkg.com/devextreme-quill/dist/dx-quill.min.js"></script> *@
+
+    <link rel="stylesheet" href="~/Content/css/vendor.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Content/css/Site.css" />
+    <link href="@Url.Content("~/Content/css/admin_layout_out.css")" rel="stylesheet" type="text/css" />
+    <script src="~/Content/js/vendor.js" asp-append-version="true"></script>
+</head>
+
+<body style="">
+
+    <nav id="layout-out-header" class="navbar navbar-dark fixed-top bg-dark navbar-expand-md">
+        <a class="navbar-brand" href="/">
+            <img src="~/Content/images/gis-logo-gris.png" />
+        </a>
+        <ul class="negocios">
+            <li><img src="~/Content/images/vitromex@2x.png" /></li>
+            <li><img src="~/Content/images/cinsa@2x.png" /></li>
+            <li><img src="~/Content/images/draxton@2x.png" /></li>
+            <li><img src="~/Content/images/evercast@2x.png" /></li>
+            <li><img src="~/Content/images/gisederlan@2x.png" /></li>
+        </ul>
+    </nav>
+
+    <main role="main" class="container layout-out-container">
+        @RenderBody()
+    </main>
+    <script src="@Url.Content("~/Content/js/admin_out.js?" + DateTime.Now.Ticks.ToString())"></script>
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>

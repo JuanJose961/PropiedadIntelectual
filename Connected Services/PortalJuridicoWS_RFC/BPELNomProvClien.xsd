@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/GIS_JURIDICO/WS_NombreProveedorCliente/BPELNomProvClien" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="GisClienProvNomRequest">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" name="P_RFC" nillable="true" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GisClienProvNomResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" name="GIS_CLIENTE_PROV_NOMBRE_FN" nillable="true" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+</schema>

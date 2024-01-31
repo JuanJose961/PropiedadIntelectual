@@ -1,0 +1,270 @@
+@using GISMVC.Models;
+@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section permisos {
+    <script type="text/javascript">
+        @*
+            mp_p = @Html.Raw(Json.Serialize(ViewBag.mp_p));
+        *@
+    </script>
+}
+
+@section ol {
+    @*<ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
+            <li class="breadcrumb-item">Application Intel</li>
+            <li class="breadcrumb-item active">Introduction</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>*@
+}
+
+@section metas {
+    <meta name="title" content="@ViewBag.pagina.nombre">
+    <meta name="description" content="@ViewBag.pagina.descripcion">
+    <meta name="keywords" content="@Html.Raw(ViewBag.pagina.keywords)">
+}
+
+@section PreDevExpress {
+    <script src="https://unpkg.com/devextreme-quill@21_2/dist/dx-quill.min.js"></script>
+    <script src="https://unpkg.com/turndown@7.0.0/dist/turndown.js"></script>
+    <script src="https://unpkg.com/devextreme-showdown/dist/showdown.min.js"></script>
+    <script src="https://www.unpkg.com/prettier@2.7.1/standalone.js"></script>
+    <script src="https://www.unpkg.com/prettier@2.7.1/parser-html.js"></script>
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick-theme.css")">
+    <link href="@Url.Content("~/Content/plugins/select2/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/datatables/media/css/dataTables.bootstrap4.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+
+    <style>
+        .slick-slide {
+            margin: 0px 10px;
+        }
+
+            .slick-slide img {
+                width: 98%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #002b50;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: 1;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        td[role="columnheader"] .dx-datagrid-text-content.dx-header-filter-indicator {
+            white-space: break-spaces;
+        }
+
+        .columm-color-00 {
+            /*background-color: blue;*/
+        }
+    </style>
+}
+<div class="subheader">
+    <h1 class="subheader-title">
+        Políticas
+        <small>
+        </small>
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel ctm-panel" id="">
+            <div class="panel-container ctm-panel-container show">
+                <div class="panel-content ctm-panel-content">
+                    <div class="htmlEditor">
+                        @(Html.DevExtreme().HtmlEditor()
+                        .ID("html-editor")
+                        .Height(725)
+                        /*
+                        .ImageUpload(imageUpload => imageUpload.Tabs(
+                            tabs => {
+                                tabs.Add().Name(HtmlEditorImageUploadTab.File);
+                                tabs.Add().Name(HtmlEditorImageUploadTab.Url);
+                            })
+                        )*/
+                        .Value(new JS("markup"))
+                        .OnValueChanged("valueChanged")
+                        .Toolbar(toolbar => toolbar.Items(
+                            items => {
+                                items.Add().FormatName(HtmlEditorToolbarItem.Undo);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Redo);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add()
+                                    .FormatName("size")
+                                    .FormatValues(new[] { "8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt" });
+
+                                items.Add()
+                                    .FormatName("font")
+                                    .FormatValues(new[] { "Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana" });
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Bold);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Italic);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Strike);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Underline);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.AlignLeft);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.AlignCenter);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.AlignRight);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.AlignJustify);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.OrderedList);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.BulletList);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add()
+                                    .FormatName("header")
+                                    .FormatValues(new JS("[false, 1, 2, 3, 4, 5]"));
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Color);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Background);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Link);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Image);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Clear);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.CodeBlock);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Blockquote);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.Separator);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.InsertTable);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.DeleteTable);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.InsertRowAbove);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.InsertRowBelow);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.DeleteRow);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnLeft);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.InsertColumnRight);
+
+                                items.Add().FormatName(HtmlEditorToolbarItem.DeleteColumn);
+                            })
+                        )
+                        .MediaResizing(m => m.Enabled(true))
+
+                    )
+
+                    </div>
+
+                    <br />
+                    <button class="btn btn-info" type="button" id="guardar" onclick="guardaPoliticas()"><i class="fa fa-save"></i> Guardar</button>
+
+                    <div class="options" style="display: none;">
+                        @(Html.DevExtreme().ButtonGroup()
+                            .Items(items => {
+                                items.Add().Text("Html");
+                                //items.Add().Text("Markdown");
+                            })
+                            .OnSelectionChanged("selectionChanged")
+                            .SelectedItemKeys(new[] { "Html" })
+                        )
+                        <div class="value-content" id="htmlContent" style="display: block;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Modals {
+    <div id="alertModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h1></h1>
+
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
+    <script type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+        var politicas = @Html.Raw(JsonConvert.SerializeObject(ViewBag.politicas));
+        $(document).ready(function () {
+            $("#tabla01 .dx-toolbar-after").prepend("<button class='btn btn-info btn-sm' onclick='ModalNuevo();'><i class='fa fa-plus'></i> Nuevo registro</button>");
+            $('.value-content').text(politicas.data_string);
+        });
+    </script>
+    <script src="@Url.Content("~/Content/js/admin_politicas.js?t=" + DateTime.Now.Ticks.ToString())"></script>
+}

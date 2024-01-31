@@ -1,0 +1,439 @@
+@using GISMVC.Models;
+@{
+    ViewData["Title"] = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section permisos {
+    <script type="text/javascript">
+        @*
+            mp_p = @Html.Raw(Json.Serialize(ViewBag.mp_p));
+        *@
+    </script>
+}
+
+@section ol {
+    @*<ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
+            <li class="breadcrumb-item">Application Intel</li>
+            <li class="breadcrumb-item active">Introduction</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>*@
+}
+
+@section metas {
+    <meta name="title" content="@ViewBag.pagina.nombre">
+    <meta name="description" content="@ViewBag.pagina.descripcion">
+    <meta name="keywords" content="@Html.Raw(ViewBag.pagina.keywords)">
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick-theme.css")">
+    <link href="@Url.Content("~/Content/plugins/select2/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/datatables/media/css/dataTables.bootstrap4.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+    <style>
+        .slick-slide {
+            margin: 0px 10px;
+        }
+
+            .slick-slide img {
+                width: 98%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #002b50;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: 1;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        td[role="columnheader"] .dx-datagrid-text-content.dx-header-filter-indicator {
+            white-space: break-spaces;
+        }
+
+        .columm-color-00 {
+            /*background-color: blue;*/
+        }
+    </style>
+
+}
+<div class="subheader">
+    <h1 class="subheader-title">
+        Dashboard
+    </h1>
+</div>
+
+
+@if (ViewBag.ul.roles.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b" ||
+ViewBag.ul.roles.id == "8566d71d-72f0-489d-92d4-410804d82e60" ||
+ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
+)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="ctm-graph-box-title">En esta sección podrás visualizar las solicitudes en general del portal</h5>
+            <div class="row">
+                @if (ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1")
+                {
+                    <div class="col-md-6">
+                        <div class="ctm-graph-box" box="022">
+                            <div class="ctm-graph-box-header filtrado" filtrado="08">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Pendientes de validar por usuario</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionU2)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-footer">
+                                <div class="ctm-graph-box-item filtrado" filtrado="081">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>En tiempo</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.envalidacionU2_et)</h3>
+                                    </div>
+                                </div>
+                                <div class="ctm-graph-box-item filtrado" filtrado="082">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>Vencidas</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.envalidacionU2_v)</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ctm-graph-box" box="01">
+                            <div class="ctm-graph-box-header filtrado" filtrado="02" style="padding: 101px; border-radius: 7px;">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Pendientes de validar por abogado</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA)</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-4">
+                        <div class="ctm-graph-box" box="00">
+                            <div class="ctm-graph-box-header filtrado" filtrado="01">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En proceso</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enprocesoT)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-footer">
+                                <div class="ctm-graph-box-item filtrado" filtrado="011">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>En tiempo</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_et)</h3>
+                                    </div>
+                                </div>
+                                <div class="ctm-graph-box-item filtrado" filtrado="012">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>Vencidas</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_v)</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="ctm-graph-box" box="01">
+                            <div class="ctm-graph-box-header filtrado" filtrado="02">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Pendientes de validar por abogado</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-footer">
+                                <div class="ctm-graph-box-item filtrado" filtrado="021">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>En tiempo</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_et)</h3>
+                                    </div>
+                                </div>
+                                <div class="ctm-graph-box-item filtrado" filtrado="022">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>Vencidas</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_v)</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="ctm-graph-box" box="02">
+                            <div class="ctm-graph-box-header filtrado" filtrado="03">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Pendientes de validar por usuario</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-footer">
+                                <div class="ctm-graph-box-item filtrado" filtrado="031">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>En tiempo</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
+                                    </div>
+                                </div>
+                                <div class="ctm-graph-box-item filtrado" filtrado="032">
+                                    <div class="ctm-graph-box-info">
+                                        <h4>Vencidas</h4>
+                                        <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <h5 class="ctm-graph-box-title">En esta sección podrás visualizar los contratos en general</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="ctm-graph-box" box="03">
+                        <div class="ctm-graph-box-header filtrado" filtrado="04">
+                            <div class="ctm-graph-box-info">
+                                <h4>Aprobados y enviados a firmas</h4>
+                                <h3>@Html.Raw(ViewBag.indicadores.aprobados)</h3>
+                            </div>
+                        </div>
+                        <div class="ctm-graph-box-footer">
+                            <div class="ctm-graph-box-item filtrado" filtrado="041">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En tiempo</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.aprobados_et)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-item filtrado" filtrado="042">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Vencidas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.aprobados_v)</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ctm-graph-box" box="04">
+                        <div class="ctm-graph-box-header filtrado" filtrado="05">
+                            <div class="ctm-graph-box-info">
+                                <h4>Contratos firmados</h4>
+                                <h3>@Html.Raw(ViewBag.indicadores.firmados)</h3>
+                            </div>
+                        </div>
+                        <div class="ctm-graph-box-footer">
+                            <div class="ctm-graph-box-item filtrado" filtrado="051">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En tiempo</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.firmados_et)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-item filtrado" filtrado="052">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Vencidas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.firmados_v)</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="ctm-graph-box" box="05">
+                        <div class="ctm-graph-box-header filtrado" filtrado="06">
+                            <div class="ctm-graph-box-info">
+                                <h4>Contratos Cancelados</h4>
+                                <h3>@Html.Raw(ViewBag.indicadores.cancelados)</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <h4>Contratos Suspendidos</h4>
+                                <h3>@Html.Raw(ViewBag.indicadores.suspendidos)</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <br />
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="ctm-filtros" style="display:none;">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group" id="estatusc">
+                        <select class="select2 form-control input-sm custom-select" id="estatus" autocomplete="off" style="width: 100%;">
+                            <option value="0" selected>Estatus</option>
+                            @foreach (EstatusValidacion item in ViewBag.estatus)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                            @if (ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1")
+                            {
+                                <option value="997">Revisión Usuario</option>
+                            }
+                            <option value="998">Cancelados</option>
+                            <option value="999">Suspendidos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" id="abogadoc">
+                        <select class="select2 form-control input-sm custom-select" id="abogado" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Gestor de abogado</option>
+                            @foreach (AspNetUsers item in ViewBag.usuarios)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="inicioc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-calendar"></i>&nbsp;&nbsp;Inicio Vigencia
+                            </span>
+                        </div>
+                        <input type="text" id="inicio" class="form-control border-left-0 bg-transparent pl-0" placeholder="Fecha inicio de vigencia">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="finc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-calendar"></i>&nbsp;&nbsp;Término de contrato
+                            </span>
+                        </div>
+                        <input type="text" id="fin" class="form-control border-left-0 bg-transparent pl-0" placeholder="Fecha de terminación">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="input-group bg-white shadow-inset-2" id="minmontoc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-dollar-sign"></i>&nbsp;&nbsp;Mínimo
+                            </span>
+                        </div>
+                        <input type="number" id="minmonto" class="form-control border-left-0 bg-transparent pl-0" min="0" placeholder="Monto Mínimo">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group bg-white shadow-inset-2" id="maxmontoc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-dollar-sign"></i>&nbsp;&nbsp;Máximo
+                            </span>
+                        </div>
+                        <input type="number" id="maxmonto" class="form-control border-left-0 bg-transparent pl-0" max="99999999999" placeholder="Monto Máximo">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="indefinido" checked>
+                            <label class="custom-control-label" for="indefinido">Término indefinido</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group" id="confidencialc" style="display:none;">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="confidenciales">
+                            <label class="custom-control-label" for="confidenciales">Ver confidenciales</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group bg-white shadow-inset-2" id="buscarc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" id="buscar" class="form-control border-left-0 bg-transparent pl-0" placeholder="Buscar...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="" id="formContrato">
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Modals {
+    <div id="confirmaEliminar01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cambio de estatus</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>Se necesita confirmación para cambiar el estatus del contrato</p>
+                    </div>
+                </div>
+                <div class="modal-footer red-border">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-secondary btn-sm btn-block" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-cg btn-sm btn-block" onclick="CambiarEstatus(6)"><i class="fa fa-check-circle"></i> Confirmar</button>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
+    <script type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+        var markup = 'sdadasdasdasd';
+    </script>
+    <script src="@Url.Content("~/Content/js/admin_inicio.js")"></script>
+}

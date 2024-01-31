@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="63bd045f-5006-4259-9a95-439db5f2370f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://testapps.gis.com.mx:8002/soa-infra/services/GIS-JURIDICO/WS_NombreProveedorCliente/bpelnomprovclien_client_ep?WSDL" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BPELNomProvClien.wsdl" MetadataType="Wsdl" ID="b7bd91cb-cd3d-4fc7-b535-43e86f033ef7" SourceId="1" SourceUrl="https://testapps.gis.com.mx:8002/soa-infra/services/GIS-JURIDICO/WS_NombreProveedorCliente/bpelnomprovclien_client_ep?WSDL" />
+    <MetadataFile FileName="BPELNomProvClien.xsd" MetadataType="Schema" ID="6d133c95-c577-413c-9a94-c91b9b6a4d83" SourceId="1" SourceUrl="https://testapps.gis.com.mx:8002/soa-infra/services/GIS-JURIDICO/WS_NombreProveedorCliente/bpelnomprovclien_client_ep?XSD=xsd/BPELNomProvClien.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

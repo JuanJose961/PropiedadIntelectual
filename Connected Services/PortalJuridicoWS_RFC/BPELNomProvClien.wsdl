@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:client="http://xmlns.oracle.com/GIS_JURIDICO/WS_NombreProveedorCliente/BPELNomProvClien" name="BPELNomProvClien" targetNamespace="http://xmlns.oracle.com/GIS_JURIDICO/WS_NombreProveedorCliente/BPELNomProvClien" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <abstractWSDL>https://srgismty1-0499:8002/soa-infra/services/GIS-JURIDICO/WS_NombreProveedorCliente!1.0/BPELNomProvClien.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="BPELNomProvClien">
+    <plnk:role name="BPELNomProvClienProvider" portType="client:BPELNomProvClien" />
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="https://testapps.gis.com.mx:8002/soa-infra/services/GIS-JURIDICO/WS_NombreProveedorCliente/bpelnomprovclien_client_ep?XSD=xsd/BPELNomProvClien.xsd" namespace="http://xmlns.oracle.com/GIS_JURIDICO/WS_NombreProveedorCliente/BPELNomProvClien" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="BPELNomProvClienRequestMessage">
+    <wsdl:part name="payload" element="client:GisClienProvNomRequest" />
+  </wsdl:message>
+  <wsdl:message name="BPELNomProvClienResponseMessage">
+    <wsdl:part name="payload" element="client:GisClienProvNomResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BPELNomProvClien">
+    <wsdl:operation name="GisClienProvNom">
+      <wsdl:input message="client:BPELNomProvClienRequestMessage" />
+      <wsdl:output message="client:BPELNomProvClienResponseMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BPELNomProvClienBinding" type="client:BPELNomProvClien">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GisClienProvNom">
+      <soap:operation soapAction="GisClienProvNom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="bpelnomprovclien_client_ep">
+    <wsdl:port name="BPELNomProvClien_pt" binding="client:BPELNomProvClienBinding">
+      <soap:address location="https://testapps.gis.com.mx:8002/soa-infra/services/GIS-JURIDICO/WS_NombreProveedorCliente/bpelnomprovclien_client_ep" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

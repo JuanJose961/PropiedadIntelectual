@@ -1,0 +1,788 @@
+@using GISMVC.Models;
+@{
+    ViewData["Title"] = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section permisos {
+    <script type="text/javascript">
+        @*
+            mp_p = @Html.Raw(Json.Serialize(ViewBag.mp_p));
+        *@
+    </script>
+}
+
+@section ol {
+    @*<ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
+            <li class="breadcrumb-item">Application Intel</li>
+            <li class="breadcrumb-item active">Introduction</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>*@
+}
+
+@section metas {
+    <meta name="title" content="@ViewBag.pagina.nombre">
+    <meta name="description" content="@ViewBag.pagina.descripcion">
+    <meta name="keywords" content="@Html.Raw(ViewBag.pagina.keywords)">
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick-theme.css")">
+    <link href="@Url.Content("~/Content/plugins/select2/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/datatables/media/css/dataTables.bootstrap4.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+    <style>
+        .slick-slide {
+            margin: 0px 10px;
+        }
+
+            .slick-slide img {
+                width: 98%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #002b50;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: 1;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        td[role="columnheader"] .dx-datagrid-text-content.dx-header-filter-indicator {
+            white-space: break-spaces;
+        }
+
+        .columm-color-00 {
+            /*background-color: blue;*/
+        }
+    </style>
+}
+<div class="subheader">
+    <h1 class="subheader-title">
+        Contratos
+        <small>
+            En esta sección podrás generar un nuevo contrato, tambien podrás filtrar y buscar alguno ya existente.
+        </small>
+        <span class="subheader-actions">
+            <a href="~/Admin/DescargarExcel" class="btn btn-success btn-sm"><i class="fa fa-download"></i> Reporte de contratos</a>
+        </span>
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="ctm-filtros">
+            <div class="row">
+                @if (ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1" ||
+                    ViewBag.ul.roles.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b")
+                {
+                    <div class="col-md-2">
+                        <a href="~/Admin/Contrato" class="btn btn-info btn-block"><i class="fa fa-plus"></i> Crear Contrato</a>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-block waves-effect waves-themed collapsed" type="button" data-toggle="collapse" data-target="#collapsefiltro" aria-expanded="false" aria-controls="collapsefiltro"><i class="fa fa-filter"></i> Filtros</button>
+                    </div>
+                    <div class="offset-md-2"></div>
+
+                    <div class="col-md-2">
+                        <select class="select2 form-control input-sm custom-select" id="cantidad" autocomplete="off" style="width: 100%;">
+                            <option value="1">1 registro</option>
+                            <option value="5">5 registros</option>
+                            <option value="10" selected>10 registros</option>
+                            <option value="20">20 registros</option>
+                            <option value="50">50 registros</option>
+                            <option value="100">100 registros</option>
+                            <option value="999999999999">Todos</option>
+                        </select>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-2">
+                        <button class="btn btn-info btn-block waves-effect waves-themed collapsed" type="button" data-toggle="collapse" data-target="#collapsefiltro" aria-expanded="false" aria-controls="collapsefiltro">Filtros</button>
+                    </div>
+                    <div class="offset-md-6"></div>
+                }
+                <div class="col-md-4">
+                    <div class="input-group bg-white shadow-inset-2" id="buscarc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" id="buscar" class="form-control border-left-0 bg-transparent pl-0" placeholder="Buscar...">
+                    </div>
+                </div>
+            </div>
+            <div class="row collapse" id="collapsefiltro">
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="negocioc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-briefcase"></i>&nbsp;&nbsp;Negocio
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="negocio" autocomplete="off" style="width: 100%;">
+                            <option value="0" selected>Todos</option>
+                            @foreach (Negocio item in ViewBag.negocios)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="folioc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-file"></i>&nbsp;&nbsp;Folio
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="folio" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Todos</option>
+                            @foreach (string item in ViewBag.folios)
+                            {
+                                <option value="@item">@Html.Raw(item)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="abogadoc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-balance-scale"></i>&nbsp;&nbsp;Abogado
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="abogado" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Todos</option>
+                            @foreach (AspNetUsers item in ViewBag.abogados)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="usuariosc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-user-alt"></i>&nbsp;&nbsp;Usuario
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="usuarios" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Todos</option>
+                            @foreach (AspNetUsers item in ViewBag.usuarios)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="tipocontratoc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-file-contract"></i>&nbsp;&nbsp;Tipo de Contrato
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="tipocontrato" autocomplete="off" style="width: 100%;">
+                            <option value="0" selected>Todos</option>
+                            @foreach (TipoContrato item in ViewBag.tipoContrato)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="contrapartec">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-handshake"></i>&nbsp;&nbsp;Contraparte
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="contraparte" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Todos</option>
+                            @foreach (string item in ViewBag.contraparte)
+                            {
+                                <option value="@item">@Html.Raw(item)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="modificacionc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-calendar-check"></i>&nbsp;&nbsp;Fecha de modificación
+                            </span>
+                        </div>
+                        <input type="text" id="modificacion" class="form-control bg-transparent" placeholder="Fecha de modificación">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="prioridadc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-exclamation-triangle"></i>&nbsp;&nbsp;Prioridad
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="prioridad" autocomplete="off" style="width: 100%;">
+                            <option value="0" selected>Todos</option>
+                            <option value="1">En tiempo</option>
+                            <!--<option value="2">Por Vencer</option>-->
+                            <option value="3">Vencidos</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="estatusc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-sitemap"></i>&nbsp;&nbsp;Estatus
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="estatus" autocomplete="off" style="width: 100%;">
+                            <option value="0" selected>Todos</option>
+                            @foreach (EstatusValidacion item in ViewBag.estatus)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="input-group bg-white shadow-inset-2" id="rfcc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-qrcode"></i>&nbsp;&nbsp;RFC
+                            </span>
+                        </div>
+                        <select class="select2 form-control input-sm custom-select" id="rfc" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Todos</option>
+                            @foreach (string item in ViewBag.rfc)
+                            {
+                                <option value="@item">@Html.Raw(item)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3" style="display:none;">
+                    <div class="input-group bg-white shadow-inset-2" id="inicioc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-calendar"></i>&nbsp;&nbsp;Inicio Vigencia
+                            </span>
+                        </div>
+                        <input type="text" id="inicio" class="form-control border-left-0 bg-transparent pl-0" placeholder="Fecha inicio de vigencia">
+                    </div>
+                </div>
+                <div class="col-md-3" style="display:none;">
+                    <div class="input-group bg-white shadow-inset-2" id="finc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-calendar"></i>&nbsp;&nbsp;Término de contrato
+                            </span>
+                        </div>
+                        <input type="text" id="fin" class="form-control border-left-0 bg-transparent pl-0" placeholder="Fecha de terminación">
+                    </div>
+                </div>
+
+
+                <div class="col-md-2" style="display: none;">
+                    <div class="input-group bg-white shadow-inset-2" id="minmontoc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-dollar-sign"></i>&nbsp;&nbsp;Mínimo
+                            </span>
+                        </div>
+                        <input type="number" id="minmonto" class="form-control border-left-0 bg-transparent pl-0" min="0" placeholder="Monto Mínimo">
+                    </div>
+                </div>
+                <div class="col-md-2" style="display: none;">
+                    <div class="input-group bg-white shadow-inset-2" id="maxmontoc">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-right-0">
+                                <i class="fal fa-dollar-sign"></i>&nbsp;&nbsp;Máximo
+                            </span>
+                        </div>
+                        <input type="number" id="maxmonto" class="form-control border-left-0 bg-transparent pl-0" max="99999999999" placeholder="Monto Máximo">
+                    </div>
+                </div>
+
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="indefinido">
+                            <label class="custom-control-label" for="indefinido">Término indefinido</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group" id="confidencialc" style="display:block;">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="confidenciales">
+                            <label class="custom-control-label" for="confidenciales">Ver confidenciales</label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="ctm-filtros">
+            <!--
+            <div class="row">
+                @if (ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1" ||
+                    ViewBag.ul.roles.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b")
+                {
+                    <div class="col-md-2">
+                        <a href="~/Admin/Contrato" class="btn btn-info btn-block">Crear Contrato</a>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group" id="estatusc">
+                            <select class="select2 form-control input-sm custom-select" id="estatus" autocomplete="off" style="width: 100%;">
+                                <option value="0" selected>Estatus</option>
+                                @foreach (EstatusValidacion item in ViewBag.estatus)
+                                {
+                                    <option value="@item.id">@Html.Raw(item.nombre)</option>
+                                }
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-4">
+                        <div class="form-group" id="estatusc">
+                            <select class="select2 form-control input-sm custom-select" id="estatus" autocomplete="off" style="width: 100%;">
+                                <option value="0" selected>Estatus</option>
+                                @foreach (EstatusValidacion item in ViewBag.estatus)
+                                {
+                                    <option value="@item.id">@Html.Raw(item.nombre)</option>
+                                }
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                }
+
+                <div class="col-md-2">
+                    <div class="form-group" id="abogadoc">
+                        <select class="select2 form-control input-sm custom-select" id="abogado" autocomplete="off" style="width: 100%;">
+                            <option value="Sin especificar" selected>Gestor de abogado</option>
+                            @foreach (AspNetUsers item in ViewBag.usuarios)
+                            {
+                                <option value="@item.id">@Html.Raw(item.nombre)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+            -->
+        </div>
+
+        <div class="" id="formContrato">
+            <div class="ctm-pagination">
+            </div>
+            <ul>
+            </ul>
+            <div class="ctm-pagination">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Modals {
+    <div id="alertModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h1></h1>
+
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarArchivoModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar documento</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el documento</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarDocumento()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarColaboradorModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar colaborador</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el colaborador</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarColaborador()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="detalleArchivoModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Datos del documento</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body ctm-modal-info">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Nombre de documento</label>
+                                <p id="da00"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Fecha</label>
+                                <p id="da01"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Usuario</label>
+                                <p id="da02"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Observaciones</label>
+                        <p id="da03"></p>
+                    </div>
+                    <div class="form-group">
+                        <a id="da04" class="btn btn-success" href=""><i class="fa fa-download"></i> Descargar</a>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="comentarioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar comentario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="doc11c">
+                        <label>Comentario</label>
+                        <input type="text" class="form-control input-sm" id="doc11" autocomplete="off" />
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Confirma03()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarComentarioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar comentario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el comentario</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarComentario()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarRecordatorioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar recordatorio</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el recordatorio</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarRecordatorio()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="update01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="uu_01_c">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control input-sm" id="uu_01" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" onclick="" id="elimina_obj">Eliminar</button>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Confirma01()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="confirmaEliminar01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cambio de estatus</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>Se necesita confirmación para cambiar el estatus del contrato</p>
+                    </div>
+                </div>
+                <div class="modal-footer red-border">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-secondary btn-sm btn-block" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-cg btn-sm btn-block" onclick="CambiarEstatus(6)"><i class="fa fa-check-circle"></i> Confirmar</button>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
+
+    <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        var filtrado = '@ViewBag.filtrado';
+        if (eu_lu.role.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b") {
+            $("#abogado").val(eu_lu.id);
+        }
+        if (eu_lu.role.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1") {
+            $("#usuarios").val(eu_lu.id);
+        }
+        if (filtrado != "00") {
+
+            switch (filtrado) {
+                case "01":
+                    $("#estatus").val(9);
+                    break;
+                case "011":
+                    $("#estatus").val(9);
+                    $("#prioridad").val(1);
+                    break;
+                case "012":
+                    $("#estatus").val(9);
+                    $("#prioridad").val(3);
+                    break;
+                case "02":
+                    $("#estatus").val(2);
+                    break;
+                case "021":
+                    $("#estatus").val(2);
+                    $("#prioridad").val(1);
+                    break;
+                case "022":
+                    $("#estatus").val(2);
+                    $("#prioridad").val(3);
+                    break;
+                case "03":
+                    $("#estatus").val(1);
+                    break;
+                case "031":
+                    $("#estatus").val(1);
+                    $("#prioridad").val(1);
+                    break;
+                case "032":
+                    $("#estatus").val(1);
+                    $("#prioridad").val(3);
+                    break;
+                case "04":
+                    $("#estatus").val(4);
+                    break;
+                case "041":
+                    $("#estatus").val(4);
+                    $("#prioridad").val(1);
+                    break;
+                case "042":
+                    $("#estatus").val(4);
+                    $("#prioridad").val(3);
+                    break;
+                case "05":
+                    $("#estatus").val(5);
+                    break;
+                case "051":
+                    $("#estatus").val(5);
+                    $("#prioridad").val(1);
+                    break;
+                case "052":
+                    $("#estatus").val(5);
+                    $("#prioridad").val(3);
+                    break;
+                case "06":
+                    $("#estatus").val(6);
+                    break;
+                case "07":
+                    $("#estatus").val(7);
+                    break;
+                case "08":
+                    $("#estatus").val(8);
+                    break;
+                case "081":
+                    $("#estatus").val(8);
+                    $("#prioridad").val(1);
+                    break;
+                case "082":
+                    $("#estatus").val(8);
+                    $("#prioridad").val(3);
+                    break;
+            }
+        }
+        console.log("fuera");
+    </script>
+
+    <script src="@Url.Content("~/Content/js/admin_contratos.js?t=" + DateTime.Now.Ticks.ToString())"></script>
+}

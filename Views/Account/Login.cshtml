@@ -1,0 +1,42 @@
+﻿@using GISMVC.Models
+@{
+    ViewBag.Title = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_LayoutOut.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="loc-content">
+            <h1>Portal Jurídico</h1>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="loc-content">
+            <div class="locc-box">
+                <form id="loginform">
+                    <h3 id="locc-title">@Html.Raw(ViewBag.texto_IniciarSesion)</h3>
+
+                    <div class="form-group" id="lg00c">
+                        <label>Usuario</label>
+                        <input type="text" class="form-control" id="lg00" placeholder="Usuario" />
+                    </div>
+                    <div class="form-group" id="lg01c">
+                        <label>@Html.Raw(ViewBag.texto_Contrasena)</label>
+                        <input type="password" class="form-control" id="lg01" placeholder="@Html.Raw(ViewBag.texto_Contrasena)" />
+                    </div>
+                    <div class="form-group" id="lgerrores"></div>
+                    <button type="submit" id="locc-loginsubmit" class="btn btn-primary btn-block">@Html.Raw(ViewBag.texto_BotonIniciarSesion)</button>
+                    <div class="text-center" id="locc-buttons">
+                        @*<a href="~/Account/Reset" id="locc-forgotpassword">@Html.Raw(ViewBag.texto_Olvidaste)</a>*@
+                        @*<a href="/Account/Verificar" id="locc-verificar">Verificar cuenta</a>*@
+                    </div>
+                    <input type="hidden" id="returnurl" value="@ViewBag.return_url" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var mainurl = "@(Utility.hosturl)";
+</script>
+<script src="@Url.Content("~/Content/js/admin_out_login.js?" + DateTime.Now.Ticks.ToString())"></script>

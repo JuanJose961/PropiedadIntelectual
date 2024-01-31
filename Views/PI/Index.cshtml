@@ -1,0 +1,102 @@
+@using GISMVC.Models;
+@{
+    ViewData["Title"] = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section permisos {
+    <script type="text/javascript">
+        @*
+            mp_p = @Html.Raw(Json.Serialize(ViewBag.mp_p));
+        *@
+    </script>
+}
+
+@section ol {
+    @*<ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
+            <li class="breadcrumb-item">Application Intel</li>
+            <li class="breadcrumb-item active">Introduction</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>*@
+}
+
+@section metas {
+    <meta name="title" content="@ViewBag.pagina.nombre">
+    <meta name="description" content="@ViewBag.pagina.descripcion">
+    <meta name="keywords" content="@Html.Raw(ViewBag.pagina.keywords)">
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick-theme.css")">
+    <link href="@Url.Content("~/Content/plugins/select2/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/datatables/media/css/dataTables.bootstrap4.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+    <style>
+        .slick-slide {
+            margin: 0px 10px;
+        }
+
+            .slick-slide img {
+                width: 98%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #002b50;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: 1;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        td[role="columnheader"] .dx-datagrid-text-content.dx-header-filter-indicator {
+            white-space: break-spaces;
+        }
+
+        .columm-color-00 {
+            /*background-color: blue;*/
+        }
+    </style>
+}
+<div class="subheader">
+    <h1 class="subheader-title">
+        Dashboard PI
+        <small>
+        </small>
+    </h1>
+</div>
+
+
+@section Modals {
+
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
+    <script type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+    </script>
+    <script src="@Url.Content("~/Content/js/admin_indexpi.js?t=" + DateTime.Now.Ticks.ToString())"></script>
+}

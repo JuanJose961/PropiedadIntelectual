@@ -1,0 +1,1267 @@
+@using Newtonsoft.Json;
+@using GISMVC.Models;
+@{
+    ViewData["Title"] = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section permisos {
+    <script type="text/javascript">
+        @*
+            mp_p = @Html.Raw(Json.Serialize(ViewBag.mp_p));
+        *@
+    </script>
+}
+
+@section ol {
+    @*<ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
+            <li class="breadcrumb-item">Application Intel</li>
+            <li class="breadcrumb-item active">Introduction</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>*@
+}
+
+@section metas {
+    <meta name="title" content="@ViewBag.pagina.nombre">
+    <meta name="description" content="@ViewBag.pagina.descripcion">
+    <meta name="keywords" content="@Html.Raw(ViewBag.pagina.keywords)">
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick-theme.css")">
+    <link href="@Url.Content("~/Content/plugins/select2/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/datatables/media/css/dataTables.bootstrap4.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+
+
+    <script src="@Url.Content("~/Content/js/polyfill.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/exceljs.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/FileSaver.min.js")"></script>
+
+    <style>
+        .slick-slide {
+            margin: 0px 10px;
+        }
+
+            .slick-slide img {
+                width: 98%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #002b50;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: 1;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        td[role="columnheader"] .dx-datagrid-text-content.dx-header-filter-indicator {
+            white-space: break-spaces;
+        }
+
+        .columm-color-00 {
+            /*background-color: blue;*/
+        }
+
+        .dx-datagrid-toolbar-button[aria-label="export-excel-button"] {
+            padding: 4px;
+        }
+
+        #collapseInfo {
+            cursor: pointer;
+        }
+    </style>
+}
+<div class="subheader">
+    <h1 class="subheader-title">
+        <span>Crear contrato</span>
+        <small>
+            Llena todos los campos correctamente para que puedas crear un nuevo contrato o actualizar uno ya existente.
+        </small>
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel" id="">
+            <div class="panel-container show">
+                <div class="panel-hdr" id="collapseInfo" data-toggle="collapse" data-target="#formContrato" aria-expanded="true" aria-controls="formContrato">
+                    <h2 class="">
+                        Datos de contrato
+                        <small id="collapseSmall">(Click Aquí para Mostrar u Ocultar Información)</small>
+                    </h2>
+                    <small id="collapseEstatus" style="display:none;"></small>
+                    <small id="collapseEstatusValidacion" style="display:none;"></small>
+                    <div class="panel-toolbar">
+                        @*
+                            <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                            <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                            <button class="btn btn-panel waves-effect waves-themed" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Close"></button>
+                        *@
+                    </div>
+                </div>
+                <div class="panel-content collapse show" id="formContrato">
+                    <div class="" id="info-contenedor">
+                        @if (ViewBag.contrato.estatus_validacion == 3 && ViewBag.esColaborador.id > 0 && ViewBag.esColaborador.aprobado > 0)
+                        {
+                            if (ViewBag.esColaborador.aprobado == 1)
+                            {
+                                <h4 class="colaborador-estatus">Ya se ha aprobado el contrato</h4>
+                                <br /><br />
+                            }
+                            else if (ViewBag.esColaborador.aprobado == 2)
+                            {
+                                <h4 class="colaborador-estatus">Ya se ha rechazado la información</h4>
+                                <br /><br />
+                            }
+                        }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="indefinido">
+                                        <label class="custom-control-label" for="indefinido">Vigencia Indefinida</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="confidencialc" style="display:none;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="confidencial">
+                                        <label class="custom-control-label" for="confidencial">Contrato confidencial</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group" id="folioc">
+                                    <label for="folio">Folio</label>
+                                    <input type="text" class="form-control" id="folio" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group" id="in03c">
+                                    <label for="in03">Título (autogenerado)</label>
+                                    <input type="text" class="form-control" id="in03" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="in031c">
+                            <label for="in031">Descripción corta</label>
+                            <input type="text" class="form-control" id="in031" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group" id="in06c">
+                                    <label for="in06">Tipo de contrato *</label>
+                                    <select class="select2 form-control input-sm custom-select" id="in06" autocomplete="off" style="width: 100%;">
+                                        <option value="0" selected>Selecciar Tipo de Contrato</option>
+                                        @foreach (TipoContrato item in ViewBag.tipo_contrato)
+                                        {
+                                            <option value="@item.id">@item.descripcion</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" id="in060c">
+                                    <label for="in060">Describir Tipo de contrato</label>
+                                    <input type="text" class="form-control" id="in060" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" id="in07c">
+                                    <label for="in07">Monto aproximado *</label>
+                                    <input type="number" class="form-control" id="in07" value="0" min="0" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" id="in08c">
+                                    <label for="in08">Moneda *</label>
+                                    <select class="select2 form-control input-sm custom-select" id="in08" autocomplete="off" style="width: 100%;">
+                                        <option value="0" selected>Seleccionar Moneda</option>
+                                        @foreach (Moneda item in ViewBag.moneda)
+                                        {
+                                            <option value="@item.id">@item.descripcion</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" id="duenoc">
+                                    <label for="in05">Solicitante</label>
+                                    <select class="select2 form-control input-sm custom-select" id="dueno" autocomplete="off" style="width: 100%;" disabled>
+                                        <option value="NA" selected>Cambiar dueño</option>
+                                        @foreach (AspNetUsers item in ViewBag.usuarios)
+                                        {
+                                            <option value="@item.id">@item.nombre</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="in05c">
+                                    <label for="in05">Abogado *</label>
+                                    <select class="select2 form-control input-sm custom-select" id="in05" autocomplete="off" style="width: 100%;">
+                                        <option value="NA" selected>Seleccionar Abogado</option>
+                                        @foreach (AspNetUsers item in ViewBag.abogado)
+                                        {
+                                            <option value="@item.id">@item.nombre</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group" id="in02c">
+                                    <label for="in02">Negocio *</label>
+                                    <select class="select2 form-control input-sm custom-select" id="in02" autocomplete="off" style="width: 100%;">
+                                        <option value="0" selected>Seleccionar Negocio</option>
+                                        @foreach (Negocio item in ViewBag.negocio)
+                                        {
+                                            <option value="@item.id">@Html.Raw(item.nombre)</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" id="in040c">
+                                    <label for="in040">Buscar cliente o proveedor por RFC</label>
+                                    <input type="text" class="form-control" id="in040" />
+                                    <small><i>* Oprime la tecla ENTER para buscar el nombre del cliente o proveedor</i></small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" id="in04c">
+                                    <label for="in04">Contraparte (Nombre del cliente o proveedor) *</label>
+                                    <input type="text" class="form-control" id="in04" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" id="in00c">
+                                    <label for="in00">Inicio de Vigencia *</label>
+                                    <input type="text" class="form-control" id="in00" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="in01c">
+                                    <label for="in01">Fecha Terminación de contrato *</label>
+                                    <input type="text" class="form-control" id="in01" readonly />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="preGuardar">
+    <div class="col-md-12 text-right">
+        <a href="@(Utility.hosturl + "Admin/Contratos")" class="btn btn-default" id="cancelaPrincipal"><i class="fa fa-ban"></i> Salir</a>
+        &nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(false)"><i class="fa fa-save"></i> Generar Folio</button>
+
+    </div>
+</div>
+
+<div class="row" id="extraContrato" style="display:none;">
+    <div class="col-md-12">
+        <div class="ctm-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <!--<li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab01" role="tab" aria-selected="false"><i class="fa fa-comment mr-1"></i> Comentarios</a>
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tab00" role="tab" aria-selected="true"><i class="fa fa-file mr-1"></i> Documentos (Contrato)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab04" role="tab" aria-selected="false"><i class="fa fa-file mr-1"></i> Documentos (Cliente/Proveedor)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab02" role="tab" aria-selected="false"><i class="fa fa-clock mr-1"></i> Recordatorios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab03" role="tab" aria-selected="false"><i class="fa fa-users mr-1"></i> Colaboradores</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab05" role="tab" aria-selected="false"><i class="fa fa-history mr-1"></i> Historial de actividades</a>
+                </li>
+            </ul>
+            <div class="tab-content border border-top-0 p-3">
+                <div class="tab-pane fade active show" id="tab00" role="tabpanel">
+                    <div class="row">
+
+                        <div class="col-md-4">
+
+                            <div class="text-right">
+                                <button class='btn btn-info' id="btnComentario" onclick='ModalComentario();'><i class='fa fa-plus'></i> Agregar comentario</button>
+                                <br /><br />
+                            </div>
+                            <ul class="ctm-ul-list ctm-comentarios" id="comentarios">
+                                <li class="ctm-comentario">
+                                    <div class="ctm-comentario-body">
+                                        <p>No hay comentarios aún</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="table-container">
+                                @*-----*@
+                                @(Html.DevExtreme().DataGrid<DocumentoContrato>
+                            ()
+                            .ID("tabla01")
+                            .ShowBorders(true)
+                            .RowAlternationEnabled(true)
+                            .DataSource((List<DocumentoContrato>)ViewBag.documentosTipo)
+                            .Columns(columns =>
+                            {
+                                columns.AddFor(m => m.id).CellTemplate(@<text>
+                                    <div>
+                                        <% if (data.id == 0) { %>
+                                            <button class='ctm-tb-btn ctm-tb-btn-success btnDocumento' onclick='ModalDocumento(<%- data.tipo_archivo.id %>,"<%- data.tipo_archivo.nombre %>");' id=''><i class='fa fa-plus'></i> Agregar documento</button>
+                                        <% } else { %>
+                                            <a class="ctm-tb-btn ctm-tb-btn-success" href="<%- data.permalink %>&usuario=@ViewBag.ul.id" ><i class="fa fa-download"></i></a>
+
+                                        <% if (data.tipo_archivo.id != 3) { %>
+
+                                            <span class="ctm-tb-btn ctm-tb-btn-primary" onclick="Ver(<%- value %>)"><i class="fa fa-eye"></i></span>
+                                        <% } %>
+                                            <span></span>
+                                            <% if (eu_lu.id == data.usuario.id || eu_lu.role.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b") { %>
+                                             <span class="ctm-tb-btn ctm-tb-btn-danger" onclick="Eliminar(<%- value %>)"><i class="fa fa-trash"></i></span>
+                                            <% } %>
+                                            <button class='ctm-tb-btn ctm-tb-btn-success' onclick='ModalDocumento(<%- data.tipo_archivo.id %>,"<%- data.tipo_archivo.nombre %>");' id=''><i class='fa fa-plus'></i></button>
+                                        <% } %>
+                                    </div>
+                                </text>).Caption("Acciones").Width(150).Alignment(HorizontalAlignment.Left).AllowSorting(false);
+                                columns.AddFor(m => m.tipo_archivo.nombre).Caption("Tipo Archivo").AllowSorting(false);
+                                columns.AddFor(m => m.file_nombre).Caption("Nombre").AllowSorting(false);
+                                columns.AddFor(m => m.fc).Format("dd/MM/yyyy").Caption("Fecha").CellTemplate(@<text>
+                                    <div>
+                                        <% if (data.id == 0) { %>
+
+                                        <% } else { %>
+                                            <%- moment(value).format("DD/MM/YYYY") %>
+                                        <% } %>
+                                    </div>
+                                </text>).AllowSorting(false);
+                                columns.AddFor(m => m.usuario.nombre).Caption("Usuario").AllowSorting(false);
+                                columns.AddFor(m => m.comentario).Caption("Observaciones").AllowSorting(false);
+                            })
+                            .ColumnAutoWidth(true)
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            //.HeaderFilter(f => f.Visible(true))
+                            .OnRowPrepared(@<text> function(e) {
+                                if(e.rowType === 'data'){
+                                    if(e.data.tipo == "firmado"){
+                                        e.rowElement.addClass('documento_firmado');
+                                    }
+                                }
+                            }</text>)
+
+                            )
+                                @*-----*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="tab-pane fade" id="tab05" role="tabpanel">
+                    <div id="table-container">
+                        @(Html.DevExtreme().DataGrid<RegistroActividad>
+                            ()
+                            .ID("tabla012")
+                            .ShowBorders(true)
+                            .RowAlternationEnabled(true)
+                            .DataSource(new List<RegistroActividad>())
+                            .Columns(columns =>
+                            {
+                                columns.AddFor(m => m.fc).Caption("Fecha").Format("dd/MM/yyyy HH:mm").Width(150).SortOrder(SortOrder.Desc);
+                                columns.AddFor(m => m.descripcion).Caption("Actividad").CellTemplate(@<text>
+                                    <div class="actividad-desc">
+                                        <%- value %>
+                                    </div>
+                                </text>);
+                                columns.AddFor(m => m.usuario.nombre).Caption("Usuario").Width(320);
+                            })
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+
+                            .RemoteOperations(true)
+                                .Export(p => p.Enabled(true))
+                                .OnExporting(@<text> function(e) { Exportar(e, "historialActividad_@ViewBag.contrato.id", "historialContrato", @ViewBag.contrato.id); } </text>)
+                            )
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="tab01" role="tabpanel">
+                </div>
+                <div class="tab-pane fade" id="tab02" role="tabpanel">
+                    <div class="text-right">
+                        <button class='btn btn-info' id="btnRecordatorio" onclick='ModalRecordatorio();'><i class='fa fa-plus'></i> Agregar recordatorio</button>
+                        <br /><br />
+                    </div>
+                    <ul class="ctm-ul-list ctm-comentarios" id="recordatorios">
+                        <li class="ctm-comentario">
+                            <div class="ctm-comentario-body">
+                                <p>No hay comentarios aún</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="tab03" role="tabpanel">
+
+                    <div id="table-container">
+                        @(Html.DevExtreme().DataGrid<ColaboradorContrato>
+                            ()
+                            .ID("tabla02")
+                            .ShowBorders(true)
+                            .RowAlternationEnabled(true)
+                            .DataSource(new List<ColaboradorContrato>())
+                            .Columns(columns =>
+                            {
+                                if (ViewBag.ul.roles.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b") //ViewBag.ul.roles.id == "c696ba3f-4b65-4fb4-b31a-b2e96c9ffc99" ||
+                                {
+                                    columns.AddFor(m => m.id).CellTemplate(@<text>
+                                        <div>
+                                            <span class="ctm-tb-btn ctm-tb-btn-warning" onclick="EditarColaborador(<%- value %>, '<%- data.usuario.id %>')"><i class="fa fa-edit"></i></span>
+                                            <span class="ctm-tb-btn ctm-tb-btn-danger" onclick="EliminarColaborador(<%- value %>)"><i class="fa fa-trash"></i></span>
+                                        </div>
+                                    </text>).Caption("ACCIONES").Width(150).Alignment(HorizontalAlignment.Center);
+                                }
+                                columns.AddFor(m => m.usuario.nombre).CellTemplate(@<text>
+                                    <% if (data.activo == false) { %>
+                                    <div>
+                                        <span class="dx-active-off"></span>
+                                        <%- value %>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+                                        <span class="dx-active-on"></span>
+                                        <%- value %>
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("Nombre");
+
+                                if ((ViewBag.ul.roles.id == "c696ba3f-4b65-4fb4-b31a-b2e96c9ffc99" ||
+                                ViewBag.ul.roles.id == "e9d0046c-3c62-4e91-81d5-8c8bc2a5c16b") && ViewBag.contrato.estatus_validacion > 2)
+                                {
+                                    columns.AddFor(m => m.aprobado).CellTemplate(@<text>
+                                        <% if (value == 1) { %>
+                                        <div>
+                                            <span class="dx-active-on"></span> Aprobada
+                                        </div>
+                                        <% } else if (value == 2){ %>
+                                        <div>
+                                            <span class="dx-active-off"></span> Rechazado
+                                        </div>
+                                        <% } else { %>
+                                        <div>
+                                            <span class="dx-active-mid"></span> En revisión
+                                        </div>
+                                        <% } %>
+                                    </text>).Caption("Estatus aprobación").Width(200);
+                                    columns.AddFor(m => m.descripcion).Caption("Comentario");
+                                }
+                            })
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+
+                            )
+                    </div>
+                </div>
+
+
+
+                <div class="tab-pane fade" id="tab04" role="tabpanel">
+                    <div id="table-container">
+                        @(Html.DevExtreme().DataGrid<DocumentoContrato>
+                            ()
+                            .ID("tabla011")
+                            .ShowBorders(true)
+                            .RowAlternationEnabled(true)
+                            .DataSource(new List<DocumentoContrato>())
+                            .Columns(columns =>
+                            {
+                                columns.AddFor(m => m.id).CellTemplate(@<text>
+                                    <div>
+                                        <% if (data.id > 0) { %>
+
+                                            <% if (data.activo > 0) { %>
+                                                <a class="ctm-tb-btn ctm-tb-btn-success" href="<%- data.permalink %>&usuario=@ViewBag.ul.id" ><i class="fa fa-download"></i></a>
+
+                                                <% if (data.activo > 0) { %>
+                                                    <span class="ctm-tb-btn ctm-tb-btn-danger" onclick="EliminarDocCliente(<%- value %>)"><i class="fa fa-trash"></i></span>
+                                                <% } else { %>
+                                                    <span class="ctm-tb-btn ctm-tb-btn-danger" onclick="Eliminar(<%- value %>)"><i class="fa fa-trash"></i></span>
+                                                <% } %>
+                                            <% } %>
+
+                                        <% } else { %>
+                                        <button class="btn btn-sm btn-success" onclick="download('<%- data.file_nombre %>','<%- data.file_data_str %>','<%- data.file_content_type %>')"><i class="fa fa-download"></i> Descargar</button>
+
+                                        <% } %>
+                                    </div>
+                                </text>).Caption("Acciones").Alignment(HorizontalAlignment.Left);
+                                columns.AddFor(m => m.nombre_original).Caption("Nombre");
+                                columns.AddFor(m => m.tipo).Caption("Tipo");
+                            })
+                            .ColumnAutoWidth(true)
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+                            .OnRowPrepared(@<text> function(e) {
+                                if(e.rowType === 'data'){
+                                    if(e.data.activo == 0){
+                                        e.rowElement.addClass('documento_eliminado');
+                                    }
+                                }
+                            }</text>)
+                        )
+                    </div>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+
+<div class="row" id="postGuardar" style="display: none;">
+    <div class="col-md-12 text-right">
+        <a href="@(Utility.hosturl + "Admin/Contratos")" class="btn btn-default" id="cancelaPrincipal"><i class="fa fa-ban"></i> Salir</a>
+        <div class="contrato_acciones">
+            @if (ViewBag.contrato.estatus_validacion < 2)
+            {
+                @*
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(false)"><i class="fa fa-save"></i> Guardar</button>
+
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(true)"><i class="fa fa-save"></i> Guardar y enviar contrato</button>
+
+                *@
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <!--<button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(1)"><i class="fa fa-arrow-left"></i> Enviar a usuario para su revisión</button>-->
+                <button type="button" class="btn btn-info guardaPrincipal" onclick="CambiarEstatus(2)"><i class="fa fa-save"></i> Guardar y enviar contrato</button>
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+            }
+            else if (ViewBag.contrato.estatus_validacion == 3 && ViewBag.contrato.abogado == ViewBag.ul.id && ViewBag.pendienteValidar == 0)
+            {
+                @*
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(false)"><i class="fa fa-save"></i> Guardar</button>
+                *@
+
+                if (ViewBag.aprobadosValidar == ViewBag.colaboradores.Count)
+                {
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <!--<button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(1)"><i class="fa fa-arrow-left"></i> Enviar a usuario para su revisión</button>-->
+                    <button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(2)"><i class="fa fa-arrow-left"></i> Enviar a abogado para su revisión</button>
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" id="aprobado_firmas" onclick="CambiarEstatus(4)"><i class="fa fa-check"></i> Aprobar para firmas</button>
+                }
+                else
+                {
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <!--<button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(1)"><i class="fa fa-arrow-left"></i> Enviar a usuario para su revisión</button>-->
+                    <button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(2)"><i class="fa fa-arrow-left"></i> Enviar a abogado para su revisión</button>
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" id="aprobado_firmas" onclick="CambiarEstatus(4)"><i class="fa fa-check"></i> Aprobar para firmas</button>
+                }
+            }
+            else if (ViewBag.contrato.estatus_validacion == 2 && ViewBag.contrato.abogado == ViewBag.ul.id)
+            {
+                @*
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(false)"><i class="fa fa-save"></i> Guardar</button>
+                *@
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(1)"><i class="fa fa-arrow-left"></i> Enviar a usuario para revisión</button>
+                @*<span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="CambiarEstatus(3)"><i class="fa fa-check"></i> Enviar a colaboradores</button>*@
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-info guardaPrincipal" id="aprobado_firmas" onclick="CambiarEstatus(4)"><i class="fa fa-check"></i> Aprobar para firmas</button>
+            }
+            else if (ViewBag.contrato.estatus_validacion == 4 && ViewBag.contrato.abogado == ViewBag.ul.id)
+            {
+                @*
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(false)"><i class="fa fa-save"></i> Guardar</button>
+                *@
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-danger guardaPrincipal" onclick="CambiarEstatus(1)"><i class="fa fa-arrow-left"></i> Enviar a usuario para revisión</button>
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-success guardaPrincipal" id="contrato_firmado" onclick="CambiarEstatus(5)"><i class="fa fa-check"></i> Contrato firmado, finalizar</button>
+            }
+            else if (ViewBag.contrato.estatus_validacion == 5 && ViewBag.contrato.abogado == ViewBag.ul.id)
+            {
+                @*
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info guardaPrincipal" onclick="Confirma01(false)"><i class="fa fa-save"></i> Guardar</button>
+                *@
+
+            }
+            else if (ViewBag.contrato.estatus_validacion == 3 && ViewBag.esColaborador.id > 0 && ViewBag.esColaborador.aprobado < 1)
+            {
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-danger guardaPrincipal" onclick="AprobacionColaborador(@ViewBag.esColaborador.id,2)"><i class="fa fa-times"></i> Rechazar</button>
+                <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                <button type="button" class="btn btn-success guardaPrincipal" onclick="AprobacionColaborador(@ViewBag.esColaborador.id,1)"><i class="fa fa-check"></i> Aprobar</button>
+            }
+        </div>
+    </div>
+</div>
+
+@section Modals {
+    <div id="alertModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h1></h1>
+
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmaEstatus" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmar cambio de estatus</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group">
+                        <p></p>
+                    </div>
+                    <div class="form-group" id="comentarioc">
+                        <label>Comentario</label>
+                        <input type="text" class="form-control input-sm" id="comentario" autocomplete="off" />
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    @if (ViewBag.contrato.estatus_validacion == 2 && ViewBag.contrato.abogado == ViewBag.ul.id)
+                    {
+                        <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                        <button type="button" class="btn btn-info detalleColaboradores" onclick="VerColaboradores()"><i class="fa fa-eye"></i> Ver colaboradores</button>
+                    }
+
+                    @if (ViewBag.contrato.estatus_validacion < 2)
+                    {
+                        <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                        <button type="button" class="btn btn-info" onclick="Confirma01(1)"><i class="fa fa-save"></i> Guardar y enviar</button>
+                    }
+                    else
+                    {
+                        <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                        <button type="button" class="btn btn-info" onclick="ConfirmaEstatus()"><i class="fa fa-save"></i> Continuar</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmaFirmado" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmar cambio de estatus</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>Se necesita confirmación para enviar la notificación al abogado.</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+
+                    <span style="padding:0;margin:0;">&nbsp;&nbsp; &nbsp;</span>
+                    <button type="button" class="btn btn-info" onclick="ConfirmaNotificacionFirmado()"><i class="fa fa-save"></i> Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmaColaborador" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmar estatus de revisión</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>Se necesita confirmación para enviar el estatus de la revisión.</p>
+                    </div>
+
+                    <div class="form-group" id="comentariocolaboradorc">
+                        <label>Comentario</label>
+                        <input type="text" class="form-control input-sm" id="comentariocolaborador" autocomplete="off" />
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEstatusRevision()"><i class="fa fa-save"></i> Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="archivoModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Adjuntar documento</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="doc00c">
+                        <div class="dropzone-container" style="border-color:#dadada !important;">
+                            <form action="" class="dropzone" id="dz-documentos" method="post" enctype="multipart/form-data">
+                                <input type="file" name="file" style="display:none;" />
+                                <div class="dz-message" data-dz-message><span>Haz click aquí o arrastra aquí para cargar el documento</span></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-group" id="doc01c">
+                        <label>Comentario</label>
+                        <input type="text" class="form-control input-sm" id="doc01" autocomplete="off" />
+                    </div>
+                    <div class="form-group" id="firmadoc" style="display: none;">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="firmado">
+                            <label class="custom-control-label" for="firmado">Es el documento firmado</label>
+                        </div>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaUploadArchivo()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarArchivoModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar documento</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el documento</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarDocumento()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="eliminarArchivoVersionModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar documento</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el documento</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" onclick="CancelaEliminarDocumentoVersion()"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarDocumentoVersion()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="eliminarArchivoClienteModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar documento</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el documento</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarDocCliente()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarColaboradorModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar colaborador</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el colaborador</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarColaborador()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="detalleArchivoModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cargando datos</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body ctm-modal-info">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    @*
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre de documento</label>
+                                    <p id="da00"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre original</label>
+                                    <p id="da06"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <p id="da01"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Usuario</label>
+                                    <p id="da02"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Tipo de archivo</label>
+                                    <p id="da05"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Observaciones</label>
+                            <p id="da03"></p>
+                        </div>
+                        <div class="form-group">
+                            <a id="da04" class="btn btn-success" href=""><i class="fa fa-download"></i> Descargar</a>
+                        </div>
+                        <br />
+                    *@
+                    <div id="table-container">
+                        @*-----*@
+                        @(Html.DevExtreme().DataGrid<DocumentoContrato>
+                            ()
+                            .ID("versionamiento")
+                            .ShowBorders(true)
+                            .DataSource(new List<DocumentoContrato>())
+                            .Columns(columns =>
+                            {
+                                columns.AddFor(m => m.id).CellTemplate(@<text>
+                                    <% if (data.activo == 0) { %>
+                                    <div></div>
+                                    <% } else if (data.activo == 1){ %>
+                                    <div>
+                                        <a class="ctm-tb-btn ctm-tb-btn-success" href="<%- data.permalink %>&usuario=@ViewBag.ul.id" ><i class="fa fa-download"></i></a>
+                                        <span class="ctm-tb-btn ctm-tb-btn-danger" onclick="EliminarVersion(<%- value %>,<%- data.tipo_archivo.id %>)"><i class="fa fa-trash"></i></span>
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("Acciones").Width(150).Alignment(HorizontalAlignment.Left).AllowSorting(false);
+                                columns.AddFor(m => m.activo).Caption("Estatus").Alignment(HorizontalAlignment.Left).AllowSorting(false).CellTemplate(@<text>
+
+                                        <% if (value == 0) { %>
+                                        <div>
+                                            <span class="dx-active-off"></span> Eliminado
+                                        </div>
+                                        <% } else if (value == 1){ %>
+                                        <div>
+                                            <span class="dx-active-on"></span> Activo
+                                        </div>
+                                        <% } %>
+                                </text>);
+                                //columns.AddFor(m => m.file_nombre).Caption("Nombre");
+                                columns.AddFor(m => m.nombre_original).Caption("Nombre Original").AllowSorting(false);
+                                columns.AddFor(m => m.fc).Format("dd/MM/yyyy").Caption("Fecha").AllowSorting(false);
+                                columns.AddFor(m => m.usuario.nombre).Caption("Usuario").AllowSorting(false);
+                                columns.AddFor(m => m.comentario).Caption("Observaciones").AllowSorting(false);
+                            })
+                            .ColumnAutoWidth(true)
+                            //.RowAlternationEnabled(true)
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            //.HeaderFilter(f => f.Visible(true))
+                            .OnRowPrepared(@<text> function(e) {
+                                if(e.rowType === 'data'){
+                                    if(e.data.versionamiento == "1"){
+                                        e.rowElement.addClass('documento_principal');
+                                    }
+                                    if(e.data.tipo == "firmado"){
+                                        e.rowElement.addClass('documento_firmado');
+                                    }
+                                    if(e.data.activo == 0){
+                                        e.rowElement.addClass('documento_eliminado');
+                                    }
+                                }
+                            }</text>)
+
+                            )
+                        @*-----*@
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="comentarioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar comentario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="doc11c">
+                        <label>Comentario</label>
+                        <input type="text" class="form-control input-sm" id="doc11" autocomplete="off" />
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Confirma03()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarComentarioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar comentario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el comentario</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarComentario()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="eliminarRecordatorioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar recordatorio</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="">
+                        <p>Se necesita confirmación para eliminar el recordatorio</p>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="ConfirmaEliminarRecordatorio()"><i class="fa fa-save"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="recordatorioModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar recordatorio</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+                    <div class="form-group" id="doc21c">
+                        <label>Comentario</label>
+                        <input type="text" class="form-control input-sm" id="doc21" autocomplete="off" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="doc22c">
+                                <label>Fecha de Envío</label>
+                                <input type="text" class="form-control input-sm" id="doc22" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" id="doc23c">
+                                <label for="doc23">Usuario correspondiente</label>
+                                <select class="select2 form-control input-sm custom-select" id="doc23" autocomplete="off" style="width: 100%;">
+                                    <option value="NA" selected>Seleccionar usuario</option>
+                                    @foreach (AspNetUsers item in ViewBag.usuarios)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="colaborador">
+                                    <label class="custom-control-label" for="colaborador">Agregar como colaborador</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Confirma04()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="colaboradorModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar colaborador</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+
+                    <div class="form-group" id="doc31c">
+                        <label for="doc31">Usuario correspondiente</label>
+                        <select class="select2 form-control input-sm custom-select" id="doc31" autocomplete="off" style="width: 100%;">
+                            <option value="NA" selected>Seleccionar usuario</option>
+                            @foreach (AspNetUsers item in ViewBag.usuarios)
+                            {
+                                <option value="@item.id">@item.nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Confirma05()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="update01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id="uu_01_c">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control input-sm" id="uu_01" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" onclick="" id="elimina_obj">Eliminar</button>
+                    </div>
+                    <div class="form-group errores"></div>
+                </div>
+                <div class="modal-footer red-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Confirma01()"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="confirmaEliminar01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cambio de estatus</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="ctm-modal-pb"></div>
+                    <div class="form-group">
+                        <p>Se necesita confirmación para desactivar los datos de este registro</p>
+                    </div>
+                </div>
+                <div class="modal-footer red-border">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-secondary btn-sm btn-block" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-cg btn-sm btn-block" onclick="ConfirmaEliminar01()"><i class="fa fa-check-circle"></i> Confirmar</button>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
+
+    <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
+    <script type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        var mainid = @Html.Raw(ViewBag.mainid);
+
+        var lista_documentos = JSON.parse('@Html.Raw(JsonConvert.SerializeObject(ViewBag.documentosTipo))');
+    </script>
+    <script src="@Url.Content("~/Content/js/admin_contrato.js?t=" + DateTime.Now.Ticks.ToString())"></script>
+}

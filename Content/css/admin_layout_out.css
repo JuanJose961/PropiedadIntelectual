@@ -1,0 +1,324 @@
+@font-face {
+    font-family: 'bariol_bold';
+    src: url('../bariol/bariol_bold-webfont.woff2') format('woff2'), url('../bariol/bariol_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bariol_light';
+    src: url('../bariol/bariol_light-webfont.woff2') format('woff2'), url('../bariol/bariol_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bariol_regular';
+    src: url('../bariol/bariol_regular-webfont.woff2') format('woff2'), url('../bariol/bariol_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-image: url(../images/login@2x.png);
+    /*background-image: url(../images/opcion1.png);*/
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'bariol_regular', sans-serif !important;
+    text-align: center;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.layout-out-container {
+    height: calc(100% - 3rem);
+    margin-top: 3rem;
+    display: inline-block;
+}
+.lof-item {
+    width: 100%;
+    color: #fff;
+    width: calc(20% - 0px);
+    float: left;
+    padding: 0px 8px;
+}
+
+.lof-items {
+    overflow: auto;
+    text-align: center;
+}
+.lof-item-info {
+    overflow: auto;
+    background-color: #003e74;
+    padding: 0px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.lof-item-info-img {
+    height: 7rem;
+    width: 35px;
+    display: inline-block;
+}
+
+.lof-item-info-desc {
+    height: 7rem;
+    width: calc(100% - 100px);
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+
+.lof-item-info-img img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.lof-item-info-desc h4 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+#layout-out-footer,
+#layout-out-header {
+    background-color: #fff !important;
+}
+
+#layout-out-footer {
+    padding: 1.8rem 1rem;
+}
+
+body {
+    background-color: #fff;
+}
+.layout-out-container .row:first-of-type {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: auto;
+}
+#layout-out-footer .row:first-of-type {
+    display: contents;
+}
+
+.locc-box {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 35px 35px 9px;
+    width: calc(100% - 110px);
+    display: inline-block;
+    text-align: left;
+}
+
+.locc-contact {
+    width: 100px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+}
+.loc-content {
+    text-align: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.loc-content h1 {
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+    text-align: left;
+}
+.locc-contact img {
+    width: 100%;
+}
+
+#locc-title {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: 'bariol_bold';
+}
+
+.locc-box .form-group .form-control {
+    background-color: #e8f0ff;
+    border-color: #dbe7ff;
+    border-radius: 8px;
+}
+
+.locc-box .form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 8px 0px;
+}
+
+#locc-loginsubmit {
+    background-color: #1e4064;
+    border-color: #1e4064;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+#locc-buttons a {
+    display: inline-block;
+    text-align: center;
+}
+#locc-forgotpassword {
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    display: block;
+    margin: 20px;
+    font-weight: 600;
+}
+
+#locc-verificar {
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    display: block;
+    margin: 20px;
+    font-weight: 600;
+}
+
+#layout-out-header {
+    padding: 0 35px;
+}
+
+.navbar-brand {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.navbar-brand img{
+    height: 5rem;
+}
+
+.negocios {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: right;
+    margin: 0;
+}
+
+.negocios li{
+    display: inline-block;
+}
+
+.negocios li img {
+    height: 80px;
+}
+@media (min-width: 1200px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 94%;
+    }
+
+    body {
+        /*background-color: blue;*/
+    }
+}
+
+@media (min-width: 1500px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+        max-width: 94%;
+    }
+
+    body {
+        /*background-color: red;*/
+    }
+
+    .navbar-brand img {
+        height: 7rem;
+    }
+
+    .lof-item-info-img {
+        height: 10rem;
+        width: 50px;
+        display: inline-block;
+    }
+
+    .lof-item-info-desc {
+        height: 10rem;
+        width: calc(100% - 150px);
+        display: inline-block;
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .lof-item-info-desc h4 {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 600;
+        padding-left: 10px;
+    }
+
+    .loc-content h1 {
+        font-size: 100px;
+        font-weight: 600;
+        color: #fff;
+        text-align: left;
+    }
+
+    .locc-box {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 65px 35px 20px;
+        width: calc(100% - 110px);
+        display: inline-block;
+        text-align: left;
+    }
+
+    #locc-title {
+        font-size: 27px;
+        font-weight: 800;
+        font-family: 'bariol_bold';
+    }
+
+    .locc-box .form-group label {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 10px 0px;
+    }
+
+    #locc-loginsubmit {
+        background-color: #1e4064;
+        border-radius: 25px;
+        padding: 10px;
+        font-size: 22px;
+        margin-top: 50px;
+    }
+
+    #locc-forgotpassword {
+        font-size: 16px;
+        text-align: center;
+        color: #333;
+        display: block;
+        margin: 20px;
+        font-weight: 600;
+    }
+    #locc-verificar {
+        font-size: 16px;
+        text-align: center;
+        color: #333;
+        display: block;
+        margin: 20px;
+        font-weight: 600;
+    }
+    .locc-box .form-group .form-control {
+        background-color: #e8f0ff;
+        border-color: #dbe7ff;
+        border-radius: 8px;
+        height: 50px;
+    }
+}
+

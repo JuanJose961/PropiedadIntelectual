@@ -177,9 +177,14 @@ namespace GISMVC.Models
             list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
-            list.Add(new TipoSolicitud() { id = 7, nombre = "Obras" });
+            list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
+            list.Add(new TipoSolicitud() { id = 8, nombre = "Obra Visual" });
+            list.Add(new TipoSolicitud() { id = 9, nombre = "Obra Literaria" });
+            list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });
+            list.Add(new TipoSolicitud() { id = 11, nombre = "Obra Gráfica" });
+            list.Add(new TipoSolicitud() { id = 12, nombre = "Obra Tecnológica" });
 
-            if (id >= 1 && id <= 7)
+            if (id >= 1 && id <= 12)
             {
                 res = list.Where(i => i.id == id).FirstOrDefault();
             }
@@ -195,7 +200,13 @@ namespace GISMVC.Models
             list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
-            list.Add(new TipoSolicitud() { id = 7, nombre = "Obras" });
+            list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
+            list.Add(new TipoSolicitud() { id = 8, nombre = "Obra Visual" });
+            list.Add(new TipoSolicitud() { id = 9, nombre = "Obra Literaria" });
+            list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });
+            list.Add(new TipoSolicitud() { id = 11, nombre = "Obra Gráfica" });
+            list.Add(new TipoSolicitud() { id = 12, nombre = "Obra Tecnológica" });
+
             return list;
         }
 

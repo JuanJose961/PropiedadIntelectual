@@ -302,7 +302,7 @@ $(document).ready(function () {
 $(document).on("change", "#uu_02", function (event) {
     var val = parseInt($(this).val());
     console.log(val);
-
+    if (val > 7) { val = 7; }
     var solicitudes_disponibles = solicitudes.filter(i => i.tipo == val);
     console.log(solicitudes_disponibles);
 

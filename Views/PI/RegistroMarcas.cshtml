@@ -75,7 +75,8 @@
 }
 <div class="subheader">
     <h1 class="subheader-title">
-        Registro Marcas
+        @*Registro Marcas*@
+        Propiedad Industrial e Intelectual
         <small>
         </small>
     </h1>
@@ -113,8 +114,8 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("Nombre");
-                                columns.AddFor(m => m.solicitud_desc).Caption("Solicitud");
                                 columns.AddFor(m => m.solicitud_tipo_desc).Caption("Tipo de solicitud");
+                                columns.AddFor(m => m.solicitud_desc).Caption("Solicitud");
                                 columns.AddFor(m => m.fc).Caption("Fecha Ingreso").Format("dd/MM/yyyy");
                             })
                             .ColumnAutoWidth(true)

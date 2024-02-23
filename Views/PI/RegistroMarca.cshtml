@@ -80,7 +80,8 @@
 }
 <div class="subheader">
     <h1 class="subheader-title">
-        Registro Marca
+        @*Registro Marca*@
+        Registro Propiedad Industrial e Intelectual
         <small>
         </small>
     </h1>
@@ -123,9 +124,10 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_02_c">
-                                            <label for="uu_02">Tipo de solicitud pendiente</label>
+                                            <label for="uu_02">Tipo de solicitud</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_02" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Tipo de solicitud pendiente</option>
+                                                @*<option value="0" selected>Tipo de solicitud pendiente</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (TipoSolicitud item in ViewBag.tipo_solicitud)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -137,11 +139,12 @@
                                         <div class="form-group" id="uu_021_c">
                                             <label for="uu_021">Solicitud</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_021" autocomplete="off" style="width: 100%;">
-                                                <option value="0" tipo="0" pais="0" empresa="0" usuario="" selected>Solicitud</option>
+                                                @*<option value="0" tipo="0" pais="0" empresa="0" usuario="" selected>Solicitud</option>*@
+                                                <option value="0" tipo="0" pais="0" empresa="0" usuario="" selected>Seleccione una opción</option>
                                                 @*@foreach (Solicitud item in ViewBag.solicitud)
-                            {
-                                <option value="@item.id" tipo="@item.tipo" pais="@item.pais" empresa="@item.empresa" usuario="@item.usuario">@(item.tipo + " " + item.nombre)</option>
-                            }
+        {
+            <option value="@item.id" tipo="@item.tipo" pais="@item.pais" empresa="@item.empresa" usuario="@item.usuario">@(item.tipo + " " + item.nombre)</option>
+        }
                                                 *@
                                             </select>
                                         </div>
@@ -158,7 +161,8 @@
                                         <div class="form-group" id="uu_00_c">
                                             <label for="uu_00">Empresa propietaria</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_00" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Empresa propietaria</option>
+                                                @*<option value="0" selected>Empresa propietaria</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (NegocioPI item in ViewBag.empresa)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -170,7 +174,8 @@
                                         <div class="form-group" id="uu_01_c">
                                             <label for="uu_01">Antigua empresa propietaria</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_01" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Antigua empresa propietaria</option>
+                                                @*<option value="0" selected>Antigua empresa propietaria</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (NegocioPI item in ViewBag.empresa)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -209,7 +214,8 @@
                                         <div class="form-group" id="uu_07_c">
                                             <label for="uu_07">Clase</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_07" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Clase</option>
+                                                @*<option value="0" selected>Clase</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (Clase item in ViewBag.clase)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -221,7 +227,8 @@
                                         <div class="form-group" id="uu_08_c">
                                             <label for="uu_08">Tipo de registro</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Tipo de registro</option>
+                                                @*<option value="0" selected>Tipo de registro</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (TipoRegistro item in ViewBag.tipo_registro)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -233,7 +240,8 @@
                                         <div class="form-group" id="uu_09_c">
                                             <label for="uu_09">País</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>País</option>
+                                                @*<option value="0" selected>País</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (Pais item in ViewBag.pais)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -246,7 +254,8 @@
                                         <div class="form-group" id="uu_10_c">
                                             <label for="uu_10">Estatus</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Estatus</option>
+                                                @*<option value="0" selected>Estatus</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (EstatusCatalogo item in ViewBag.estatus)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -318,7 +327,8 @@
                                         <div class="form-group" id="uu_12_c">
                                             <label for="uu_12">Tipo de registro</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Tipo de registro</option>
+                                                @*<option value="0" selected>Tipo de registro</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -331,7 +341,8 @@
                                         <div class="form-group" id="uu_13_c">
                                             <label for="uu_13">Persona que pidió el registro</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_13" autocomplete="off" style="width: 100%;">
-                                                <option value="NA" selected>Persona que pidió el registro</option>
+                                                @*<option value="NA" selected>Persona que pidió el registro</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (AspNetUsers item in ViewBag.usuarios)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -344,7 +355,8 @@
                                         <div class="form-group" id="uu_14_c">
                                             <label for="uu_14">Despacho</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_14" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Despacho</option>
+                                                @*<option value="0" selected>Despacho</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (Despacho item in ViewBag.despacho)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -356,7 +368,8 @@
                                         <div class="form-group" id="uu_15_c">
                                             <label for="uu_15">Corresponsal</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_15" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Corresponsal</option>
+                                                @*<option value="0" selected>Corresponsal</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (Corresponsal item in ViewBag.corresponsal)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -417,7 +430,8 @@
                                         <div class="form-group" id="uu_17_c">
                                             <label for="uu_17">Licencia</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_17" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Tipo de registro</option>
+                                                @*<option value="0" selected>Tipo de registro</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (ConvenioLicencia item in ViewBag.licencia)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
@@ -441,7 +455,8 @@
                                         <div class="form-group" id="uu_19_c">
                                             <label for="uu_19">Cesión</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_19" autocomplete="off" style="width: 100%;">
-                                                <option value="0" selected>Cesión</option>
+                                                @*<option value="0" selected>Cesión</option>*@
+                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach (ContratoCesion item in ViewBag.cesion)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>

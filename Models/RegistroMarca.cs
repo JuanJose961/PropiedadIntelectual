@@ -173,7 +173,7 @@ namespace GISMVC.Models
             List<TipoSolicitud> list = new List<TipoSolicitud>();
             list.Add(new TipoSolicitud() { id = 1, nombre = "Marca" });
             list.Add(new TipoSolicitud() { id = 2, nombre = "Aviso Comercial" });
-            list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
+            //list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
             //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
@@ -196,7 +196,7 @@ namespace GISMVC.Models
             List<TipoSolicitud> list = new List<TipoSolicitud>();
             list.Add(new TipoSolicitud() { id = 1, nombre = "Marca" });
             list.Add(new TipoSolicitud() { id = 2, nombre = "Aviso Comercial" });
-            list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
+            //list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
             //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
@@ -206,6 +206,35 @@ namespace GISMVC.Models
             //list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });
             //list.Add(new TipoSolicitud() { id = 11, nombre = "Obra Gráfica" });
             //list.Add(new TipoSolicitud() { id = 12, nombre = "Obra Tecnológica" });
+
+            return list;
+        }
+
+    }
+
+    public class TipoPago
+    {
+        public int id { get; set; } = 0;
+        public string nombre { get; set; } = "";
+        public static TipoPago GetById(int id)
+        {
+            TipoPago res = new TipoPago();
+            List<TipoPago> list = new List<TipoPago>();
+            list.Add(new TipoPago() { id = 1, nombre = "Anualidad" });
+            list.Add(new TipoPago() { id = 2, nombre = "Quinquenio" });
+
+            if (id >= 1 && id <= 2)
+            {
+                res = list.Where(i => i.id == id).FirstOrDefault();
+            }
+            return res;
+        }
+
+        public static List<TipoPago> Get(int activo = -1)
+        {
+            List<TipoPago> list = new List<TipoPago>();
+            list.Add(new TipoPago() { id = 1, nombre = "Anualidad" });
+            list.Add(new TipoPago() { id = 2, nombre = "Quinquenio" });
 
             return list;
         }

@@ -265,26 +265,26 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="uu_34_c">
+                                    <div class="col-md-3" id="uu_34_c" style="display:none;">
+                                        <div class="form-group">
                                             <label for="uu_34">Tipo de pago</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_34" autocomplete="off" style="width: 100%;">
                                                 <option value="0" selected>Seleccione una opción</option>
-                                                @foreach (TipoRegistro item in ViewBag.tipo_registro)
+                                                @foreach (TipoPago item in ViewBag.tipo_pago)
                                                 {
                                                     <option value="@item.id">@item.nombre</option>
                                                 }
-                                            </select>
+                                            </select>tipo
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="uu_35_c">
+                                    <div class="col-md-3" id="uu_35_c" style="display:none;">
+                                        <div class="form-group">
                                             <label>Prioridad</label>
                                             <input type="text" class="form-control input-sm" id="uu_35" autocomplete="off" />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="uu_36_c">
+                                    <div class="col-md-3" id="uu_36_c" style="display:none;">
+                                        <div class="form-group">
                                             <label>Fecha de vencimiento de prioridad</label>
                                             <input type="text" class="form-control input-sm" id="uu_36" autocomplete="off" readonly />
                                         </div>
@@ -581,7 +581,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="display:none;">
                                         <div class="form-group" id="uu_27_c">
                                             <label>
                                                 Vencimiento
@@ -589,14 +589,14 @@
                                             <input type="text" class="form-control input-sm" id="uu_27" autocomplete="off" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="display:none;">
                                         <div class="form-group" id="uu_270_c">
                                             <label>Completo</label>
                                             <input type="text" class="form-control input-sm" id="uu_270" autocomplete="off" readonly />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="display:none;">
                                         <div class="form-group" id="uu_28_c">
                                             <label>
                                                 Concesión
@@ -604,7 +604,7 @@
                                             <input type="text" class="form-control input-sm" id="uu_28" autocomplete="off" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="display:none;">
                                         <div class="form-group" id="uu_280_c">
                                             <label>Completo</label>
                                             <input type="text" class="form-control input-sm" id="uu_280" autocomplete="off" readonly />

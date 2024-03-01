@@ -115,7 +115,9 @@
                                     <% } %>
                                 </text>).Caption("Nombre");
                                 columns.AddFor(m => m.solicitud_tipo_desc).Caption("Tipo de solicitud");
+                                columns.AddFor(m => m.no_registro).Caption("No Registro");
                                 columns.AddFor(m => m.solicitud_desc).Caption("Solicitud");
+                                columns.AddFor(m => m.empresa_desc).Caption("Empresa Propietaria");
                                 columns.AddFor(m => m.fc).Caption("Fecha Ingreso").Format("dd/MM/yyyy");
                             })
                             .ColumnAutoWidth(true)

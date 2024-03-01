@@ -327,18 +327,35 @@ $(document).on("change", "#uu_02", function (event) {
     $("#uu_021").val(0).trigger("change");
 
     var colClase = document.getElementById("uu_07_c");
-    if (val != 1 && val != 2) {
-        colClase.style.display = "none";
-        $('#uu_07').prop("required", false);
-    } else {
+    if (val== 1 || val== 2) {
         colClase.style.display = "block";
         $('#uu_07').prop("required", true);
+    } else {
+        colClase.style.display = "none";
+        $('#uu_07').prop("required", false);
     }
+
+    var colTpoPago = document.getElementById("uu_34_c");
+    var colPrioridad = document.getElementById("uu_35_c");
+    var colFecPrioridad = document.getElementById("uu_36_c");
     if (val==3 || val==4 || val==5 || val==6) {
         document.getElementById("uu_06_l").innerHTML = "Fecha para pagar los quinquenios o anualidades";
+        colTpoPago.style.display = "block";
+        $('#uu_34').prop("required", true);
+        colPrioridad.style.display = "block";
+        $('#uu_35').prop("required", true);
+        colFecPrioridad.style.display = "block";
+        $('#uu_36').prop("required", true);
     } else {
         document.getElementById("uu_06_l").innerHTML = "Fecha de concesión";
+        colTpoPago.style.display = "none";
+        $('#uu_34').prop("required", false);
+        colPrioridad.style.display = "none";
+        $('#uu_35').prop("required", false);
+        colFecPrioridad.style.display = "none";
+        $('#uu_36').prop("required", false);
     }
+    
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
     if (val == 0) {

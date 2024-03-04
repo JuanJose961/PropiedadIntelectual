@@ -922,7 +922,7 @@ function Guardar() {
                         }
                         setTimeout(function () {
                             window.location = '/PI/RegistroMarcas';
-                        }, 2800);
+                        }, 2200);
                     }, 1500);
                 } else {
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');

@@ -98,9 +98,9 @@
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div>
-                                        <a type="button" class="dx-oc-link" href="<%- data.permalink %>"><i class="fa fa-eye"></i> Detalle</a>
+                                        <a type="button" class="dx-oc-link" href="<%- data.permalink %>" title="Detalle"><i class="fa fa-eye"></i> Detalle</a>
                                     </div>
-                                </text>).Caption("ACCIONES").Width(150);
+                                </text>).Caption("ACCIONES").Width(100);
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
                                     <div>

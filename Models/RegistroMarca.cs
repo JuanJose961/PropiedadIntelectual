@@ -173,7 +173,7 @@ namespace GISMVC.Models
             List<TipoSolicitud> list = new List<TipoSolicitud>();
             list.Add(new TipoSolicitud() { id = 1, nombre = "Marca" });
             list.Add(new TipoSolicitud() { id = 2, nombre = "Aviso Comercial" });
-            //list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
+            list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
             //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
@@ -196,7 +196,7 @@ namespace GISMVC.Models
             List<TipoSolicitud> list = new List<TipoSolicitud>();
             list.Add(new TipoSolicitud() { id = 1, nombre = "Marca" });
             list.Add(new TipoSolicitud() { id = 2, nombre = "Aviso Comercial" });
-            //list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
+            list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
             //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });

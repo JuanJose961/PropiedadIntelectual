@@ -570,7 +570,8 @@ function Validar() {
     var estatus_desc = $("#uu_10 option:selected").text();
     var pais = $("#uu_09 option:selected").val();
     var pais_desc = $("#uu_09 option:selected").text();
-    var tipo_registro = $("#uu_08 option:selected").val();
+    //var tipo_registro = $("#uu_08 option:selected").val();
+    var tipo_registro = null;
     var tipo_registro_desc = $("#uu_08 option:selected").text();
     var clase = $("#uu_07 option:selected").val();
     var clase_desc = $("#uu_07 option:selected").text();
@@ -600,7 +601,7 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (tipo_registro <= 0) {
+    if (tipo_registro <= 0 || tipo_registro!=null) {
         //$("#uu_08_c .select2-selection").addClass("control-error");
         $("#uu_08_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;

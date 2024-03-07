@@ -3891,6 +3891,7 @@ namespace GISMVC.Controllers
                 modelo.registro.fecha_legal = Utility.GetDateTime(modelo.registro.fecha_legalS, "dd/MM/yyyy");
                 modelo.registro.fecha_vencimiento = Utility.GetDateTime(modelo.registro.fecha_vencimientoS, "dd/MM/yyyy");
                 modelo.registro.fecha_concesion = Utility.GetDateTime(modelo.registro.fecha_concesionS, "dd/MM/yyyy");
+                //modelo.registro.fecha_vencimiento_prioridad = Utility.GetDateTime(modelo.registro.fecha_vencimiento_prioridadS, "dd/MM/yyyy");
 
                 modelo.registro.fecha_requerimiento = Utility.GetDateTime(modelo.registro.fecha_requerimientoS, "dd/MM/yyyy");
                 modelo.registro.fecha_requerimiento_completo = Utility.GetDateTime(modelo.registro.fecha_requerimiento_completoS, "dd/MM/yyyy");

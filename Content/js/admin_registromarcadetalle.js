@@ -96,6 +96,8 @@ var registro = {
     fecha_concesion_workflow_completoS: "",
     tipo_pago: 0,
     tipo_pago_desc: "",
+    prioridad: "",
+    fecha_vencimiento_prioridadS: "",
 };
 $(document).ready(function () {
     if (eu_lu.role.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d") {
@@ -331,7 +333,7 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
 
     //mostrar u ocultar campos
     if (val == 1 || val == 2) {
-        document.getElementById("uu_07_a").style.display = "block"
+        document.getElementById("uu_07_a").style.display = "block"//clase
         $('#uu_07').prop("required", true);
     } else {
         document.getElementById("uu_07_a").style.display = "none"
@@ -339,12 +341,12 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
     }
 
     if (val==3 || val==4 || val==5 || val==6) {
-        document.getElementById("uu_06_l").innerHTML = "Fecha para pagar los quinquenios o anualidades";
-        document.getElementById("uu_34_a").style.display = "block";
+        document.getElementById("uu_06_l").innerHTML = "Fecha para pagar los quinquenios o anualidades";//fecha concesion
+        document.getElementById("uu_34_a").style.display = "block";//tipo pago
         $('#uu_34').prop("required", true);
-        document.getElementById("uu_35_a").style.display = "block";
+        document.getElementById("uu_35_a").style.display = "block";//prioridad
         $('#uu_35').prop("required", true);
-        document.getElementById("uu_36_a").style.display = "block";
+        document.getElementById("uu_36_a").style.display = "block";//fecha vencimiento prioridad
         $('#uu_36').prop("required", true);
     } else {
         document.getElementById("uu_06_l").innerHTML = "Fecha de concesión";
@@ -601,7 +603,7 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (tipo_registro <= 0 || tipo_registro!=null) {
+    if (tipo_registro <= 0 && tipo_registro!=null) {
         //$("#uu_08_c .select2-selection").addClass("control-error");
         $("#uu_08_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
@@ -671,7 +673,7 @@ function Validar() {
     var tipo_pago = $("#uu_34 option:selected").val();
     var tipo_pago_desc = $("#uu_34 option:selected").text();
     var prioridad = $("#uu_35").val();
-    var fecha_anualidad_quinquenioS = $("#uu_36").val();
+    var fecha_vencimiento_prioridadS = $("#uu_36").val();
     if (tipo_pago <= 0 && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
         $("#uu_34_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
@@ -682,7 +684,7 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (fecha_anualidad_quinquenioS=="" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
+    if (fecha_vencimiento_prioridadS=="" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
         $("#uu_36_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
         tab = '#tab01';
@@ -738,6 +740,7 @@ function Guardar() {
         var no_solicitud = $("#uu_11").val();
 
         var solicitud_tipo = $("#uu_02 option:selected").val();
+        var solicitud_tipo_desc = $("#uu_02 option:selected").text();
         var estatus = $("#uu_10 option:selected").val();
         var estatus_desc = $("#uu_10 option:selected").text();
         var pais = $("#uu_09 option:selected").val();
@@ -755,7 +758,6 @@ function Guardar() {
         var empresa_anterior_desc = $("#uu_01 option:selected").text();
         var empresa = $("#uu_00 option:selected").val();
         var empresa_desc = $("#uu_00 option:selected").text();
-        var solicitud_tipo_desc = $("#uu_02 option:selected").text();
         var solicitud = $("#uu_021 option:selected").val();
         var solicitud_desc = $("#uu_021 option:selected").text();
         var nombre = $("#uu_022").val();

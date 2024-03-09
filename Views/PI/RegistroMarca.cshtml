@@ -195,14 +195,14 @@
                                             <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_05_a">
                                         <div class="form-group" id="uu_05_c">
                                             <label>Fecha de vencimiento *</label>
                                             <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" readonly />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_06_a">
                                         <div class="form-group" id="uu_06_c">
                                             <label id="uu_06_l">Fecha de concesión *</label>
                                             <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
@@ -220,7 +220,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_09_a">
                                         <div class="form-group" id="uu_09_c">
                                             <label for="uu_09">País *</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
@@ -255,6 +255,12 @@
                                                     <option value="@item.id">@item.nombre</option>
                                                 }
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" id="uu_37_a" style="display:none;">
+                                        <div class="form-group" id="uu_37_c">
+                                            <label id="uu_06_l">Fecha para pagar los quinquenios o anualidades *</label>
+                                            <input type="text" class="form-control input-sm" id="uu_37" autocomplete="off" readonly />
                                         </div>
                                     </div>
                                     <div class="col-md-3" id="uu_34_a" style="display:none;">
@@ -295,6 +301,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                @*<div class="row" id="uso_check">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="uso">
+                                                <label class="custom-control-label" for="uso">Uso</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
                                 @*<div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group" id="notificacion_tituloc">
@@ -354,7 +370,7 @@
                                             <input type="text" class="form-control input-sm" id="uu_11" autocomplete="off" />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_12_a">
                                         <div class="form-group" id="uu_12_c">
                                             <label for="uu_12">Tipo de registro *</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
@@ -532,7 +548,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_24_a">
                                         <div class="form-group" id="uu_24_c">
                                             <label>
                                                 Solicitud de búsqueda
@@ -540,14 +556,14 @@
                                             <input type="text" class="form-control input-sm" id="uu_24" autocomplete="off" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_240_a">
                                         <div class="form-group" id="uu_240_c">
                                             <label>Completo</label>
                                             <input type="text" class="form-control input-sm" id="uu_240" autocomplete="off" readonly />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_25_a">
                                         <div class="form-group" id="uu_25_c">
                                             <label>
                                                 Información de resultados al negocio
@@ -555,14 +571,14 @@
                                             <input type="text" class="form-control input-sm" id="uu_25" autocomplete="off" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_250_a">
                                         <div class="form-group" id="uu_250_c">
                                             <label>Completo</label>
                                             <input type="text" class="form-control input-sm" id="uu_250" autocomplete="off" readonly />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_26_a">
                                         <div class="form-group" id="uu_26_c">
                                             <label>
                                                 Comprobación de uso
@@ -570,7 +586,7 @@
                                             <input type="text" class="form-control input-sm" id="uu_26" autocomplete="off" readonly />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" id="uu_260_a">
                                         <div class="form-group" id="uu_260_c">
                                             <label>Completo</label>
                                             <input type="text" class="form-control input-sm" id="uu_260" autocomplete="off" readonly />

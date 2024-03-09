@@ -375,6 +375,13 @@ namespace GISMVC.Models
         public string oficio_url { get; set; } = "";
         public string oficio_permalink { get; set; } = "";
         public int renovacion { get; set; } = 0;
+        public DateTime fecha_quinquenio_anualidad { get; set; } = DateTime.Parse("1969-01-01");
+        public DateTime fecha_vencimiento_prioridad { get; set; } = DateTime.Parse("1969-01-01");
+        public string fecha_quinquenio_anualidadS { get; set; } = "";
+        public string fecha_vencimiento_prioridadS { get; set; } = "";
+        public int tipo_pago { get; set; } = 0;
+        public string tipo_pago_desc { get; set; } = "";
+        public string prioridad { get; set; } = "";
         public RegistroMarca()
         {
         }
@@ -466,6 +473,8 @@ namespace GISMVC.Models
                         res.usuario = row[idx].ToString(); idx++;
                         res.usuario_desc = row[idx].ToString(); idx++;
                         res.activo = Int32.Parse(row[idx].ToString()); idx++;
+                        //res.tipo_pago = Int32.Parse(row[idx].ToString()); idx++;
+                        //res.tipo_pago_desc = row[idx].ToString(); idx++;
 
 
                         res.titulo_nombre = row[idx].ToString(); idx++;

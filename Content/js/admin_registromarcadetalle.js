@@ -94,6 +94,7 @@ var registro = {
     fecha_vencimiento_workflow_completoS: "",
     fecha_concesion_workflowS: "",
     fecha_concesion_workflow_completoS: "",
+    fecha_quinquenio_anualidadS: "",
     tipo_pago: 0,
     tipo_pago_desc: "",
     prioridad: "",
@@ -289,6 +290,12 @@ $(document).ready(function () {
         format: 'dd/mm/yyyy',
         numberOfMonths: 2
     });
+    $('#uu_37').datepicker({
+        orientation: "bottom left",
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+        numberOfMonths: 2
+    });
     //
 
     $(".select2").select2({
@@ -335,29 +342,76 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
     if (val == 1 || val == 2) {
         document.getElementById("uu_07_a").style.display = "block"//clase
         $('#uu_07').prop("required", true);
+        document.getElementById("uu_26_a").style.display = "block"//fecha comprobacion uso
+        $('#uu_26').prop("required", true);
+        document.getElementById("uu_260_a").style.display = "block"//completo fecha comprobacion uso
+        $('#uu_260').prop("required", true);
     } else {
         document.getElementById("uu_07_a").style.display = "none"
         $('#uu_07').prop("required", false);
+        document.getElementById("uu_26_a").style.display = "none"
+        $('#uu_26').prop("required", false);
+        document.getElementById("uu_260_a").style.display = "none"
+        $('#uu_260').prop("required", false);
     }
 
     if (val==3 || val==4 || val==5 || val==6) {
-        document.getElementById("uu_06_l").innerHTML = "Fecha para pagar los quinquenios o anualidades";//fecha concesion
+        //document.getElementById("uu_06_l").innerHTML = "Fecha para pagar los quinquenios o anualidades";//fecha concesion
         document.getElementById("uu_34_a").style.display = "block";//tipo pago
         $('#uu_34').prop("required", true);
         document.getElementById("uu_35_a").style.display = "block";//prioridad
         $('#uu_35').prop("required", true);
         document.getElementById("uu_36_a").style.display = "block";//fecha vencimiento prioridad
         $('#uu_36').prop("required", true);
+        document.getElementById("uu_37_a").style.display = "block";//fecha quinquenio anualidad
+        $('#uu_37').prop("required", true);
+        document.getElementById("uu_06_a").style.display = "none"//fecha concesion
+        $('#uu_06').prop("required", false);
+        document.getElementById("uu_12_a").style.display = "none"//tipo registro(pestaña en registro)
+        $('#uu_12').prop("required", false);
     } else {
-        document.getElementById("uu_06_l").innerHTML = "Fecha de concesión";
+        //document.getElementById("uu_06_l").innerHTML = "Fecha de concesión";
         document.getElementById("uu_34_a").style.display = "none";
         $('#uu_34').prop("required", false);
         document.getElementById("uu_35_a").style.display = "none";
         $('#uu_35').prop("required", false);
         document.getElementById("uu_36_a").style.display = "none";
         $('#uu_36').prop("required", false);
+        document.getElementById("uu_37_a").style.display = "none";
+        $('#uu_37').prop("required", false);
+        document.getElementById("uu_06_a").style.display = "block"
+        $('#uu_06').prop("required", true);
+        document.getElementById("uu_12_a").style.display = "block"
+        $('#uu_12').prop("required", true);
     }
-    
+
+    if (val == 1 || val == 2 || val == 3 || val == 4 || val == 5 || val == 6) {
+        document.getElementById("uu_05_a").style.display = "block"//fecha vencimiento
+        $('#uu_05').prop("required", false);
+        document.getElementById("uu_09_a").style.display = "block"//pais
+        $('#uu_09').prop("required", false);
+        document.getElementById("uu_24_a").style.display = "block"//fecha solicitud de busqueda
+        $('#uu_24').prop("required", false);
+        document.getElementById("uu_240_a").style.display = "block"//completo fecha solicitud de busqueda
+        $('#uu_240').prop("required", false);
+        document.getElementById("uu_25_a").style.display = "block"//fecha informacion de resultados al negocio
+        $('#uu_25').prop("required", false);
+        document.getElementById("uu_250_a").style.display = "block"//completo fecha informacion de resultados al negocio
+        $('#uu_250').prop("required", false);
+    } else {
+        document.getElementById("uu_05_a").style.display = "none"
+        $('#uu_05').prop("required", false);
+        document.getElementById("uu_09_a").style.display = "none"
+        $('#uu_09').prop("required", false);
+        document.getElementById("uu_24_a").style.display = "none"
+        $('#uu_24').prop("required", false);
+        document.getElementById("uu_240_a").style.display = "none"
+        $('#uu_240').prop("required", false);
+        document.getElementById("uu_25_a").style.display = "none"
+        $('#uu_25').prop("required", false);
+        document.getElementById("uu_250_a").style.display = "none"
+        $('#uu_250').prop("required", false);
+    }
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
     if (val == 0) {
@@ -549,13 +603,14 @@ function Validar() {
         errores += 1;
         tab = '#tab02';
     }
-    if (autor_registro == "NA") {
+    //if (autor_registro == "NA") {
+    if (autor_registro <=0) {
         //$("#uu_13_c .select2-selection").addClass("control-error");
         $("#uu_13_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
         tab = '#tab02';
     }
-    if (tipo_registro_solicitud <= 0) {
+    if (tipo_registro_solicitud <= 0 && (solicitud_tipo == 1 || solicitud_tipo == 2)) {
         //$("#uu_12_c .select2-selection").addClass("control-error");
         $("#uu_12_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
@@ -573,8 +628,9 @@ function Validar() {
     var pais = $("#uu_09 option:selected").val();
     var pais_desc = $("#uu_09 option:selected").text();
     //var tipo_registro = $("#uu_08 option:selected").val();
-    var tipo_registro = null;
-    var tipo_registro_desc = $("#uu_08 option:selected").text();
+    //var tipo_registro_desc = $("#uu_08 option:selected").text();
+    var tipo_registro = 0;
+    var tipo_registro_desc = "";
     var clase = $("#uu_07 option:selected").val();
     var clase_desc = $("#uu_07 option:selected").text();
     var fecha_concesionS = $("#uu_06").val();
@@ -597,13 +653,13 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (pais <= 0) {
+    if (pais <= 0 && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
         //$("#uu_09_c .select2-selection").addClass("control-error");
         $("#uu_09_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
         tab = '#tab01';
     }
-    if (tipo_registro <= 0 && tipo_registro!=null) {
+    if (tipo_registro <= 0 && tipo_registro!=0) {
         //$("#uu_08_c .select2-selection").addClass("control-error");
         $("#uu_08_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
@@ -615,7 +671,7 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (fecha_concesionS == "") {
+    if (fecha_concesionS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2)) {
         //$("#uu_06").addClass("control-error");
         $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
@@ -670,10 +726,16 @@ function Validar() {
         tab = '#tab01';
     }
 
+    var fecha_quinquenio_anualidadS = $("#uu_37").val();
     var tipo_pago = $("#uu_34 option:selected").val();
     var tipo_pago_desc = $("#uu_34 option:selected").text();
     var prioridad = $("#uu_35").val();
     var fecha_vencimiento_prioridadS = $("#uu_36").val();
+    if (fecha_quinquenio_anualidadS == "" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
+        $("#uu_37_c").append("<p class='form-error'>El campo está vacío</p>");
+        errores += 1;
+        tab = '#tab01';
+    }
     if (tipo_pago <= 0 && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
         $("#uu_34_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
@@ -735,22 +797,38 @@ function Guardar() {
         var despacho_desc = $("#uu_14 option:selected").text();
         var autor_registro = $("#uu_13 option:selected").val();
         var autor_registro_desc = $("#uu_13 option:selected").text();
-        var tipo_registro_solicitud = $("#uu_12 option:selected").val();
-        var tipo_registro_solicitud_desc = $("#uu_12 option:selected").text();
+        var tipo_registro_solicitud = 0;
+        var tipo_registro_solicitud_desc = "";
+        if (solicitud_tipo == 1 || solicitud_tipo == 2) {
+            tipo_registro_solicitud = $("#uu_12 option:selected").val();
+            tipo_registro_solicitud_desc = $("#uu_12 option:selected").text();
+        }
         var no_solicitud = $("#uu_11").val();
 
         var solicitud_tipo = $("#uu_02 option:selected").val();
         var solicitud_tipo_desc = $("#uu_02 option:selected").text();
         var estatus = $("#uu_10 option:selected").val();
         var estatus_desc = $("#uu_10 option:selected").text();
-        var pais = $("#uu_09 option:selected").val();
-        var pais_desc = $("#uu_09 option:selected").text();
-        var tipo_registro = $("#uu_08 option:selected").val();
-        var tipo_registro_desc = $("#uu_08 option:selected").text();
-        var clase = null;
-        if (solicitud_tipo == 1 || solicitud_tipo == 2) { clase = $("#uu_07 option:selected").val(); }
-        var clase_desc = $("#uu_07 option:selected").text();
-        var fecha_concesionS = $("#uu_06").val();
+        var pais = 0;
+        var pais_desc = "";
+        if (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
+            pais = $("#uu_09 option:selected").val();
+            pais_desc = $("#uu_09 option:selected").text();
+        }
+        //var tipo_registro = $("#uu_08 option:selected").val();
+        //var tipo_registro_desc = $("#uu_08 option:selected").text();
+        var tipo_registro = 0;
+        var tipo_registro_desc = "";
+        var clase = 0;
+        var clase_desc = "";
+        if (solicitud_tipo == 1 || solicitud_tipo == 2) {
+            clase = $("#uu_07 option:selected").val();
+            clase_desc = $("#uu_07 option:selected").text();
+        }
+        var fecha_concesionS = "";
+        if (solicitud_tipo == 1 || solicitud_tipo == 2) {
+            fecha_concesionS = $("#uu_06").val();
+        } 
         var fecha_vencimientoS = $("#uu_05").val();
         var fecha_legalS = $("#uu_04").val();
         var no_registro = $("#uu_03").val();
@@ -762,11 +840,14 @@ function Guardar() {
         var solicitud_desc = $("#uu_021 option:selected").text();
         var nombre = $("#uu_022").val();
 
+        var fecha_quinquenio_anualidadS = "";
+        if (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
+            fecha_quinquenio_anualidadS = $("#uu_37").val();
+        }
         var tipo_pago = $("#uu_34 option:selected").val();
         var tipo_pago_desc = $("#uu_34 option:selected").text();
         var prioridad = $("#uu_35").val();
-        var fecha_anualidad_quinquenioS = $("#uu_36").val();
-
+        var fecha_vencimiento_prioridadS = $("#uu_36").val();
         
         var notificacion_titulo = $("#notificacion_titulo").val();
         var notificacion_vencimiento = $("#notificacion_vencimiento").val();
@@ -856,11 +937,11 @@ function Guardar() {
         registro.notificacion_titulo = notificacion_titulo;
         registro.notificacion_vencimiento = notificacion_vencimiento;
 
-        //registro.fecha_anualidad_quinquenioS = fecha_anualidad_quinquenioS;
-        //registro.tipo_pago = tipo_pago;
-        //registro.tipo_pago_desc = tipo_pago_desc;
-        //registro.prioridad = prioridad;
-        
+        registro.fecha_quinquenio_anualidadS = fecha_quinquenio_anualidadS;
+        registro.tipo_pago = tipo_pago;
+        registro.tipo_pago_desc = tipo_pago_desc;
+        registro.prioridad = prioridad;
+        registro.fecha_vencimiento_prioridadS = fecha_vencimiento_prioridadS;
         //--
         var renovacion = 0;
         if ($("#renovacion").is(":checked")) {

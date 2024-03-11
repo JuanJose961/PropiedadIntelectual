@@ -177,7 +177,7 @@ namespace GISMVC.Models
             //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
-            //list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
+            list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
             //list.Add(new TipoSolicitud() { id = 8, nombre = "Obra Visual" });
             //list.Add(new TipoSolicitud() { id = 9, nombre = "Obra Literaria" });
             //list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });
@@ -200,7 +200,7 @@ namespace GISMVC.Models
             //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
             //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
             //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
-            //list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
+            list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
             //list.Add(new TipoSolicitud() { id = 8, nombre = "Obra Visual" });
             //list.Add(new TipoSolicitud() { id = 9, nombre = "Obra Literaria" });
             //list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });

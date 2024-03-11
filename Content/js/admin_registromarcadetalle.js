@@ -312,6 +312,9 @@ $(document).ready(function () {
     $("#titulol").hide();
     $("#solicitudl").hide();
     $("#oficiol").hide();
+    $("#contratol").hide();
+    $("#reivindicacionl").hide();
+    $("#cartal").hide();
     if (mainid > 0) {
         SelectRegistroMarca(mainid);
     }
@@ -369,6 +372,8 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         $('#uu_06').prop("required", false);
         document.getElementById("uu_12_a").style.display = "none"//tipo registro(pestaña en registro)
         $('#uu_12').prop("required", false);
+        document.getElementById("contrato_a").style.display = "block"//contrato archivo
+        document.getElementById("reivindicacion_a").style.display = "block"//reivindicacion archivo
     } else {
         //document.getElementById("uu_06_l").innerHTML = "Fecha de concesión";
         document.getElementById("uu_34_a").style.display = "none";
@@ -383,21 +388,23 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         $('#uu_06').prop("required", true);
         document.getElementById("uu_12_a").style.display = "block"
         $('#uu_12').prop("required", true);
+        document.getElementById("contrato_a").style.display = "none"
+        document.getElementById("reivindicacion_a").style.display = "none"
     }
 
     if (val == 1 || val == 2 || val == 3 || val == 4 || val == 5 || val == 6) {
         document.getElementById("uu_05_a").style.display = "block"//fecha vencimiento
-        $('#uu_05').prop("required", false);
+        $('#uu_05').prop("required", true);
         document.getElementById("uu_09_a").style.display = "block"//pais
-        $('#uu_09').prop("required", false);
+        $('#uu_09').prop("required", true);
         document.getElementById("uu_24_a").style.display = "block"//fecha solicitud de busqueda
-        $('#uu_24').prop("required", false);
+        $('#uu_24').prop("required", true);
         document.getElementById("uu_240_a").style.display = "block"//completo fecha solicitud de busqueda
-        $('#uu_240').prop("required", false);
+        $('#uu_240').prop("required", true);
         document.getElementById("uu_25_a").style.display = "block"//fecha informacion de resultados al negocio
-        $('#uu_25').prop("required", false);
+        $('#uu_25').prop("required", true);
         document.getElementById("uu_250_a").style.display = "block"//completo fecha informacion de resultados al negocio
-        $('#uu_250').prop("required", false);
+        $('#uu_250').prop("required", true);
     } else {
         document.getElementById("uu_05_a").style.display = "none"
         $('#uu_05').prop("required", false);
@@ -411,6 +418,16 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         $('#uu_25').prop("required", false);
         document.getElementById("uu_250_a").style.display = "none"
         $('#uu_250').prop("required", false);
+    }
+
+    if (val == 7 || val == 8 || val == 9 || val == 10 || val == 11 || val == 12) {
+        document.getElementById("uu_38_a").style.display = "block"//autor
+        $('#uu_38').prop("required", true);
+        document.getElementById("carta_a").style.display = "block"//carta archivo
+    } else {
+        document.getElementById("uu_38_a").style.display = "none"
+        $('#uu_38').prop("required", false);
+        document.getElementById("carta_a").style.display = "none"
     }
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
@@ -1119,6 +1136,15 @@ $(document).on("change", "#titulo", function (event) {
 $(document).on("change", "#oficio", function (event) {
     readURL(this, "#oficio", "#oficioc");
 });
+$(document).on("change", "#contrato", function (event) {
+    readURL(this, "#contrato", "#contratoc");
+});
+$(document).on("change", "#reivindicacion", function (event) {
+    readURL(this, "#reivindicacion", "#reivindicacionc");
+});
+$(document).on("change", "#carta", function (event) {
+    readURL(this, "#carta", "#cartac");
+});
 function readURL(input, id, container) {
     if (input.files && input.files[0]) {
         var nombre = input.files[0].name;
@@ -1281,6 +1307,22 @@ function SelectRegistroMarca(id) {
                     } else {
                         $("#oficiol").attr("href", "").hide();
                     }
+                    if (registro.contrato_permalink != "") {
+                        $("#contratol").attr("href", registro.contrato_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.contrato_nombre_original + ')').show();
+                    } else {
+                        $("#contratol").attr("href", "").hide();
+                    }
+                    if (registro.reivindicacion_permalink != "") {
+                        $("#reivindicacionl").attr("href", registro.reivindicacion_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.reivindicacion_nombre_original + ')').show();
+                    } else {
+                        $("#reivindicacionl").attr("href", "").hide();
+                    }
+                    if (registro.carta_permalink != "") {
+                        $("#cartal").attr("href", registro.carta_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.carta_nombre_original + ')').show();
+                    } else {
+                        $("#cartal").attr("href", "").hide();
+                    }
+
 
                     if (registro.vobo == 1) {
                         $("#vobo").prop("checked", true);

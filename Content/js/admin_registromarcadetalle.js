@@ -599,6 +599,9 @@ function Validar() {
         tab = '#tab03';
     }
 
+    var solicitud_tipo = $("#uu_02 option:selected").val();
+    var solicitud_tipo_desc = $("#uu_02 option:selected").text();
+
     var corresponsal = $("#uu_15 option:selected").val();
     var corresponsal_desc = $("#uu_15 option:selected").text();
     var despacho = $("#uu_14 option:selected").val();
@@ -658,8 +661,6 @@ function Validar() {
     var empresa_anterior_desc = $("#uu_01 option:selected").text();
     var empresa = $("#uu_00 option:selected").val();
     var empresa_desc = $("#uu_00 option:selected").text();
-    var solicitud_tipo = $("#uu_02 option:selected").val();
-    var solicitud_tipo_desc = $("#uu_02 option:selected").text();
     var solicitud = $("#uu_021 option:selected").val();
     var solicitud_desc = $("#uu_021 option:selected").text();
     var nombre = $("#uu_022").val();
@@ -808,6 +809,9 @@ function Guardar() {
         var solicitante_licencia = $("#uu_16").val();
         var solicitante_licencia_desc = $("#uu_16").val();
 
+        var solicitud_tipo = $("#uu_02 option:selected").val();
+        var solicitud_tipo_desc = $("#uu_02 option:selected").text();
+
         var corresponsal = $("#uu_15 option:selected").val();
         var corresponsal_desc = $("#uu_15 option:selected").text();
         var despacho = $("#uu_14 option:selected").val();
@@ -820,10 +824,7 @@ function Guardar() {
             tipo_registro_solicitud = $("#uu_12 option:selected").val();
             tipo_registro_solicitud_desc = $("#uu_12 option:selected").text();
         }
-        var no_solicitud = $("#uu_11").val();
-
-        var solicitud_tipo = $("#uu_02 option:selected").val();
-        var solicitud_tipo_desc = $("#uu_02 option:selected").text();
+        var no_solicitud = $("#uu_11").val()
         var estatus = $("#uu_10 option:selected").val();
         var estatus_desc = $("#uu_10 option:selected").text();
         var pais = 0;
@@ -1107,6 +1108,9 @@ function GuardarVoBo() {
                         $("#alertModal .modal-spinner").hide();
                         $("#alertModal .form-group").append("<p class=''>Se han guardados los datos correctamente</p>");
                         $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-info"><i class="fa fa-check"></i> Ok</button>');
+                        setTimeout(function () {
+                            window.location = '/PI/RegistroMarcas';
+                        }, 2200);
                     }, 1500);
                 } else {
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');

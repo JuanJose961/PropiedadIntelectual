@@ -113,6 +113,9 @@ $(document).ready(function () {
         $(".nav-link[href='#tab07']").attr("disabled", "disabled").hide();
         $("label[for='titulo']").attr("disabled", "disabled").remove();
         $("label[for='solicitud']").attr("disabled", "disabled").remove();
+        $("label[for='contrato']").attr("disabled", "disabled").remove();
+        $("label[for='reivindicacion']").attr("disabled", "disabled").remove();
+        $("label[for='carta']").attr("disabled", "disabled").remove();
         $("Comentarios1").attr("disabled", "disabled").remove();
         $("Comentarios2").attr("disabled", "disabled").remove();
     } else {
@@ -689,13 +692,13 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (fecha_concesionS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2)) {
+    if (fecha_concesionS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12)) {
         //$("#uu_06").addClass("control-error");
         $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
         tab = '#tab01';
     }
-    if (fecha_vencimientoS == "") {
+    if (fecha_vencimientoS == "" && solicitud_tipo <= 6) {
         //$("#uu_05").addClass("control-error");
         $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
@@ -1051,6 +1054,27 @@ function Guardar() {
                             GuardarArchivo("#oficio", "oficio");
                         } else {
                             uploading_oficio = false;
+                            //console.log("no hay archivos solicitud");
+                        }
+                        if ($('#contrato')[0].files.length > 0) {
+                            uploading_contrato = true;
+                            GuardarArchivo("#contrato", "contrato");
+                        } else {
+                            uploading_contrato = false;
+                            //console.log("no hay archivos solicitud");
+                        }
+                        if ($('#reivindicacion')[0].files.length > 0) {
+                            uploading_reivindicacion = true;
+                            GuardarArchivo("#reivindicacion", "reivindicacion");
+                        } else {
+                            uploading_reivindicacion = false;
+                            //console.log("no hay archivos solicitud");
+                        }
+                        if ($('#carta')[0].files.length > 0) {
+                            uploading_carta = true;
+                            GuardarArchivo("#carta", "carta");
+                        } else {
+                            uploading_carta = false;
                             //console.log("no hay archivos solicitud");
                         }
                         setTimeout(function () {
@@ -1510,6 +1534,9 @@ function SelectRegistroMarca(id) {
 var uploading_titulo = false;
 var uploading_solicitud = false;
 var uploading_oficio = false;
+var uploading_contrato = false;
+var uploading_reivindicacion = false;
+var uploading_carta = false;
 
 function submitarchivos() {
     if ($('#titulo')[0].files.length > 0) {
@@ -1524,6 +1551,27 @@ function submitarchivos() {
         GuardarArchivo("#solicitud", "solicitud");
     } else {
         uploading_solicitud = false;
+        //console.log("no hay archivos solicitud");
+    }
+    if ($('#contrato')[0].files.length > 0) {
+        uploading_contrato = true;
+        GuardarArchivo("#contrato", "contrato");
+    } else {
+        uploading_contrato = false;
+        //console.log("no hay archivos solicitud");
+    }
+    if ($('#reivindicacion')[0].files.length > 0) {
+        uploading_reivindicacion = true;
+        GuardarArchivo("#reivindicacion", "reivindicacion");
+    } else {
+        uploading_reivindicacion = false;
+        //console.log("no hay archivos solicitud");
+    }
+    if ($('#carta')[0].files.length > 0) {
+        uploading_carta = true;
+        GuardarArchivo("#carta", "carta");
+    } else {
+        uploading_carta = false;
         //console.log("no hay archivos solicitud");
     }
 }
@@ -1542,6 +1590,18 @@ function GuardarArchivo(input, tipo) {
         case "#oficio":
             formData.append('file', $('#oficio')[0].files[0]);
             $("#alertModal .form-group").append("<p id='oficio_uploading'>Cargando archivos (Oficio de renovación) ...</p>");
+            break;
+        case "#contrato":
+            formData.append('file', $('#contrato')[0].files[0]);
+            $("#alertModal .form-group").append("<p id='contrato_uploading'>Cargando archivos (Contrato de cesión del inventor) ...</p>");
+            break;
+        case "#reivindicacion":
+            formData.append('file', $('#reivindicacion')[0].files[0]);
+            $("#alertModal .form-group").append("<p id='reivindicacion_uploading'>Cargando archivos (Reivindicaciones) ...</p>");
+            break;
+        case "#carta":
+            formData.append('file', $('#carta')[0].files[0]);
+            $("#alertModal .form-group").append("<p id='carta_uploading'>Cargando archivos (Carta colaboración renumerada) ...</p>");
             break;
     }
     formData.append('tipo', tipo);
@@ -1581,6 +1641,24 @@ function GuardarArchivo(input, tipo) {
                         $(".btn-lbl[for='oficio']").html("<i class='fa fa-upload'></i> Seleccionar documento");
                         $("#oficiol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
                         break;
+                    case "#contrato":
+                        uploading_contrato = false;
+                        $("#contrato_uploading").text("Documento cargado correctamente (Contrato de cesión del inventor)");
+                        $(".btn-lbl[for='contrato']").html("<i class='fa fa-upload'></i> Seleccionar documento");
+                        $("#contratol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        break;
+                    case "#reivindicacion":
+                        uploading_reivindicacion = false;
+                        $("#reivindicacion_uploading").text("Documento cargado correctamente (Reivindicaciones)");
+                        $(".btn-lbl[for='reivindicacion']").html("<i class='fa fa-upload'></i> Seleccionar documento");
+                        $("#reivindicacionl").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        break;
+                    case "#carta":
+                        uploading_carta = false;
+                        $("#carta_uploading").text("Documento cargado correctamente (Carta colaboración renumerada)");
+                        $(".btn-lbl[for='carta']").html("<i class='fa fa-upload'></i> Seleccionar documento");
+                        $("#cartal").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        break;
                     default:
                         break;
                 }
@@ -1605,6 +1683,21 @@ function GuardarArchivo(input, tipo) {
                     uploading_oficio = false;
                     $(".btn-lbl[for='oficio']").html("<i class='fa fa-upload'></i> Seleccionar documento");
                     $("#oficio_uploading").text("No se pudo cargar el archivo (Oficio renovación)");
+                    break;
+                case "#contrato":
+                    uploading_contrato = false;
+                    $(".btn-lbl[for='contrato']").html("<i class='fa fa-upload'></i> Seleccionar documento");
+                    $("#contrato_uploading").text("No se pudo cargar el archivo (Contrato de cesión del inventor)");
+                    break;
+                case "#reivindicacion":
+                    uploading_reivindicacion = false;
+                    $(".btn-lbl[for='reivindicacion']").html("<i class='fa fa-upload'></i> Seleccionar documento");
+                    $("#reivindicacion_uploading").text("No se pudo cargar el archivo (Reivindicaciones)");
+                    break;
+                case "#carta":
+                    uploading_carta = false;
+                    $(".btn-lbl[for='carta']").html("<i class='fa fa-upload'></i> Seleccionar documento");
+                    $("#carta_uploading").text("No se pudo cargar el archivo (Carta colaboración renumerada)");
                     break;
                 default:
                     break;

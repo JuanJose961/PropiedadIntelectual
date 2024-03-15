@@ -480,6 +480,15 @@ namespace GISMVC.Controllers
                                 case "oficio":
                                     documento = 2;
                                     break;
+                                case "contrato":
+                                    documento = 3;
+                                    break;
+                                case "reivindicacion":
+                                    documento = 4;
+                                    break;
+                                case "carta":
+                                    documento = 5;
+                                    break;
                             }
                             archivo.solicitud_url = funcion.Encriptar(archivo.solicitud_url);
                             var addArchivo = RegistroMarca.ActualizarDocumento(archivo, documento);

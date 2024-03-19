@@ -99,6 +99,7 @@ var registro = {
     tipo_pago_desc: "",
     prioridad: "",
     fecha_vencimiento_prioridadS: "",
+    nombre: "",
 };
 $(document).ready(function () {
     if (eu_lu.role.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d") {
@@ -773,6 +774,13 @@ function Validar() {
         tab = '#tab01';
     }
 
+    var autor = $("#uu_38").val();
+    if (autor == "" && solicitud_tipo>=7) {
+        $("#uu_38_c").append("<p class='form-error'>El campo está vacío</p>");
+        errores += 1;
+        tab = '#tab01';
+    }
+
     if (errores > 0) {
         flag = false;
         $(".nav-link[href='" + tab + "']").click();
@@ -847,7 +855,7 @@ function Guardar() {
             clase_desc = $("#uu_07 option:selected").text();
         }
         var fecha_concesionS = "";
-        if (solicitud_tipo == 1 || solicitud_tipo == 2) {
+        if (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12) {
             fecha_concesionS = $("#uu_06").val();
         } 
         var fecha_vencimientoS = $("#uu_05").val();
@@ -860,6 +868,8 @@ function Guardar() {
         var solicitud = $("#uu_021 option:selected").val();
         var solicitud_desc = $("#uu_021 option:selected").text();
         var nombre = $("#uu_022").val();
+        var notificacion_titulo = $("#notificacion_titulo").val();
+        var notificacion_vencimiento = $("#notificacion_vencimiento").val();
 
         var fecha_quinquenio_anualidadS = "";
         if (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
@@ -869,10 +879,11 @@ function Guardar() {
         var tipo_pago_desc = $("#uu_34 option:selected").text();
         var prioridad = $("#uu_35").val();
         var fecha_vencimiento_prioridadS = $("#uu_36").val();
-        
-        var notificacion_titulo = $("#notificacion_titulo").val();
-        var notificacion_vencimiento = $("#notificacion_vencimiento").val();
 
+        var autor = "";
+        if (solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12) {
+            autor = $("#uu_38").val();
+        }
         //----
         var fecha_renovarS = $("#uu_29").val();
         var fecha_renovar_completoS = $("#uu_290").val();
@@ -963,6 +974,7 @@ function Guardar() {
         registro.tipo_pago_desc = tipo_pago_desc;
         registro.prioridad = prioridad;
         registro.fecha_vencimiento_prioridadS = fecha_vencimiento_prioridadS;
+        registro.autor = autor;
         //--
         var renovacion = 0;
         if ($("#renovacion").is(":checked")) {

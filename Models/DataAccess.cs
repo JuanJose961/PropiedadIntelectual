@@ -4956,7 +4956,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[64];
+                SqlParameter[] @params = new SqlParameter[65];
 
                 int i = 0;
                 //@params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -5042,6 +5042,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@tipo_pago_desc", modelo.tipo_pago_desc); i++;
                 @params[i] = new SqlParameter("@prioridad", modelo.prioridad); i++;
                 @params[i] = new SqlParameter("@fecha_vencimiento_prioridad", modelo.fecha_vencimiento_prioridad); i++;
+                @params[i] = new SqlParameter("@autor", modelo.autor); i++;
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "INS_proc_RegistroMarca", @params, out dt, 1000))
                 {

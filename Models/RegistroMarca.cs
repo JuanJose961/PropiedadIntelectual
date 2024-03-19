@@ -382,6 +382,7 @@ namespace GISMVC.Models
         public int tipo_pago { get; set; } = 0;
         public string tipo_pago_desc { get; set; } = "";
         public string prioridad { get; set; } = "";
+        public string autor { get; set; } = "";
         public RegistroMarca()
         {
         }

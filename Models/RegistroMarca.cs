@@ -220,8 +220,9 @@ namespace GISMVC.Models
         {
             TipoPago res = new TipoPago();
             List<TipoPago> list = new List<TipoPago>();
-            list.Add(new TipoPago() { id = 1, nombre = "Anualidad" });
-            list.Add(new TipoPago() { id = 2, nombre = "Quinquenio" });
+            list.Add(new TipoPago() { id = 1, nombre = "Quinquenio" });
+            list.Add(new TipoPago() { id = 2, nombre = "Anualidad" });
+            
 
             if (id >= 1 && id <= 2)
             {
@@ -233,8 +234,9 @@ namespace GISMVC.Models
         public static List<TipoPago> Get(int activo = -1)
         {
             List<TipoPago> list = new List<TipoPago>();
-            list.Add(new TipoPago() { id = 1, nombre = "Anualidad" });
-            list.Add(new TipoPago() { id = 2, nombre = "Quinquenio" });
+            list.Add(new TipoPago() { id = 1, nombre = "Quinquenio" });
+            list.Add(new TipoPago() { id = 2, nombre = "Anualidad" });
+            
 
             return list;
         }

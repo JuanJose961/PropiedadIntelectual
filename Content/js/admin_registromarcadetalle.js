@@ -875,8 +875,12 @@ function Guardar() {
         if (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
             fecha_quinquenio_anualidadS = $("#uu_37").val();
         }
-        var tipo_pago = $("#uu_34 option:selected").val();
-        var tipo_pago_desc = $("#uu_34 option:selected").text();
+        var tipo_pago = 0;
+        var tipo_pago_desc = "";
+        if (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
+            tipo_pago = $("#uu_34 option:selected").val();
+            tipo_pago_desc = $("#uu_34 option:selected").text();
+        }
         var prioridad = $("#uu_35").val();
         var fecha_vencimiento_prioridadS = $("#uu_36").val();
 
@@ -1091,7 +1095,7 @@ function Guardar() {
                         }
                         setTimeout(function () {
                             window.location = '/PI/RegistroMarcas';
-                        }, 2200);
+                        }, 2800);
                     }, 1500);
                 } else {
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');
@@ -1146,7 +1150,7 @@ function GuardarVoBo() {
                         $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-info"><i class="fa fa-check"></i> Ok</button>');
                         setTimeout(function () {
                             window.location = '/PI/RegistroMarcas';
-                        }, 2200);
+                        }, 2800);
                     }, 1500);
                 } else {
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');

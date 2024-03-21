@@ -124,7 +124,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_02_c">
-                                            <label for="uu_02">Tipo de solicitud *</label>
+                                            <label for="uu_02">Tipo de solicitud <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_02" autocomplete="off" style="width: 100%;">
                                                 @*<option value="0" disabled selected>Seleccione una opción</option>*@
                                                 @foreach (TipoSolicitud item in ViewBag.tipo_solicitud)
@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_021_c">
-                                            <label for="uu_021">Solicitud *</label>
+                                            <label for="uu_021">Solicitud <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_021" autocomplete="off" style="width: 100%;">
                                                 <option value="0" tipo="0" pais="0" empresa="0" usuario="" disabled selected>Seleccione una opción</option>
                                                 @*<option value="@item.id" tipo="@item.tipo" pais="@item.pais" empresa="@item.empresa" usuario="@item.usuario">@(item.tipo + " " + item.nombre)</option>*@
@@ -153,19 +153,19 @@
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_022_c">
                                             @*<label>Descripción corta</label>*@
-                                            <label>Nombre *</label>
+                                            <label>Nombre <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_022" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="col-md-3" id="uu_38_a" style="display:none;">
                                         <div class="form-group" id="uu_38_c">
-                                            <label>Autor *</label>
+                                            <label>Autor <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_38" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_00_c">
-                                            <label for="uu_00">Empresa propietaria *</label>
+                                            <label for="uu_00">Empresa propietaria <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_00" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (NegocioPI item in ViewBag.empresa)
@@ -178,7 +178,7 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_01_c">
-                                            <label for="uu_01">Antigua empresa propietaria *</label>
+                                            <label for="uu_01">Antigua empresa propietaria <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_01" autocomplete="off" style="width: 100%;">
                                                 @*<option value="0" selected>Antigua empresa propietaria</option>*@
                                                 <option value="0" disabled selected>Seleccione una opción</option>
@@ -191,32 +191,32 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_03_c">
-                                            <label>Número de registro *</label>
+                                            <label>Número de registro <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_04_c">
-                                            <label>Fecha legal *</label>
+                                            <label>Fecha legal <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" readonly />
                                         </div>
                                     </div>
                                     <div class="col-md-3" id="uu_05_a">
                                         <div class="form-group" id="uu_05_c">
-                                            <label>Fecha de vencimiento *</label>
+                                            <label>Fecha de vencimiento <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" readonly />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3" id="uu_06_a">
                                         <div class="form-group" id="uu_06_c">
-                                            <label id="uu_06_l">Fecha de concesión *</label>
+                                            <label id="uu_06_l">Fecha de concesión <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
                                         </div>
                                     </div>
                                     <div class="col-md-3" id="uu_07_a">
                                         <div class="form-group" id="uu_07_c">
-                                            <label for="uu_07">Clase *</label>
+                                            <label for="uu_07">Clase <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_07" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (Clase item in ViewBag.clase)
@@ -228,7 +228,7 @@
                                     </div>
                                     <div class="col-md-3" id="uu_09_a">
                                         <div class="form-group" id="uu_09_c">
-                                            <label for="uu_09">País *</label>
+                                            <label for="uu_09">País <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (Pais item in ViewBag.pais)
@@ -240,7 +240,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_10_c">
-                                            <label for="uu_10">Estatus *</label>
+                                            <label for="uu_10">Estatus <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (EstatusCatalogo item in ViewBag.estatus)
@@ -253,7 +253,7 @@
 
                                     <div class="col-md-3" style="display:none;">
                                         <div class="form-group" id="uu_08_c">
-                                            <label for="uu_08">Tipo de registro</label>
+                                            <label for="uu_08">Tipo de registro <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (TipoRegistro item in ViewBag.tipo_registro)
@@ -265,13 +265,13 @@
                                     </div>
                                     <div class="col-md-3" id="uu_37_a" style="display:none;">
                                         <div class="form-group" id="uu_37_c">
-                                            <label id="uu_06_l">Fecha para pagar los quinquenios o anualidades *</label>
+                                            <label id="uu_06_l">Fecha para pagar los quinquenios o anualidades <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_37" autocomplete="off" readonly />
                                         </div>
                                     </div>
                                     <div class="col-md-3" id="uu_34_a" style="display:none;">
                                         <div class="form-group" id="uu_34_c">
-                                            <label for="uu_34">Tipo de pago *</label>
+                                            <label for="uu_34">Tipo de pago <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_34" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (TipoPago item in ViewBag.tipo_pago)
@@ -283,13 +283,13 @@
                                     </div>
                                     <div class="col-md-3" id="uu_35_a" style="display:none;">
                                         <div class="form-group" id="uu_35_c">
-                                            <label>Prioridad *</label>
+                                            <label>Prioridad <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_35" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="col-md-3" id="uu_36_a" style="display:none;">
                                         <div class="form-group" id="uu_36_c">
-                                            <label>Fecha de vencimiento de prioridad *</label>
+                                            <label>Fecha de vencimiento de prioridad <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_36" autocomplete="off" readonly />
                                         </div>
                                     </div>
@@ -343,30 +343,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" id="contrato_a" style="display:none;">
-                                    <div class="col-md-12">
-                                        <div class="form-group" id="contratot" style="margin:0 !important;">
-                                            <label>Contrato de cesión de derechos del inventor</label>
-                                        </div>
-                                        <div class="form-group" id="contratoc">
-                                            <a href="" id="contratol" class="btn btn-sm btn-success"><i class="fa fa-download"></i> Descargar documento</a>
-                                            <label for="contrato" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
-                                            <input type="file" id="contrato" style="display:none;" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" id="reivindicacion_a" style="display:none;">
-                                    <div class="col-md-12">
-                                        <div class="form-group" id="reivindicaciont" style="margin:0 !important;">
-                                            <label>Reivindicaciones</label>
-                                        </div>
-                                        <div class="form-group" id="reivindicacionc">
-                                            <a href="" id="reivindicacionl" class="btn btn-sm btn-success"><i class="fa fa-download"></i> Descargar documento</a>
-                                            <label for="reivindicacion" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
-                                            <input type="file" id="reivindicacion" style="display:none;" />
-                                        </div>
-                                    </div>
-                                </div>
                                 <hr />
                                 <div class="row">
                                     <div class="col-md-8">
@@ -396,13 +372,13 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group" id="uu_11_c">
-                                        <label>Número de solicitud *</label>
+                                        <label>Número de solicitud <font size="4" style="color:#FF0000"> * </font></label>
                                         <input type="text" class="form-control input-sm" id="uu_11" autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="col-md-3" id="uu_12_a">
                                     <div class="form-group" id="uu_12_c">
-                                        <label for="uu_12">Tipo de registro *</label>
+                                        <label for="uu_12">Tipo de registro <font size="4" style="color:#FF0000"> * </font></label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
                                             <option value="0" disabled selected>Seleccione una opción</option>
                                             @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
@@ -414,7 +390,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group" id="uu_13_c">
-                                        <label for="uu_13">Persona que pidió el registro *</label>
+                                        <label for="uu_13">Persona que pidió el registro <font size="4" style="color:#FF0000"> * </font></label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_13" autocomplete="off" style="width: 100%;">
                                             <option value="0" disabled selected>Seleccione una opción</option>
                                             @foreach (AspNetUsers item in ViewBag.usuarios)
@@ -426,7 +402,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group" id="uu_14_c">
-                                        <label for="uu_14">Despacho *</label>
+                                        <label for="uu_14">Despacho <font size="4" style="color:#FF0000"> * </font></label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_14" autocomplete="off" style="width: 100%;">
                                             <option value="0" disabled selected>Seleccione una opción</option>
                                             @foreach (Despacho item in ViewBag.despacho)
@@ -439,7 +415,7 @@
 
                                 <div class="col-md-3">
                                     <div class="form-group" id="uu_15_c">
-                                        <label for="uu_15">Corresponsal *</label>
+                                        <label for="uu_15">Corresponsal <font size="4" style="color:#FF0000"> * </font></label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_15" autocomplete="off" style="width: 100%;">
                                             <option value="0" disabled selected>Seleccione una opción</option>
                                             @foreach (Corresponsal item in ViewBag.corresponsal)
@@ -460,6 +436,30 @@
                                         <a href="" id="solicitudl" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
                                         <label for="solicitud" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
                                         <input type="file" id="solicitud" style="display:none;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="contrato_a" style="display:none;">
+                                <div class="col-md-12">
+                                    <div class="form-group" id="contratot" style="margin:0 !important;">
+                                        <label>Contrato de cesión de derechos del inventor</label>
+                                    </div>
+                                    <div class="form-group" id="contratoc">
+                                        <a href="" id="contratol" class="btn btn-sm btn-success"><i class="fa fa-download"></i> Descargar documento</a>
+                                        <label for="contrato" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
+                                        <input type="file" id="contrato" style="display:none;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="reivindicacion_a" style="display:none;">
+                                <div class="col-md-12">
+                                    <div class="form-group" id="reivindicaciont" style="margin:0 !important;">
+                                        <label>Reivindicaciones</label>
+                                    </div>
+                                    <div class="form-group" id="reivindicacionc">
+                                        <a href="" id="reivindicacionl" class="btn btn-sm btn-success"><i class="fa fa-download"></i> Descargar documento</a>
+                                        <label for="reivindicacion" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
+                                        <input type="file" id="reivindicacion" style="display:none;" />
                                     </div>
                                 </div>
                             </div>
@@ -504,13 +504,13 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_16_c">
-                                            <label>Persona que solicitó la licencia *</label>
+                                            <label>Persona que solicitó la licencia <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_16" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_17_c">
-                                            <label for="uu_17">Licencia *</label>
+                                            <label for="uu_17">Licencia <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_17" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (ConvenioLicencia item in ViewBag.licencia)
@@ -527,14 +527,14 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_18_c">
-                                            <label>Persona que solicitó la cesión *</label>
+                                            <label>Persona que solicitó la cesión <font size="4" style="color:#FF0000"> * </font></label>
                                             <input type="text" class="form-control input-sm" id="uu_18" autocomplete="off" />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group" id="uu_19_c">
-                                            <label for="uu_19">Cesión *</label>
+                                            <label for="uu_19">Cesión <font size="4" style="color:#FF0000"> * </font></label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_19" autocomplete="off" style="width: 100%;">
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (ContratoCesion item in ViewBag.cesion)
@@ -607,7 +607,7 @@
 
                                     <div class="col-md-3" id="uu_25_a">
                                         <div class="form-group" id="uu_25_c">
-                                            <label>
+                                            <label id="uu_25_l">
                                                 Información de resultados al negocio
                                             </label>
                                             <input type="text" class="form-control input-sm" id="uu_25" autocomplete="off" readonly />

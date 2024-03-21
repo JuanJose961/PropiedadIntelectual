@@ -372,8 +372,8 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         $('#uu_36').prop("required", true);
         document.getElementById("uu_37_a").style.display = "block";//fecha quinquenio anualidad
         $('#uu_37').prop("required", true);
-        document.getElementById("uu_06_a").style.display = "none"//fecha concesion
-        $('#uu_06').prop("required", false);
+        //document.getElementById("uu_06_a").style.display = "none"//fecha concesion
+        //$('#uu_06').prop("required", false);
         document.getElementById("uu_12_a").style.display = "none"//tipo registro(pestaña en registro)
         $('#uu_12').prop("required", false);
         document.getElementById("contrato_a").style.display = "block"//contrato archivo
@@ -389,8 +389,8 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_37_a").style.display = "none";
         $('#uu_37').prop("required", false);
         document.getElementById("uu_06_a").style.display = "block"
-        $('#uu_06').prop("required", true);
-        document.getElementById("uu_12_a").style.display = "block"
+        //$('#uu_06').prop("required", true);
+        //document.getElementById("uu_12_a").style.display = "block"
         $('#uu_12').prop("required", true);
         document.getElementById("contrato_a").style.display = "none"
         document.getElementById("reivindicacion_a").style.display = "none"
@@ -432,6 +432,20 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_38_a").style.display = "none"
         $('#uu_38').prop("required", false);
         document.getElementById("carta_a").style.display = "none"
+    }
+
+    if (val == 1 || val == 2) {
+        document.getElementById("uu_25_l").innerHTML = "Información de resultados al negocio";
+    } else if (val == 3 || val == 4 || val == 5 || val == 6) {
+        document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
+    } else { 
+        document.getElementById("uu_25_l").innerHTML = "NA";
+    }
+
+    if (val >=4) {
+        document.getElementById("btnGuardar").disabled = true;
+    } else {
+        document.getElementById("btnGuardar").disabled = false;
     }
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
@@ -693,7 +707,8 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (fecha_concesionS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12)) {
+    //if (fecha_concesionS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12)) {
+    if (fecha_concesionS == "") {
         //$("#uu_06").addClass("control-error");
         $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
@@ -854,10 +869,11 @@ function Guardar() {
             clase = $("#uu_07 option:selected").val();
             clase_desc = $("#uu_07 option:selected").text();
         }
-        var fecha_concesionS = "";
-        if (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12) {
-            fecha_concesionS = $("#uu_06").val();
-        } 
+        //var fecha_concesionS = "";
+        //if (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12) {
+        //    fecha_concesionS = $("#uu_06").val();
+        //} 
+        var fecha_concesionS = $("#uu_06").val();
         var fecha_vencimientoS = $("#uu_05").val();
         var fecha_legalS = $("#uu_04").val();
         var no_registro = $("#uu_03").val();

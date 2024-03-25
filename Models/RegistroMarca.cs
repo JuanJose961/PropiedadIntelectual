@@ -242,6 +242,37 @@ namespace GISMVC.Models
         }
 
     }
+
+    public class Uso
+    {
+        public int id { get; set; } = 0;
+        public string nombre { get; set; } = "";
+        public static Uso GetById(int id)
+        {
+            Uso res = new Uso();
+            List<Uso> list = new List<Uso>();
+            list.Add(new Uso() { id = 1, nombre = "No" });
+            list.Add(new Uso() { id = 2, nombre = "Si" });
+
+
+            if (id >= 1 && id <= 2)
+            {
+                res = list.Where(i => i.id == id).FirstOrDefault();
+            }
+            return res;
+        }
+
+        public static List<Uso> Get(int activo = -1)
+        {
+            List<Uso> list = new List<Uso>();
+            list.Add(new Uso() { id = 1, nombre = "No" });
+            list.Add(new Uso() { id = 2, nombre = "Si" });
+
+
+            return list;
+        }
+
+    }
     public class RegistroMarca
     {
         public int id { get; set; } = 0;
@@ -377,6 +408,8 @@ namespace GISMVC.Models
         public string oficio_url { get; set; } = "";
         public string oficio_permalink { get; set; } = "";
         public int renovacion { get; set; } = 0;
+        public int uso { get; set; } = 0;
+        public string uso_desc { get; set; } = "";
         public DateTime fecha_quinquenio_anualidad { get; set; } = DateTime.Parse("1969-01-01");
         public DateTime fecha_vencimiento_prioridad { get; set; } = DateTime.Parse("1969-01-01");
         public string fecha_quinquenio_anualidadS { get; set; } = "";

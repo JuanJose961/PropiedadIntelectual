@@ -4956,7 +4956,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[65];
+                SqlParameter[] @params = new SqlParameter[67];
 
                 int i = 0;
                 //@params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -5037,6 +5037,8 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@solicitud_desc", modelo.solicitud_desc); i++;
                 @params[i] = new SqlParameter("@solicitud_tipo", modelo.solicitud_tipo); i++;
                 @params[i] = new SqlParameter("@solicitud_tipo_desc", modelo.solicitud_tipo_desc); i++;
+                @params[i] = new SqlParameter("@uso", modelo.uso); i++;
+                @params[i] = new SqlParameter("@uso_desc", modelo.uso_desc); i++;
                 @params[i] = new SqlParameter("@fecha_quinquenio_anualidad", modelo.fecha_quinquenio_anualidad); i++;
                 @params[i] = new SqlParameter("@tipo_pago", modelo.tipo_pago); i++;
                 @params[i] = new SqlParameter("@tipo_pago_desc", modelo.tipo_pago_desc); i++;

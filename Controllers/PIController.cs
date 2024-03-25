@@ -971,6 +971,7 @@ namespace GISMVC.Controllers
                 //
                 var tipo_solicitud = TipoSolicitud.Get();
                 var tipo_pago = TipoPago.Get();
+                var uso = Uso.Get();
 
                 var solicitud = new List<Solicitud>();
                 var marca = GISMVC.Models.Marca.Get();
@@ -1007,6 +1008,7 @@ namespace GISMVC.Controllers
 
                 ViewBag.tipo_solicitud = tipo_solicitud;
                 ViewBag.tipo_pago = tipo_pago;
+                ViewBag.uso = uso;
                 ViewBag.empresa = empresa;
                 ViewBag.solicitud = solicitud;
                 ViewBag.clase = clase;

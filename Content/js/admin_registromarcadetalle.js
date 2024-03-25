@@ -353,6 +353,8 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         $('#uu_26').prop("required", true);
         document.getElementById("uu_260_a").style.display = "block"//completo fecha comprobacion uso
         $('#uu_260').prop("required", true);
+        document.getElementById("uu_39_a").style.display = "block"//uso
+        $('#uu_39').prop("required", true);
     } else {
         document.getElementById("uu_07_a").style.display = "none"
         $('#uu_07').prop("required", false);
@@ -360,6 +362,8 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         $('#uu_26').prop("required", false);
         document.getElementById("uu_260_a").style.display = "none"
         $('#uu_260').prop("required", false);
+        document.getElementById("uu_39_a").style.display = "none"
+        $('#uu_39').prop("required", false);
     }
 
     if (val==3 || val==4 || val==5 || val==6) {
@@ -620,7 +624,7 @@ function Validar() {
     var solicitud_tipo = $("#uu_02 option:selected").val();
     var solicitud_tipo_desc = $("#uu_02 option:selected").text();
 
-    var corresponsal = $("#uu_15 option:selected").val();
+    //var corresponsal = $("#uu_15 option:selected").val();
     var corresponsal_desc = $("#uu_15 option:selected").text();
     var despacho = $("#uu_14 option:selected").val();
     var despacho_desc = $("#uu_14 option:selected").text();
@@ -629,12 +633,12 @@ function Validar() {
     var tipo_registro_solicitud = $("#uu_12 option:selected").val();
     var tipo_registro_solicitud_desc = $("#uu_12 option:selected").text();
     var no_solicitud = $("#uu_11").val();
-    if (corresponsal <= 0) {
-        //$("#uu_15_c .select2-selection").addClass("control-error");
-        $("#uu_15_c").append("<p class='form-error'>Selecciona una opción válida</p>");
-        errores += 1;
-        tab = '#tab02';
-    }
+    //if (corresponsal <= 0) {
+    //    //$("#uu_15_c .select2-selection").addClass("control-error");
+    //    $("#uu_15_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //    tab = '#tab02';
+    //}
     if (despacho <= 0) {
         //$("#uu_14_c .select2-selection").addClass("control-error");
         $("#uu_14_c").append("<p class='form-error'>Selecciona una opción válida</p>");
@@ -661,6 +665,7 @@ function Validar() {
         tab = '#tab02';
     }   
 
+    var uso = $("#uu_39 option:selected").val();
     var estatus = $("#uu_10 option:selected").val();
     var estatus_desc = $("#uu_10 option:selected").text();
     var pais = $("#uu_09 option:selected").val();
@@ -682,7 +687,13 @@ function Validar() {
     var solicitud = $("#uu_021 option:selected").val();
     var solicitud_desc = $("#uu_021 option:selected").text();
     var nombre = $("#uu_022").val();
-    
+
+    if (uso <= 0 && (solicitud_tipo == 1 || solicitud_tipo == 2)) {
+        //$("#uu_09_c .select2-selection").addClass("control-error");
+        $("#uu_39_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        errores += 1;
+        tab = '#tab01';
+    }
     if (estatus <= 0) {
         //$("#uu_10_c .select2-selection").addClass("control-error");
         $("#uu_10_c").append("<p class='form-error'>Selecciona una opción válida</p>");
@@ -766,8 +777,8 @@ function Validar() {
     var fecha_quinquenio_anualidadS = $("#uu_37").val();
     var tipo_pago = $("#uu_34 option:selected").val();
     var tipo_pago_desc = $("#uu_34 option:selected").text();
-    var prioridad = $("#uu_35").val();
-    var fecha_vencimiento_prioridadS = $("#uu_36").val();
+    //var prioridad = $("#uu_35").val();
+    //var fecha_vencimiento_prioridadS = $("#uu_36").val();
     if (fecha_quinquenio_anualidadS == "" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
         $("#uu_37_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
@@ -778,16 +789,16 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (prioridad=="" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
-        $("#uu_35_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
-    if (fecha_vencimiento_prioridadS=="" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
-        $("#uu_36_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
+    //if (prioridad=="" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
+    //    $("#uu_35_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
+    //if (fecha_vencimiento_prioridadS=="" && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
+    //    $("#uu_36_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
 
     var autor = $("#uu_38").val();
     if (autor == "" && solicitud_tipo>=7) {
@@ -851,6 +862,12 @@ function Guardar() {
             tipo_registro_solicitud_desc = $("#uu_12 option:selected").text();
         }
         var no_solicitud = $("#uu_11").val()
+        var uso = 0;
+        var uso_desc = "";
+        if (solicitud_tipo == 1 || solicitud_tipo == 2) {
+            uso = $("#uu_39 option:selected").val();
+            uso_desc = $("#uu_39 option:selected").text();
+        }
         var estatus = $("#uu_10 option:selected").val();
         var estatus_desc = $("#uu_10 option:selected").text();
         var pais = 0;
@@ -945,6 +962,8 @@ function Guardar() {
         registro.pais_desc = pais_desc;
         registro.estatus = estatus;
         registro.estatus_desc = estatus_desc;
+        registro.uso = uso;
+        registro.uso_desc = uso_desc;
         registro.no_solicitud = no_solicitud;
         registro.tipo_registro_solicitud = tipo_registro_solicitud;
         registro.tipo_registro_solicitud_desc = tipo_registro_solicitud_desc;

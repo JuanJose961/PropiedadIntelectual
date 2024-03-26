@@ -3911,6 +3911,8 @@ namespace GISMVC.Controllers
                 modelo.registro.fecha_vencimiento_workflow_completo = Utility.GetDateTime(modelo.registro.fecha_vencimiento_workflow_completoS, "dd/MM/yyyy");
                 modelo.registro.fecha_concesion_workflow = Utility.GetDateTime(modelo.registro.fecha_concesion_workflowS, "dd/MM/yyyy");
                 modelo.registro.fecha_concesion_workflow_completo = Utility.GetDateTime(modelo.registro.fecha_concesion_workflow_completoS, "dd/MM/yyyy");
+                modelo.registro.fecha_declaracion = Utility.GetDateTime(modelo.registro.fecha_declaracionS, "dd/MM/yyyy");
+                modelo.registro.fecha_declaracion_completo = Utility.GetDateTime(modelo.registro.fecha_declaracion_completoS, "dd/MM/yyyy");
 
                 modelo.registro.fecha_renovar = Utility.GetDateTime(modelo.registro.fecha_renovarS, "dd/MM/yyyy");
                 modelo.registro.fecha_renovar_completo = Utility.GetDateTime(modelo.registro.fecha_renovar_completoS, "dd/MM/yyyy");

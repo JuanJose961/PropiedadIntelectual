@@ -300,6 +300,17 @@ $(document).ready(function () {
         format: 'dd/mm/yyyy',
         numberOfMonths: 2
     });
+
+    $('#uu_40').datepicker({
+        orientation: "bottom left",
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+    });
+    $('#uu_400').datepicker({
+        orientation: "bottom left",
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+    });
     //
 
     $(".select2").select2({
@@ -567,7 +578,8 @@ function Validar() {
     var fecha_despacho_completoS = $("#uu_320").val();
     var oficio_completoS = $("#uu_33").val();
 
-
+    var fecha_declaracion_completoS = $("#uu_260").val();
+    var fecha_declaracionS = $("#uu_26").val();
     var fecha_concesion_workflow_completoS = $("#uu_280").val();
     var fecha_concesion_workflowS = $("#uu_28").val();
     var fecha_vencimiento_workflow_completoS = $("#uu_270").val();
@@ -819,6 +831,8 @@ function Validar() {
 
 function Guardar() {
     if (Validar() != false) {
+        var fecha_declaracion_completoS = $("#uu_400").val();
+        var fecha_declaracionS = $("#uu_40").val();
         var fecha_concesion_workflow_completoS = $("#uu_280").val();
         var fecha_concesion_workflowS = $("#uu_28").val();
         var fecha_vencimiento_workflow_completoS = $("#uu_270").val();
@@ -1004,6 +1018,8 @@ function Guardar() {
         registro.fecha_vencimiento_workflow_completoS = fecha_vencimiento_workflow_completoS;
         registro.fecha_concesion_workflowS = fecha_concesion_workflowS;
         registro.fecha_concesion_workflow_completoS = fecha_concesion_workflow_completoS;
+        registro.fecha_declaracionS = fecha_declaracionS;
+        registro.fecha_declaracion_completoS = fecha_declaracion_completoS;
 
         registro.notificacion_titulo = notificacion_titulo;
         registro.notificacion_vencimiento = notificacion_vencimiento;

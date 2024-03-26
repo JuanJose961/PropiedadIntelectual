@@ -337,6 +337,8 @@ namespace GISMVC.Models
         public DateTime fecha_vencimiento_workflow_completo { get; set; } = DateTime.Parse("1969-01-01");
         public DateTime fecha_concesion_workflow { get; set; } = DateTime.Parse("1969-01-01");
         public DateTime fecha_concesion_workflow_completo { get; set; } = DateTime.Parse("1969-01-01");
+        public DateTime fecha_declaracion { get; set; } = DateTime.Parse("1969-01-01");
+        public DateTime fecha_declaracion_completo { get; set; } = DateTime.Parse("1969-01-01");
         public DateTime fc { get; set; } = DateTime.Parse("1969-01-01");
         public DateTime fu { get; set; } = DateTime.Parse("1969-01-01");
         public string usuario { get; set; } = "";
@@ -370,6 +372,8 @@ namespace GISMVC.Models
         public string fecha_vencimiento_workflow_completoS { get; set; } = "";
         public string fecha_concesion_workflowS { get; set; } = "";
         public string fecha_concesion_workflow_completoS { get; set; } = "";
+        public string fecha_declaracionS { get; set; } = "";
+        public string fecha_declaracion_completoS { get; set; } = "";
 
 
         public string solicitud_permalink { get; set; } = "";

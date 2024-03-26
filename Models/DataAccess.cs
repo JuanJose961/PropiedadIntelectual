@@ -4956,7 +4956,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[67];
+                SqlParameter[] @params = new SqlParameter[68];
 
                 int i = 0;
                 //@params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -5028,6 +5028,8 @@ namespace GISMVC.Models
 
                 @params[i] = new SqlParameter("@fecha_concesion_workflow", modelo.fecha_concesion_workflow); i++;
                 @params[i] = new SqlParameter("@fecha_concesion_workflow_completo", modelo.fecha_concesion_workflow_completo); i++;
+                @params[i] = new SqlParameter("@fecha_declaracion", modelo.fecha_declaracion); i++;
+                @params[i] = new SqlParameter("@fecha_declaracion_completo", modelo.fecha_declaracion_completo); i++;
                 //@params[i] = new SqlParameter("@fc", modelo.fc); i++;
                 //@params[i] = new SqlParameter("@fu", modelo.fu); i++;
                 @params[i] = new SqlParameter("@usuario", modelo.usuario); i++;

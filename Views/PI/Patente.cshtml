@@ -96,8 +96,15 @@
                             .Columns(columns =>
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
-                                    <div>
-                                        <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>
+                                    <div class="row">
+                                        <div  class="col-md-6">
+                                            <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)" title="Editar"><i class="fa fa-edit"></i></button>
+                                        </div>
+                                            <% if (data.activo == true) { %>
+                                            <div class="col-md-6">
+                                                <button type="button" class="dx-oc-link"  onclick="Enviar(<%- value %>)" title="Registrar Propiedad"><i class="fa fa-arrow-circle-right"></i></button>
+                                            </div>
+                                            <% } %>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
@@ -122,9 +129,7 @@
                             .HeaderFilter(f => f.Visible(true))
 
                             )
-                        @*-----*@
                     </div>
-                </div>
             </div>
         </div>
 

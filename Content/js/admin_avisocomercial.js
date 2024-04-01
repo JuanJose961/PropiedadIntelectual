@@ -414,3 +414,7 @@ function RemoverDropzone(uuid) {
         }
     }
 }
+
+function Enviar(id) {
+    window.location = '/PI/RegistroMarca?propiedad=2&solicitud=' + id;
+}

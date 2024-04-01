@@ -508,3 +508,7 @@ function RemoverObra(uuid) {
         }
     }
 }
+
+function Enviar(id) {
+    window.location = '/PI/RegistroMarca?propiedad=7&solicitud=' + id;
+}

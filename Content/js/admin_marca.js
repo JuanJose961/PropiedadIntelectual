@@ -420,6 +420,6 @@ function RemoverDropzone(uuid) {
     }
 }
 
-function Enviar() {
-    window.location = '/PI/RegistroMarca?propiedad=1&solicitud=2';
+function Enviar(id) {
+    window.location = '/PI/RegistroMarca?propiedad=1&solicitud='+id;
 }

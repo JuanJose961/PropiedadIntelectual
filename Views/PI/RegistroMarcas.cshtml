@@ -97,10 +97,12 @@
                             .Columns(columns =>
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
-                                    <div>
-                                        <a type="button" class="dx-oc-link" href="<%- data.permalink %>" title="Detalle"><i class="fa fa-eye"></i> </a>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a type="button" class="dx-oc-link" href="<%- data.permalink %>" title="Ver detalle"><i class="fa fa-eye"></i> </a>
+                                        </div>
                                     </div>
-                                </text>).Caption("ACCIÓN").Width(110);
+                                </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.solicitud_tipo_desc).Caption("TIPO DE SOLICITUD");
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
@@ -118,6 +120,8 @@
                                 columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
                                 columns.AddFor(m => m.solicitud_desc).Caption("SOLICITUD");
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
+                                columns.AddFor(m => m.pais_desc).Caption("PAIS");
+                                columns.AddFor(m => m.clase_desc).Caption("CLASE");
                                 columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
                                 //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
                             })
@@ -128,9 +132,7 @@
                             .HeaderFilter(f => f.Visible(true))
 
                             )
-                        @*-----*@
                     </div>
-                </div>
             </div>
         </div>
 

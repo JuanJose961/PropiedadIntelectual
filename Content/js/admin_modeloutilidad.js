@@ -632,3 +632,7 @@ function RemoverExplicacion(uuid) {
         }
     }
 }
+
+function Enviar(id) {
+    window.location = '/PI/RegistroMarca?propiedad=5&solicitud=' + id;
+}

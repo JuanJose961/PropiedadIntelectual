@@ -885,7 +885,7 @@ function Guardar() {
         var estatus = $("#uu_10 option:selected").val();
         var estatus_desc = $("#uu_10 option:selected").text();
         var pais = 0;
-        var pais_desc = "";
+        var pais_desc = "N/A";
         if (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
             pais = $("#uu_09 option:selected").val();
             pais_desc = $("#uu_09 option:selected").text();
@@ -895,7 +895,7 @@ function Guardar() {
         var tipo_registro = 0;
         var tipo_registro_desc = "";
         var clase = 0;
-        var clase_desc = "";
+        var clase_desc = "N/A";
         if (solicitud_tipo == 1 || solicitud_tipo == 2) {
             clase = $("#uu_07 option:selected").val();
             clase_desc = $("#uu_07 option:selected").text();

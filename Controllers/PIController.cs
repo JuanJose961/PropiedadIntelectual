@@ -58,6 +58,21 @@ namespace GISMVC.Controllers
                         ctype = objeto.oficio_content_type;
                         path = Path.Combine(main_folder, objeto.oficio_nombre);
                         break;
+                    case "contrato":
+                        filename = objeto.contrato_nombre_original;
+                        ctype = objeto.contrato_content_type;
+                        path = Path.Combine(main_folder, objeto.contrato_nombre);
+                        break;
+                    case "reivindicacion":
+                        filename = objeto.reivindicacion_nombre_original;
+                        ctype = objeto.reivindicacion_content_type;
+                        path = Path.Combine(main_folder, objeto.reivindicacion_nombre);
+                        break;
+                    case "carta":
+                        filename = objeto.carta_nombre_original;
+                        ctype = objeto.carta_content_type;
+                        path = Path.Combine(main_folder, objeto.carta_nombre);
+                        break;
                 }
 
                 //var path2 = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/Pi/RegistrosMarca/20220905_183517_17.txt");

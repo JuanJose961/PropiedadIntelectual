@@ -457,11 +457,11 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_25_l").innerHTML = "NA";
     }
 
-    if (val >=4) {
+    /*if (val >=4) {
         document.getElementById("btnGuardar").disabled = true;
     } else {
         document.getElementById("btnGuardar").disabled = false;
-    }
+    }*/
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
     if (val == 0) {
@@ -1304,7 +1304,6 @@ function SelectRegistroMarca(id) {
                     CheckIfOptionExists("#uu_09", registro.pais, registro.pais_desc, true, true);
                     CheckIfOptionExists("#uu_10", registro.estatus, registro.estatus_desc, true, true);
 
-
                     $("#uu_11").val(registro.no_solicitud);
                     CheckIfOptionExists("#uu_12", registro.tipo_registro_solicitud, registro.tipo_registro_solicitud_desc, true, true);
                     CheckIfOptionExists("#uu_13", registro.autor_registro, registro.autor_registro_desc, true, true);
@@ -1383,37 +1382,44 @@ function SelectRegistroMarca(id) {
 
                     $("#uu_33").val(registro.oficio_completoS);
                     $("#uu_33").datepicker("update", registro.oficio_completoS);
+
+                    $("#uu_37").datepicker("update", registro.fecha_quinquenio_anualidadS);
+                    CheckIfOptionExists("#uu_34", registro.tipo_pago, registro.tipo_pago_desc, true, true);
+                    $("#uu_35").val(registro.prioridad);
+                    $("#uu_36").datepicker("update", registro.fecha_vencimiento_prioridadS);
+                    $("#uu_38").val(registro.autor);
+                    CheckIfOptionExists("#uu_39", registro.uso, registro.uso_desc, true, true);
                     //--
 
 
 
                     if (registro.titulo_permalink != "") {
-                        $("#titulol").attr("href", registro.titulo_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.titulo_nombre_original + ')').show();
+                        $("#titulol").attr("href", registro.titulo_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.titulo_nombre_original + ')').show();
                     } else {
                         $("#titulol").attr("href", "").hide();
                     }
                     if (registro.solicitud_permalink != "") {
-                        $("#solicitudl").attr("href", registro.solicitud_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.solicitud_nombre_original + ')').show();
+                        $("#solicitudl").attr("href", registro.solicitud_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.solicitud_nombre_original + ')').show();
                     } else {
                         $("#solicitudl").attr("href", "").hide();
                     }
                     if (registro.oficio_permalink != "") {
-                        $("#oficiol").attr("href", registro.oficio_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.oficio_nombre_original + ')').show();
+                        $("#oficiol").attr("href", registro.oficio_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.oficio_nombre_original + ')').show();
                     } else {
                         $("#oficiol").attr("href", "").hide();
                     }
                     if (registro.contrato_permalink != "") {
-                        $("#contratol").attr("href", registro.contrato_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.contrato_nombre_original + ')').show();
+                        $("#contratol").attr("href", registro.contrato_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.contrato_nombre_original + ')').show();
                     } else {
                         $("#contratol").attr("href", "").hide();
                     }
                     if (registro.reivindicacion_permalink != "") {
-                        $("#reivindicacionl").attr("href", registro.reivindicacion_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.reivindicacion_nombre_original + ')').show();
+                        $("#reivindicacionl").attr("href", registro.reivindicacion_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.reivindicacion_nombre_original + ')').show();
                     } else {
                         $("#reivindicacionl").attr("href", "").hide();
                     }
                     if (registro.carta_permalink != "") {
-                        $("#cartal").attr("href", registro.carta_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + registro.carta_nombre_original + ')').show();
+                        $("#cartal").attr("href", registro.carta_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.carta_nombre_original + ')').show();
                     } else {
                         $("#cartal").attr("href", "").hide();
                     }
@@ -1573,6 +1579,36 @@ function SelectRegistroMarca(id) {
                         fecha_vencimiento_workflow_completoS: "",
                         fecha_concesion_workflowS: "",
                         fecha_concesion_workflow_completoS: "",
+                        fecha_quinquenio_anualidadS: "",
+                        tipo_pago: 0,
+                        tipo_pago_desc: "",
+                        prioridad: "",
+                        fecha_vencimiento_prioridadS: "",
+                        //contrato_nombre: "",
+                        //contrato_data: new Array(),
+                        //contrato_content_type: "",
+                        //contrato_size: 0,
+                        //contrato_extension: "",
+                        //contrato_nombre_original: "",
+                        //contrato_url: "",
+
+                        //reivindicacion_nombre: "",
+                        //reivindicacion_data: new Array(),
+                        //reivindicacion_content_type: "",
+                        //reivindicacion_size: 0,
+                        //reivindicacion_extension: "",
+                        //reivindicacion_nombre_original: "",
+                        //reivindicacion_url: "",
+                        autor: "",
+                        //carta_nombre: "",
+                        //carta_data: new Array(),
+                        //carta_content_type: "",
+                        //carta_size: 0,
+                        //carta_extension: "",
+                        //carta_nombre_original: "",
+                        //carta_url: "",
+                        uso: 0,
+                        uso_desc: "",
                     };
 
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');

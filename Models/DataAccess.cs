@@ -5079,7 +5079,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[70];
+                SqlParameter[] @params = new SqlParameter[80];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -5151,6 +5151,8 @@ namespace GISMVC.Models
 
                 @params[i] = new SqlParameter("@fecha_concesion_workflow", modelo.fecha_concesion_workflow); i++;
                 @params[i] = new SqlParameter("@fecha_concesion_workflow_completo", modelo.fecha_concesion_workflow_completo); i++;
+                @params[i] = new SqlParameter("@fecha_declaracion", modelo.fecha_declaracion); i++;
+                @params[i] = new SqlParameter("@fecha_declaracion_completo", modelo.fecha_declaracion_completo); i++;
                 //@params[i] = new SqlParameter("@fc", modelo.fc); i++;
                 //@params[i] = new SqlParameter("@fu", modelo.fu); i++;
                 @params[i] = new SqlParameter("@usuario", modelo.usuario); i++;
@@ -5173,6 +5175,14 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@fecha_despacho_completo", modelo.fecha_despacho_completo); i++;
                 @params[i] = new SqlParameter("@oficio_completo", modelo.oficio_completo); i++;
                 @params[i] = new SqlParameter("@renovacion", modelo.renovacion); i++;
+                @params[i] = new SqlParameter("@uso", modelo.uso); i++;
+                @params[i] = new SqlParameter("@uso_desc", modelo.uso_desc); i++;
+                @params[i] = new SqlParameter("@fecha_quinquenio_anualidad", modelo.fecha_quinquenio_anualidad); i++;
+                @params[i] = new SqlParameter("@tipo_pago", modelo.tipo_pago); i++;
+                @params[i] = new SqlParameter("@tipo_pago_desc", modelo.tipo_pago_desc); i++;
+                @params[i] = new SqlParameter("@prioridad", modelo.prioridad); i++;
+                @params[i] = new SqlParameter("@fecha_vencimiento_prioridad", modelo.fecha_vencimiento_prioridad); i++;
+                @params[i] = new SqlParameter("@autor", modelo.autor); i++;
 
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_RegistroMarca", @params, out dt, 1000))

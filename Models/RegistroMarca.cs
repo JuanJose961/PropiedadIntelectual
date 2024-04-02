@@ -422,6 +422,30 @@ namespace GISMVC.Models
         public string tipo_pago_desc { get; set; } = "";
         public string prioridad { get; set; } = "";
         public string autor { get; set; } = "";
+        public string contrato_nombre { get; set; } = "";
+        public byte[] contrato_data { get; set; }
+        public string contrato_content_type { get; set; } = "";
+        public int contrato_size { get; set; } = 0;
+        public string contrato_extension { get; set; } = "";
+        public string contrato_nombre_original { get; set; } = "";
+        public string contrato_url { get; set; } = "";
+        public string contrato_permalink { get; set; } = "";
+        public string reivindicacion_nombre { get; set; } = "";
+        public byte[] reivindicacion_data { get; set; }
+        public string reivindicacion_content_type { get; set; } = "";
+        public int reivindicacion_size { get; set; } = 0;
+        public string reivindicacion_extension { get; set; } = "";
+        public string reivindicacion_nombre_original { get; set; } = "";
+        public string reivindicacion_url { get; set; } = "";
+        public string reivindicacion_permalink { get; set; } = "";
+        public string carta_nombre { get; set; } = "";
+        public byte[] carta_data { get; set; }
+        public string carta_content_type { get; set; } = "";
+        public int carta_size { get; set; } = 0;
+        public string carta_extension { get; set; } = "";
+        public string carta_nombre_original { get; set; } = "";
+        public string carta_url { get; set; } = "";
+        public string carta_permalink { get; set; } = "";
         public RegistroMarca()
         {
         }
@@ -564,6 +588,54 @@ namespace GISMVC.Models
                         res.oficio_nombre_original = row[idx].ToString(); idx++;
                         res.oficio_url = row[idx].ToString(); idx++;
                         res.renovacion = Int32.Parse(row[idx].ToString()); idx++;
+
+                        res.fecha_quinquenio_anualidad = DateTime.Parse(row[idx].ToString()); idx++;
+                        res.tipo_pago = Int32.Parse(row[idx].ToString()); idx++;
+                        res.tipo_pago_desc = row[idx].ToString(); idx++;
+                        res.prioridad = row[idx].ToString(); idx++;
+                        res.fecha_vencimiento_prioridad = DateTime.Parse(row[idx].ToString()); idx++;
+
+                        res.contrato_nombre = row[idx].ToString(); idx++;
+                        if (res.contrato_nombre != "")
+                        {
+                            res.contrato_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
+                        }
+                        //if (res.contrato_nombre != "" && row[idx] != null) { res.contrato_data = (byte[])row[idx]; }
+                        idx++;
+                        res.contrato_content_type = row[idx].ToString(); idx++;
+                        res.contrato_size = Int32.Parse(row[idx].ToString()); idx++;
+                        res.contrato_extension = row[idx].ToString(); idx++;
+                        res.contrato_nombre_original = row[idx].ToString(); idx++;
+                        res.contrato_url = row[idx].ToString(); idx++;
+
+                        res.reivindicacion_nombre = row[idx].ToString(); idx++;
+                        if (res.reivindicacion_nombre != "")
+                        {
+                            res.reivindicacion_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("reivindicacion"));
+                        }
+                        //if (res.reivindicacion_nombre != "" && row[idx] != null) { res.reivindicacion_data = (byte[])row[idx]; }
+                        idx++;
+                        res.reivindicacion_content_type = row[idx].ToString(); idx++;
+                        res.reivindicacion_size = Int32.Parse(row[idx].ToString()); idx++;
+                        res.reivindicacion_extension = row[idx].ToString(); idx++;
+                        res.reivindicacion_nombre_original = row[idx].ToString(); idx++;
+                        res.reivindicacion_url = row[idx].ToString(); idx++;
+
+                        res.autor = row[idx].ToString(); idx++;
+                        res.carta_nombre = row[idx].ToString(); idx++;
+                        if (res.carta_nombre != "")
+                        {
+                            res.carta_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("carta"));
+                        }
+                        //if (res.contrato_nombre != "" && row[idx] != null) { res.contrato_data = (byte[])row[idx]; }
+                        idx++;
+                        res.carta_content_type = row[idx].ToString(); idx++;
+                        res.carta_size = Int32.Parse(row[idx].ToString()); idx++;
+                        res.carta_extension = row[idx].ToString(); idx++;
+                        res.carta_nombre_original = row[idx].ToString(); idx++;
+                        res.carta_url = row[idx].ToString(); idx++;
+                        res.uso = Int32.Parse(row[idx].ToString()); idx++;
+                        res.uso_desc = row[idx].ToString(); idx++;
                         //
 
                         if (res.fecha_legal.Year > 1969)
@@ -647,6 +719,12 @@ namespace GISMVC.Models
 
                         if (res.oficio_completo.Year > 1969)
                             res.oficio_completoS = res.oficio_completo.ToString("dd/MM/yyyyy");
+
+                        if (res.fecha_quinquenio_anualidad.Year > 1969)
+                            res.fecha_quinquenio_anualidadS = res.fecha_quinquenio_anualidad.ToString("dd/MM/yyyyy");
+
+                        if (res.fecha_vencimiento_prioridad.Year > 1969)
+                            res.fecha_vencimiento_prioridadS = res.fecha_vencimiento_prioridad.ToString("dd/MM/yyyyy");
 
                         res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString()));
                     }

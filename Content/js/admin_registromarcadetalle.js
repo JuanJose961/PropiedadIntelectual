@@ -1389,6 +1389,10 @@ function SelectRegistroMarca(id) {
                     $("#uu_36").datepicker("update", registro.fecha_vencimiento_prioridadS);
                     $("#uu_38").val(registro.autor);
                     CheckIfOptionExists("#uu_39", registro.uso, registro.uso_desc, true, true);
+                    $("#uu_40").val(registro.fecha_declaracionS);
+                    $("#uu_40").datepicker("update", registro.fecha_declaracionS);
+                    $("#uu_400").val(registro.fecha_declaracion_completoS);
+                    $("#uu_400").datepicker("update", registro.fecha_declaracion_completoS);
                     //--
 
 
@@ -1609,6 +1613,8 @@ function SelectRegistroMarca(id) {
                         //carta_url: "",
                         uso: 0,
                         uso_desc: "",
+                        fecha_declaracionS: "",
+                        fecha_declaracion_completoS: "",
                     };
 
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');
@@ -1730,37 +1736,37 @@ function GuardarArchivo(input, tipo) {
                         uploading_titulo = false;
                         $("#titulo_uploading").text("Documento cargado correctamente (Título)");
                         $(".btn-lbl[for='titulo']").html("<i class='fa fa-upload'></i> Seleccionar documento");
-                        $("#titulol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        $("#titulol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar (' + nombre + ')').show();
                         break;
                     case "#solicitud":
                         uploading_solicitud = false;
                         $("#solicitud_uploading").text("Documento cargado correctamente (Solicitud)");
                         $(".btn-lbl[for='solicitud']").html("<i class='fa fa-upload'></i> Seleccionar documento");
-                        $("#solicitudl").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        $("#solicitudl").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar (' + nombre + ')').show();
                         break;
                     case "#oficio":
                         uploading_oficio = false;
                         $("#oficio_uploading").text("Documento cargado correctamente (Oficio de renovación)");
                         $(".btn-lbl[for='oficio']").html("<i class='fa fa-upload'></i> Seleccionar documento");
-                        $("#oficiol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        $("#oficiol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar (' + nombre + ')').show();
                         break;
                     case "#contrato":
                         uploading_contrato = false;
                         $("#contrato_uploading").text("Documento cargado correctamente (Contrato de cesión del inventor)");
                         $(".btn-lbl[for='contrato']").html("<i class='fa fa-upload'></i> Seleccionar documento");
-                        $("#contratol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        $("#contratol").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar (' + nombre + ')').show();
                         break;
                     case "#reivindicacion":
                         uploading_reivindicacion = false;
                         $("#reivindicacion_uploading").text("Documento cargado correctamente (Reivindicaciones)");
                         $(".btn-lbl[for='reivindicacion']").html("<i class='fa fa-upload'></i> Seleccionar documento");
-                        $("#reivindicacionl").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        $("#reivindicacionl").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar (' + nombre + ')').show();
                         break;
                     case "#carta":
                         uploading_carta = false;
                         $("#carta_uploading").text("Documento cargado correctamente (Carta colaboración renumerada)");
                         $(".btn-lbl[for='carta']").html("<i class='fa fa-upload'></i> Seleccionar documento");
-                        $("#cartal").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar documento (' + nombre + ')').show();
+                        $("#cartal").attr("href", permalink).html('<i class="fa fa-download"></i> Descargar (' + nombre + ')').show();
                         break;
                     default:
                         break;

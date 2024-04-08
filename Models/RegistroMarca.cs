@@ -636,6 +636,8 @@ namespace GISMVC.Models
                         res.carta_url = row[idx].ToString(); idx++;
                         res.uso = Int32.Parse(row[idx].ToString()); idx++;
                         res.uso_desc = row[idx].ToString(); idx++;
+                        res.fecha_declaracion = DateTime.Parse(row[idx].ToString()); idx++;
+                        res.fecha_declaracion_completo = DateTime.Parse(row[idx].ToString()); idx++;
                         //
 
                         if (res.fecha_legal.Year > 1969)
@@ -725,6 +727,12 @@ namespace GISMVC.Models
 
                         if (res.fecha_vencimiento_prioridad.Year > 1969)
                             res.fecha_vencimiento_prioridadS = res.fecha_vencimiento_prioridad.ToString("dd/MM/yyyyy");
+
+                        if (res.fecha_declaracion.Year > 1969)
+                            res.fecha_declaracionS = res.fecha_declaracion.ToString("dd/MM/yyyyy");
+
+                        if (res.fecha_declaracion_completo.Year > 1969)
+                            res.fecha_declaracion_completoS = res.fecha_declaracion_completo.ToString("dd/MM/yyyyy");
 
                         res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString()));
                     }

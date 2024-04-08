@@ -508,6 +508,7 @@ $(document).on("change", "#renovacion", function (event) {
 
 $(document).on("change", "#uu_021", function (event) { //solicitud
     var val = parseInt($(this).val());
+    var id = $("#id_registro").val();
     if (val > 0) {
         var tipo = parseInt($("#uu_02 option:selected").val());
         var solicitud = solicitudes.filter(i => i.tipo == tipo & i.id == val);
@@ -524,19 +525,19 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
 
             var errores = new Array();
             if (existe_empresa > 0) {
-                $("#uu_00").val(empresa).trigger("change");
+                if (id == 0) $("#uu_00").val(empresa).trigger("change");
             } else {
                 $("#uu_00").val(0).trigger("change");
                 errores.push("No se encontró la empresa");
             }
             if (existe_pais > 0) {
-                $("#uu_09").val(pais).trigger("change");
+                if (id == 0) $("#uu_09").val(pais).trigger("change"); 
             } else {
                 $("#uu_09").val(0).trigger("change");
                 errores.push("No se encontró el país");
             }
             if (existe_usuario > 0) {
-                $("#uu_13").val(usuario).trigger("change");
+                if (id == 0) $("#uu_13").val(usuario).trigger("change");
             } else {
                 $("#uu_13").val(0).trigger("change");
                 errores.push("No se encontró al usuario");
@@ -1287,6 +1288,7 @@ function SelectRegistroMarca(id) {
                     CheckIfOptionExists("#uu_02", registro.solicitud_tipo, registro.solicitud_tipo_desc, true, true);
 
                     setTimeout(function () {
+                        document.getElementById("id_registro").value = registro.id;
                         CheckIfOptionExists("#uu_021", registro.solicitud, registro.solicitud_desc, true, true);
                     }, 500);
                     //--------------------

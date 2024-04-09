@@ -457,11 +457,11 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_25_l").innerHTML = "NA";
     }
 
-    /*if (val >=4) {
+    if (val >=5) {
         document.getElementById("btnGuardar").disabled = true;
     } else {
         document.getElementById("btnGuardar").disabled = false;
-    }*/
+    }
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
     if (val == 0) {
@@ -864,8 +864,12 @@ function Guardar() {
         var solicitud_tipo = $("#uu_02 option:selected").val();
         var solicitud_tipo_desc = $("#uu_02 option:selected").text();
 
-        var corresponsal = $("#uu_15 option:selected").val();
-        var corresponsal_desc = $("#uu_15 option:selected").text();
+        var corresponsal = 0;
+        var corresponsal_desc = "";
+        if (parseInt($("#uu_15 option:selected").val()) > 0) {
+            corresponsal = $("#uu_15 option:selected").val();
+            corresponsal_desc = $("#uu_15 option:selected").text();
+        }
         var despacho = $("#uu_14 option:selected").val();
         var despacho_desc = $("#uu_14 option:selected").text();
         var autor_registro = $("#uu_13 option:selected").val();

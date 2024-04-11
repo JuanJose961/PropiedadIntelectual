@@ -172,17 +172,17 @@ namespace GISMVC.Models
             TipoSolicitud res = new TipoSolicitud();
             List<TipoSolicitud> list = new List<TipoSolicitud>();
             list.Add(new TipoSolicitud() { id = 1, nombre = "Marca" });
-            //list.Add(new TipoSolicitud() { id = 2, nombre = "Aviso Comercial" });
+            list.Add(new TipoSolicitud() { id = 2, nombre = "Aviso Comercial" });
             list.Add(new TipoSolicitud() { id = 3, nombre = "Patente" });
-            //list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
-            //list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
-            //list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
+            list.Add(new TipoSolicitud() { id = 4, nombre = "Diseño Industrial" });
+            list.Add(new TipoSolicitud() { id = 5, nombre = "Modelo de Utilidad" });
+            list.Add(new TipoSolicitud() { id = 6, nombre = "Modelo Industrial" });
             list.Add(new TipoSolicitud() { id = 7, nombre = "Obra Artística" });
-            //list.Add(new TipoSolicitud() { id = 8, nombre = "Obra Visual" });
-            //list.Add(new TipoSolicitud() { id = 9, nombre = "Obra Literaria" });
-            //list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });
-            //list.Add(new TipoSolicitud() { id = 11, nombre = "Obra Gráfica" });
-            //list.Add(new TipoSolicitud() { id = 12, nombre = "Obra Tecnológica" });
+            list.Add(new TipoSolicitud() { id = 8, nombre = "Obra Visual" });
+            list.Add(new TipoSolicitud() { id = 9, nombre = "Obra Literaria" });
+            list.Add(new TipoSolicitud() { id = 10, nombre = "Obra Auditiva" });
+            list.Add(new TipoSolicitud() { id = 11, nombre = "Obra Gráfica" });
+            list.Add(new TipoSolicitud() { id = 12, nombre = "Obra Tecnológica" });
 
             if (id >= 1 && id <= 12)
             {

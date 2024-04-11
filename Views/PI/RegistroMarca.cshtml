@@ -142,10 +142,7 @@
                                                 @*<option value="@item.id" tipo="@item.tipo" pais="@item.pais" empresa="@item.empresa" usuario="@item.usuario">@(item.tipo + " " + item.nombre)</option>*@
                                                 @foreach (Solicitud item in ViewBag.solicitud)
                                                 {
-                                                    if (@item.tipo == 1)
-                                                    {
-                                                        <option value="@item.id" tipo="@item.tipo">@item.nombre</option>
-                                                    }
+                                                    <option value="@item.id" tipo="@item.tipo">@item.nombre</option>
                                                 }
                                             </select>
                                         </div>

@@ -102,6 +102,35 @@ var registro = {
     nombre: "",
 };
 $(document).ready(function () {
+    var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
+    var propiedad = JSON.parse(url.searchParams.get('propiedad')); //Capturar el valor
+    var solicitud = JSON.parse(url.searchParams.get('solicitud')); //Capturar el valor
+    //alert(propiedad);
+    var solicitud_select = "";
+    var solicitudes_disponibles = null;
+    if (propiedad==null) {
+        propiedad = 1;
+        solicitudes_disponibles = solicitudes.filter(i => i.tipo == propiedad);
+        $("#uu_021 option[value!=0]").remove();
+        for (var i = 0; i < solicitudes_disponibles.length; i++) {
+            $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
+        }
+    } else {
+        solicitud_select = solicitudes.filter(i => i.tipo == propiedad & i.id == solicitud);
+        //alert(solicitud_select[0]);
+        solicitudes_disponibles = solicitudes.filter(i => i.tipo == propiedad);
+        $("#uu_021 option[value!=0]").remove();
+        for (var i = 0; i < solicitudes_disponibles.length; i++) {
+            $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
+        }
+        document.getElementById("uu_02").value = propiedad;
+        //$("#uu_02").val(propiedad).trigger("change");
+        setTimeout(function () {
+            //$("#uu_021").val(solicitud).trigger("change");
+            if (solicitud_select[0] != undefined) CheckIfOptionExists("#uu_021", solicitud, solicitud_select[0].nombre, true, true);
+        }, 500);
+    }
+
     if (eu_lu.role.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d") {
         $("#tab01 .form-control").attr("disabled", "disabled");
         $("#tab02 .form-control").attr("disabled", "disabled");

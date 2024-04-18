@@ -5,15 +5,15 @@ $(document).ready(function () {
     //const urlParams = new URLSearchParams(url.search);
     //var tipo_obra = urlParams.get('tipo');
     //switch (tipo_obra) {
-    //    case "Artisticas": tipo_nombre = "Obra Artistica"; break;
-    //    case "Visuales": tipo_nombre = "Obra Visual"; break;
-    //    case "Literarias": tipo_nombre = "Obra Literaria"; break;
-    //    case "Auditivas": tipo_nombre = "Obra Auditiva"; break;
-    //    case "Gráficas": tipo_nombre = "Obra Gráfica"; break;
-    //    case "Tecnologicas": tipo_nombre = "Obra Tecnológica"; break;
-    //    default: tipo_nombre = "Obra"; break;
+    //    case "Artisticas": tipo_solicitud_nombre = "Obra Artistica"; break;
+    //    case "Visuales": tipo_solicitud_nombre = "Obra Visual"; break;
+    //    case "Literarias": tipo_solicitud_nombre = "Obra Literaria"; break;
+    //    case "Auditivas": tipo_solicitud_nombre = "Obra Auditiva"; break;
+    //    case "Gráficas": tipo_solicitud_nombre = "Obra Gráfica"; break;
+    //    case "Tecnologicas": tipo_solicitud_nombre = "Obra Tecnológica"; break;
+    //    default: tipo_solicitud_nombre = "Obra"; break;
     //}
-    //document.getElementById("titulobra").innerHTML = "" + tipo_nombre;
+    //document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;
     $("#doc00c").hide();
     $("#tabla02 .dx-toolbar-after").prepend("<button class='btn btn-info' onclick='ModalObra();' id='btnDocumento'><i class='fa fa-plus'></i> Agregar documento</button>");
     $('select.select2:not(.normal)').each(function () {
@@ -58,8 +58,8 @@ var catalogo_actual = {
     lugar_nacimiento: "",
     fecha_nacimientoS: "",
     observaciones: "",
-    tipo: 0,
-    tipo_nombre: "",
+    tipo_solicitud: 0,
+    tipo_solicitud_nombre: "",
 }
 function ModalNuevo() {
     catalogo_actual = {
@@ -84,6 +84,8 @@ function ModalNuevo() {
         lugar_nacimiento: "",
         fecha_nacimientoS: "",
         observaciones: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_nombre: "",
     };
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -141,6 +143,8 @@ function Editar(id) {
         lugar_nacimiento: "",
         fecha_nacimientoS: "",
         observaciones: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_nombre: "",
     };
     var sended_url = services_url + "SelectObraById";
     $.ajax({
@@ -214,16 +218,16 @@ function Confirma01() {
         //alert(catalogo_actual.id);
         if (catalogo_actual.id == 0) {
             switch (tipo_obra) {
-                case "Artisticas": tipo = 7; tipo_nombre = "Obra Artistica"; break;
-                case "Visuales": tipo = 8; tipo_nombre = "Obra Visual"; break;
-                case "Literarias": tipo = 9; tipo_nombre = "Obra Literaria"; break;
-                case "Auditivas": tipo = 10; tipo_nombre = "Obra Auditiva"; break;
-                case "Gráficas": tipo = 11; tipo_nombre = "Obra Gráfica"; break;
-                case "Tecnologicas": tipo = 12; tipo_nombre = "Obra Tecnológica"; break;
-                default: tipo = 0; tipo_nombre = ""; break;
+                case "Artisticas": tipo_solicitud = 7; tipo_solicitud_nombre = "Obra Artistica"; break;
+                case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Obra Visual"; break;
+                case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Obra Literaria"; break;
+                case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Obra Auditiva"; break;
+                case "Gráficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obra Gráfica"; break;
+                case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Obra Tecnológica"; break;
+                default: tipo_solicitud = 0; tipo_solicitud_nombre = ""; break;
             }
-            catalogo_actual.tipo = tipo;
-            catalogo_actual.tipo_nombre = tipo_nombre;
+            catalogo_actual.tipo_solicitud = tipo_solicitud;
+            catalogo_actual.tipo_solicitud_nombre = tipo_solicitud_nombre;
         }
         catalogo_actual.empresa = parseInt($("#uu_04 option:selected").val());
         catalogo_actual.empresa_nombre = $("#uu_04 option:selected").text();

@@ -38,7 +38,9 @@ var catalogo_actual = {
     tipo_nombre: "",
     pais_nombre: "",
     identificador: "",
-    fecha_usoS: ""
+    fecha_usoS: "",
+    tipo_solicitud: 0,
+    tipo_solicitud_nombre:""
 }
 
 function ModalNuevo() {
@@ -56,7 +58,9 @@ function ModalNuevo() {
         tipo_nombre: "",
         pais_nombre: "",
         identificador: "",
-        fecha_usoS: ""
+        fecha_usoS: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_nombre:""
     };
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -100,7 +104,9 @@ function Editar(id) {
         tipo_nombre: "",
         pais_nombre: "",
         identificador: "",
-        fecha_usoS: ""
+        fecha_usoS: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_nombre:""
     };
     var sended_url = services_url + "SelectAvisoComercialById";
     $.ajax({
@@ -156,6 +162,10 @@ function Editar(id) {
 
 function Confirma01() {
     if (ValidaUpdate01() != false) {
+        if (catalogo_actual.id == 0) {
+            catalogo_actual.tipo_solicitud = 2;
+            catalogo_actual.tipo_solicitud_nombre = "Aviso Comercial";
+        }
         catalogo_actual.empresa = parseInt($("#uu_04 option:selected").val());
         catalogo_actual.empresa_nombre = $("#uu_04 option:selected").text();
         catalogo_actual.pais = parseInt($("#uu_05 option:selected").val());
@@ -164,6 +174,8 @@ function Confirma01() {
         catalogo_actual.productos = $("#uu_02").val();
         catalogo_actual.fecha_usoS = $("#uu_03").val();
         catalogo_actual.usuario = eu_lu.id;
+        catalogo_actual.tipo = parseInt($("#uu_06 option:selected").val());
+        catalogo_actual.tipo_nombre = $("#uu_06 option:selected").text();
 
         var sended_url = services_url + "AddAvisoComercial";
         if (catalogo_actual.id > 0) {
@@ -242,11 +254,11 @@ function ValidaUpdate01() {
         $("#uu_02_c").append("<p class='form-error'>El campo está vacio</p>");
         errores += 1;
     }
-    /*if (tipo <= 0) {
+    if (tipo <= 0) {
         $("#uu_06").addClass("control-error");
         $("#uu_06_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
-    }*/
+    }
 
     if (errores > 0) {
         flag = false;
@@ -415,6 +427,12 @@ function RemoverDropzone(uuid) {
     }
 }
 
-function Enviar(id) {
-    window.location = '/PI/RegistroMarca?propiedad=2&solicitud=' + id;
+function Enviar(id,tipo) {
+    var propiedad = 0;
+    if (parseInt(tipo) > 0) propiedad = parseInt(tipo);
+    if (propiedad > 0) {
+        window.location = '/PI/RegistroMarca?propiedad=' + propiedad + '&solicitud=' + id;
+    } else {
+        alert("Error al direccionar, intente nuevamente");
+    }
 }

@@ -46,6 +46,8 @@ var catalogo_actual = {
     curp: "",
     lugar_nacimiento: "",
     fecha_nacimientoS: "",
+    tipo_solicitud: 0,
+    tipo_solicitud_nombre:""
 }
 function ModalNuevo() {
     catalogo_actual = {
@@ -68,7 +70,9 @@ function ModalNuevo() {
         rfc: "",
         curp: "",
         lugar_nacimiento: "",
-        fecha_nacimientoS: ""
+        fecha_nacimientoS: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_nombre:""
     };
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -137,6 +141,8 @@ function Editar(id) {
         curp: "",
         lugar_nacimiento: "",
         fecha_nacimientoS: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_nombre:""
     };
     var sended_url = services_url + "SelectModeloUtilidadById";
     $.ajax({
@@ -209,8 +215,8 @@ function Editar(id) {
 function Confirma01() {
     if (ValidaUpdate01() != false) {
         if (catalogo_actual.id == 0) {
-            catalogo_actual.tipo = 5;
-            catalogo_actual.tipo_nombre = "Modelo Utilidad";
+            catalogo_actual.tipo_solicitud = 5;
+            catalogo_actual.tipo_solicitud_nombre = "Modelo Utilidad";
         }
         catalogo_actual.empresa = parseInt($("#uu_04 option:selected").val());
         catalogo_actual.empresa_nombre = $("#uu_04 option:selected").text();

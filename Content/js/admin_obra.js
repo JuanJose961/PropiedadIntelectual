@@ -1,6 +1,19 @@
 ﻿var muid = "";
 
 $(document).ready(function () {
+    //var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
+    //const urlParams = new URLSearchParams(url.search);
+    //var tipo_obra = urlParams.get('tipo');
+    //switch (tipo_obra) {
+    //    case "Artisticas": tipo_nombre = "Obra Artistica"; break;
+    //    case "Visuales": tipo_nombre = "Obra Visual"; break;
+    //    case "Literarias": tipo_nombre = "Obra Literaria"; break;
+    //    case "Auditivas": tipo_nombre = "Obra Auditiva"; break;
+    //    case "Gráficas": tipo_nombre = "Obra Gráfica"; break;
+    //    case "Tecnologicas": tipo_nombre = "Obra Tecnológica"; break;
+    //    default: tipo_nombre = "Obra"; break;
+    //}
+    //document.getElementById("titulobra").innerHTML = "" + tipo_nombre;
     $("#doc00c").hide();
     $("#tabla02 .dx-toolbar-after").prepend("<button class='btn btn-info' onclick='ModalObra();' id='btnDocumento'><i class='fa fa-plus'></i> Agregar documento</button>");
     $('select.select2:not(.normal)').each(function () {
@@ -45,6 +58,8 @@ var catalogo_actual = {
     lugar_nacimiento: "",
     fecha_nacimientoS: "",
     observaciones: "",
+    tipo: 0,
+    tipo_nombre: "",
 }
 function ModalNuevo() {
     catalogo_actual = {
@@ -191,6 +206,25 @@ function Editar(id) {
 
 function Confirma01() {
     if (ValidaUpdate01() != false) {
+        //const url = window.location.search;
+        //const urlParams = new URLSearchParams(url);
+        var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
+        const urlParams = new URLSearchParams(url.search);
+        var tipo_obra = urlParams.get('tipo');
+        //alert(catalogo_actual.id);
+        if (catalogo_actual.id == 0) {
+            switch (tipo_obra) {
+                case "Artisticas": tipo = 7; tipo_nombre = "Obra Artistica"; break;
+                case "Visuales": tipo = 8; tipo_nombre = "Obra Visual"; break;
+                case "Literarias": tipo = 9; tipo_nombre = "Obra Literaria"; break;
+                case "Auditivas": tipo = 10; tipo_nombre = "Obra Auditiva"; break;
+                case "Gráficas": tipo = 11; tipo_nombre = "Obra Gráfica"; break;
+                case "Tecnologicas": tipo = 12; tipo_nombre = "Obra Tecnológica"; break;
+                default: tipo = 0; tipo_nombre = ""; break;
+            }
+            catalogo_actual.tipo = tipo;
+            catalogo_actual.tipo_nombre = tipo_nombre;
+        }
         catalogo_actual.empresa = parseInt($("#uu_04 option:selected").val());
         catalogo_actual.empresa_nombre = $("#uu_04 option:selected").text();
         catalogo_actual.pais = parseInt($("#uu_05 option:selected").val());
@@ -509,6 +543,12 @@ function RemoverObra(uuid) {
     }
 }
 
-function Enviar(id) {
-    window.location = '/PI/RegistroMarca?propiedad=7&solicitud=' + id;
+function Enviar(id, tipo) {
+    var propiedad = 0;
+    if (parseInt(tipo) > 0) propiedad = parseInt(tipo);
+    if (propiedad > 0) {
+        window.location = '/PI/RegistroMarca?propiedad=' + propiedad + '&solicitud=' + id;
+    } else {
+        alert("Error al direccionar, intente nuevamente");
+    }
 }

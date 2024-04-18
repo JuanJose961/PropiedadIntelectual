@@ -6086,9 +6086,11 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[17];
+                SqlParameter[] @params = new SqlParameter[19];
 
                 int i = 0;
+                @params[i] = new SqlParameter("@tipo", modelo.tipo); i++;
+                @params[i] = new SqlParameter("@tipo_nombre", modelo.tipo_nombre); i++;
                 @params[i] = new SqlParameter("@empresa", modelo.empresa); i++;
                 @params[i] = new SqlParameter("@nombre_patente", modelo.nombre_patente); i++;
                 @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
@@ -6314,9 +6316,11 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[18];
+                SqlParameter[] @params = new SqlParameter[20];
 
                 int i = 0;
+                @params[i] = new SqlParameter("@tipo", modelo.tipo); i++;
+                @params[i] = new SqlParameter("@tipo_nombre", modelo.tipo_nombre); i++;
                 @params[i] = new SqlParameter("@empresa", modelo.empresa); i++;
                 @params[i] = new SqlParameter("@nombre_obra", modelo.nombre_obra); i++;
                 @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;

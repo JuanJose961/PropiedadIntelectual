@@ -75,7 +75,7 @@
 }
 <div class="subheader">
     <h1 class="subheader-title">
-        Obra
+        <div id="titulobra">Obra</div>
         <small>
         </small>
     </h1>
@@ -102,7 +102,7 @@
                                         </div>
                                         <% if (data.activo == true) { %>
                                         <div class="col-md-6">
-                                            <button type="button" class="dx-oc-link"  onclick="Enviar(<%- value %>)" title="Registrar Propiedad"><i class="fa fa-arrow-circle-right"></i></button>
+                                            <button type="button" class="dx-oc-link"  onclick="Enviar(<%- value %>, <%- data.tipo %>)" title="Registrar Propiedad"><i class="fa fa-arrow-circle-right"></i></button>
                                         </div>
                                         <% } %>
                                     </div>
@@ -120,6 +120,7 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("Nombre");
+                                columns.AddFor(m => m.tipo_nombre).Caption("Tipo de Obra");
                                 columns.AddFor(m => m.empresa_nombre).Caption("Empresa");
                             })
                             .ColumnAutoWidth(true)
@@ -232,7 +233,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_05_c">
-                                        <label for="uu_05">País</label>
+                                        <label for="uu_05">Paï¿½s</label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_05" autocomplete="off" style="width: 100%;" disabled>
                                             <option value="0" selected>Buscar</option>
                                             @foreach (Pais item in ViewBag.paises)
@@ -269,7 +270,7 @@
                                 <div class="dropzone-container" style="border-color:#dadada !important;">
                                     <form action="" class="dropzone" id="dz-documentos01" method="post" enctype="multipart/form-data">
                                         <input type="file" name="file" style="display:none;" />
-                                        <div class="dz-message" data-dz-message><span>Haz click aquí o arrastra aquí para cargar el documento</span></div>
+                                        <div class="dz-message" data-dz-message><span>Haz click aquï¿½ o arrastra aquï¿½ para cargar el documento</span></div>
                                     </form>
                                 </div>
                             </div>
@@ -342,7 +343,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <p>Se necesita confirmación para desactivar los datos de este registro</p>
+                        <p>Se necesita confirmaciï¿½n para desactivar los datos de este registro</p>
                     </div>
                 </div>
                 <div class="modal-footer red-border">

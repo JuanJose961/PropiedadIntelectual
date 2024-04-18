@@ -12,6 +12,7 @@ namespace GISMVC.Models
 {
     public class Obra
     {
+
         public int id { get; set; }
         public int empresa { get; set; }
         public string nombre_obra { get; set; }
@@ -36,6 +37,8 @@ namespace GISMVC.Models
         public string lugar_nacimiento { get; set; }
         public string observaciones { get; set; }
         public string fecha_nacimientoS { get; set; }
+        public int tipo { get; set; }
+        public string tipo_nombre { get; set; }
         public List<Archivo> obra { get; set; }
 
         public Obra()
@@ -64,6 +67,8 @@ namespace GISMVC.Models
             lugar_nacimiento = "";
             fecha_nacimientoS = "";
             observaciones = "";
+            tipo = 0;
+            tipo_nombre = "";
             obra = new List<Archivo>();
         }
 
@@ -176,6 +181,8 @@ namespace GISMVC.Models
                             item.curp = row[idx].ToString(); idx++;
                             item.lugar_nacimiento = row[idx].ToString(); idx++;
                             item.observaciones = row[idx].ToString(); idx++;
+                            item.tipo = Int32.Parse(row[idx].ToString()); idx++;
+                            item.tipo_nombre = row[idx].ToString(); idx++;
 
                             if (item.fecha_nacimiento.Year != 1969)
                             {

@@ -116,9 +116,9 @@ $(document).ready(function () {
             $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
         }
     } else {
-        solicitud_select = solicitudes.filter(i => i.tipo == propiedad & i.id == solicitud);
+        solicitud_select = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.id == solicitud);
         //alert(solicitud_select[0]);
-        solicitudes_disponibles = solicitudes.filter(i => i.tipo == propiedad);
+        solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad);
         $("#uu_021 option[value!=0]").remove();
         for (var i = 0; i < solicitudes_disponibles.length; i++) {
             $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
@@ -368,8 +368,9 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
     var val = parseInt($(this).val());
     //var columna = parseInt(val);
     console.log(val);
-    if (val > 7) { val = 7; }
-    var solicitudes_disponibles = solicitudes.filter(i => i.tipo == val);
+    //if (val > 7) { val = 7; }
+    //var solicitudes_disponibles = solicitudes.filter(i => i.tipo == val);
+    var solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == val);
     console.log(solicitudes_disponibles);
 
     $("#uu_021").select2("destroy");
@@ -540,7 +541,8 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
     var id = $("#id_registro").val();
     if (val > 0) {
         var tipo = parseInt($("#uu_02 option:selected").val());
-        var solicitud = solicitudes.filter(i => i.tipo == tipo & i.id == val);
+        //var solicitud = solicitudes.filter(i => i.tipo == tipo & i.id == val);
+        var solicitud = solicitudes.filter(i => i.tipo_solicitud == tipo & i.id == val);
         if (solicitud.length > 0) {
             var empresa = solicitud[0].empresa;
             var pais = solicitud[0].pais;

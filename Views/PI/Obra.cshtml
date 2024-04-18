@@ -107,6 +107,7 @@
                                         <% } %>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
+                                columns.AddFor(m => m.tipo_solicitud_nombre).Caption("Tipo de Obra");
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
                                     <div>

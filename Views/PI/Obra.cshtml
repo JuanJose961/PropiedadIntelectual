@@ -75,12 +75,12 @@
 }
 <div class="subheader">
     <h1 class="subheader-title">
-        <div id="titulobra">Obra</div>
+        <div id="titulobra">Obras</div>
         <small>
         </small>
     </h1>
 </div>
-
+<input type="hidden" name="tipo_obra" id="tipo_obra" value="0">
 <div class="row">
     <div class="col-md-12">
         <div class="panel ctm-panel" id="">
@@ -121,7 +121,6 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("Nombre");
-                                columns.AddFor(m => m.tipo_solicitud_nombre).Caption("Tipo de Obra");
                                 columns.AddFor(m => m.empresa_nombre).Caption("Empresa");
                             })
                             .ColumnAutoWidth(true)

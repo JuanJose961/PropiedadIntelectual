@@ -5,15 +5,17 @@ $(document).ready(function () {
     //const urlParams = new URLSearchParams(url.search);
     //var tipo_obra = urlParams.get('tipo');
     //switch (tipo_obra) {
-    //    case "Artisticas": tipo_solicitud_nombre = "Obra Artistica"; break;
-    //    case "Visuales": tipo_solicitud_nombre = "Obra Visual"; break;
-    //    case "Literarias": tipo_solicitud_nombre = "Obra Literaria"; break;
-    //    case "Auditivas": tipo_solicitud_nombre = "Obra Auditiva"; break;
-    //    case "Gráficas": tipo_solicitud_nombre = "Obra Gráfica"; break;
-    //    case "Tecnologicas": tipo_solicitud_nombre = "Obra Tecnológica"; break;
-    //    default: tipo_solicitud_nombre = "Obra"; break;
+    //    case "Artisticas": tipo_solicitud = 7; tipo_solicitud_nombre = "Obra Artistica"; break;
+    //    case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Obra Visual"; break;
+    //    case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Obra Literaria"; break;
+    //    case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Obra Auditiva"; break;
+    //    case "Gráficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obra Gráfica"; break;
+    //    case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Obra Tecnológica"; break;
+    //    default: tipo_solicitud = 0; tipo_solicitud_nombre = ""; break;
     //}
+    //document.getElementById("tipo_obra").value = tipo_solicitud;
     //document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;
+    //catalogo_actual.tipo_solicitud = tipo_solicitud;
     $("#doc00c").hide();
     $("#tabla02 .dx-toolbar-after").prepend("<button class='btn btn-info' onclick='ModalObra();' id='btnDocumento'><i class='fa fa-plus'></i> Agregar documento</button>");
     $('select.select2:not(.normal)').each(function () {

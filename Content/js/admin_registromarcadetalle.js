@@ -487,7 +487,7 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_25_l").innerHTML = "NA";
     }
 
-    if (val >6) {
+    if (val >7) {
         document.getElementById("btnGuardar").disabled = true;
     } else {
         document.getElementById("btnGuardar").disabled = false;

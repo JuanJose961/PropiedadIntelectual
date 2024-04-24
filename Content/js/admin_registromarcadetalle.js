@@ -487,11 +487,25 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_25_l").innerHTML = "NA";
     }
 
-    if (val >7) {
-        document.getElementById("btnGuardar").disabled = true;
+    if (val == 1 || val == 2 || val == 3 || val == 4) {
+        const contentString = "*";
+        document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia " + contentString.fontcolor("red");//persona que solicito la licencia
     } else {
-        document.getElementById("btnGuardar").disabled = false;
+        document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia";
     }
+
+    if (val == 1 || val == 2 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 8 || val == 9 || val == 10) {
+        const contentString = "*";
+        document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio " + contentString.fontcolor("red");//fecha de requerimiento del negocio
+    } else {
+        document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio";
+    }
+
+    //if (val >7) {
+    //    document.getElementById("btnGuardar").disabled = true;
+    //} else {
+    //    document.getElementById("btnGuardar").disabled = false;
+    //}
     /*$("#uu_021 option").removeAttr("disabled")
         .removeAttr("hidden");
     if (val == 0) {
@@ -600,6 +614,9 @@ function Validar() {
     var errores = 0;
     var flag = false;
 
+    var solicitud_tipo = $("#uu_02 option:selected").val();
+    var solicitud_tipo_desc = $("#uu_02 option:selected").text();
+
     var fecha_renovarS = $("#uu_29").val();
     var fecha_renovar_completoS = $("#uu_290").val();
     var fecha_instruccion_corresponsalS = $("#uu_30").val();
@@ -628,17 +645,23 @@ function Validar() {
     var fecha_instruccionesS = $("#uu_22").val();
     var fecha_requerimiento_completoS = $("#uu_210").val();
     var fecha_requerimientoS = $("#uu_21").val();
+    if (fecha_requerimientoS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10)) {
+        //$("#uu_06").addClass("control-error");
+        $("#uu_21_c").append("<p class='form-error'>El campo está vacío</p>");
+        errores += 1;
+        tab = '#tab05';
+    }
 
     var cesion = $("#uu_19 option:selected").val();
     var cesion_desc = $("#uu_19 option:selected").text();
     var solicitante_cesion = $("#uu_18").val();
     var solicitante_cesion_desc = $("#uu_18").val();
-    if(cesion <= 0) {
-        //$("#uu_19_c .select2-selection").addClass("control-error");
-        $("#uu_19_c").append("<p class='form-error'>Selecciona una opción válida</p>");
-        errores += 1;
-        tab = '#tab04';
-    }
+    //if(cesion <= 0) {
+    //    //$("#uu_19_c .select2-selection").addClass("control-error");
+    //    $("#uu_19_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //    tab = '#tab04';
+    //}
 
     if (solicitante_cesion == "") {
         //$("#uu_18").addClass("control-error");
@@ -651,22 +674,19 @@ function Validar() {
     var licencia_desc = $("#uu_17 option:selected").text();
     var solicitante_licencia = $("#uu_16").val();
     var solicitante_licencia_desc = $("#uu_16").val();
-    if (licencia <= 0) {
-        //$("#uu_17_c .select2-selection").addClass("control-error");
-        $("#uu_17_c").append("<p class='form-error'>Selecciona una opción válida</p>");
-        errores += 1;
-        tab = '#tab03';
-    }
+    //if (licencia <= 0) {
+    //    //$("#uu_17_c .select2-selection").addClass("control-error");
+    //    $("#uu_17_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //    tab = '#tab03';
+    //}
 
-    if (solicitante_licencia == "") {
+    if (solicitante_licencia == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4)) {
         //$("#uu_16").addClass("control-error");
         $("#uu_16_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
         tab = '#tab03';
     }
-
-    var solicitud_tipo = $("#uu_02 option:selected").val();
-    var solicitud_tipo_desc = $("#uu_02 option:selected").text();
 
     //var corresponsal = $("#uu_15 option:selected").val();
     var corresponsal_desc = $("#uu_15 option:selected").text();
@@ -683,12 +703,12 @@ function Validar() {
     //    errores += 1;
     //    tab = '#tab02';
     //}
-    if (despacho <= 0) {
-        //$("#uu_14_c .select2-selection").addClass("control-error");
-        $("#uu_14_c").append("<p class='form-error'>Selecciona una opción válida</p>");
-        errores += 1;
-        tab = '#tab02';
-    }
+    //if (despacho <= 0) {
+    //    //$("#uu_14_c .select2-selection").addClass("control-error");
+    //    $("#uu_14_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //    tab = '#tab02';
+    //}
     //if (autor_registro == "NA") {
     if (autor_registro <=0) {
         //$("#uu_13_c .select2-selection").addClass("control-error");
@@ -702,12 +722,12 @@ function Validar() {
         errores += 1;
         tab = '#tab02';
     }
-    if (no_solicitud == "") {
-        //$("#uu_11").addClass("control-error");
-        $("#uu_11_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab02';
-    }   
+    //if (no_solicitud == "") {
+    //    //$("#uu_11").addClass("control-error");
+    //    $("#uu_11_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab02';
+    //}   
 
     var uso = $("#uu_39 option:selected").val();
     var estatus = $("#uu_10 option:selected").val();
@@ -763,36 +783,36 @@ function Validar() {
         tab = '#tab01';
     }
     //if (fecha_concesionS == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 7 || solicitud_tipo == 8 || solicitud_tipo == 9 || solicitud_tipo == 10 || solicitud_tipo == 11 || solicitud_tipo == 12)) {
-    if (fecha_concesionS == "") {
-        //$("#uu_06").addClass("control-error");
-        $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
-    if (fecha_vencimientoS == "" && solicitud_tipo <= 6) {
-        //$("#uu_05").addClass("control-error");
-        $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
-    if (fecha_legalS == "") {
-        //$("#uu_04").addClass("control-error");
-        $("#uu_04_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
-    if (no_registro == "") {
-        //$("#uu_03").addClass("control-error");
-        $("#uu_03_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
-    if (empresa_anterior <= 0) {
-        //$("#uu_01_c .select2-selection").addClass("control-error");
-        $("#uu_01_c").append("<p class='form-error'>Selecciona una opción válida</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
+    //if (fecha_concesionS == "") {
+    //    //$("#uu_06").addClass("control-error");
+    //    $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
+    //if (fecha_vencimientoS == "" && solicitud_tipo <= 6) {
+    //    //$("#uu_05").addClass("control-error");
+    //    $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
+    //if (fecha_legalS == "") {
+    //    //$("#uu_04").addClass("control-error");
+    //    $("#uu_04_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
+    //if (no_registro == "") {
+    //    //$("#uu_03").addClass("control-error");
+    //    $("#uu_03_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
+    //if (empresa_anterior <= 0) {
+    //    //$("#uu_01_c .select2-selection").addClass("control-error");
+    //    $("#uu_01_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
     if (empresa <= 0) {
         //$("#uu_00_c .select2-selection").addClass("control-error");
         $("#uu_00_c").append("<p class='form-error'>Selecciona una opción válida</p>");
@@ -882,13 +902,21 @@ function Guardar() {
         var fecha_requerimiento_completoS = $("#uu_210").val();
         var fecha_requerimientoS = $("#uu_21").val();
 
-        var cesion = $("#uu_19 option:selected").val();
-        var cesion_desc = $("#uu_19 option:selected").text();
+        var cesion = 0;
+        var cesion_desc = "";
+        if (parseInt($("#uu_19 option:selected").val()) > 0) {
+            cesion = $("#uu_19 option:selected").val();
+            cesion_desc = $("#uu_19 option:selected").text();
+        }
         var solicitante_cesion = $("#uu_18").val();
         var solicitante_cesion_desc = $("#uu_18").val();
 
-        var licencia = $("#uu_17 option:selected").val();
-        var licencia_desc = $("#uu_17 option:selected").text();
+        var licencia = 0;
+        var licencia_desc = "";
+        if (parseInt($("#uu_17 option:selected").val()) > 0) {
+            licencia = $("#uu_17 option:selected").val();
+            licencia_desc = $("#uu_17 option:selected").text();
+        }
         var solicitante_licencia = $("#uu_16").val();
         var solicitante_licencia_desc = $("#uu_16").val();
 
@@ -901,8 +929,12 @@ function Guardar() {
             corresponsal = $("#uu_15 option:selected").val();
             corresponsal_desc = $("#uu_15 option:selected").text();
         }
-        var despacho = $("#uu_14 option:selected").val();
-        var despacho_desc = $("#uu_14 option:selected").text();
+        var despacho =0;
+        var despacho_desc = "";
+        if (parseInt($("#uu_14 option:selected").val()) > 0) {
+            despacho = $("#uu_14 option:selected").val();
+            despacho_desc = $("#uu_14 option:selected").text();
+        }
         var autor_registro = $("#uu_13 option:selected").val();
         var autor_registro_desc = $("#uu_13 option:selected").text();
         var tipo_registro_solicitud = 0;
@@ -914,7 +946,7 @@ function Guardar() {
         var no_solicitud = $("#uu_11").val()
         var uso = 0;
         var uso_desc = "";
-        if (solicitud_tipo == 1 || solicitud_tipo == 2) {
+        if (parseInt($("#uu_39 option:selected").val()) > 0 && (solicitud_tipo == 1 || solicitud_tipo == 2)) {
             uso = $("#uu_39 option:selected").val();
             uso_desc = $("#uu_39 option:selected").text();
         }
@@ -944,8 +976,12 @@ function Guardar() {
         var fecha_vencimientoS = $("#uu_05").val();
         var fecha_legalS = $("#uu_04").val();
         var no_registro = $("#uu_03").val();
-        var empresa_anterior = $("#uu_01 option:selected").val();
-        var empresa_anterior_desc = $("#uu_01 option:selected").text();
+        var empresa_anterior = 0;
+        var empresa_anterior_desc = "";
+        if (parseInt($("#uu_01 option:selected").val()) > 0) {
+            empresa_anterior = $("#uu_01 option:selected").val();
+            empresa_anterior_desc = $("#uu_01 option:selected").text();
+        }
         var empresa = $("#uu_00 option:selected").val();
         var empresa_desc = $("#uu_00 option:selected").text();
         var solicitud = $("#uu_021 option:selected").val();
@@ -960,7 +996,7 @@ function Guardar() {
         }
         var tipo_pago = 0;
         var tipo_pago_desc = "";
-        if (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
+        if (parseInt($("#uu_34 option:selected").val()) > 0 && (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6)) {
             tipo_pago = $("#uu_34 option:selected").val();
             tipo_pago_desc = $("#uu_34 option:selected").text();
         }

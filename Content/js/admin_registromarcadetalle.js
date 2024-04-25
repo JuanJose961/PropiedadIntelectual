@@ -110,15 +110,15 @@ $(document).ready(function () {
     var solicitudes_disponibles = null;
     if (propiedad==null) {
         propiedad = 1;
-        solicitudes_disponibles = solicitudes.filter(i => i.tipo == propiedad);
+        solicitudes_disponibles = solicitudes.filter(i => i.tipo == propiedad & i.aplicado==0);
         $("#uu_021 option[value!=0]").remove();
         for (var i = 0; i < solicitudes_disponibles.length; i++) {
             $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
         }
     } else {
-        solicitud_select = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.id == solicitud);
+        solicitud_select = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.id == solicitud & i.aplicado==0);
         //alert(solicitud_select[0]);
-        solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad);
+        solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.aplicado==0);
         $("#uu_021 option[value!=0]").remove();
         for (var i = 0; i < solicitudes_disponibles.length; i++) {
             $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
@@ -127,7 +127,7 @@ $(document).ready(function () {
         //$("#uu_02").val(propiedad).trigger("change");
         setTimeout(function () {
             //$("#uu_021").val(solicitud).trigger("change");
-            if (solicitud_select[0] != undefined) CheckIfOptionExists("#uu_021", solicitud, solicitud_select[0].nombre, true, true);
+            if (solicitud_select[0] != undefined) CheckIfOptionExists("#uu_021", solicitud_select[0].id, solicitud_select[0].nombre, true, true);
         }, 500);
     }
 
@@ -370,7 +370,7 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
     console.log(val);
     //if (val > 7) { val = 7; }
     //var solicitudes_disponibles = solicitudes.filter(i => i.tipo == val);
-    var solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == val);
+    var solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == val & i.aplicado==0);
     console.log(solicitudes_disponibles);
 
     $("#uu_021").select2("destroy");

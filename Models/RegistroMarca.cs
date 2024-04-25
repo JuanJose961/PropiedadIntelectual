@@ -27,8 +27,9 @@ namespace GISMVC.Models
         public int pais { get; set; } = 0;
         public int tipo { get; set; } = 0;
         public int tipo_solicitud { get; set; } = 0;
+        public int aplicado { get; set; } = 0;
 
-        public Solicitud(int _id, string _nombre, int _empresa, int _pais, int _tipo, string _usuario,int _tipo_solicitud)
+        public Solicitud(int _id, string _nombre, int _empresa, int _pais, int _tipo, string _usuario,int _tipo_solicitud, int _aplicado)
         {
             id = _id;
             nombre = _nombre;
@@ -37,6 +38,7 @@ namespace GISMVC.Models
             tipo = _tipo;
             usuario = _usuario;
             tipo_solicitud = _tipo_solicitud;
+            aplicado = _aplicado;
         }
         public static List<Solicitud> ListMarcaToSolicitud(List<Marca> lista)
         {
@@ -46,7 +48,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 1, item.usuario,item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 1, item.usuario,item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }
@@ -64,7 +66,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 2, item.usuario, item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 2, item.usuario, item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }
@@ -82,7 +84,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 3, item.usuario, item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 3, item.usuario, item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }
@@ -100,7 +102,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 4, item.usuario, item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 4, item.usuario, item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }
@@ -118,7 +120,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 5, item.usuario, item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 5, item.usuario, item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }
@@ -136,7 +138,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 6, item.usuario, item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 6, item.usuario, item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }
@@ -154,7 +156,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 7, item.usuario, item.tipo_solicitud);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 7, item.usuario, item.tipo_solicitud, item.aplicado);
                     list.Add(solicitud);
                 }
             }

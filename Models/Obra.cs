@@ -39,6 +39,7 @@ namespace GISMVC.Models
         public string fecha_nacimientoS { get; set; }
         public int tipo_solicitud { get; set; }
         public string tipo_solicitud_nombre { get; set; }
+        public int aplicado { get; set; }
         public List<Archivo> obra { get; set; }
 
         public Obra()
@@ -69,6 +70,7 @@ namespace GISMVC.Models
             observaciones = "";
             tipo_solicitud = 0;
             tipo_solicitud_nombre = "";
+            aplicado = 0;
             obra = new List<Archivo>();
         }
 
@@ -183,6 +185,7 @@ namespace GISMVC.Models
                             item.observaciones = row[idx].ToString(); idx++;
                             item.tipo_solicitud = Int32.Parse(row[idx].ToString()); idx++;
                             item.tipo_solicitud_nombre = row[idx].ToString(); idx++;
+                            item.aplicado = Int32.Parse(row[idx].ToString()); idx++;
 
                             if (item.fecha_nacimiento.Year != 1969)
                             {

@@ -32,6 +32,7 @@ namespace GISMVC.Models
         public string usuario_nombre { get; set; } = "";
         public int tipo_solicitud { get; set; }
         public string tipo_solicitud_nombre { get; set; }
+        public int aplicado { get; set; }
         public List<Archivo> anexos { get; set; }
 
         public Marca()
@@ -55,6 +56,7 @@ namespace GISMVC.Models
             fecha_usoS = "";
             tipo_solicitud = 0;
             tipo_solicitud_nombre = "";
+            aplicado = 0;
             anexos = new List<Archivo>();
         }
 
@@ -157,6 +159,7 @@ namespace GISMVC.Models
                             //item.fecha_usoS = row[idx].ToString(); idx++;
                             item.tipo_solicitud = Int32.Parse(row[idx].ToString()); idx++;
                             item.tipo_solicitud_nombre = row[idx].ToString(); idx++;
+                            item.aplicado = Int32.Parse(row[idx].ToString()); idx++;
 
                             if (item.fecha_uso.Year != 1969)
                             {

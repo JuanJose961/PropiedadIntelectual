@@ -100,7 +100,7 @@
                                         <div class="col-md-6">
                                         <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)" title="Editar"><i class="fa fa-edit"></i></button>
                                         </div>
-                                        <% if (data.aplicado == false) { %>
+                                        <% if (data.activo==true && data.aplicado == false) { %>
                                         <div class="col-md-6">
                                             <button type="button" class="dx-oc-link"  onclick="Enviar(<%- value %>, <%- data.tipo_solicitud %>)" title="Registrar Propiedad"><i class="fa fa-arrow-circle-right"></i></button>
                                         </div>
@@ -111,17 +111,11 @@
                                     <% if (data.activo == false) { %>
                                     <div>
                                         <span class="dx-active-off"></span>
-                                        <% if (data.aplicado == false) { %>
-                                        <span class="dx-active-mid"></span>
-                                        <% } %>
                                         <%- value %>
                                     </div>
                                     <% } else { %>
                                     <div>
                                         <span class="dx-active-on"></span>
-                                        <% if (data.aplicado == false) { %>
-                                        <span class="dx-active-mid"></span>
-                                        <% } %>
                                         <%- value %>
                                     </div>
                                     <% } %>

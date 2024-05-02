@@ -107,7 +107,7 @@
                                         <% } %>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
-                                columns.AddFor(m => m.tipo_solicitud_nombre).Caption("Tipo de Obra");
+                                columns.AddFor(m => m.tipo_solicitud_nombre).Caption("TIPO DE OBRA");
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
                                     <div>
@@ -120,8 +120,8 @@
                                         <%- value %>
                                     </div>
                                     <% } %>
-                                </text>).Caption("Nombre");
-                                columns.AddFor(m => m.empresa_nombre).Caption("Empresa");
+                                </text>).Caption("NOMBRE");
+                                columns.AddFor(m => m.empresa_nombre).Caption("EMPRESA");
                             })
                             .ColumnAutoWidth(true)
                             .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
@@ -378,6 +378,23 @@
         var START_DATE = "@Html.Raw(DateTime.Now.AddDays(-60).ToString("yyyy-MM-dd"))";
         var START_DATE = "@Html.Raw(DateTime.Now.AddDays(-60).ToString("yyyy-MM-dd"))";
         var END_DATE = "@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd"))";
+        
+        var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
+        const urlParams = new URLSearchParams(url.search);
+        var tipo_obra = urlParams.get('tipo');
+        //alert(tipo_obra);
+        switch (tipo_obra) {
+            case "Artisticas": tipo_solicitud = 7; tipo_solicitud_nombre = "Obras Artisticas"; break;
+            case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Obras Visuales"; break;
+            case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Obras Literarias"; break;
+            case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Obras Auditivas"; break;
+            case "Gráficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obras Gráficas"; break;
+            case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Obras Tecnológicas"; break;
+            default: tipo_solicitud = 0; tipo_solicitud_nombre = "Obras"; break;
+        }
+        document.getElementById("tipo_obra").value = tipo_solicitud;
+        //document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;
+        document.getElementById("titulobra").innerHTML = "Obras";
 
         var valReqData = {
             ID: 0,
@@ -385,7 +402,8 @@
             END_DATE: END_DATE,
             USUARIO: "@ViewBag.ul.id",
             STR: "aa",
-            TIPO: "Obra"
+            TIPO: "Obra",
+            TIPO_SOLICITUD: tipo_solicitud
         };
         var tipo = valReqData.TIPO;
         function buildValidationSuggestionRequest() {

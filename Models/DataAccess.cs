@@ -6279,7 +6279,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_Obra(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_Obra(out DataTable dt, out String msgError, int tipo_solicitud, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -6287,11 +6287,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@tipo_solicitud", tipo_solicitud);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_Obra", @params, out dt, 1000))
                 {

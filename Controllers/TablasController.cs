@@ -22,6 +22,7 @@ namespace GISMVC.Controllers
             public string START_DATE { get; set; }
             public string END_DATE { get; set; }
             public string TIPO { get; set; }
+            public int TIPO_SOLICITUD { get; set; }
         }
 
         [System.Web.Http.HttpGet]
@@ -90,7 +91,7 @@ namespace GISMVC.Controllers
                     ocl = ModeloIndustrial.Get();
                     break;
                 case "Obra":
-                    ocl = Obra.Get();
+                    ocl = Obra.Get(parametros.TIPO_SOLICITUD);
                     break;
                 case "RegistroMarca":
                     ocl = RegistroMarca.Get();

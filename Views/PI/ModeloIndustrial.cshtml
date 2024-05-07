@@ -100,7 +100,7 @@
                                         <div class="col-md-6">
                                             <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)" title="Editar"><i class="fa fa-edit"></i></button>
                                         </div>
-                                        <% if (data.activo == true && data.aplicado==false) { %>
+                                        <% if (data.activo == true && data.atendido==false) { %>
                                         <div class="col-md-6">
                                             <button type="button" class="dx-oc-link"  onclick="Enviar(<%- value %>, <%- data.tipo_solicitud %>)" title="Registrar Propiedad"><i class="fa fa-arrow-circle-right"></i></button>
                                         </div>
@@ -157,7 +157,7 @@
                             <a class="nav-link" data-toggle="tab" href="#tab02" role="tab"><i class="fa fa-file mr-1"></i> Dibujo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab04" role="tab"><i class="fa fa-file mr-1"></i> Explicación</a>
+                            <a class="nav-link" data-toggle="tab" href="#tab04" role="tab"><i class="fa fa-file mr-1"></i> Explicaciï¿½n</a>
                         </li>
                     </ul>
                     <div class="tab-content border border-top-0 p-3">
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_05_c">
-                                        <label for="uu_05">País</label>
+                                        <label for="uu_05">Paï¿½s</label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_05" autocomplete="off" style="width: 100%;" disabled>
                                             <option value="0" selected>Buscar</option>
                                             @foreach (Pais item in ViewBag.paises)
@@ -195,7 +195,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_03_c">
-                                        <label>Explicación</label>
+                                        <label>Explicaciï¿½n</label>
                                         <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@
                                 <div class="dropzone-container" style="border-color:#dadada !important;">
                                     <form action="" class="dropzone" id="dz-documentos01" method="post" enctype="multipart/form-data">
                                         <input type="file" name="file" style="display:none;" />
-                                        <div class="dz-message" data-dz-message><span>Haz click aquí o arrastra aquí para cargar el documento</span></div>
+                                        <div class="dz-message" data-dz-message><span>Haz click aquï¿½ o arrastra aquï¿½ para cargar el documento</span></div>
                                     </form>
                                 </div>
                             </div>
@@ -319,7 +319,7 @@
                                 <div class="dropzone-container" style="border-color:#dadada !important;">
                                     <form action="" class="dropzone" id="dz-documentos02" method="post" enctype="multipart/form-data">
                                         <input type="file" name="file" style="display:none;" />
-                                        <div class="dz-message" data-dz-message><span>Haz click aquí o arrastra aquí para cargar el documento</span></div>
+                                        <div class="dz-message" data-dz-message><span>Haz click aquï¿½ o arrastra aquï¿½ para cargar el documento</span></div>
                                     </form>
                                 </div>
                             </div>
@@ -392,7 +392,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <p>Se necesita confirmación para desactivar los datos de este registro</p>
+                        <p>Se necesita confirmaciï¿½n para desactivar los datos de este registro</p>
                     </div>
                 </div>
                 <div class="modal-footer red-border">

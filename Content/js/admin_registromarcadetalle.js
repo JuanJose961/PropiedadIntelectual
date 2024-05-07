@@ -362,6 +362,80 @@ $(document).ready(function () {
     if (mainid > 0) {
         SelectRegistroMarca(mainid);
     }
+
+    if (propiedad == 1 || propiedad == 2) {
+        document.getElementById("uu_07_a").style.display = "block"//clase
+        document.getElementById("uu_12_a").style.display = "block"//tipo registro(pestaña en registro)
+        document.getElementById("uu_26_a").style.display = "block"//fecha comprobacion uso
+        document.getElementById("uu_260_a").style.display = "block"//completo fecha comprobacion uso
+        document.getElementById("uu_39_a").style.display = "block"//uso
+    } else {
+        document.getElementById("uu_07_a").style.display = "none"
+        document.getElementById("uu_12_a").style.display = "none"
+        document.getElementById("uu_26_a").style.display = "none"
+        document.getElementById("uu_260_a").style.display = "none"
+        document.getElementById("uu_39_a").style.display = "none"
+    }
+    
+    if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
+        document.getElementById("uu_34_a").style.display = "block";//tipo pago
+        document.getElementById("uu_35_a").style.display = "block";//prioridad
+        document.getElementById("uu_36_a").style.display = "block";//fecha vencimiento prioridad
+        document.getElementById("uu_37_a").style.display = "block";//fecha quinquenio anualidad
+        document.getElementById("contrato_a").style.display = "block"//contrato archivo
+        document.getElementById("reivindicacion_a").style.display = "block"//reivindicacion archivo
+    } else {
+        document.getElementById("uu_34_a").style.display = "none";
+        document.getElementById("uu_35_a").style.display = "none";
+        document.getElementById("uu_36_a").style.display = "none";
+        document.getElementById("uu_37_a").style.display = "none";
+        document.getElementById("contrato_a").style.display = "none"
+        document.getElementById("reivindicacion_a").style.display = "none"
+    }
+    
+    if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
+        document.getElementById("uu_05_a").style.display = "block"//fecha vencimiento
+        document.getElementById("uu_09_a").style.display = "block"//pais
+        document.getElementById("uu_24_a").style.display = "block"//fecha solicitud de busqueda
+        document.getElementById("uu_240_a").style.display = "block"//completo fecha solicitud de busqueda
+        document.getElementById("uu_25_a").style.display = "block"//fecha informacion de resultados al negocio
+        document.getElementById("uu_250_a").style.display = "block"//completo fecha informacion de resultados al negocio
+    } else {
+        document.getElementById("uu_05_a").style.display = "none"
+        document.getElementById("uu_09_a").style.display = "none"
+        document.getElementById("uu_24_a").style.display = "none"
+        document.getElementById("uu_240_a").style.display = "none"
+        document.getElementById("uu_25_a").style.display = "none"
+        document.getElementById("uu_250_a").style.display = "none"
+    }
+
+    if (propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10 || propiedad == 11 || propiedad == 12) {
+        document.getElementById("uu_38_a").style.display = "block"//autor
+        document.getElementById("carta_a").style.display = "block"//carta archivo
+    } else {
+        document.getElementById("uu_38_a").style.display = "none"
+        document.getElementById("carta_a").style.display = "none"
+    }
+    
+    if (propiedad == 1 || propiedad == 2) {
+        document.getElementById("uu_25_l").innerHTML = "Información de resultados al negocio";
+    } else{
+        document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
+    }
+    
+    if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4) {
+        const contentString = "*";
+        document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia " + contentString.fontcolor("red");//persona que solicito la licencia
+    } else {
+        document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia";
+    }
+
+    if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6 || propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10) {
+        const contentString = "*";
+        document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio " + contentString.fontcolor("red");//fecha de requerimiento del negocio
+    } else {
+        document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio";
+    }
 });
 
 $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
@@ -481,11 +555,9 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
 
     if (val == 1 || val == 2) {
         document.getElementById("uu_25_l").innerHTML = "Información de resultados al negocio";
-    } else if (val == 3 || val == 4 || val == 5 || val == 6) {
+    } else {
         document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
-    } else { 
-        document.getElementById("uu_25_l").innerHTML = "NA";
-    }
+    } 
 
     if (val == 1 || val == 2 || val == 3 || val == 4) {
         const contentString = "*";

@@ -388,13 +388,12 @@
             case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Obras Visuales"; break;
             case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Obras Literarias"; break;
             case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Obras Auditivas"; break;
-            case "Gráficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obras Gráficas"; break;
-            case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Obras Tecnológicas"; break;
+            case "Graficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obras Gr&aacute;ficas"; break;
+            case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Obras Tecnol&oacute;gicas"; break;
             default: tipo_solicitud = 0; tipo_solicitud_nombre = "Obras"; break;
         }
         document.getElementById("tipo_obra").value = tipo_solicitud;
-        //document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;
-        document.getElementById("titulobra").innerHTML = "Obras";
+        document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;
 
         var valReqData = {
             ID: 0,

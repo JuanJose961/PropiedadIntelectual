@@ -110,7 +110,7 @@ $(document).ready(function () {
     var solicitudes_disponibles = null;
     if (propiedad==null) {
         propiedad = 1;
-        solicitudes_disponibles = solicitudes.filter(i => i.tipo == propiedad & i.activo==1 & i.atendido==0);
+        solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.activo==1 & i.atendido==0);
         $("#uu_021 option[value!=0]").remove();
         for (var i = 0; i < solicitudes_disponibles.length; i++) {
             $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");

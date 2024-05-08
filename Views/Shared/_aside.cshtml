@@ -51,13 +51,23 @@
     </div>
     <nav id="js-primary-nav" class="primary-nav" role="navigation">
         <ul id="js-nav-menu" class="nav-menu">
+            @if (accesos.pi)
+            {
+                <li class="" data-filter-tags="Inicio Portal Propiedad Intelectual">
+                    @*<a href="~/PI/Index" title="Inicio" data-filter-tags="Inicio Portal Propiedad Intelectual">*@
+                    <a href="~/Admin" title="Inicio" data-filter-tags="Inicio Portal Propiedad Intelectual">
+                        <i class='fa fa-home'></i>
+                        <span class="nav-link-text" data-i18n="Inicio Portal Propiedad Intelectual">Inicio</span>
+                    </a>
+                </li>
+            }
             @if (accesos.administracion)
             {
                 if (accesos.adm_usuarios)
                 {
                     <li class="">
                         <a href="#" title="Usuarios" data-filter-tags="Usuarios">
-                            <i class='fa fa-plus-circle'></i>
+                            <i class='fa fa-user'></i>
                             <span class="nav-link-text" data-i18n="Usuarios">Usuarios</span>
                         </a>
                         <ul>
@@ -66,35 +76,36 @@
                                     <span class="nav-link-text" data-i18n="Usuarios">Usuarios</span>
                                 </a>
                             </li>
+                            @if (accesos.adm_roles)
+                            {
+                                <li class="">
+                                    <a href="~/Administracion/Roles" title="Roles" data-filter-tags="Roles">
+                                        <span class="nav-link-text" data-i18n="Roles">Roles</span>
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </li>
                 }
-                if (accesos.adm_roles)
-                {
-                    <li class="">
-                        <a href="#" title="Roles" data-filter-tags="Roles">
-                            <i class='fa fa-plus-circle'></i>
-                            <span class="nav-link-text" data-i18n="Roles">Roles</span>
-                        </a>
-                        <ul>
-                            <li class="">
-                                <a href="~/Administracion/Roles" title="Roles" data-filter-tags="Roles">
-                                    <span class="nav-link-text" data-i18n="Roles">Roles</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                }
+                @*if (accesos.adm_roles)
+            {
+                <li class="">
+                    <a href="#" title="Roles" data-filter-tags="Roles">
+                        <i class='fa fa-plus-circle'></i>
+                        <span class="nav-link-text" data-i18n="Roles">Roles</span>
+                    </a>
+                    <ul>
+                        <li class="">
+                            <a href="~/Administracion/Roles" title="Roles" data-filter-tags="Roles">
+                                <span class="nav-link-text" data-i18n="Roles">Roles</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }*@
             }
             @if (accesos.pi)
             {
-
-                <li class="" data-filter-tags="Inicio Portal Propiedad Intelectual">
-                    <a href="~/PI/Index" title="Usuarios" data-filter-tags="Inicio Portal Propiedad Intelectual">
-                        <i class='fa fa-home'></i>
-                        <span class="nav-link-text" data-i18n="Inicio Portal Propiedad Intelectual">Inicio</span>
-                    </a>
-                </li>
                 if (accesos.pi_catalogos)
                 {
                     <li class="">
@@ -195,7 +206,7 @@
 
                     <li class="">
                         <a href="#" title="Propiedad Industrial" data-filter-tags="Formatos Propiedad Industrial">
-                            <i class='fa fa-list'></i>
+                            <i class='fa fa-file-alt'></i>
                             <span class="nav-link-text" data-i18n="Formatos Propiedad Industrial">Formatos P. Industrial</span>
                         </a>
                         <ul>
@@ -256,7 +267,7 @@
 
                     <li class="">
                         <a href="#" title="Propiedad Intelectual" data-filter-tags="Formatos Propiedad Intelectual">
-                            <i class='fa fa-list'></i>
+                            <i class='fa fa-file'></i>
                             <span class="nav-link-text" data-i18n="Formatos Propiedad Intelectual">Formatos P. Intelectual</span>
                         </a>
                         <ul>
@@ -336,152 +347,152 @@
 
             @*
 
-            @if (usuario.roles.id != "e4aacdfd-3425-42de-9ac5-7e0bcdf177c3" &&
-                usuario.roles.id != "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d")
-            {
+        @if (usuario.roles.id != "e4aacdfd-3425-42de-9ac5-7e0bcdf177c3" &&
+            usuario.roles.id != "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d")
+        {
 
-                <li class="" data-filter-tags="Inicio">
-                    <a href="~/Admin" title="Inicio" data-filter-tags="Inicio">
-                        <i class='fa fa-home'></i>
-                        <span class="nav-link-text" data-i18n="Branch 1">Inicio</span>
+            <li class="" data-filter-tags="Inicio">
+                <a href="~/Admin" title="Inicio" data-filter-tags="Inicio">
+                    <i class='fa fa-home'></i>
+                    <span class="nav-link-text" data-i18n="Branch 1">Inicio</span>
+                </a>
+            </li>
+            if (usuario.roles.id == "8566d71d-72f0-489d-92d4-410804d82e60")
+            {
+                <li class="">
+                    <a href="#" title="Administración" data-filter-tags="Administración">
+                        <i class='fa fa-cogs'></i>
+                        <span class="nav-link-text" data-i18n="Branch 1">Administración</span>
                     </a>
+                    <ul>
+                        <li class="">
+                            <a href="~/Admin/Roles" title="Roles" data-filter-tags="Roles">
+                                <span class="nav-link-text" data-i18n="Roles">Roles</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/Usuarios" title="Usuarios" data-filter-tags="Usuarios">
+                                <span class="nav-link-text" data-i18n="Usuarios">Usuarios</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                if (usuario.roles.id == "8566d71d-72f0-489d-92d4-410804d82e60")
-                {
+            }
+            <li class="">
+                <a href="#" title="Contratos" data-filter-tags="Contratos">
+                    <i class='fa fa-pencil-alt'></i>
+                    <span class="nav-link-text" data-i18n="Contratos">Solicitud de contrato</span>
+                </a>
+                <ul>
                     <li class="">
-                        <a href="#" title="Administración" data-filter-tags="Administración">
-                            <i class='fa fa-cogs'></i>
-                            <span class="nav-link-text" data-i18n="Branch 1">Administración</span>
+                        <a href="~/Admin/Contratos" title="Ver contratos" data-filter-tags="Ver contratos">
+                            <span class="nav-link-text" data-i18n="Ver contratos">Ver contratos</span>
                         </a>
-                        <ul>
-                            <li class="">
-                                <a href="~/Admin/Roles" title="Roles" data-filter-tags="Roles">
-                                    <span class="nav-link-text" data-i18n="Roles">Roles</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="~/Admin/Usuarios" title="Usuarios" data-filter-tags="Usuarios">
-                                    <span class="nav-link-text" data-i18n="Usuarios">Usuarios</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                }
-                <li class="">
-                    <a href="#" title="Contratos" data-filter-tags="Contratos">
-                        <i class='fa fa-pencil-alt'></i>
-                        <span class="nav-link-text" data-i18n="Contratos">Solicitud de contrato</span>
-                    </a>
-                    <ul>
+
+                    @if (usuario.roles.id != "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d")
+                    {
                         <li class="">
-                            <a href="~/Admin/Contratos" title="Ver contratos" data-filter-tags="Ver contratos">
-                                <span class="nav-link-text" data-i18n="Ver contratos">Ver contratos</span>
+                            <a href="~/Admin/Contrato" title="Nueva solicitud" data-filter-tags="Nueva solicitud">
+                                <span class="nav-link-text" data-i18n="Nueva solicitud">Nueva solicitud</span>
                             </a>
                         </li>
-
-                        @if (usuario.roles.id != "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d")
-                        {
-                            <li class="">
-                                <a href="~/Admin/Contrato" title="Nueva solicitud" data-filter-tags="Nueva solicitud">
-                                    <span class="nav-link-text" data-i18n="Nueva solicitud">Nueva solicitud</span>
-                                </a>
-                            </li>
-                        }
-                        <li class="">
-                            <a href="javascript:void(0);" title="Modelo de contrato" data-filter-tags="Modelo de contrato">
-                                <span class="nav-link-text" data-i18n="Modelo de contrato">Modelo de contrato</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="javascript:void(0);" title="Manual de usuario" data-filter-tags="Manual de usuario">
-                                <span class="nav-link-text" data-i18n="Manual de usuario">Manual de usuario</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            }
-            else
-            {
+                    }
+                    <li class="">
+                        <a href="javascript:void(0);" title="Modelo de contrato" data-filter-tags="Modelo de contrato">
+                            <span class="nav-link-text" data-i18n="Modelo de contrato">Modelo de contrato</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:void(0);" title="Manual de usuario" data-filter-tags="Manual de usuario">
+                            <span class="nav-link-text" data-i18n="Manual de usuario">Manual de usuario</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+        else
+        {
 
 
 
 
-                <li class="">
-                    <a href="#" title="Otros" data-filter-tags="Otros">
-                        <i class='fa fa-plus-circle'></i>
-                        <span class="nav-link-text" data-i18n="Otros">Otros</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="~/PI/RecordatorioPI" title="Recordatorios" data-filter-tags="Recordatorios">
-                                <span class="nav-link-text" data-i18n="Recordatorios">Recordatorios</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="">
+                <a href="#" title="Otros" data-filter-tags="Otros">
+                    <i class='fa fa-plus-circle'></i>
+                    <span class="nav-link-text" data-i18n="Otros">Otros</span>
+                </a>
+                <ul>
+                    <li class="">
+                        <a href="~/PI/RecordatorioPI" title="Recordatorios" data-filter-tags="Recordatorios">
+                            <span class="nav-link-text" data-i18n="Recordatorios">Recordatorios</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
 
-                <li class="">
-                    <a href="#" title="Reportes" data-filter-tags="Reportes">
-                        <i class='fa fa-plus-circle'></i>
-                        <span class="nav-link-text" data-i18n="Otros">Reportes</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
-                                <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="">
+                <a href="#" title="Reportes" data-filter-tags="Reportes">
+                    <i class='fa fa-plus-circle'></i>
+                    <span class="nav-link-text" data-i18n="Otros">Reportes</span>
+                </a>
+                <ul>
+                    <li class="">
+                        <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
+                            <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
-                <li class="">
-                    <a href="#" title="Reportes" data-filter-tags="Reportes">
-                        <i class='fa fa-plus-circle'></i>
-                        <span class="nav-link-text" data-i18n="Otros">Reportes</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
-                                <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="">
+                <a href="#" title="Reportes" data-filter-tags="Reportes">
+                    <i class='fa fa-plus-circle'></i>
+                    <span class="nav-link-text" data-i18n="Otros">Reportes</span>
+                </a>
+                <ul>
+                    <li class="">
+                        <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
+                            <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="">
-                    <a href="#" title="Formatos" data-filter-tags="Formatos">
-                        <i class='fa fa-plus-circle'></i>
-                        <span class="nav-link-text" data-i18n="Formatos">Formatos</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
-                                <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="">
+                <a href="#" title="Formatos" data-filter-tags="Formatos">
+                    <i class='fa fa-plus-circle'></i>
+                    <span class="nav-link-text" data-i18n="Formatos">Formatos</span>
+                </a>
+                <ul>
+                    <li class="">
+                        <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
+                            <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li class="">
-                    <a href="#" title="Política" data-filter-tags="Política">
-                        <i class='fa fa-plus-circle'></i>
-                        <span class="nav-link-text" data-i18n="Política">Política</span>
-                    </a>
-                    <ul>
-                        <li class="">
-                            <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
-                                <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <li class="">
+                <a href="#" title="Política" data-filter-tags="Política">
+                    <i class='fa fa-plus-circle'></i>
+                    <span class="nav-link-text" data-i18n="Política">Política</span>
+                </a>
+                <ul>
+                    <li class="">
+                        <a href="~/PI/PENDIENTE" title="PENDIENTE" data-filter-tags="PENDIENTE">
+                            <span class="nav-link-text" data-i18n="PENDIENTE">PENDIENTE</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
 
-            }
+        }
 
             *@
         </ul>

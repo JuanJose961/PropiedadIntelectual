@@ -435,6 +435,14 @@ $(document).ready(function () {
     $("#cartal").hide();
     if (mainid > 0) {
         SelectRegistroMarca(mainid);
+        document.getElementById("uu_comen_a0").style.display = "block"//comentarios a
+        document.getElementById("uu_comen_a1").style.display = "block"//comentarios a
+        document.getElementById("uu_comen_a2").style.display = "block"//comentarios a
+        document.getElementById("uu_comen_a3").style.display = "block"//comentarios a
+        document.getElementById("uu_comen_b0").style.display = "block"//cemnetarios b
+        document.getElementById("uu_comen_b1").style.display = "block"//cemnetarios b
+        document.getElementById("uu_comen_b2").style.display = "block"//cemnetarios b
+        document.getElementById("uu_comen_b3").style.display = "block"//cemnetarios b
     }
 });
 

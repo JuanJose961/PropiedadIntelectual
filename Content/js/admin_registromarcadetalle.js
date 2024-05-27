@@ -127,7 +127,10 @@ $(document).ready(function () {
         //$("#uu_02").val(propiedad).trigger("change");
         setTimeout(function () {
             //$("#uu_021").val(solicitud).trigger("change");
-            if (solicitud_select[0] != undefined) CheckIfOptionExists("#uu_021", solicitud_select[0].id, solicitud_select[0].nombre, true, true);
+            if (solicitud_select[0] != undefined) {
+                CheckIfOptionExists("#uu_021", solicitud_select[0].id, solicitud_select[0].nombre, true, true);
+                document.getElementById("uu_022").value = solicitud_select[0].nombre;
+            }
         }, 500);
 
         if (propiedad == 1 || propiedad == 2) {
@@ -190,12 +193,12 @@ $(document).ready(function () {
             document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
         }
 
-        if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4) {
+        /*if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4) {
             const contentString = "*";
             document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia " + contentString.fontcolor("red");//persona que solicito la licencia
         } else {
             document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia";
-        }
+        }*/
 
         if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6 || propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10) {
             const contentString = "*";
@@ -436,16 +439,22 @@ $(document).ready(function () {
     if (mainid > 0) {
         SelectRegistroMarca(mainid);
         document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial e Intelectual";//titulo registro marca
-        document.getElementById("uu_comen_a0").style.display = "block"//comentarios a
-        document.getElementById("uu_comen_a1").style.display = "block"//comentarios a
-        document.getElementById("uu_comen_a2").style.display = "block"//comentarios a
-        document.getElementById("uu_comen_a3").style.display = "block"//comentarios a
-        document.getElementById("uu_comen_b0").style.display = "block"//cemnetarios b
-        document.getElementById("uu_comen_b1").style.display = "block"//cemnetarios b
-        document.getElementById("uu_comen_b2").style.display = "block"//cemnetarios b
-        document.getElementById("uu_comen_b3").style.display = "block"//cemnetarios b
+        document.getElementById("lic_0_c").style.display = "block"//licencia
+        document.getElementById("lic_1_c").style.display = "block"//licencia
+        document.getElementById("lic_2_c").style.display = "block"//licencia
+        document.getElementById("lic_3_c").style.display = "block"//licencia
+        //document.getElementById("uu_comen_a2").style.display = "block"//comentarios a
+        //document.getElementById("uu_comen_a3").style.display = "block"//comentarios a
+        //document.getElementById("uu_comen_b0").style.display = "block"//cemnetarios b
+        //document.getElementById("uu_comen_b1").style.display = "block"//cemnetarios b
+        //document.getElementById("uu_comen_b2").style.display = "block"//cemnetarios b
+        //document.getElementById("uu_comen_b3").style.display = "block"//cemnetarios b
     } else {
         document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial e Intelectual";//titulo registro marca
+        document.getElementById("lic_0_c").style.display = "none"//licencia
+        document.getElementById("lic_1_c").style.display = "none"//licencia
+        document.getElementById("lic_2_c").style.display = "none"//licencia
+        document.getElementById("lic_3_c").style.display = "none"//licencia
     }
 });
 
@@ -570,12 +579,12 @@ $(document).on("change", "#uu_02", function (event) { //tipo_solicitud
         document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
     } 
 
-    if (val == 1 || val == 2 || val == 3 || val == 4) {
+    /*if (val == 1 || val == 2 || val == 3 || val == 4) {
         const contentString = "*";
         document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia " + contentString.fontcolor("red");//persona que solicito la licencia
     } else {
         document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia";
-    }
+    }*/
 
     if (val == 1 || val == 2 || val == 3 || val == 4 || val == 5 || val == 6 || val == 7 || val == 8 || val == 9 || val == 10) {
         const contentString = "*";
@@ -640,6 +649,7 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
         var tipo = parseInt($("#uu_02 option:selected").val());
         //var solicitud = solicitudes.filter(i => i.tipo == tipo & i.id == val);
         var solicitud = solicitudes.filter(i => i.tipo_solicitud == tipo & i.id == val);
+        document.getElementById("uu_022").value = solicitud[0].nombre; //nombre
         if (solicitud.length > 0) {
             var empresa = solicitud[0].empresa;
             var pais = solicitud[0].pais;
@@ -680,7 +690,6 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
             $("#uu_13").val(0).trigger("change");
         }
     } else {
-
         $("#uu_00").val(0).trigger("change");
         $("#uu_09").val(0).trigger("change");
         $("#uu_13").val(0).trigger("change");
@@ -746,12 +755,12 @@ function Validar() {
     //    tab = '#tab04';
     //}
 
-    if (solicitante_cesion == "") {
-        //$("#uu_18").addClass("control-error");
-        $("#uu_18_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab04';
-    }
+    //if (solicitante_cesion == "") {
+    //    //$("#uu_18").addClass("control-error");
+    //    $("#uu_18_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab04';
+    //}
 
     var licencia = $("#uu_17 option:selected").val();
     var licencia_desc = $("#uu_17 option:selected").text();
@@ -764,12 +773,12 @@ function Validar() {
     //    tab = '#tab03';
     //}
 
-    if (solicitante_licencia == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4)) {
-        //$("#uu_16").addClass("control-error");
-        $("#uu_16_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab03';
-    }
+    //if (solicitante_licencia == "" && (solicitud_tipo == 1 || solicitud_tipo == 2 || solicitud_tipo == 3 || solicitud_tipo == 4)) {
+    //    //$("#uu_16").addClass("control-error");
+    //    $("#uu_16_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab03';
+    //}
 
     //var corresponsal = $("#uu_15 option:selected").val();
     var corresponsal_desc = $("#uu_15 option:selected").text();
@@ -908,12 +917,12 @@ function Validar() {
         errores += 1;
         tab = '#tab01';
     }
-    if (solicitud <= 0) {
-        //$("#uu_021_c .select2-selection").addClass("control-error");
-        $("#uu_021_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-        tab = '#tab01';
-    }
+    //if (solicitud <= 0) {
+    //    //$("#uu_021_c .select2-selection").addClass("control-error");
+    //    $("#uu_021_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //    tab = '#tab01';
+    //}
     if (nombre == "") {
         //$("#uu_04").addClass("control-error");
         $("#uu_022_c").append("<p class='form-error'>El campo está vacío</p>");
@@ -1443,7 +1452,9 @@ function SelectRegistroMarca(id) {
 
                     setTimeout(function () {
                         document.getElementById("id_registro").value = registro.id;
-                        CheckIfOptionExists("#uu_021", registro.solicitud, registro.solicitud_desc, true, true);
+                        var solicitud_select = solicitudes.filter(i => i.tipo == registro.solicitud_tipo & i.id == registro.solicitud);
+                        //alert(solicitud_select[0].id);
+                        if (solicitud_select[0].id >0) CheckIfOptionExists("#uu_021", registro.solicitud, registro.solicitud_desc, true, true);
                     }, 500);
                     //--------------------
                     CheckIfOptionExists("#uu_00", registro.empresa, registro.empresa_desc, true, true);

@@ -121,6 +121,7 @@
                                     <% } %>
                                 </text>).Caption("Nombre");
                                 columns.AddFor(m => m.empresa_nombre).Caption("Empresa");
+                                columns.AddFor(m => m.pais_nombre).Caption("Pais");
                             })
                             .ColumnAutoWidth(true)
                             .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
@@ -157,7 +158,7 @@
                             <a class="nav-link" data-toggle="tab" href="#tab02" role="tab"><i class="fa fa-file mr-1"></i> Dibujo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tab04" role="tab"><i class="fa fa-file mr-1"></i> Explicaci�n</a>
+                            <a class="nav-link" data-toggle="tab" href="#tab04" role="tab"><i class="fa fa-file mr-1"></i> Explicaci&oacute;n</a>
                         </li>
                     </ul>
                     <div class="tab-content border border-top-0 p-3">
@@ -183,7 +184,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_05_c">
-                                        <label for="uu_05">Pa�s</label>
+                                        <label for="uu_05">Pa&iacute;s</label>
                                         <select class="select2 form-control input-sm custom-select" id="uu_05" autocomplete="off" style="width: 100%;" disabled>
                                             <option value="0" selected>Buscar</option>
                                             @foreach (Pais item in ViewBag.paises)
@@ -195,7 +196,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_03_c">
-                                        <label>Explicaci�n</label>
+                                        <label>Explicaci&oacute;n</label>
                                         <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
                                     </div>
                                 </div>

@@ -917,7 +917,7 @@ namespace GISMVC.Models
                             if (res.fecha_concesion_workflow_completo.Year > 1969)
                                 res.fecha_concesion_workflow_completoS = res.fecha_concesion_workflow_completo.ToString("dd/MM/yyyyy");
 
-                            res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString()));
+                            res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tipo="+tipo_registro;
                             list.Add(res);
                         }
                     }

@@ -29,6 +29,7 @@ namespace GISMVC.Models
         public int tipo_solicitud { get; set; } = 0;
         public int activo { get; set; } = 0;
         public int atendido { get; set; } = 0;
+        public int tipo_registro { get; set; }
 
         public Solicitud(int _id, string _nombre, int _empresa, int _pais, int _tipo, string _usuario,int _tipo_solicitud, int _activo, int _atendido)
         {
@@ -755,7 +756,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<RegistroMarca> Get(int activo = -1)
+        public static List<RegistroMarca> Get(int tipo_registro = 0, int activo = -1)
         {
             List<RegistroMarca> list = new List<RegistroMarca>();
             Funciones funcion = new Funciones();
@@ -765,7 +766,7 @@ namespace GISMVC.Models
 
                 var dt = new System.Data.DataTable();
                 var errores = "";
-                if (da.Cons_proc_RegistroMarca(out dt, out errores, activo))
+                if (da.Cons_proc_RegistroMarca(out dt, out errores, tipo_registro, activo))
                 {
                     if (dt.Rows.Count > 0)
                     {

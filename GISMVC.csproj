@@ -626,6 +626,7 @@
     <Content Include="Content\js\admin_contratos.js" />
     <Content Include="Content\js\admin_out_login.js" />
     <Content Include="Content\js\admin_contrato.js" />
+    <Content Include="Content\js\admin_registromarcas.js" />
     <Content Include="Content\js\admin_roles_general.js" />
     <Content Include="Content\js\admin_roles.js" />
     <Content Include="Content\js\admin_out.js" />

@@ -108,14 +108,37 @@ $(document).ready(function () {
     //alert(propiedad);
     var solicitud_select = "";
     var solicitudes_disponibles = null;
-    if (propiedad==null) {
-        propiedad = 1;
+    var tipo_descrip = "Marca";
+    if (propiedad == null) {
+       //opiedad = 1;
+        //alert(propiedad);
+        var tipo_registro = parseInt(JSON.parse(url.searchParams.get('tipo'))); //Capturar el valor
+        //ert(tipo_registro);
+        if (tipo_registro == 0) {
+            propiedad = 1;
+        } else {
+            switch (tipo_registro) {
+                case 1: propiedad = 1; tipo_descrip = "Marca"; break;
+                case 2: propiedad = 2; tipo_descrip = "Aviso Comercial"; break;
+                case 3: propiedad = 3; tipo_descrip = "Patente"; break;
+                case 4: propiedad = 4; tipo_descrip = "Diseño Industrial"; break;
+                case 5: propiedad = 5; tipo_descrip = "Modelo Utilidad"; break;
+                case 6: propiedad = 6; tipo_descrip = "Modelo Industrial"; break;
+                default: propiedad = 1; tipo_descrip = "Marca"; break;
+            }
+        }
+        document.getElementById("tipo_registromarca").value = tipo_registro;
         solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.activo==1 & i.atendido==0);
         $("#uu_021 option[value!=0]").remove();
         for (var i = 0; i < solicitudes_disponibles.length; i++) {
             $("#uu_021").append("<option value='" + solicitudes_disponibles[i].id + "' tipo='" + solicitudes_disponibles[i].tipo + "'>" + solicitudes_disponibles[i].nombre + "</option>");
         }
+
+        setTimeout(function () {
+              CheckIfOptionExists("#uu_02", tipo_registro, tipo_descrip, true, true);
+        }, 500);
     } else {
+        document.getElementById("tipo_registromarca").value = propiedad;
         solicitud_select = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.id == solicitud & i.activo == 1 & i.atendido==0);
         //alert(solicitud_select[0]);
         solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.activo == 1 & i.atendido==0);
@@ -132,80 +155,80 @@ $(document).ready(function () {
                 document.getElementById("uu_022").value = solicitud_select[0].nombre;
             }
         }, 500);
+    }
 
-        if (propiedad == 1 || propiedad == 2) {
-            document.getElementById("uu_07_a").style.display = "block"//clase
-            document.getElementById("uu_12_a").style.display = "block"//tipo registro(pestaña en registro)
-            document.getElementById("uu_26_a").style.display = "block"//fecha comprobacion uso
-            document.getElementById("uu_260_a").style.display = "block"//completo fecha comprobacion uso
-            document.getElementById("uu_39_a").style.display = "block"//uso
-        } else {
-            document.getElementById("uu_07_a").style.display = "none"
-            document.getElementById("uu_12_a").style.display = "none"
-            document.getElementById("uu_26_a").style.display = "none"
-            document.getElementById("uu_260_a").style.display = "none"
-            document.getElementById("uu_39_a").style.display = "none"
-        }
+    if (propiedad == 1 || propiedad == 2) {
+        document.getElementById("uu_07_a").style.display = "block"//clase
+        document.getElementById("uu_12_a").style.display = "block"//tipo registro(pestaña en registro)
+        document.getElementById("uu_26_a").style.display = "block"//fecha comprobacion uso
+        document.getElementById("uu_260_a").style.display = "block"//completo fecha comprobacion uso
+        document.getElementById("uu_39_a").style.display = "block"//uso
+    } else {
+        document.getElementById("uu_07_a").style.display = "none"
+        document.getElementById("uu_12_a").style.display = "none"
+        document.getElementById("uu_26_a").style.display = "none"
+        document.getElementById("uu_260_a").style.display = "none"
+        document.getElementById("uu_39_a").style.display = "none"
+    }
 
-        if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
-            document.getElementById("uu_34_a").style.display = "block";//tipo pago
-            document.getElementById("uu_35_a").style.display = "block";//prioridad
-            document.getElementById("uu_36_a").style.display = "block";//fecha vencimiento prioridad
-            document.getElementById("uu_37_a").style.display = "block";//fecha quinquenio anualidad
-            document.getElementById("contrato_a").style.display = "block"//contrato archivo
-            document.getElementById("reivindicacion_a").style.display = "block"//reivindicacion archivo
-        } else {
-            document.getElementById("uu_34_a").style.display = "none";
-            document.getElementById("uu_35_a").style.display = "none";
-            document.getElementById("uu_36_a").style.display = "none";
-            document.getElementById("uu_37_a").style.display = "none";
-            document.getElementById("contrato_a").style.display = "none"
-            document.getElementById("reivindicacion_a").style.display = "none"
-        }
+    if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
+        document.getElementById("uu_34_a").style.display = "block";//tipo pago
+        document.getElementById("uu_35_a").style.display = "block";//prioridad
+        document.getElementById("uu_36_a").style.display = "block";//fecha vencimiento prioridad
+        document.getElementById("uu_37_a").style.display = "block";//fecha quinquenio anualidad
+        document.getElementById("contrato_a").style.display = "block"//contrato archivo
+        document.getElementById("reivindicacion_a").style.display = "block"//reivindicacion archivo
+    } else {
+        document.getElementById("uu_34_a").style.display = "none";
+        document.getElementById("uu_35_a").style.display = "none";
+        document.getElementById("uu_36_a").style.display = "none";
+        document.getElementById("uu_37_a").style.display = "none";
+        document.getElementById("contrato_a").style.display = "none"
+        document.getElementById("reivindicacion_a").style.display = "none"
+    }
 
-        if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
-            document.getElementById("uu_05_a").style.display = "block"//fecha vencimiento
-            document.getElementById("uu_09_a").style.display = "block"//pais
-            document.getElementById("uu_24_a").style.display = "block"//fecha solicitud de busqueda
-            document.getElementById("uu_240_a").style.display = "block"//completo fecha solicitud de busqueda
-            document.getElementById("uu_25_a").style.display = "block"//fecha informacion de resultados al negocio
-            document.getElementById("uu_250_a").style.display = "block"//completo fecha informacion de resultados al negocio
-        } else {
-            document.getElementById("uu_05_a").style.display = "none"
-            document.getElementById("uu_09_a").style.display = "none"
-            document.getElementById("uu_24_a").style.display = "none"
-            document.getElementById("uu_240_a").style.display = "none"
-            document.getElementById("uu_25_a").style.display = "none"
-            document.getElementById("uu_250_a").style.display = "none"
-        }
+    if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
+        document.getElementById("uu_05_a").style.display = "block"//fecha vencimiento
+        document.getElementById("uu_09_a").style.display = "block"//pais
+        document.getElementById("uu_24_a").style.display = "block"//fecha solicitud de busqueda
+        document.getElementById("uu_240_a").style.display = "block"//completo fecha solicitud de busqueda
+        document.getElementById("uu_25_a").style.display = "block"//fecha informacion de resultados al negocio
+        document.getElementById("uu_250_a").style.display = "block"//completo fecha informacion de resultados al negocio
+    } else {
+        document.getElementById("uu_05_a").style.display = "none"
+        document.getElementById("uu_09_a").style.display = "none"
+        document.getElementById("uu_24_a").style.display = "none"
+        document.getElementById("uu_240_a").style.display = "none"
+        document.getElementById("uu_25_a").style.display = "none"
+        document.getElementById("uu_250_a").style.display = "none"
+    }
 
-        if (propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10 || propiedad == 11 || propiedad == 12) {
-            document.getElementById("uu_38_a").style.display = "block"//autor
-            document.getElementById("carta_a").style.display = "block"//carta archivo
-        } else {
-            document.getElementById("uu_38_a").style.display = "none"
-            document.getElementById("carta_a").style.display = "none"
-        }
+    if (propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10 || propiedad == 11 || propiedad == 12) {
+        document.getElementById("uu_38_a").style.display = "block"//autor
+        document.getElementById("carta_a").style.display = "block"//carta archivo
+    } else {
+        document.getElementById("uu_38_a").style.display = "none"
+        document.getElementById("carta_a").style.display = "none"
+    }
 
-        if (propiedad == 1 || propiedad == 2) {
-            document.getElementById("uu_25_l").innerHTML = "Información de resultados al negocio";
-        } else {
-            document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
-        }
+    if (propiedad == 1 || propiedad == 2) {
+        document.getElementById("uu_25_l").innerHTML = "Información de resultados al negocio";
+    } else {
+        document.getElementById("uu_25_l").innerHTML = "Información de resultados de la busqueda";
+    }
 
-        /*if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4) {
-            const contentString = "*";
-            document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia " + contentString.fontcolor("red");//persona que solicito la licencia
-        } else {
-            document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia";
-        }*/
+    /*if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4) {
+        const contentString = "*";
+        document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia " + contentString.fontcolor("red");//persona que solicito la licencia
+    } else {
+        document.getElementById("uu_16_l").innerHTML = "Persona que solicitó la licencia";
+    }*/
 
-        if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6 || propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10) {
-            const contentString = "*";
-            document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio " + contentString.fontcolor("red");//fecha de requerimiento del negocio
-        } else {
-            document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio";
-        }
+    if (propiedad == 1 || propiedad == 2 || propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6 || propiedad == 7 || propiedad == 8 || propiedad == 9 || propiedad == 10) {
+        const contentString = "*";
+        document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio " + contentString.fontcolor("red");//fecha de requerimiento del negocio
+    } else {
+        document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio";
     }
 
     if (eu_lu.role.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d") {
@@ -1308,8 +1331,10 @@ function Guardar() {
                             uploading_carta = false;
                             //console.log("no hay archivos solicitud");
                         }
+                        var tipourl = parseInt($("#tipo_registromarca").val());
+                        if (tipourl == 0) tipourl = 1;
                         setTimeout(function () {
-                            window.location = '/PI/RegistroMarcas';
+                            window.location = '/PI/RegistroMarcas?tipo=' + tipourl;
                         }, 2800);
                     }, 1500);
                 } else {
@@ -1363,8 +1388,10 @@ function GuardarVoBo() {
                         $("#alertModal .modal-spinner").hide();
                         $("#alertModal .form-group").append("<p class=''>Se han guardados los datos correctamente</p>");
                         $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-info"><i class="fa fa-check"></i> Ok</button>');
+                        var tipourl = parseInt($("#tipo_registromarca").val());
+                        if (tipourl == 0) tipourl = 1;
                         setTimeout(function () {
-                            window.location = '/PI/RegistroMarcas';
+                            window.location = '/PI/RegistroMarcas?tipo='+tipourl;
                         }, 2800);
                     }, 1500);
                 } else {
@@ -2359,8 +2386,10 @@ function ConfirmaRemoverRegistro() {
                 $("#removerModal .modal-spinner").hide();
                 $("#removerModal .btn-info").removeAttr("disabled");
                 var jsonResponse = response;
+                var tipourl = parseInt($("#tipo_registromarca").val());
+                if (tipourl == 0) tipourl = 1;
                 if (jsonResponse.flag != false) {
-                    location.href = hosturl + "PI/RegistroMarcas";
+                    location.href = hosturl + "PI/RegistroMarcas?tipo="+tipourl;
                 } else {
                     for (var i = 0; i < jsonResponse.errors.length; i++) {
                         $("#removerModal .form-group").append("<p class='form-error'>" + jsonResponse.errors[i] + "</p>");
@@ -2377,4 +2406,10 @@ function ConfirmaRemoverRegistro() {
             $("#removerModal .btn-info").removeAttr("disabled");
         }
     });
+}
+
+function Cancelar() {
+    var tipourl = parseInt($("#tipo_registromarca").val());
+    if (tipourl == 0) tipourl = 1;
+    location.href = hosturl + "PI/RegistroMarcas?tipo=" + tipourl;
 }

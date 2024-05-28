@@ -459,11 +459,12 @@ $(document).ready(function () {
     $("#contratol").hide();
     $("#reivindicacionl").hide();
     $("#cartal").hide();
+    $("#licencial").hide();
     if (mainid > 0) {
         SelectRegistroMarca(mainid);
         document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial e Intelectual";//titulo registro marca
         document.getElementById("lic_0_c").style.display = "block"//licencia
-        document.getElementById("lic_1_c").style.display = "block"//licencia
+        document.getElementById("licencia_a").style.display = "block"//licencia
         document.getElementById("lic_2_c").style.display = "block"//licencia
         document.getElementById("lic_3_c").style.display = "block"//licencia
         //document.getElementById("uu_comen_a2").style.display = "block"//comentarios a
@@ -475,7 +476,7 @@ $(document).ready(function () {
     } else {
         document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial e Intelectual";//titulo registro marca
         document.getElementById("lic_0_c").style.display = "none"//licencia
-        document.getElementById("lic_1_c").style.display = "none"//licencia
+        document.getElementById("licencia_a").style.display = "none"//licencia
         document.getElementById("lic_2_c").style.display = "none"//licencia
         document.getElementById("lic_3_c").style.display = "none"//licencia
     }
@@ -1679,6 +1680,27 @@ function SelectRegistroMarca(id) {
                     $("#alertModal .modal-spinner").hide();
                     $("#alertModal .form-group").append("<p class=''>Se han guardados los datos corretamente</p>");
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-info"><i class="fa fa-check"></i> Ok</button>');
+
+                    licencia_select = licencias.filter(i => i.id == registro.licencia);
+                    //alert(licencia_select[0]);
+                    if (licencia_select[0] != undefined) {
+                        let date = new Date(licencia_select[0].fecha_vencimiento)
+                        let day = `${(date.getDate())}`.padStart(2, '0');
+                        let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
+                        let year = date.getFullYear();
+                        //$("#lic_02").val(new Date(licencia_select[0].fecha_vencimiento).toLocaleDateString('en-us', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' }));
+                        $("#lic_02").val(`${day}/${month}/${year}`);
+                        //res.solicitud_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("solicitud"));
+                        //$("#titulol").attr("href", registro.titulo_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + registro.titulo_nombre_original + ')').show();
+                        $("#lic_03").val(licencia_select[0].observaciones);
+                        if (licencia_select[0].contrato_nombre != "")
+                        //$("#licencial").attr("href", registro.contrato_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar (' + licencia_select[0].contrato_nombre + ')').show();
+                            $("#licencial").attr("href", "Content/PI/RegistroMarca/"+licencia_select[0].contrato_nombre).html('<i class="fa fa-download"></i> Descargar (' + licencia_select[0].contrato_nombre + ')').show();
+                    } else {
+                        $("#lic_02").val('');
+                        $("#lic_03").val('');
+                        $("#licencial").attr("href", "").hide();
+                    }
 
                     $("#alertModal").modal("hide");
                 } else {

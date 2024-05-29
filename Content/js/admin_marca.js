@@ -434,7 +434,7 @@ function Enviar(id, tipo) {
     var propiedad = 0;
     if (parseInt(tipo) > 0) propiedad = parseInt(tipo);
     if (propiedad > 0) {
-        window.location = '/PI/RegistroMarca?propiedad=' + propiedad + '&solicitud=' + id;
+        window.location = hosturl+'PI/RegistroMarca?propiedad=' + propiedad + '&solicitud=' + id;
     } else {
         alert("Error al direccionar, intente nuevamente");
     }

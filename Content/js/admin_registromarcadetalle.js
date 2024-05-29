@@ -1335,7 +1335,7 @@ function Guardar() {
                         var tipourl = parseInt($("#tipo_registromarca").val());
                         if (tipourl == 0) tipourl = 1;
                         setTimeout(function () {
-                            window.location = '/PI/RegistroMarcas?tipo=' + tipourl;
+                            window.location = hosturl+'PI/RegistroMarcas?tipo=' + tipourl;
                         }, 2800);
                     }, 1500);
                 } else {
@@ -1392,7 +1392,7 @@ function GuardarVoBo() {
                         var tipourl = parseInt($("#tipo_registromarca").val());
                         if (tipourl == 0) tipourl = 1;
                         setTimeout(function () {
-                            window.location = '/PI/RegistroMarcas?tipo='+tipourl;
+                            window.location = hosturl+'PI/RegistroMarcas?tipo='+tipourl;
                         }, 2800);
                     }, 1500);
                 } else {
@@ -1682,7 +1682,8 @@ function SelectRegistroMarca(id) {
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-info"><i class="fa fa-check"></i> Ok</button>');
 
                     licencia_select = licencias.filter(i => i.id == registro.licencia);
-                    //alert(licencia_select[0]);
+                    //var perma = hosturl + "PI/ConvenioLicenciaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(licencia_select[0].id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
+                    //alert(perma);
                     if (licencia_select[0] != undefined) {
                         let date = new Date(licencia_select[0].fecha_vencimiento)
                         let day = `${(date.getDate())}`.padStart(2, '0');

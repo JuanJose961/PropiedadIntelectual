@@ -453,6 +453,12 @@ namespace GISMVC.Models
         public string carta_nombre_original { get; set; } = "";
         public string carta_url { get; set; } = "";
         public string carta_permalink { get; set; } = "";
+        public int idlic { get; set; } = 0;
+        public string licencia_fecha_vencimientoS { get; set; } = "";
+        public DateTime licencia_fecha_vencimiento { get; set; }= DateTime.Parse("1969-01-01");
+        public string licencia_observaciones { get; set; } = "";
+        public string licencia_nombre_original { get; set; } = "";
+        public string licencia_permalink { get; set; } = "";
         public RegistroMarca()
         {
         }
@@ -519,6 +525,41 @@ namespace GISMVC.Models
                         res.solicitante_licencia_desc = row[idx].ToString(); idx++;
                         res.licencia = Int32.Parse(row[idx].ToString()); idx++;
                         res.licencia_desc = row[idx].ToString(); idx++;
+                        if (res.licencia >= 1)
+                        {
+                            DataAccess da2 = new DataAccess();
+                            var dt2 = new System.Data.DataTable();
+                            var errores2 = "";
+                            if (da2.Cons_ConvenioLicenciaById(res.licencia, out dt2, out errores2))
+                            {
+                                if (dt2.Rows.Count > 0)
+                                {
+                                    int idx2 = 0;
+                                    var row2 = dt2.Rows[0];
+
+                                    res.idlic = Int32.Parse(row2[idx2].ToString()); idx2++;
+                                    idx2 = 21;
+                                    res.licencia_fecha_vencimiento = DateTime.Parse(row2[idx2].ToString()); idx2++;
+                                    idx2 = 22;
+                                    res.licencia_observaciones = row2[idx2].ToString(); idx2++;
+                                    idx2 = 57;
+                                    res.licencia_nombre_original= row2[idx2].ToString(); idx2++;
+                                }
+                                else
+                                {
+                                    res.idlic = 0;
+                                    res.licencia_fecha_vencimiento = DateTime.Parse("1969-01-01");
+                                    res.licencia_observaciones = "";
+                                    res.licencia_nombre_original = "";
+
+                                }
+                            }
+                        }
+                        if (res.licencia_desc != "" && res.licencia_nombre_original != "")
+                        {
+                            //res.licencia_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
+                            res.licencia_permalink= Utility.hosturl + "PI/ConvenioLicenciaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
+                        }
                         res.solicitante_cesion = row[idx].ToString(); idx++;
                         res.solicitante_cesion_desc = row[idx].ToString(); idx++;
                         res.cesion = Int32.Parse(row[idx].ToString()); idx++;

@@ -542,7 +542,7 @@ namespace GISMVC.Models
                                     res.licencia_fecha_vencimiento = DateTime.Parse(row2[idx2].ToString()); idx2++;
                                     idx2 = 22;
                                     res.licencia_observaciones = row2[idx2].ToString(); idx2++;
-                                    idx2 = 57;
+                                    idx2 = 59;
                                     res.licencia_nombre_original= row2[idx2].ToString(); idx2++;
                                 }
                                 else
@@ -558,7 +558,8 @@ namespace GISMVC.Models
                         if (res.licencia_desc != "" && res.licencia_nombre_original != "")
                         {
                             //res.licencia_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
-                            res.licencia_permalink= Utility.hosturl + "PI/ConvenioLicenciaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
+                            //res.licencia_permalink= Utility.hosturl + "PI/ConvenioLicenciaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("contrato"));
+                            res.licencia_permalink = Utility.hosturl + "PI/ConvenioLicenciaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("oficio"));
                         }
                         res.solicitante_cesion = row[idx].ToString(); idx++;
                         res.solicitante_cesion_desc = row[idx].ToString(); idx++;

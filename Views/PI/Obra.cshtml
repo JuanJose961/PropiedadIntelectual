@@ -385,13 +385,13 @@
         var tipo_obra = urlParams.get('tipo');
         //alert(tipo_obra);
         switch (tipo_obra) {
-            case "Artisticas": tipo_solicitud = 7; tipo_solicitud_nombre = "Formatos Obras Artisticas"; break;
-            case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Formatos Obras Visuales"; break;
-            case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Formatos Obras Literarias"; break;
-            case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Formatos Obras Auditivas"; break;
-            case "Graficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Formatos Obras Gr&aacute;ficas"; break;
-            case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Formatos Obras Tecnol&oacute;gicas"; break;
-            default: tipo_solicitud = 0; tipo_solicitud_nombre = "Formatos Obras"; break;
+            case "Artisticas": tipo_solicitud = 7; tipo_solicitud_nombre = "Nuevo Formato Obras Artisticas"; break;
+            case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Nuevo Formato Obras Visuales"; break;
+            case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Nuevo Formato Obras Literarias"; break;
+            case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Nuevo Formato Obras Auditivas"; break;
+            case "Graficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Nuevo Formato Obras Gr&aacute;ficas"; break;
+            case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Nuevo Formato Obras Tecnol&oacute;gicas"; break;
+            default: tipo_solicitud = 0; tipo_solicitud_nombre = "Nuevo Formato Obras"; break;
         }
         document.getElementById("tipo_obra").value = tipo_solicitud;
         document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;

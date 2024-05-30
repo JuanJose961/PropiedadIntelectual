@@ -153,6 +153,7 @@ $(document).ready(function () {
             if (solicitud_select[0] != undefined) {
                 CheckIfOptionExists("#uu_021", solicitud_select[0].id, solicitud_select[0].nombre, true, true);
                 document.getElementById("uu_022").value = solicitud_select[0].nombre;
+                CheckIfOptionExists("#uu_10", 1, 'En búsqueda', true, true);
             }
         }, 500);
     }
@@ -1714,6 +1715,11 @@ function SelectRegistroMarca(id) {
                         $("#lic_03").val(registro.licencia_observaciones);
                         //alert(registro.idlic)
                         //alert(registro.licencia_nombre_original)
+                        //if (registro.licencia_permalink != "") {
+                        //    $("#licencial").attr("href", registro.licencia_permalink + "&us=" + registro.idlic).html('<i class="fa fa-download"></i> Descargar (' + registro.licencia_nombre_original + ')').show();
+                        //} else {
+                        //    $("#licencial").attr("href", "").hide();
+                        //}
                         if (registro.licencia_permalink != "") {
                             $("#licencial").attr("href", registro.licencia_permalink + "&us=" + registro.idlic).html('<i class="fa fa-download"></i> Descargar (' + registro.licencia_nombre_original + ')').show();
                         } else {

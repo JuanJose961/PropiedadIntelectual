@@ -169,13 +169,14 @@
                         <div class="col-md-4">
                             <div class="form-group" id="uu_06_c" style="">
                                 <label for="uu_06">Solicitante</label>
-                                <select class="select2 form-control input-sm custom-select" id="uu_06" autocomplete="off" style="width: 100%;" disabled>
-                                    <option value="NA" selected>Buscar</option>
-                                    @foreach (AspNetUsers item in ViewBag.usuarios)
-                                    {
-                                        <option value="@item.id">@item.nombre</option>
-                                    }
-                                </select>
+                                @*<select class="select2 form-control input-sm custom-select" id="uu_06" autocomplete="off" style="width: 100%;" disabled>
+            <option value="NA" selected>Buscar</option>
+            @foreach (AspNetUsers item in ViewBag.usuarios)
+            {
+                <option value="@item.id">@item.nombre</option>
+            }
+        </select>*@
+                                <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" />
                             </div>
                         </div>
                     </div>
@@ -325,42 +326,57 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group" id="solicitudt" style="margin:0 !important;">
-                                <label>Solicitud</label>
-                            </div>
-                            <div class="form-group" id="solicitudc">
-                                <a href="" id="solicitudl" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
-                                <label for="solicitud" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
-                                <input type="file" id="solicitud" style="display:none;" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group" id="oficiot" style="margin:0 !important;">
-                                <label>Oficio</label>
-                            </div>
-                            <div class="form-group" id="oficioc">
-                                <a href="" id="oficiol" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
-                                <label for="oficio" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
-                                <input type="file" id="oficio" style="display:none;" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group" id="contratot" style="margin:0 !important;">
-                                <label>Contrato</label>
-                            </div>
-                            <div class="form-group" id="contratoc">
-                                <a href="" id="contratol" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
-                                <label for="contrato" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
-                                <input type="file" id="contrato" style="display:none;" />
+                        <div class="col-md-6">
+                            <div class="form-group" id="uu_20_c">
+                                <label for="uu_20">Tipo de cesión</label>
+                                <select class="select2 form-control input-sm custom-select" id="uu_20" autocomplete="off" style="width: 100%;" disabled>
+                                    <option value="0" selected>Buscar</option>
+                                    <option value="1">Ordinaria</option>
+                                    <option value="2">Fusión</option>
+                                    <option value="3">Escisión</option>
+                                    <option value="4">Venta</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button class="btn" onclick="" id="eliminausuario">Eliminar</button>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group" id="solicitudt" style="margin:0 !important;">
+                                    <label>Solicitud</label>
+                                </div>
+                                <div class="form-group" id="solicitudc">
+                                    <a href="" id="solicitudl" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
+                                    <label for="solicitud" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
+                                    <input type="file" id="solicitud" style="display:none;" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" id="oficiot" style="margin:0 !important;">
+                                    <label>Oficio</label>
+                                </div>
+                                <div class="form-group" id="oficioc">
+                                    <a href="" id="oficiol" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
+                                    <label for="oficio" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
+                                    <input type="file" id="oficio" style="display:none;" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" id="contratot" style="margin:0 !important;">
+                                    <label>Contrato</label>
+                                </div>
+                                <div class="form-group" id="contratoc">
+                                    <a href="" id="contratol" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
+                                    <label for="contrato" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>
+                                    <input type="file" id="contrato" style="display:none;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn" onclick="" id="eliminausuario">Eliminar</button>
+                        </div>
+                        <div class="form-group errores"></div>
                     </div>
-                    <div class="form-group errores"></div>
-                </div>
                 <div class="modal-footer red-border">
                     <div class="col-md-2"></div>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>

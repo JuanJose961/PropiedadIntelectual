@@ -175,7 +175,8 @@ function ModalNuevo() {
 
     $("#uu_04").val(catalogo_actual.licenciatario).trigger("change");
     $("#uu_05").val(catalogo_actual.licenciante).trigger("change");
-    $("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+    //$("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+    $("#uu_06").val(catalogo_actual.solicitante_nombre);
     $("#uu_01").val(catalogo_actual.nombre);
     $("#uu_02").val(catalogo_actual.numero_registro);
     $("#uu_03").val(catalogo_actual.numero_expediente);
@@ -208,7 +209,7 @@ function ModalNuevo() {
     $("#solicitudl").hide();
     $("#contratol").hide();
     $("#oficiol").hide();
-
+    
     $("#update01").modal("show");
 };
 
@@ -283,7 +284,8 @@ function Editar(id) {
 
                 $("#uu_04").val(catalogo_actual.licenciatario).trigger("change");
                 $("#uu_05").val(catalogo_actual.licenciante).trigger("change");
-                $("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+                //$("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+                $("#uu_06").val(catalogo_actual.solicitante_nombre);
                 $("#uu_01").val(catalogo_actual.nombre);
                 $("#uu_02").val(catalogo_actual.numero_registro);
                 $("#uu_03").val(catalogo_actual.numero_expediente);
@@ -368,8 +370,10 @@ function Confirma01() {
             catalogo_actual.licenciatario_nombre = $("#uu_04 option:selected").text();
             catalogo_actual.licenciante = parseInt($("#uu_05 option:selected").val());
             catalogo_actual.licenciante_nombre = $("#uu_05 option:selected").text();
-            catalogo_actual.solicitante = $("#uu_06 option:selected").val();
-            catalogo_actual.solicitante_nombre = $("#uu_06 option:selected").text();
+            //catalogo_actual.solicitante = $("#uu_06 option:selected").val();
+            catalogo_actual.solicitante = 0;
+            //catalogo_actual.solicitante_nombre = $("#uu_06 option:selected").text();
+            catalogo_actual.solicitante_nombre = $("#uu_06").val();
             catalogo_actual.nombre = $("#uu_01").val();
             catalogo_actual.numero_registro = $("#uu_02").val();
             catalogo_actual.numero_expediente = $("#uu_03").val();
@@ -483,10 +487,12 @@ function ValidaUpdate01() {
 
     var licenciatario = $("#uu_04 option:selected").val();
     var licenciante = $("#uu_05 option:selected").val();
-    var solicitante = $("#uu_06 option:selected").val();
+    //var solicitante = $("#uu_06 option:selected").val();
+    var solicitante_nombre = $("#uu_06").val();
     var pais = $("#uu_08 option:selected").val();
+    var fecha_vencimiento = $("#uu_16").val();
 
-    console.log(licenciatario, licenciante, solicitante, pais);
+    console.log(licenciatario, licenciante, solicitante_nombre, pais);
     var errores = 0;
     var flag = false;
 
@@ -501,15 +507,26 @@ function ValidaUpdate01() {
         $("#uu_05_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
     }
-    if (solicitante.length <= 0 || solicitante == "NA") {
+    //if (solicitante.length <= 0 || solicitante == "NA") {
+    //    $("#uu_06").addClass("control-error");
+    //    $("#uu_06_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //}
+    if (solicitante_nombre=="") {
         $("#uu_06").addClass("control-error");
-        $("#uu_06_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }
 
     if (pais <= 0) {
         $("#uu_08").addClass("control-error");
         $("#uu_08_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        errores += 1;
+    }
+
+    if (fecha_vencimiento == "") {
+        $("#uu_16").addClass("control-error");
+        $("#uu_16_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }
 

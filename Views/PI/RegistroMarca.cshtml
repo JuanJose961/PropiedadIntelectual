@@ -576,7 +576,7 @@
                                                 <option value="0" disabled selected>Seleccione una opción</option>
                                                 @foreach (ContratoCesion item in ViewBag.cesion)
                                                 {
-                                                    <option value="@item.id">@item.nombre</option>
+                                                    if (item.cesion_usado == 0){ <option value="@item.id">@item.nombre</option> }
                                                 }
                                             </select>
                                         </div>

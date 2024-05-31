@@ -90,6 +90,7 @@ namespace GISMVC.Models
         public string solicitud_nombre_original { get; set; }
         public string contrato_nombre_original { get; set; }
         public string oficio_nombre_original { get; set; }
+        public int cesion_usado { get; set; }
         public ContratoCesion()
         {
             solicitud_url = "";
@@ -169,6 +170,7 @@ namespace GISMVC.Models
             solicitud_fechaS = "";
             oficio_fechaS = "";
             contrato_fechaS = "";
+            cesion_usado = 0;
         }
 
         
@@ -216,8 +218,8 @@ namespace GISMVC.Models
                         res.despacho_nombre = row[idx].ToString(); idx++;
                         res.corresponsal = Int32.Parse(row[idx].ToString()); idx++;
                         res.corresponsal_nombre = row[idx].ToString(); idx++;
-                        //res.tipo_cesion = Int32.Parse(row[idx].ToString()); idx++;
-                        //res.tipo_cesion_nombre = row[idx].ToString(); idx++;
+                        res.tipo_cesion = Int32.Parse(row[idx].ToString()); idx++;
+                        res.tipo_cesion_nombre = row[idx].ToString(); idx++;
                         res.fc = DateTime.Parse(row[idx].ToString()); idx++;
                         res.fu = DateTime.Parse(row[idx].ToString()); idx++;
                         res.solicitud_filename = row[idx].ToString(); idx++;
@@ -397,6 +399,7 @@ namespace GISMVC.Models
 
                             item.activo = Int32.Parse(row[idx].ToString()); idx++;
                             item.orden = Int32.Parse(row[idx].ToString()); idx++;
+                            item.cesion_usado = Int32.Parse(row[idx].ToString()); idx++;
                             res.Add(item);
                         }
                     }

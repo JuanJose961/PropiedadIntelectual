@@ -173,7 +173,8 @@ function ModalNuevo() {
 
     $("#uu_04").val(catalogo_actual.cedente).trigger("change");
     $("#uu_05").val(catalogo_actual.cesionario).trigger("change");
-    $("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+    //$("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+    $("#uu_06").val(catalogo_actual.solicitante_nombre);
     $("#uu_01").val(catalogo_actual.nombre);
     $("#uu_02").val(catalogo_actual.numero_registro);
     $("#uu_03").val(catalogo_actual.numero_expediente);
@@ -280,7 +281,8 @@ function Editar(id) {
 
                 $("#uu_04").val(catalogo_actual.cedente).trigger("change");
                 $("#uu_05").val(catalogo_actual.cesionario).trigger("change");
-                $("#uu_06").val(catalogo_actual.solicitante).trigger("change");
+                /*$("#uu_06").val(catalogo_actual.solicitante).trigger("change");*/
+                $("#uu_06").val(catalogo_actual.solicitante_nombre);
                 $("#uu_01").val(catalogo_actual.nombre);
                 $("#uu_02").val(catalogo_actual.numero_registro);
                 $("#uu_03").val(catalogo_actual.numero_expediente);
@@ -308,7 +310,7 @@ function Editar(id) {
                 $("#uu_17").val(catalogo_actual.observaciones);
                 $("#uu_18").val(catalogo_actual.despacho).trigger("change");
                 $("#uu_19").val(catalogo_actual.corresponsal).trigger("change");
-                //$("#uu_20").val(catalogo_actual.corresponsal).trigger("change");
+                $("#uu_20").val(catalogo_actual.tipo_cesion).trigger("change");
 
                 if (catalogo_actual.contrato_permalink != "") {
                     $("#contratol").attr("href", catalogo_actual.contrato_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + catalogo_actual.contrato_nombre_original + ')').show();
@@ -364,8 +366,10 @@ function Confirma01() {
             catalogo_actual.cedente_nombre = $("#uu_04 option:selected").text();
             catalogo_actual.cesionario = parseInt($("#uu_05 option:selected").val());
             catalogo_actual.cesionario_nombre = $("#uu_05 option:selected").text();
-            catalogo_actual.solicitante = $("#uu_06 option:selected").val();
-            catalogo_actual.solicitante_nombre = $("#uu_06 option:selected").text();
+            //catalogo_actual.solicitante = $("#uu_06 option:selected").val();
+            catalogo_actual.solicitante = 0;
+            //catalogo_actual.solicitante_nombre = $("#uu_06 option:selected").text();
+            catalogo_actual.solicitante_nombre = $("#uu_06").val();
             catalogo_actual.nombre = $("#uu_01").val();
             catalogo_actual.numero_registro = $("#uu_02").val();
             catalogo_actual.numero_expediente = $("#uu_03").val();
@@ -389,6 +393,8 @@ function Confirma01() {
             catalogo_actual.corresponsal = parseInt($("#uu_19 option:selected").val());
             catalogo_actual.corresponsal_nombre = $("#uu_19 option:selected").text();
             catalogo_actual.tipo = tipo;
+            catalogo_actual.tipo_cesion = parseInt($("#uu_20 option:selected").val());
+            catalogo_actual.tipo_cesion_nombre = $("#uu_20 option:selected").text();
 
             var sended_url = services_url + "AddCatalogo";
             if (catalogo_actual.id > 0) {
@@ -474,10 +480,11 @@ function ValidaUpdate01() {
 
     var cedente = $("#uu_04 option:selected").val();
     var cesionario = $("#uu_05 option:selected").val();
-    var solicitante = $("#uu_06 option:selected").val();
+    //var solicitante = $("#uu_06 option:selected").val();
+    var solicitante_nombre = $("#uu_06").val();
     var pais = $("#uu_08 option:selected").val();
 
-    console.log(cedente, cesionario, solicitante, pais);
+    console.log(cedente, cesionario, solicitante_nombre, pais);
     var errores = 0;
     var flag = false;
 
@@ -492,9 +499,14 @@ function ValidaUpdate01() {
         $("#uu_05_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
     }
-    if (solicitante.length <= 0 || solicitante == "NA") {
+    //if (solicitante.length <= 0 || solicitante == "NA") {
+    //    $("#uu_06").addClass("control-error");
+    //    $("#uu_06_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //}
+    if (solicitante_nombre=="") {
         $("#uu_06").addClass("control-error");
-        $("#uu_06_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }
 

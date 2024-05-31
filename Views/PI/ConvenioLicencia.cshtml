@@ -206,13 +206,14 @@
                         <div class="col-md-4">
                             <div class="form-group" id="uu_06_c">
                                 <label for="uu_06">Solicitante</label>
-                                <select class="select2 form-control input-sm custom-select" id="uu_06" autocomplete="off" style="width: 100%;" disabled>
-                                    <option value="NA" selected>Buscar</option>
-                                    @foreach (AspNetUsers item in ViewBag.usuarios)
-                                    {
-                                        <option value="@item.id">@item.nombre</option>
-                                    }
-                                </select>
+                                @*<select class="select2 form-control input-sm custom-select" id="uu_06" autocomplete="off" style="width: 100%;" disabled>
+            <option value="NA" selected>Buscar</option>
+            @foreach (AspNetUsers item in ViewBag.usuarios)
+            {
+                <option value="@item.id">@item.nombre</option>
+            }
+        </select>*@
+                                <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" />
                             </div>
                         </div>
                     </div>
@@ -269,11 +270,11 @@
                     <hr />
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Instrucciones al corresponsal</label>
+                            @*<label>Instrucciones al corresponsal</label>*@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group" id="uu_09_c">
-                                        <label>Fecha</label>
+                                        <label>Fecha instrucciones al corresponsal</label>
                                         <input type="text" class="form-control input-sm" id="uu_09" autocomplete="off" />
                                     </div>
                                 </div>
@@ -286,11 +287,11 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label>Envío de documentos</label>
+                            @*<label>Envío de documentos</label>*@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group" id="uu_11_c">
-                                        <label>Fecha</label>
+                                        <label>Fecha envío de documentos</label>
                                         <input type="text" class="form-control input-sm" id="uu_11" autocomplete="off" />
                                     </div>
                                 </div>

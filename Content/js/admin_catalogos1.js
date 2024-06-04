@@ -32,7 +32,8 @@ function ModalNuevo() {
         $("#uu_02").val(catalogo_actual.descripcion);
         $("#uu_03").val("");
 
-        $("#uu_02").parent().hide();
+        //$("#uu_02").parent().hide();
+        $("#uu_02").parent().show();
         $("#uu_03").parent().hide();
     }
     $("#update01").modal("show");
@@ -73,7 +74,8 @@ function Editar(id) {
                     $("#uu_02").val(catalogo_actual.descripcion);
                     $("#uu_03").val("");
 
-                    $("#uu_02").parent().hide();
+                    //$("#uu_02").parent().hide();
+                    $("#uu_02").parent().show();
                     $("#uu_03").parent().hide();
                 }
 
@@ -177,13 +179,13 @@ function ValidaUpdate01() {
         $("#uu_03").addClass("control-error");
         $("#uu_03_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
-    }
+    }*/
 
     if (descripcion.length <= 0) {
         $("#uu_02").addClass("control-error");
         $("#uu_02_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
-    }*/
+    }
 
     if (errores > 0) {
         flag = false;

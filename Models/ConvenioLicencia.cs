@@ -90,6 +90,7 @@ namespace GISMVC.Models
         public string solicitud_nombre_original { get; set; }
         public string contrato_nombre_original { get; set; }
         public string oficio_nombre_original { get; set; }
+        public string licencia_tipo { get; set; } 
         public ConvenioLicencia()
         {
 
@@ -170,6 +171,7 @@ namespace GISMVC.Models
             solicitud_fechaS = "";
             oficio_fechaS = "";
             contrato_fechaS = "";
+            licencia_tipo = "";
         }
 
         
@@ -256,6 +258,7 @@ namespace GISMVC.Models
 
                         res.oficio_url = row[idx].ToString(); idx++;
                         res.oficio_nombre_original = row[idx].ToString(); idx++;
+                        res.licencia_tipo = row[idx].ToString(); idx++;
 
                         if (res.solicitud_nombre != "")
                         {
@@ -399,6 +402,7 @@ namespace GISMVC.Models
 
                             item.activo = Int32.Parse(row[idx].ToString()); idx++;
                             item.orden = Int32.Parse(row[idx].ToString()); idx++;
+                            item.licencia_tipo = row[idx].ToString(); idx++;
                             res.Add(item);
                         }
                     }

@@ -98,6 +98,9 @@
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div class="row">
+                                         <div class="col-md-6">
+                                             <button type="button" class="dx-oc-link"  onclick='VerMarca(<%- value %>);' title="Ver"><i class="fa fa-eye"></i></button>
+                                         </div>
                                         <div class="col-md-6">
                                             <a type="button" class="dx-oc-link" href="<%- data.permalink %>" title="Editar"><i class="fa fa-edit"></i> </a>
                                         </div>
@@ -133,30 +136,73 @@
 
                             )
                     </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @section Modals {
+        <div id="alertModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h1></h1>
+
+                        <div class="modal-spinner text-center">
+                            <img src="~/Content/images/spinner.gif" />
+                        </div>
+
+                        <div class="form-group">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
             </div>
         </div>
+        <div id="modalview1" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <label>General</label>
+                        <table class="table table-hover" id="tablita">
+                        </table>
+                        <br />
+                        <label>En registro</label>
+                        <table class="table table-hover" id="tablita1">
+                        </table>
+                        <div class="modal-footer red-border">
+                            <div class="col-md-2"></div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 
-    </div>
-</div>
 
-@section Modals {
+    @section Scripts {
+        <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+        <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+        <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
 
+        <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
+        <script type="text/javascript">
+        </script>
 
-}
-
-
-@section Scripts {
-    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
-    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
-    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
-
-    <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
-    <script type="text/javascript">
-    </script>
-
-    <script type="text/javascript">
+        <script type="text/javascript">
         var START_DATE = "@Html.Raw(DateTime.Now.AddDays(-60).ToString("yyyy-MM-dd"))";
         var END_DATE = "@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd"))";
 
@@ -206,6 +252,6 @@
         $(document).ready(function () {
             $("#tabla01 .dx-toolbar-after").prepend("<a class='btn btn-info btn-sm' href='" + hosturl + "PI/RegistroMarca?tipo="+tipo_solicitud+"'><i class='fa fa-plus'></i> Nuevo registro</button>");
         });
-    </script>
-    <script src="@Url.Content("~/Content/js/admin_registromarcas.js?t=" + DateTime.Now.Ticks.ToString())"></script>
-}
+        </script>
+        <script src="@Url.Content("~/Content/js/admin_registromarcas.js?t=" + DateTime.Now.Ticks.ToString())"></script>
+    }

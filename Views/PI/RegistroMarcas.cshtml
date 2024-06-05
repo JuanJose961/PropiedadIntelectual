@@ -99,7 +99,7 @@
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div class="row">
                                          <div class="col-md-6">
-                                             <button type="button" class="dx-oc-link"  onclick='VerMarca(<%- value %>);' title="Ver"><i class="fa fa-eye"></i></button>
+                                             <button type="button" class="dx-oc-link"  onclick='VerMarca(<%- value %>);' title="Ver información"><i class="fa fa-eye"></i></button>
                                          </div>
                                         <div class="col-md-6">
                                             <a type="button" class="dx-oc-link" href="<%- data.permalink %>" title="Editar"><i class="fa fa-edit"></i> </a>
@@ -173,13 +173,61 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <label>General</label>
-                        <table class="table table-hover" id="tablita">
-                        </table>
+                        <section class="tabs-nobg">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tab01" role="tab"><i class="fa fa-info mr-1"></i> General</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab02" role="tab"><i class="fa fa-file mr-1"></i> En registro</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab03" role="tab"><i class="fa fa-file mr-1"></i> Licencias</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab04" role="tab"><i class="fa fa-file mr-1"></i> Cesiones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab05" role="tab"><i class="fa fa-calendar mr-1"></i> Actividades</a>
+                                </li>
+                                @*<li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab06" role="tab"><i class="fa fa-file mr-1"></i> Revisión Usuario Negocio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab07" role="tab"><i class="fa fa-file mr-1"></i> Oficios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab08" role="tab"><i class="fa fa-file mr-1"></i> Renovación</a>
+                                </li>*@
+                            </ul>
+                            <div class="tab-content border border-top-0 p-3">
+                                <div class="tab-pane fade active show" id="tab01" role="tabpanel">
+                                    <table class="table table-hover" id="tablita">
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="tab02" role="tabpanel">
+                                    <table class="table table-hover" id="tablita1">
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="tab03" role="tabpanel">
+                                    <table class="table table-hover" id="tablita2">
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="tab04" role="tabpanel">
+                                    <table class="table table-hover" id="tablita3">
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="tab05" role="tabpanel">
+                                    <table class="table table-hover" id="tablita4">
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                        @*<label>General</label>
+                        
                         <br />
-                        <label>En registro</label>
-                        <table class="table table-hover" id="tablita1">
-                        </table>
+                        <label>En registro</label>*@
+                        
                         <div class="modal-footer red-border">
                             <div class="col-md-2"></div>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cerrar</button>

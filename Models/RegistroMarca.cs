@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using dll_Gis;
 using System.Web;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace GISMVC.Models
 {
@@ -459,6 +460,15 @@ namespace GISMVC.Models
         public string licencia_observaciones { get; set; } = "";
         public string licencia_nombre_original { get; set; } = "";
         public string licencia_permalink { get; set; } = "";
+        public int idces { get; set; } = 0;
+        public string cesion_fecha_vencimientoS { get; set; } = "";
+        public DateTime cesion_fecha_vencimiento { get; set; } = DateTime.Parse("1969-01-01");
+        public string cesion_observaciones { get; set; } = "";
+        public string cesion_nombre_original { get; set; } = "";
+        public string cesion_permalink { get; set; } = "";
+        public string cesion_cesionario { get; set; } = "";
+        public string cesion_nombre { get; set; } = "";
+        public string cesion_expediente { get; set; } = "";
         public RegistroMarca()
         {
         }
@@ -565,6 +575,46 @@ namespace GISMVC.Models
                         res.solicitante_cesion_desc = row[idx].ToString(); idx++;
                         res.cesion = Int32.Parse(row[idx].ToString()); idx++;
                         res.cesion_desc = row[idx].ToString(); idx++;
+                        if (res.cesion >= 1)
+                        {
+                            DataAccess da3 = new DataAccess();
+                            var dt3 = new System.Data.DataTable();
+                            var errores3 = "";
+                            if (da3.Cons_ContratoCesionById(res.cesion, out dt3, out errores3))
+                            {
+                                if (dt3.Rows.Count > 0)
+                                {
+                                    int idx3 = 0;
+                                    var row3 = dt3.Rows[0];
+
+                                    res.idces = Int32.Parse(row3[idx3].ToString()); idx3++;
+                                    idx3 = 4;
+                                    res.cesion_cesionario = row3[idx3].ToString(); idx3++;
+                                    idx3 = 7;
+                                    res.cesion_nombre = row3[idx3].ToString(); idx3++;
+                                    res.cesion_expediente = row3[idx3].ToString(); idx3++;
+                                    idx3 = 20;
+                                    res.cesion_fecha_vencimiento = DateTime.Parse(row3[idx3].ToString()); idx3++;
+                                    idx3 = 21;
+                                    res.cesion_observaciones = row3[idx3].ToString(); idx3++;
+                                    idx3 = 58;
+                                    res.cesion_nombre_original = row3[idx3].ToString(); idx3++;
+                                }
+                                else
+                                {
+                                    res.idces = 0;
+                                    res.cesion_fecha_vencimiento = DateTime.Parse("1969-01-01");
+                                    res.cesion_observaciones = "";
+                                    res.cesion_nombre_original = "";
+
+                                }
+                            }
+                        }
+                        if (res.cesion_desc != "" && res.cesion_nombre_original != "")
+                        {
+                            //res.licencia_permalink = Utility.hosturl + "PI/ConvenioLicenciaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idlic.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("oficio"));
+                            res.cesion_permalink = Utility.hosturl + "PI/ContratoCesionDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.idces.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("oficio"));
+                        }
                         res.fecha_requerimiento = DateTime.Parse(row[idx].ToString()); idx++;
                         res.fecha_requerimiento_completo = DateTime.Parse(row[idx].ToString()); idx++;
                         res.fecha_instrucciones = DateTime.Parse(row[idx].ToString()); idx++;

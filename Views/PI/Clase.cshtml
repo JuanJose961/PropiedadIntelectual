@@ -113,7 +113,7 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("Nombre");
-                                //columns.AddFor(m => m.descripcion).Caption("Descripción");
+                                columns.AddFor(m => m.descripcion).Caption("Descripción");
                             })
                             .ColumnAutoWidth(true)
                             .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))

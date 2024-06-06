@@ -461,8 +461,12 @@ $(document).ready(function () {
     $("#reivindicacionl").hide();
     $("#cartal").hide();
     $("#licencial").hide();
+    $("#cesionl").hide();
     if (mainid > 0) {
+        document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial e Intelectual";//titulo registro marca
         SelectRegistroMarca(mainid);
+    } else {
+        document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial e Intelectual";//titulo registro marca
     }
 });
 
@@ -1449,17 +1453,28 @@ function SelectRegistroMarca(id) {
                     //
                     //--------------------
                     if (registro.licencia>=1) {
-                        document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial e Intelectual";//titulo registro marca
                         document.getElementById("lic_0_c").style.display = "block";//licencia
-                        document.getElementById("licencia_a").style.display = "block";//licencia
+                        //document.getElementById("licencia_a").style.display = "block";//licencia
                         document.getElementById("lic_2_c").style.display = "block";//licencia
                         document.getElementById("lic_3_c").style.display = "block";//licencia
                     } else {
-                        document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial e Intelectual";//titulo registro marca
                         document.getElementById("lic_0_c").style.display = "none";//licencia
-                        document.getElementById("licencia_a").style.display = "none";//licencia
+                        //document.getElementById("licencia_a").style.display = "none";//licencia
                         document.getElementById("lic_2_c").style.display = "none";//licencia
                         document.getElementById("lic_3_c").style.display = "none";//licencia
+                    }
+                    if (registro.cesion >= 1) {
+                        document.getElementById("ces_0_c").style.display = "block";//cesion
+                        //document.getElementById("cesion_a").style.display = "block";//cesion
+                        document.getElementById("ces_2_c").style.display = "block";//cesion
+                        document.getElementById("ces_3_c").style.display = "block";//cesion
+                        document.getElementById("ces_4_c").style.display = "block";//cesion
+                    } else {
+                        document.getElementById("ces_0_c").style.display = "none";//cesion
+                        //document.getElementById("cesion_a").style.display = "none";//cesion
+                        document.getElementById("ces_2_c").style.display = "none";//cesion
+                        document.getElementById("ces_3_c").style.display = "none";//cesion
+                        document.getElementById("ces_4_c").style.display = "none";//cesion
                     }
                     $("#uu_022").val(registro.nombre);
                     var solicitud = solicitudes.filter(i => i.tipo == registro.solicitud_tipo & i.id == registro.solicitud);
@@ -1721,14 +1736,45 @@ function SelectRegistroMarca(id) {
                         //    $("#licencial").attr("href", "").hide();
                         //}
                         if (registro.licencia_permalink != "") {
+                            document.getElementById("licencia_a").style.display = "block";//licencia
                             $("#licencial").attr("href", registro.licencia_permalink + "&us=" + registro.idlic).html('<i class="fa fa-download"></i> Descargar (' + registro.licencia_nombre_original + ')').show();
                         } else {
+                            document.getElementById("licencia_a").style.display = "none";//licencia
                             $("#licencial").attr("href", "").hide();
                         }
                     } else {
+                        document.getElementById("licencia_a").style.display = "none";//licencia
                         $("#lic_02").val('');
                         $("#lic_03").val('');
                         $("#licencial").attr("href", "").hide();
+                    }
+
+                    if (registro.idces >= 1) {
+                        let date = new Date(registro.cesion_fecha_vencimiento)
+                        let day = `${(date.getDate())}`.padStart(2, '0');
+                        let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
+                        let year = date.getFullYear();
+                        if (year > "1969") {
+                            $("#ces_02").val(`${day}/${month}/${year}`);
+                        } else {
+                            $("#ces_02").val('');
+                        }
+                        $("#ces_03").val(registro.cesion_observaciones);
+                        $("#ces_04").val(registro.cesion_cesionario+' - '+registro.cesion_nombre+' - '+registro.cesion_expediente);
+
+                        if (registro.cesion_permalink != "") {
+                            document.getElementById("cesion_a").style.display = "block";//licencia
+                            $("#cesionl").attr("href", registro.cesion_permalink + "&us=" + registro.idces).html('<i class="fa fa-download"></i> Descargar (' + registro.cesion_nombre_original + ')').show();
+                        } else {
+                            document.getElementById("cesion_a").style.display = "none";//licencia
+                            $("#cesionl").attr("href", "").hide();
+                        }
+                    } else {
+                        document.getElementById("cesion_a").style.display = "none";//licencia
+                        $("#ces_02").val('');
+                        $("#ces_03").val('');
+                        $("#ces_04").val('');
+                        $("#cesionl").attr("href", "").hide();
                     }
 
                     $("#alertModal").modal("hide");

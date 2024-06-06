@@ -548,41 +548,77 @@
                                 <div class="col-md-3" id="lic_2_c" style="display:none;">
                                     <div class="form-group">
                                         <label>Fecha de vencimiento</label>
-                                        <input type="text" value="2024/03/03" class="form-control input-sm" id="lic_02" autocomplete="off" disabled />
+                                        <input type="text" value="" class="form-control input-sm" id="lic_02" autocomplete="off" disabled />
                                     </div>
                                 </div>
                                 <div class="col-md-10" id="lic_3_c" style="display:none;">
                                     <div class="form-group">
                                         <label>Observaciones</label>
-                                        <input type="text" value="prueba de observaciones" class="form-control input-sm" id="lic_03" autocomplete="off" disabled />
+                                        <input type="text" value="" class="form-control input-sm" id="lic_03" autocomplete="off" disabled />
                                     </div>
                                 </div>
                             </div>
                         </div>@*tab03*@
 
-                            <div class="tab-pane fade" id="tab04" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="uu_18_c">
-                                            <label>Persona que solicitó la cesión</label>
-                                            <input type="text" class="form-control input-sm" id="uu_18" autocomplete="off" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="uu_19_c">
-                                            <label for="uu_19">Cesión</label>
-                                            <select class="select2 form-control input-sm custom-select" id="uu_19" autocomplete="off" style="width: 100%;">
-                                                <option value="0" disabled selected>Seleccione una opción</option>
-                                                @foreach (ContratoCesion item in ViewBag.cesion)
-                                                {
-                                                    if (item.cesion_usado == 0){ <option value="@item.id">@item.nombre</option> }
-                                                }
-                                            </select>
-                                        </div>
+                        <div class="tab-pane fade" id="tab04" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group" id="uu_18_c">
+                                        <label>Persona que solicitó la cesión</label>
+                                        <input type="text" class="form-control input-sm" id="uu_18" autocomplete="off" />
                                     </div>
                                 </div>
-                            </div>@*tab04*@
+
+                                <div class="col-md-3">
+                                    <div class="form-group" id="uu_19_c">
+                                        <label for="uu_19">Cesión</label>
+                                        <select class="select2 form-control input-sm custom-select" id="uu_19" autocomplete="off" style="width: 100%;">
+                                            <option value="0" disabled selected>Seleccione una opción</option>
+                                            @foreach (ContratoCesion item in ViewBag.cesion)
+                                            {
+                                                if (item.cesion_usado == 0)
+                                                {
+                                                    <option value="@item.id">@item.nombre</option>
+}
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr id="ces_0_c" style="display:none;" />
+                            <div class="row" id="cesion_a" style="display:none;">
+                                <div class="col-md-12">
+                                    <div class="form-group" id="cesiont" style="margin:0 !important;">
+                                        <label>Oficio</label>
+                                    </div>
+                                    <div class="form-group" id="cesc">
+                                        <a href="" id="cesionl" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>
+                                        @*<label for="carta" class="btn btn-sm btn-info btn-lbl"><i class="fa fa-upload"></i> Seleccionar archivo</label>*@
+                                        <input type="file" id="cesion" style="display:none;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10" id="ces_4_c" style="display:none;">
+                                    <div class="form-group">
+                                        <label>Cesión</label>
+                                        <input type="text" value="" class="form-control input-sm" id="ces_04" autocomplete="off" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-3" id="ces_2_c" style="display:none;">
+                                    <div class="form-group">
+                                        <label>Fecha de vencimiento</label>
+                                        <input type="text" value="" class="form-control input-sm" id="ces_02" autocomplete="off" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-10" id="ces_3_c" style="display:none;">
+                                    <div class="form-group">
+                                        <label>Observaciones</label>
+                                        <input type="text" value="" class="form-control input-sm" id="ces_03" autocomplete="off" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>@*tab04*@
 
                             <div class="tab-pane fade" id="tab05" role="tabpanel">
                                 <div class="row">

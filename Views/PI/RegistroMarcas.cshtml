@@ -125,7 +125,18 @@
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
                                 columns.AddFor(m => m.pais_desc).Caption("PAIS");
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");
-                                columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
+                                columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
+                                    <% if (data.estatus == 6) { %>
+                                    <div>
+                                        <font style="color:#FF0000"> <%- value %></font>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+                                        <%- value %>
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("ESTATUS");
+                                //columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
                                 //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
                             })
                             .ColumnAutoWidth(true)

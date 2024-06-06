@@ -3964,7 +3964,8 @@ namespace GISMVC.Controllers
                     }
                 }
 
-                if(modelo.correo_registro == true)
+                //if(modelo.correo_registro == true)
+                if (modelo.enviar_correo_registro == true)
                 {
                     //correo de que ya esta en registro
 
@@ -3990,8 +3991,10 @@ namespace GISMVC.Controllers
                     "</div>" +
                     "</body>" +
                     "</html>";
-                    email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
-                    email.from = "noreply@portalproveedores.com";
+                    //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
+                    email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
+                    //email.from = "noreply@portalproveedores.com";
+                    email.from = "j.delacruz@softdepot.mx";
                     var enviaUsuario = Utility.enviaEmail(0, email);
                 }
                 res.flag = true;

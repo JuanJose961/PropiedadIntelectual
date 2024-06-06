@@ -95,6 +95,8 @@ namespace GISMVC.Models
         public string fecha_legalS { get; set; }
         public string fecha_vencimientoS { get; set; }
         public string licencia_tipo { get; set; }
+        public DateTime fecha_solicitud_completado { get; set; }
+        public string fecha_solicitud_completadoS { get; set; }
         public CTMCatalogo()
         {
             id = 0;
@@ -181,6 +183,8 @@ namespace GISMVC.Models
             oficio_fechaS = "";
             contrato_fechaS = "";
             licencia_tipo = "";
+            fecha_solicitud_completado = DateTime.Parse("1969-01-01");
+            fecha_solicitud_completadoS = "";
         }
 
         public NegocioPI ToNegocioPI()
@@ -433,6 +437,8 @@ namespace GISMVC.Models
                 res.fecha_legalS = this.fecha_legalS;
                 res.fecha_vencimientoS = this.fecha_vencimientoS;
                 res.licencia_tipo = this.licencia_tipo;
+                res.fecha_solicitud_completado = this.fecha_solicitud_completado;
+                res.fecha_solicitud_completadoS = this.fecha_solicitud_completadoS;
             }
             catch (Exception ex)
             {
@@ -516,6 +522,8 @@ namespace GISMVC.Models
                 res.fecha_concesionS = this.fecha_concesionS;
                 res.fecha_legalS = this.fecha_legalS;
                 res.fecha_vencimientoS = this.fecha_vencimientoS;
+                res.fecha_solicitud_completado = this.fecha_solicitud_completado;
+                res.fecha_solicitud_completadoS = this.fecha_solicitud_completadoS;
             }
             catch (Exception ex)
             {

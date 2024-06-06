@@ -8305,7 +8305,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[29];
+                SqlParameter[] @params = new SqlParameter[30];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@licenciatario", modelo.licenciatario); i++;
@@ -8342,6 +8342,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@tipo_cesion", modelo.tipo_cesion); i++;
                 @params[i] = new SqlParameter("@tipo_cesion_nombre", modelo.tipo_cesion_nombre); i++;
                 @params[i] = new SqlParameter("@licencia_tipo", modelo.licencia_tipo); i++;
+                @params[i] = new SqlParameter("@fecha_solicitud_completado", modelo.fecha_solicitud_completadoS); i++;
 
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "INS_proc_ConvenioLicencia", @params, out dt, 1000))
@@ -8374,7 +8375,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[30];
+                SqlParameter[] @params = new SqlParameter[31];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -8413,6 +8414,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@tipo_cesion", modelo.tipo_cesion); i++;
                 @params[i] = new SqlParameter("@tipo_cesion_nombre", modelo.tipo_cesion_nombre); i++;
                 @params[i] = new SqlParameter("@licencia_tipo", modelo.licencia_tipo); i++;
+                @params[i] = new SqlParameter("@fecha_solicitud_completado", modelo.fecha_solicitud_completadoS); i++;
 
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_ConvenioLicencia", @params, out dt, 1000))
@@ -8641,7 +8643,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[28];
+                SqlParameter[] @params = new SqlParameter[29];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@cedente", modelo.cedente); i++;
@@ -8677,6 +8679,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@corresponsal_nombre", modelo.corresponsal_nombre); i++;
                 @params[i] = new SqlParameter("@tipo_cesion", modelo.tipo_cesion); i++;
                 @params[i] = new SqlParameter("@tipo_cesion_nombre", modelo.tipo_cesion_nombre); i++;
+                @params[i] = new SqlParameter("@fecha_solicitud_completado", modelo.fecha_solicitud_completadoS); i++;
 
 
                 i++;
@@ -8710,7 +8713,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[29];
+                SqlParameter[] @params = new SqlParameter[30];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -8748,6 +8751,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@corresponsal_nombre", modelo.corresponsal_nombre); i++;
                 @params[i] = new SqlParameter("@tipo_cesion", modelo.tipo_cesion); i++;
                 @params[i] = new SqlParameter("@tipo_cesion_nombre", modelo.tipo_cesion_nombre); i++;
+                @params[i] = new SqlParameter("@fecha_solicitud_completado", modelo.fecha_solicitud_completadoS); i++;
 
 
                 i++;

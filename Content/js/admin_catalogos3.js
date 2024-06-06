@@ -53,7 +53,11 @@ $(document).ready(function () {
         todayHighlight: true,
         format: 'dd/mm/yyyy'
     });
-
+    $('#uu_22').datepicker({
+        orientation: "bottom left",
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+    });
 
 
     $("#contratol").hide();
@@ -113,6 +117,7 @@ var catalogo_actual = {
     contrato_fechaS: "",
     tipo: tipo,
     licencia_tipo: "",
+    fecha_solicitud_completadoS: ""
 }
 
 function ModalNuevo() {
@@ -168,6 +173,7 @@ function ModalNuevo() {
         contrato_fechaS: "",
         tipo: tipo,
         licencia_tipo: "",
+        fecha_solicitud_completadoS: ""
     }
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -190,6 +196,7 @@ function ModalNuevo() {
     $("#uu_11").val(catalogo_actual.fecha_envio_documentosS);
     $("#uu_12").val(catalogo_actual.fecha_envio_documentos_completadoS);
     $("#uu_13").val(catalogo_actual.fecha_solicitudS);
+    $("#uu_22").val(catalogo_actual.fecha_solicitud_completadoS);
     $("#uu_14").val(catalogo_actual.fecha_concesionS);
     $("#uu_15").val(catalogo_actual.fecha_legalS);
     $("#uu_16").val(catalogo_actual.fecha_vencimientoS);
@@ -199,6 +206,7 @@ function ModalNuevo() {
     $("#uu_11").datepicker("update", catalogo_actual.fecha_envio_documentosS);
     $("#uu_12").datepicker("update", catalogo_actual.fecha_envio_documentos_completadoS);
     $("#uu_13").datepicker("update", catalogo_actual.fecha_solicitudS);
+    $("#uu_22").datepicker("update", catalogo_actual.fecha_solicitud_completadoS);
     $("#uu_14").datepicker("update", catalogo_actual.fecha_concesionS);
     $("#uu_15").datepicker("update", catalogo_actual.fecha_legalS);
     $("#uu_16").datepicker("update", catalogo_actual.fecha_vencimientoS);
@@ -269,6 +277,7 @@ function Editar(id) {
         contrato_fechaS: "",
         tipo: tipo,
         licencia_tipo: "",
+        fecha_solicitud_completadoS: ""
     }
     var sended_url = services_url + "SelectCatalogoById";
     $.ajax({
@@ -301,6 +310,7 @@ function Editar(id) {
                 $("#uu_11").val(catalogo_actual.fecha_envio_documentosS);
                 $("#uu_12").val(catalogo_actual.fecha_envio_documentos_completadoS);
                 $("#uu_13").val(catalogo_actual.fecha_solicitudS);
+                $("#uu_22").val(catalogo_actual.fecha_solicitud_completadoS);
                 $("#uu_14").val(catalogo_actual.fecha_concesionS);
                 $("#uu_15").val(catalogo_actual.fecha_legalS);
                 $("#uu_16").val(catalogo_actual.fecha_vencimientoS);
@@ -309,7 +319,8 @@ function Editar(id) {
                 $("#uu_10").datepicker("update",catalogo_actual.fecha_instrucciones_completadoS);
                 $("#uu_11").datepicker("update",catalogo_actual.fecha_envio_documentosS);
                 $("#uu_12").datepicker("update",catalogo_actual.fecha_envio_documentos_completadoS);
-                $("#uu_13").datepicker("update",catalogo_actual.fecha_solicitudS);
+                $("#uu_13").datepicker("update", catalogo_actual.fecha_solicitudS);
+                $("#uu_22").datepicker("update", catalogo_actual.fecha_solicitud_completadoS);
                 $("#uu_14").datepicker("update",catalogo_actual.fecha_concesionS);
                 $("#uu_15").datepicker("update",catalogo_actual.fecha_legalS);
                 $("#uu_16").datepicker("update",catalogo_actual.fecha_vencimientoS);
@@ -391,6 +402,7 @@ function Confirma01() {
             catalogo_actual.fecha_envio_documentosS = $("#uu_11").val();
             catalogo_actual.fecha_envio_documentos_completadoS = $("#uu_12").val();
             catalogo_actual.fecha_solicitudS = $("#uu_13").val();
+            catalogo_actual.fecha_solicitud_completadoS = $("#uu_22").val();
             catalogo_actual.fecha_concesionS = $("#uu_14").val();
             catalogo_actual.fecha_legalS = $("#uu_15").val();
             catalogo_actual.fecha_vencimientoS = $("#uu_16").val();

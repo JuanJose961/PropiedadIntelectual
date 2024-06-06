@@ -2698,6 +2698,7 @@ namespace GISMVC.Controllers
                     modelo.fecha_concesionS = Utility.FechaDefault(modelo.fecha_concesionS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_legalS = Utility.FechaDefault(modelo.fecha_legalS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_vencimientoS = Utility.FechaDefault(modelo.fecha_vencimientoS, "dd/MM/yyyy", "yyyy-MM-dd");
+                    modelo.fecha_solicitud_completadoS = Utility.FechaDefault(modelo.fecha_solicitud_completadoS, "dd/MM/yyyy", "yyyy-MM-dd");
                     obj = modelo.ToConvenioLicencia();
                     res = ConvenioLicencia.Crear((ConvenioLicencia)obj);
                 }
@@ -2711,6 +2712,7 @@ namespace GISMVC.Controllers
                     modelo.fecha_concesionS = Utility.FechaDefault(modelo.fecha_concesionS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_legalS = Utility.FechaDefault(modelo.fecha_legalS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_vencimientoS = Utility.FechaDefault(modelo.fecha_vencimientoS, "dd/MM/yyyy", "yyyy-MM-dd");
+                    modelo.fecha_solicitud_completadoS = Utility.FechaDefault(modelo.fecha_solicitud_completadoS, "dd/MM/yyyy", "yyyy-MM-dd");
                     obj = modelo.ToContratoCesion();
                     res = ContratoCesion.Crear((ContratoCesion)obj);
                 }
@@ -2792,6 +2794,7 @@ namespace GISMVC.Controllers
                     modelo.fecha_concesionS = Utility.FechaDefault(modelo.fecha_concesionS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_legalS = Utility.FechaDefault(modelo.fecha_legalS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_vencimientoS = Utility.FechaDefault(modelo.fecha_vencimientoS, "dd/MM/yyyy", "yyyy-MM-dd");
+                    modelo.fecha_solicitud_completadoS = Utility.FechaDefault(modelo.fecha_solicitud_completadoS, "dd/MM/yyyy", "yyyy-MM-dd");
                     obj = modelo.ToConvenioLicencia();
                     res = ConvenioLicencia.Actualizar((ConvenioLicencia)obj);
                 }
@@ -2805,6 +2808,7 @@ namespace GISMVC.Controllers
                     modelo.fecha_concesionS = Utility.FechaDefault(modelo.fecha_concesionS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_legalS = Utility.FechaDefault(modelo.fecha_legalS, "dd/MM/yyyy", "yyyy-MM-dd");
                     modelo.fecha_vencimientoS = Utility.FechaDefault(modelo.fecha_vencimientoS, "dd/MM/yyyy", "yyyy-MM-dd");
+                    modelo.fecha_solicitud_completadoS = Utility.FechaDefault(modelo.fecha_solicitud_completadoS, "dd/MM/yyyy", "yyyy-MM-dd");
                     obj = modelo.ToContratoCesion();
                     res = ContratoCesion.Actualizar((ContratoCesion)obj);
                 }

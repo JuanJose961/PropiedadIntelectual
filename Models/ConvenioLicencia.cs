@@ -90,7 +90,9 @@ namespace GISMVC.Models
         public string solicitud_nombre_original { get; set; }
         public string contrato_nombre_original { get; set; }
         public string oficio_nombre_original { get; set; }
-        public string licencia_tipo { get; set; } 
+        public string licencia_tipo { get; set; }
+        public DateTime fecha_solicitud_completado { get; set; }
+        public string fecha_solicitud_completadoS { get; set; }
         public ConvenioLicencia()
         {
 
@@ -172,6 +174,8 @@ namespace GISMVC.Models
             oficio_fechaS = "";
             contrato_fechaS = "";
             licencia_tipo = "";
+            fecha_solicitud_completado = DateTime.Parse("1969-01-01");
+            fecha_solicitud_completadoS = "";
         }
 
         
@@ -259,6 +263,7 @@ namespace GISMVC.Models
                         res.oficio_url = row[idx].ToString(); idx++;
                         res.oficio_nombre_original = row[idx].ToString(); idx++;
                         res.licencia_tipo = row[idx].ToString(); idx++;
+                        res.fecha_solicitud_completado = DateTime.Parse(row[idx].ToString()); idx++;
 
                         if (res.solicitud_nombre != "")
                         {
@@ -293,6 +298,10 @@ namespace GISMVC.Models
                         if (res.fecha_solicitud.Year != 1969)
                         {
                             res.fecha_solicitudS = res.fecha_solicitud.ToString("dd/MM/yyyy");
+                        }
+                        if (res.fecha_solicitud_completado.Year != 1969)
+                        {
+                            res.fecha_solicitud_completadoS = res.fecha_solicitud_completado.ToString("dd/MM/yyyy");
                         }
                         if (res.fecha_concesion.Year != 1969)
                         {
@@ -403,6 +412,7 @@ namespace GISMVC.Models
                             item.activo = Int32.Parse(row[idx].ToString()); idx++;
                             item.orden = Int32.Parse(row[idx].ToString()); idx++;
                             item.licencia_tipo = row[idx].ToString(); idx++;
+                            item.fecha_solicitud_completado = DateTime.Parse(row[idx].ToString()); idx++;
                             res.Add(item);
                         }
                     }

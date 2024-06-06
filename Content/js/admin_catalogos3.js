@@ -207,7 +207,7 @@ function ModalNuevo() {
     $("#uu_18").val(catalogo_actual.despacho).trigger("change");
     $("#uu_19").val(catalogo_actual.corresponsal).trigger("change");
     $("#uu_20").val(catalogo_actual.corresponsal).trigger("change");
-    $("#uu_24").val(catalogo_actual.licencia_tipo);
+    //$("#uu_21").val(catalogo_actual.licencia_tipo);
 
     $("#solicitudl").hide();
     $("#contratol").hide();
@@ -318,7 +318,7 @@ function Editar(id) {
                 $("#uu_18").val(catalogo_actual.despacho).trigger("change");
                 $("#uu_19").val(catalogo_actual.corresponsal).trigger("change");
                 $("#uu_20").val(catalogo_actual.corresponsal).trigger("change");
-                $("#uu_24").val(catalogo_actual.licencia_tipo);
+                $("#uu_21").val(catalogo_actual.licencia_tipo);
 
                 if (catalogo_actual.contrato_permalink != "") {
                     $("#contratol").attr("href", catalogo_actual.contrato_permalink + "&us=" + eu_lu.id).html('<i class="fa fa-download"></i> Descargar documento (' + catalogo_actual.contrato_nombre_original + ')').show();
@@ -403,10 +403,8 @@ function Confirma01() {
             catalogo_actual.tipo = tipo;
             catalogo_actual.tipo_cesion = parseInt($("#uu_20 option:selected").val());
             catalogo_actual.tipo_cesion_nombre = $("#uu_20 option:selected").text();
-            //alert($("#uu_24").val());
-            //catalogo_actual.licencia_tipo = $("#uu_24").val();
-            catalogo_actual.licencia_tipo = "ttttttttttt";
-            alert(catalogo_actual.licencia_tipo);
+            catalogo_actual.licencia_tipo = $("#uu_21").val();
+
             var sended_url = services_url + "AddCatalogo";
             if (catalogo_actual.id > 0) {
                 sended_url = services_url + "UpdateCatalogo";

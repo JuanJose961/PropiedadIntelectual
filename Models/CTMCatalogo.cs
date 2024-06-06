@@ -94,6 +94,7 @@ namespace GISMVC.Models
         public string fecha_concesionS { get; set; }
         public string fecha_legalS { get; set; }
         public string fecha_vencimientoS { get; set; }
+        public string licencia_tipo { get; set; }
         public CTMCatalogo()
         {
             id = 0;
@@ -179,6 +180,7 @@ namespace GISMVC.Models
             solicitud_fechaS = "";
             oficio_fechaS = "";
             contrato_fechaS = "";
+            licencia_tipo = "";
         }
 
         public NegocioPI ToNegocioPI()
@@ -430,6 +432,7 @@ namespace GISMVC.Models
                 res.fecha_concesionS = this.fecha_concesionS;
                 res.fecha_legalS = this.fecha_legalS;
                 res.fecha_vencimientoS = this.fecha_vencimientoS;
+                res.licencia_tipo = this.licencia_tipo;
             }
             catch (Exception ex)
             {

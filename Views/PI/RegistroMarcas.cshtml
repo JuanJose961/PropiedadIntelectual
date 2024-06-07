@@ -127,8 +127,8 @@
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");
                                 columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
                                     <% if (data.estatus == 6) { %>
-                                    <div>
-                                        <font style="color:#FF0000"> <%- value %></font>
+                                    <div style="background-color: #FF0000; color: white; ">
+                                        <%- value %>
                                     </div>
                                     <% } else { %>
                                     <div>

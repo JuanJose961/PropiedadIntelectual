@@ -294,6 +294,7 @@ namespace GISMVC.Models
                     }
                 }
                 //mail.To.Add("alejandro.chairesg@gmail.com");
+                //mail.To.Add("juanjouaem@gmail.com");
                 mail.Subject = email.subject;
                 mail.Body = email.mensaje;
                 if (email.cc != "")

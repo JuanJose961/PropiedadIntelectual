@@ -990,6 +990,13 @@ function Validar() {
         tab = '#tab01';
     }
 
+    if (id > 0 && fecha_oficio_renovacionS != "" && oficio_renovacion != "") {
+        $("#uu_41_c").append("<p class='form-error'>El campo está vacío</p>");
+        errores += 1;
+        tab = '#tab01';
+    }
+
+
     if (errores > 0) {
         flag = false;
         //$(".nav-link[href='" + tab + "']").click();

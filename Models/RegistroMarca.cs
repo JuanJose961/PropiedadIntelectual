@@ -469,6 +469,8 @@ namespace GISMVC.Models
         public string cesion_cesionario { get; set; } = "";
         public string cesion_nombre { get; set; } = "";
         public string cesion_expediente { get; set; } = "";
+        public DateTime nueva_fecha_vencimiento { get; set; } = DateTime.Parse("1969-01-01");
+        public string nueva_fecha_vencimientoS { get; set; } = "";
         public RegistroMarca()
         {
         }
@@ -731,6 +733,7 @@ namespace GISMVC.Models
                         res.uso_desc = row[idx].ToString(); idx++;
                         res.fecha_declaracion = DateTime.Parse(row[idx].ToString()); idx++;
                         res.fecha_declaracion_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                        res.nueva_fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
                         //
 
                         if (res.fecha_legal.Year > 1969)
@@ -826,6 +829,8 @@ namespace GISMVC.Models
 
                         if (res.fecha_declaracion_completo.Year > 1969)
                             res.fecha_declaracion_completoS = res.fecha_declaracion_completo.ToString("dd/MM/yyyyy");
+                        if (res.nueva_fecha_vencimiento.Year > 1969)
+                            res.nueva_fecha_vencimientoS = res.nueva_fecha_vencimiento.ToString("dd/MM/yyyyy");
 
                         res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString()));
                     }
@@ -953,6 +958,7 @@ namespace GISMVC.Models
                             res.solicitud_desc = row[idx].ToString(); idx++;
                             res.solicitud_tipo = Int32.Parse(row[idx].ToString()); idx++;
                             res.solicitud_tipo_desc = row[idx].ToString(); idx++;
+                            //res.nueva_fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
 
                             if (res.fecha_legal.Year > 1969)
                                 res.fecha_legalS = res.fecha_legal.ToString("dd/MM/yyyyy");

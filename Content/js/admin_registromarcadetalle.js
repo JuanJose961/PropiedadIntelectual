@@ -100,6 +100,7 @@ var registro = {
     prioridad: "",
     fecha_vencimiento_prioridadS: "",
     nombre: "",
+    nueva_fecha_vencimientoS: "",
 };
 $(document).ready(function () {
     var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
@@ -232,7 +233,7 @@ $(document).ready(function () {
         document.getElementById("uu_21_l").innerHTML = "Requerimiento del negocio";
     }
 
-    if (eu_lu.role.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d") {
+    if (eu_lu.role.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d") {//usuario de negocio
         $("#tab01 .form-control").attr("disabled", "disabled");
         $("#tab02 .form-control").attr("disabled", "disabled");
         $("#tab03 .form-control").attr("disabled", "disabled");
@@ -437,6 +438,11 @@ $(document).ready(function () {
         format: 'dd/mm/yyyy'
     });
     $('#uu_400').datepicker({
+        orientation: "bottom left",
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+    });
+    $('#uu_41').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy'
@@ -975,9 +981,18 @@ function Validar() {
         tab = '#tab01';
     }
 
+    var fecha_oficio_renovacionS = $("#uu_33").val();
+    var oficio_renovacion = $("#oficio").val();
+    var id = $("#id_registro").val();
+    if (id > 0 && fecha_oficio_renovacionS!="" && oficio_renovacion=="") {
+        $("#oficioc").append("<p class='form-error'>Seleccione el archivo</p>");
+        errores += 1;
+        tab = '#tab01';
+    }
+
     if (errores > 0) {
         flag = false;
-        $(".nav-link[href='" + tab + "']").click();
+        //$(".nav-link[href='" + tab + "']").click();
     } else {
         flag = true;
     }
@@ -1121,6 +1136,7 @@ function Guardar() {
         var fecha_despachoS = $("#uu_32").val();
         var fecha_despacho_completoS = $("#uu_320").val();
         var oficio_completoS = $("#uu_33").val();
+        var nueva_fecha_vencimientoS = $("#uu_41").val();
 
         registro.fecha_renovarS = fecha_renovarS;
         registro.fecha_renovar_completoS = fecha_renovar_completoS;
@@ -1206,6 +1222,7 @@ function Guardar() {
         registro.prioridad = prioridad;
         registro.fecha_vencimiento_prioridadS = fecha_vencimiento_prioridadS;
         registro.autor = autor;
+        registro.nueva_fecha_vencimientoS = nueva_fecha_vencimientoS;
         //--
         var renovacion = 0;
         if ($("#renovacion").is(":checked")) {
@@ -1600,6 +1617,8 @@ function SelectRegistroMarca(id) {
                     $("#uu_40").datepicker("update", registro.fecha_declaracionS);
                     $("#uu_400").val(registro.fecha_declaracion_completoS);
                     $("#uu_400").datepicker("update", registro.fecha_declaracion_completoS);
+                    $("#uu_41").val(registro.nueva_fecha_vencimientoS);
+                    $("#uu_41").datepicker("update", registro.nueva_fecha_vencimientoS);;
                     //--
 
 
@@ -1685,7 +1704,9 @@ function SelectRegistroMarca(id) {
                         $("#notificacion_titulo").removeAttr("disabled").show();
                         $("#notificacion_vencimiento").removeAttr("disabled").show();
                         $(".nav-link[href='#tab07']").removeAttr("disabled").show();
-                        $(".nav-link[href='#tab08']").removeAttr("disabled").show();
+                        if (registro.solicitud_tipo == 1 || registro.solicitud_tipo == 2) {
+                            $(".nav-link[href='#tab08']").removeAttr("disabled").show();
+                        }
                     }
 
                     $("#alertModal .modal-title").text("Datos guardados");
@@ -1906,6 +1927,7 @@ function SelectRegistroMarca(id) {
                         uso_desc: "",
                         fecha_declaracionS: "",
                         fecha_declaracion_completoS: "",
+                        nueva_fecha_vencimientoS: "",
                     };
 
                     $("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');

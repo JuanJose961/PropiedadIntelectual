@@ -3927,6 +3927,7 @@ namespace GISMVC.Controllers
                 modelo.registro.fecha_despacho = Utility.GetDateTime(modelo.registro.fecha_despachoS, "dd/MM/yyyy");
                 modelo.registro.fecha_despacho_completo = Utility.GetDateTime(modelo.registro.fecha_despacho_completoS, "dd/MM/yyyy");
                 modelo.registro.oficio_completo = Utility.GetDateTime(modelo.registro.oficio_completoS, "dd/MM/yyyy");
+                modelo.registro.nueva_fecha_vencimiento = Utility.GetDateTime(modelo.registro.nueva_fecha_vencimientoS, "dd/MM/yyyy");
 
                 if (modelo.registro.id > 0)
                 {
@@ -3937,8 +3938,12 @@ namespace GISMVC.Controllers
                     {
                         modelo.registro.id = res.data_int;
 
-                        if(preupdate.estatus != modelo.registro.estatus
-                            && modelo.registro.estatus == 2)
+                        //if(preupdate.estatus != modelo.registro.estatus
+                        //    && modelo.registro.estatus == 2)
+                        //{
+                        //    modelo.enviar_correo_registro = true;
+                        //}
+                        if (preupdate.estatus != modelo.registro.estatus)
                         {
                             modelo.enviar_correo_registro = true;
                         }
@@ -3998,7 +4003,7 @@ namespace GISMVC.Controllers
                     //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
                     email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
                     //email.from = "noreply@portalproveedores.com";
-                    email.from = "j.delacruz@softdepot.mx";
+                    email.from = "juanjouaem@gmail.com";
                     var enviaUsuario = Utility.enviaEmail(0, email);
                 }
                 res.flag = true;

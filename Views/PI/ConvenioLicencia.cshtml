@@ -112,9 +112,12 @@
                                         <%- value %>
                                     </div>
                                     <% } %>
-                                </text>).Caption("Nombre");
+                                </text>).Caption("Nombre (Marca, Patente, Aviso Comercial, Modelo Industrial, Modelo Utilidad, Diseño Industrial, Obra Atistica)");
                                 columns.AddFor(m => m.licenciatario_nombre).Caption("Licenciatario");
                                 columns.AddFor(m => m.licenciante_nombre).Caption("Licenciante");
+                                columns.AddFor(m => m.numero_expediente).Caption("No. Expediente");
+                                columns.AddFor(m => m.clase_nombre).Caption("Clase");
+                                columns.AddFor(m => m.pais_nombre).Caption("Pais");
                             })
                             .ColumnAutoWidth(true)
                             .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))

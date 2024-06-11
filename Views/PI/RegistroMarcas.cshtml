@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
-                                columns.AddFor(m => m.solicitud_tipo_desc).Caption("TIPO DE SOLICITUD");
+                                @*columns.AddFor(m => m.solicitud_tipo_desc).Caption("TIPO DE SOLICITUD");
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
                                     <div>
@@ -119,16 +119,30 @@
                                         <%- value %>
                                     </div>
                                     <% } %>
-                                </text>).Caption("NOMBRE");
+                                </text>).Caption("NOMBRE");*@
+                                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
+                                    <% if (data.activo == false) { %>
+                                    <div>
+                                        <span class="dx-active-off"></span>
+                                        <%- value %>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+                                        <span class="dx-active-on"></span>
+                                        <%- value %>
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("TIPO DE SOLICITUD");
+                                columns.AddFor(m => m.nombre).Caption("NOMBRE");
                                 columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
-                                columns.AddFor(m => m.solicitud_desc).Caption("SOLICITUD");
+                                columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
                                 columns.AddFor(m => m.pais_desc).Caption("PAIS");
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");
                                 columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
                                     <% if (data.estatus == 6) { %>
-                                    <div style="background-color: #FF0000; color: white; ">
-                                        <%- value %>
+                                    <div>
+                                        <span style="background-color: #FF0000;"><b><%- value %></b></span>
                                     </div>
                                     <% } else { %>
                                     <div>

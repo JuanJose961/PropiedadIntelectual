@@ -134,8 +134,30 @@
                                     <% } %>
                                 </text>).Caption("TIPO DE SOLICITUD");
                                 columns.AddFor(m => m.nombre).Caption("NOMBRE");
-                                columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
-                                columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
+                                //columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
+                                //columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
+                                columns.AddFor(m => m.no_solicitud).CellTemplate(@<text>
+                                    <% if (data.estatus == 2) { %>
+                                    <div>
+                                        <%- value %>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+                                        
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("No SOLICITUD");
+                                columns.AddFor(m => m.no_registro).CellTemplate(@<text>
+                                    <% if (data.estatus == 5) { %>
+                                    <div>
+                                        <%- value %>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+        
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("No REGISTRO");
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
                                 columns.AddFor(m => m.pais_desc).Caption("PAIS");
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");

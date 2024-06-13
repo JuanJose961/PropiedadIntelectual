@@ -125,6 +125,12 @@ $(document).ready(function () {
                 case 4: propiedad = 4; tipo_descrip = "Diseño Industrial"; break;
                 case 5: propiedad = 5; tipo_descrip = "Modelo Utilidad"; break;
                 case 6: propiedad = 6; tipo_descrip = "Modelo Industrial"; break;
+                case 7: propiedad = 7; tipo_descrip = "Obra Artística"; break;
+                case 8: propiedad = 8; tipo_descrip = "Obra Visual"; break;
+                case 9: propiedad = 9; tipo_descrip = "Obra Literaria"; break;
+                case 10: propiedad = 10; tipo_descrip = "Obra Auditiva"; break;
+                case 11: propiedad = 11; tipo_descrip = "Obra Gráfica"; break;
+                case 12: propiedad = 12; tipo_descrip = "Obra Tecnológica"; break;
                 default: propiedad = 1; tipo_descrip = "Marca"; break;
             }
         }
@@ -372,51 +378,69 @@ $(document).ready(function () {
     $('#uu_29').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
     $('#uu_290').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
 
     $('#uu_30').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
     $('#uu_300').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
 
     $('#uu_31').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
     $('#uu_310').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
 
     $('#uu_32').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
     $('#uu_320').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
 
     $('#uu_33').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
 
     $('#uu_36').datepicker({
@@ -445,7 +469,9 @@ $(document).ready(function () {
     $('#uu_41').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
+        startDate: '-6m',
+        endDate: '+6m'
     });
     //
 
@@ -468,11 +494,20 @@ $(document).ready(function () {
     $("#cartal").hide();
     $("#licencial").hide();
     $("#cesionl").hide();
+    
     if (mainid > 0) {
-        document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial e Intelectual";//titulo registro marca
+        if (propiedad >= 1 && propiedad <= 6) {
+            document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial";//titulo registro marca
+        } else {
+            document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Intelectual";//titulo registro marca
+        }
         SelectRegistroMarca(mainid);
     } else {
-        document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial e Intelectual";//titulo registro marca
+        if (propiedad >= 1 && propiedad <= 6) {
+            document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial";//titulo registro marca
+        } else {
+            document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Intelectual";//titulo registro marca
+        }
     }
 });
 
@@ -861,6 +896,7 @@ function Validar() {
     var solicitud = $("#uu_021 option:selected").val();
     var solicitud_desc = $("#uu_021 option:selected").text();
     var nombre = $("#uu_022").val();
+    var nueva_fecha_vencimientoS = $("#uu_41").val();
 
     //if (uso <= 0 && (solicitud_tipo == 1 || solicitud_tipo == 2)) {
     //    //$("#uu_09_c .select2-selection").addClass("control-error");
@@ -990,7 +1026,7 @@ function Validar() {
         tab = '#tab01';
     }
 
-    if (id > 0 && fecha_oficio_renovacionS != "" && oficio_renovacion != "") {
+    if (id > 0 && fecha_oficio_renovacionS != "" && oficio_renovacion != "" && nueva_fecha_vencimientoS=="") {
         $("#uu_41_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
         tab = '#tab01';
@@ -1707,14 +1743,74 @@ function SelectRegistroMarca(id) {
                         $("#notificacion_titulo").removeAttr("disabled").parent().show();
                         $("#notificacion_vencimiento").removeAttr("disabled").parent().show();
                     }
-                    if (registro.estatus_desc == "Registrada") {
+
+                    const hoy = new Date(Date.now());
+                    let day = `${(hoy.getDate())}`.padStart(2, '0');
+                    let month = `${(hoy.getMonth() + 1)}`.padStart(2, '0');
+                    let year = hoy.getFullYear();
+                    let fechaAct = year + '-' + month + '-' + day + 'T00:00:00';
+
+                    //let yearAtras = year;
+                    //let monthAtras = month - 6;
+                    //if (monthAtras <= 0) {
+                    //    monthAtras = monthAtras + 12;
+                    //    yearAtras = year - 1;
+                    //}
+                    //let fecAtras = yearAtras + '-' + monthAtras + '-' + day + 'T00:00:00';
+
+                    //const fecVen = new Date(registro.fecha_vencimiento);
+                    //let dayVen = `${(fecVen.getDate())}`.padStart(2, '0');
+                    //let monthVen = `${(fecVen.getMonth() + 1)}`.padStart(2, '0');
+                    //let yearVen = fecVen.getFullYear();
+                    //let fechaVen = yearVen + '-' + monthVen + '-' + dayVen + 'T00:00:00';
+                    //alert(fechaVen);
+                    //if (registro.estatus_desc == "Registrada") {
+                    //if (((registro.fecha_vencimiento < fechaAct && fechaVen > fecAtras) || (registro.fecha_vencimiento < fechaAct && fechaVen > fecAtras))&& registro.estatus > 2) {
+                    if ((registro.fecha_vencimiento < fechaAct || registro.fecha_vencimiento >= fecAct) && registro.estatus > 2) {
                         $("#notificacion_titulo").removeAttr("disabled").show();
                         $("#notificacion_vencimiento").removeAttr("disabled").show();
                         $(".nav-link[href='#tab07']").removeAttr("disabled").show();
                         if (registro.solicitud_tipo == 1 || registro.solicitud_tipo == 2) {
                             $(".nav-link[href='#tab08']").removeAttr("disabled").show();
                         }
-                    }
+                        //$("#valor").removeAttr("readonly")
+                        //$("#uu_29").removeAttr("disabled");
+                        //$("#uu_290").removeAttr("disabled");
+                        //$("#uu_30").removeAttr("disabled");
+                        //$("#uu_300").removeAttr("disabled");
+                        //$("#uu_31").removeAttr("disabled");
+                        //$("#uu_310").removeAttr("disabled");
+                        //$("#uu_32").removeAttr("disabled");
+                        //$("#uu_320").removeAttr("disabled");
+                        //$("#uu_33").removeAttr("disabled");
+                        //$("#uu_41").removeAttr("disabled");
+                        //$("#oficio").removeAttr("disabled");
+                    } //else if (registro.fecha_vencimiento >= fechaAct && registro.estatus > 2) {
+                    //    $("#notificacion_titulo").removeAttr("disabled").show();
+                    //    $("#notificacion_vencimiento").removeAttr("disabled").show();
+                    //    $(".nav-link[href='#tab07']").removeAttr("disabled").show();
+                    //    if (registro.solicitud_tipo == 1 || registro.solicitud_tipo == 2) {
+                    //        $(".nav-link[href='#tab08']").removeAttr("disabled").show();
+                    //    }
+                    //    $("#uu_29").attr("disabled", "disabled");
+                    //    $("#uu_290").attr("disabled", "disabled");
+                    //    $("#uu_30").attr("disabled", "disabled");
+                    //    $("#uu_300").attr("disabled", "disabled");
+                    //    $("#uu_31").attr("disabled", "disabled");
+                    //    $("#uu_310").attr("disabled", "disabled");
+                    //    $("#uu_32").attr("disabled", "disabled");
+                    //    $("#uu_320").attr("disabled", "disabled");
+                    //    $("#uu_33").attr("disabled", "disabled");
+                    //    $("#uu_41").attr("disabled", "disabled");
+                    //    $("#oficio").attr("disabled", "disabled");
+                    //    //$("#oficio").remove();
+                    //    //var elemento = document.getElementById('oficio');
+                    //    //elemento.style.display = "none";
+                    //    //$("#oficio").hide();
+                    //    //$("#oficio").hide();
+                    //    //$("#oficio").style.display="none";
+                    //    //document.getElementById("oficio").disabled = false;
+                    //}
 
                     $("#alertModal .modal-title").text("Datos guardados");
                     $("#alertModal .modal-spinner").hide();

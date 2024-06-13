@@ -3987,7 +3987,7 @@ namespace GISMVC.Controllers
                     "<style type='text/css'>body,body * {font-family: 'Lato', sans-serif;} strong { font-weight:600; }</style>" +
                     "</head>" +
                     "<body>" +
-                    "<div style='border-top: 25px solid #003e74; padding: 20px 20px; border-radius: 7px; box-shadow: 0px 2px 2px 2px #ddd; width: 450px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;border-left: 1px solid #ddd;'>" +
+                    "<div style='border-top: 25px solid #003e74; padding: 20px 20px; border-radius: 7px; box-shadow: 0px 2px 2px 2px #ddd; width: 800px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;border-left: 1px solid #ddd;'>" +
                     "<img src='https://www.gis.com.mx/wp-content/themes/GIS/images/gislogo1.png' style='width: 100px;'>" +
                     "<br>" +
                     "<p style='font-size: 20px;'>Definir contenido</p>" +

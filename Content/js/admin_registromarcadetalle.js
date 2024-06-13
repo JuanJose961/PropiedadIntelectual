@@ -701,7 +701,7 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
     if (val > 0) {
         var tipo = parseInt($("#uu_02 option:selected").val());
         //var solicitud = solicitudes.filter(i => i.tipo == tipo & i.id == val);
-        var solicitud = solicitudes.filter(i => i.tipo_solicitud == tipo & i.id == val);
+        var solicitud = solicitudes.filter(i => i.solicitud_tipo == tipo & i.id == val);
         document.getElementById("uu_022").value = solicitud[0].nombre; //nombre
         if (solicitud.length > 0) {
             var empresa = solicitud[0].empresa;
@@ -1766,7 +1766,7 @@ function SelectRegistroMarca(id) {
                     //alert(fechaVen);
                     //if (registro.estatus_desc == "Registrada") {
                     //if (((registro.fecha_vencimiento < fechaAct && fechaVen > fecAtras) || (registro.fecha_vencimiento < fechaAct && fechaVen > fecAtras))&& registro.estatus > 2) {
-                    if ((registro.fecha_vencimiento < fechaAct || registro.fecha_vencimiento >= fecAct) && registro.estatus > 2) {
+                    if ((registro.fecha_vencimiento < fechaAct || registro.fecha_vencimiento >= fechaAct) && registro.estatus > 2) {
                         $("#notificacion_titulo").removeAttr("disabled").show();
                         $("#notificacion_vencimiento").removeAttr("disabled").show();
                         $(".nav-link[href='#tab07']").removeAttr("disabled").show();

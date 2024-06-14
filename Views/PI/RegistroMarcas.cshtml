@@ -93,10 +93,20 @@
                             ()
                             .ID("tabla01")
                             .ShowBorders(true)
+                            .Paging(paging => paging.PageSize(20))
+                            .Pager(pager =>
+                            {
+                                pager.Visible(true);
+                                //pager.DisplayMode(GridPagerDisplayMode.Full);
+                                pager.ShowPageSizeSelector(true);
+                                //pager.AllowedPageSizes(new JS("[5, 10, 'all']"));
+                                pager.ShowInfo(true);
+                                pager.ShowNavigationButtons(true);
+                            })
                             .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
                             .Columns(columns =>
                             {
-                                columns.AddFor(m => m.id).CellTemplate(@<text>
+                            columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div class="row">
                                          <div class="col-md-6">
                                              <button type="button" class="dx-oc-link"  onclick='VerMarca(<%- value %>);' title="Ver información"><i class="fa fa-eye"></i></button>
@@ -134,37 +144,15 @@
                                     <% } %>
                                 </text>).Caption("TIPO DE SOLICITUD");
                                 columns.AddFor(m => m.nombre).Caption("NOMBRE");
-                                //columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
-                                //columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
-                                columns.AddFor(m => m.no_solicitud).CellTemplate(@<text>
-                                    <% if (data.estatus == 2) { %>
-                                    <div>
-                                        <%- value %>
-                                    </div>
-                                    <% } else { %>
-                                    <div>
-                                        
-                                    </div>
-                                    <% } %>
-                                </text>).Caption("No SOLICITUD");
-                                columns.AddFor(m => m.no_registro).CellTemplate(@<text>
-                                    <% if (data.estatus == 5) { %>
-                                    <div>
-                                        <%- value %>
-                                    </div>
-                                    <% } else { %>
-                                    <div>
-        
-                                    </div>
-                                    <% } %>
-                                </text>).Caption("No REGISTRO");
+                                columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
+                                columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
                                 columns.AddFor(m => m.pais_desc).Caption("PAIS");
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");
                                 columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
                                     <% if (data.estatus == 6) { %>
                                     <div>
-                                        <span style="background-color: #FF0000;"><b><%- value %></b></span>
+                                        <span style="background-color: #FF0000; color: white;"><%- value %></span>
                                     </div>
                                     <% } else { %>
                                     <div>
@@ -347,6 +335,9 @@
         $(document).ready(function () {
             $("#tabla01 .dx-toolbar-after").prepend("<a class='btn btn-info btn-sm' href='" + hosturl + "PI/RegistroMarca?tipo="+tipo_solicitud+"'><i class='fa fa-plus'></i> Nuevo registro</button>");
         });
+
+
+           
         </script>
         <script src="@Url.Content("~/Content/js/admin_registromarcas.js?t=" + DateTime.Now.Ticks.ToString())"></script>
     }

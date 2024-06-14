@@ -469,6 +469,10 @@ namespace GISMVC.Models
         public string cesion_cesionario { get; set; } = "";
         public string cesion_nombre { get; set; } = "";
         public string cesion_expediente { get; set; } = "";
+        public string cesion_cedente { get; set; } = "";
+        public string cesion_registro { get; set; } = "";
+        public string cesion_clase { get; set; } = "";
+        public string cesion_pais { get; set; } = "";
         public DateTime nueva_fecha_vencimiento { get; set; } = DateTime.Parse("1969-01-01");
         public string nueva_fecha_vencimientoS { get; set; } = "";
         public RegistroMarca()
@@ -590,16 +594,23 @@ namespace GISMVC.Models
                                     var row3 = dt3.Rows[0];
 
                                     res.idces = Int32.Parse(row3[idx3].ToString()); idx3++;
+                                    idx3 = 2;
+                                    res.cesion_cedente = row3[idx3].ToString(); idx3++;
                                     idx3 = 4;
                                     res.cesion_cesionario = row3[idx3].ToString(); idx3++;
                                     idx3 = 7;
                                     res.cesion_nombre = row3[idx3].ToString(); idx3++;
+                                    res.cesion_registro = row3[idx3].ToString(); idx3++;
                                     res.cesion_expediente = row3[idx3].ToString(); idx3++;
-                                    idx3 = 20;
-                                    res.cesion_fecha_vencimiento = DateTime.Parse(row3[idx3].ToString()); idx3++;
+                                    idx3 = 11;
+                                    res.cesion_clase = row3[idx3].ToString(); idx3++;
+                                    idx3 = 13;
+                                    res.cesion_pais = row3[idx3].ToString(); idx3++;
                                     idx3 = 21;
+                                    res.cesion_fecha_vencimiento = DateTime.Parse(row3[idx3].ToString()); idx3++;
+                                    idx3 = 22;
                                     res.cesion_observaciones = row3[idx3].ToString(); idx3++;
-                                    idx3 = 58;
+                                    idx3 = 59;
                                     res.cesion_nombre_original = row3[idx3].ToString(); idx3++;
                                 }
                                 else

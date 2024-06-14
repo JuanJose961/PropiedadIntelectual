@@ -203,7 +203,7 @@ namespace GISMVC.Models
                         res.solicitante = row[idx].ToString(); idx++;
                         res.solicitante_nombre = row[idx].ToString(); idx++;
                         res.nombre = row[idx].ToString(); idx++;
-                        //res.numero_registro = row[idx].ToString(); idx++;
+                        res.numero_registro = row[idx].ToString(); idx++;
                         res.numero_expediente = row[idx].ToString(); idx++;
                         res.clase = Int32.Parse(row[idx].ToString()); idx++;
                         res.clase_nombre = row[idx].ToString(); idx++;

@@ -379,68 +379,68 @@ $(document).ready(function () {
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
     $('#uu_290').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
 
     $('#uu_30').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
     $('#uu_300').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
 
     $('#uu_31').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
     $('#uu_310').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
 
     $('#uu_32').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
     $('#uu_320').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
 
     $('#uu_33').datepicker({
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
 
     $('#uu_36').datepicker({
@@ -470,8 +470,8 @@ $(document).ready(function () {
         orientation: "bottom left",
         todayHighlight: true,
         format: 'dd/mm/yyyy',
-        startDate: '-6m',
-        endDate: '+6m'
+        //startDate: '-6m',
+        //endDate: '+6m'
     });
     //
 
@@ -1526,13 +1526,13 @@ function SelectRegistroMarca(id) {
                     if (registro.cesion >= 1) {
                         document.getElementById("ces_0_c").style.display = "block";//cesion
                         //document.getElementById("cesion_a").style.display = "block";//cesion
-                        document.getElementById("ces_2_c").style.display = "block";//cesion
+                        //document.getElementById("ces_2_c").style.display = "block";//cesion
                         document.getElementById("ces_3_c").style.display = "block";//cesion
                         document.getElementById("ces_4_c").style.display = "block";//cesion
                     } else {
                         document.getElementById("ces_0_c").style.display = "none";//cesion
                         //document.getElementById("cesion_a").style.display = "none";//cesion
-                        document.getElementById("ces_2_c").style.display = "none";//cesion
+                        //document.getElementById("ces_2_c").style.display = "none";//cesion
                         document.getElementById("ces_3_c").style.display = "none";//cesion
                         document.getElementById("ces_4_c").style.display = "none";//cesion
                     }
@@ -1874,7 +1874,7 @@ function SelectRegistroMarca(id) {
                     }
 
                     if (registro.idces >= 1) {
-                        let date = new Date(registro.cesion_fecha_vencimiento)
+                        /*let date = new Date(registro.cesion_fecha_vencimiento)
                         let day = `${(date.getDate())}`.padStart(2, '0');
                         let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
                         let year = date.getFullYear();
@@ -1882,9 +1882,13 @@ function SelectRegistroMarca(id) {
                             $("#ces_02").val(`${day}/${month}/${year}`);
                         } else {
                             $("#ces_02").val('');
-                        }
+                        }*/
                         $("#ces_03").val(registro.cesion_observaciones);
-                        $("#ces_04").val(registro.cesion_cesionario+' - '+registro.cesion_nombre+' - '+registro.cesion_expediente);
+                        if (registro.cesion_registro != "") {
+                            $("#ces_04").val(registro.cesion_cedente + ' - ' + registro.cesion_cesionario + ' - ' + registro.cesion_nombre + ' - ' + registro.cesion_registro + ' - ' + registro.cesion_clase + ' - ' +registro.cesion_pais);
+                        } else {
+                            $("#ces_04").val(registro.cesion_cedente + ' - ' + registro.cesion_cesionario + ' - ' + registro.cesion_nombre + ' - ' + registro.cesion_expediente + ' - ' + registro.cesion_clase + ' - ' + registro.cesion_pais);
+                        }
 
                         if (registro.cesion_permalink != "") {
                             document.getElementById("cesion_a").style.display = "block";//licencia

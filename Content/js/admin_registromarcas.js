@@ -6,6 +6,13 @@
     //const urlParams = new URLSearchParams(url.search);
     //var tipo = urlParams.get('tipo');
     //alert(tipo);
+    //var nrows = 0;
+    //$("table tr").each(function () {
+    //    nrows++;
+    //})
+    //alert(nrows);
+    //var $num = document.getElementById('tabla01').getElementsByTagName('tr').length - 1;
+    //alert($num);
 });
 
 function VerMarca(id) {

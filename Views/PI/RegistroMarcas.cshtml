@@ -319,11 +319,20 @@
         function reloadDataRange() {
             $("#table-container").show();
             $("#tabla01").dxDataGrid("getDataSource").reload();
+            //var nrows = 0;
+            //$("table tr").each(function () {
+            //    nrows++;
+            //})
+            //alert(nrows);
+
+            //var $num = document.getElementById('tblUsuario').getElementsByTagName('tr').length - 1;
+            //alert($num);
         }
         $(document).ready(function () {
-            $("#tabla01 .dx-toolbar-after").prepend("<a class='btn btn-info btn-sm' href='" + hosturl + "PI/RegistroMarca?tipo="+tipo_solicitud+"'><i class='fa fa-plus'></i> Nuevo registro</button>");
+            $("#tabla01 .dx-toolbar-after").prepend("<a class='btn btn-info btn-sm' href='" + hosturl + "PI/RegistroMarca?tipo=" + tipo_solicitud + "'><i class='fa fa-plus'></i> Nuevo registro</button>");
         });
 
+            
 
            
         </script>

@@ -1,4 +1,5 @@
-﻿using GISMVC.Data;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using GISMVC.Data;
 using GISMVC.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -3943,7 +3944,7 @@ namespace GISMVC.Controllers
                         //{
                         //    modelo.enviar_correo_registro = true;
                         //}
-                        if (preupdate.estatus != modelo.registro.estatus)
+                        if (preupdate.estatus != modelo.registro.estatus && modelo.registro.estatus > 2)
                         {
                             modelo.enviar_correo_registro = true;
                         }
@@ -3953,6 +3954,49 @@ namespace GISMVC.Controllers
                         res.description = "Error al crear el registro";
                         res.errors.Add("No se pudo crear el registro en el portal");
                     }
+
+                    //envio de correo a notificacion_titulo y notificacion_vencimiento
+                    //if(modelo.registro.notificacion_titulo!="" && )
+                    //{
+
+                    //}
+
+                    //envio de correo a despacho legal por renovacion
+                    if(modelo.registro.renovacion==1 && modelo.registro.nueva_fecha_vencimiento!=preupdate.fecha_vencimiento)
+                    {
+                        modelo.enviar_correo_renovacion = true;
+                        if (modelo.registro.despacho > 0)
+                        {
+                            var iddesp = modelo.registro.despacho;
+                            DataAccess da2 = new DataAccess();
+                            var dt2 = new System.Data.DataTable();
+                            var errores2 = "";
+                            if (da2.Cons_DespachoById(iddesp, out dt2, out errores2))
+                            {
+                                if (dt2.Rows.Count > 0)
+                                {
+                                    int idx2 = 0;
+                                    var row2 = dt2.Rows[0];
+
+                                    idx2 = 1;
+                                    modelo.nombre_despacho = row2[idx2].ToString(); idx2++;
+                                    idx2 = 3;
+                                    modelo.email_despacho = row2[idx2].ToString(); idx2++;
+                                }
+                                else
+                                {
+                                    modelo.nombre_despacho = "";
+                                    modelo.email_despacho = "";
+
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        modelo.enviar_correo_renovacion = false;
+                    }
+                    
                 }
                 else
                 {
@@ -3973,7 +4017,7 @@ namespace GISMVC.Controllers
                     }
                 }
 
-                //if(modelo.correo_registro == true)
+                //notificacion por correo de registro o actualizacion de solicitud
                 if (modelo.enviar_correo_registro == true)
                 {
                     //correo de que ya esta en registro
@@ -4002,6 +4046,41 @@ namespace GISMVC.Controllers
                     "</html>";
                     //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
                     email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
+                    //email.from = "noreply@portalproveedores.com";
+                    email.from = "juanjouaem@gmail.com";
+                    var enviaUsuario = Utility.enviaEmail(0, email);
+                }
+
+                //notificacion por correo a despacho legal por renovacion
+                if (modelo.enviar_correo_renovacion == true && modelo.email_despacho!="")
+                {
+                    //correo de que ya esta en registro
+
+                    var email = new EmailTmp();
+                    email.subject = "Solicitud de Renovación";
+                    email.mensaje = "<!DOCTYPE html>" +
+                    "<html>" +
+                    "<head>" +
+                    "<link href='https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap' rel='stylesheet'><title></title>" +
+                    "<style type='text/css'>body,body * {font-family: 'Lato', sans-serif;} strong { font-weight:600; }</style>" +
+                    "</head>" +
+                    "<body>" +
+                    "<div style='border-top: 25px solid #003e74; padding: 20px 20px; border-radius: 7px; box-shadow: 0px 2px 2px 2px #ddd; width: 800px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;border-left: 1px solid #ddd;'>" +
+                    "<img src='https://www.gis.com.mx/wp-content/themes/GIS/images/gislogo1.png' style='width: 100px;'>" +
+                    "<br>" +
+                    "<p style='font-size: 20px;'>Definir contenido</p>" +
+                    "<br>" +
+                    "<p>Puedes revisar los datos del contrato accediendo al portal.</p>" +
+                    "<p>Si no puedes visualizar el contrato en el portal solicita ayuda con un administrador.</p>" +
+                    "<br>" +
+                    "<br>" +
+                    "<small><i>No respondas a este mensaje, ha sido generado automáticamente.</i></small>" +
+                    "</div>" +
+                    "</body>" +
+                    "</html>";
+                    //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
+                    //email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
+                    email.to = modelo.email_despacho;
                     //email.from = "noreply@portalproveedores.com";
                     email.from = "juanjouaem@gmail.com";
                     var enviaUsuario = Utility.enviaEmail(0, email);

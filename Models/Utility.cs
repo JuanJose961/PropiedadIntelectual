@@ -345,7 +345,8 @@ namespace GISMVC.Models
 
                 mail.From = new MailAddress("j.delacruz@softdepot.mx", "Sender");
                 //mail.To.Add(email.to);
-                mail.To.Add("j.delacruz@softdepot.mx");
+                //mail.To.Add("j.delacruz@softdepot.mx");
+                mail.To.Add(email.to);
                 mail.Subject = email.subject;
                 mail.Body = email.mensaje;
                 if (email.cc != "")

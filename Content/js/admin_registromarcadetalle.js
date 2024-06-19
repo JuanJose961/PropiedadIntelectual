@@ -1020,7 +1020,8 @@ function Validar() {
     var fecha_oficio_renovacionS = $("#uu_33").val();
     var oficio_renovacion = $("#oficio").val();
     var id = $("#id_registro").val();
-    if (id > 0 && fecha_oficio_renovacionS!="" && oficio_renovacion=="") {
+    var oficio_renovacion_old = $("#oficiol").text();
+    if (id > 0 && fecha_oficio_renovacionS != "" && oficio_renovacion == "") {
         $("#oficioc").append("<p class='form-error'>Seleccione el archivo</p>");
         errores += 1;
         tab = '#tab01';

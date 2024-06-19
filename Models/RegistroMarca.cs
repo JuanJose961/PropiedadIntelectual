@@ -18,6 +18,9 @@ namespace GISMVC.Models
         public RegistroMarca registro { get; set; } = new RegistroMarca();
         public bool enviar_correo_registro { get; set; } = false;
         public bool correo_registro { get; set; } = false;
+        public bool enviar_correo_renovacion { get; set; } = false;
+        public string nombre_despacho { get; set; } = "";
+        public string email_despacho { get; set; } = "";
     }
     public class Solicitud
     {

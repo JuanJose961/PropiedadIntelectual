@@ -100,7 +100,7 @@
                                 pager.Visible(true);
                                 //pager.DisplayMode(GridPagerDisplayMode.Full);
                                 pager.ShowPageSizeSelector(true);
-                                //pager.AllowedPageSizes(new JS("[5, 10, '20']"));
+                                pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
                                 pager.ShowInfo(true);
                                 pager.ShowNavigationButtons(true);
                             })
@@ -118,7 +118,7 @@
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
                                 @*columns.AddFor(m => m.solicitud_tipo_desc).Caption("TIPO DE SOLICITUD");*@
-                                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
+                                @*columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
                                     <div>
                                         <span class="dx-active-off"></span>
@@ -130,8 +130,21 @@
                                         <%- value %>
                                     </div>
                                     <% } %>
-                                </text>).Caption("TIPO DE SOLICITUD");
-                                columns.AddFor(m => m.nombre).Caption("NOMBRE");
+                                </text>).Caption("TIPO DE SOLICITUD");*@
+                                //columns.AddFor(m => m.nombre).Caption("NOMBRE");
+                                columns.AddFor(m => m.nombre).CellTemplate(@<text>
+                                    <% if (data.activo == false) { %>
+                                    <div>
+                                        <span class="dx-active-off"></span>
+                                        <%- value %>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+                                        <span class="dx-active-on"></span>
+                                        <%- value %>
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("NOMBRE");
                                 columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
                                 columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
@@ -151,13 +164,20 @@
                                 //columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
                                 //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
                             })
+                            .Summary(s => s.TotalItems(items =>{
+                                items.Add().Column("nombre")
+                                .SummaryType(SummaryType.Count);
+                            })
+                            )
                             .ColumnAutoWidth(true)
                             .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
-                            .Paging(p => p.PageSize(20))
+                            .Paging(p => p.PageSize(10))
                             .FilterRow(f => f.Visible(true))
                             .HeaderFilter(f => f.Visible(true))
-
+                            
                             )
+                        
+
                     </div>
                 </div>
             </div>
@@ -299,7 +319,6 @@
             default: tipo_solicitud = 0; tipo_solicitud_nombre = "Propiedad Industrial e Intelectual"; break;
         }
         document.getElementById("tipo_registro").value = tipo_solicitud;
-        document.getElementById("tituloregistro").innerHTML = "" + tipo_solicitud_nombre;
 
         var valReqData = {
             ID: 0,
@@ -319,21 +338,38 @@
         function reloadDataRange() {
             $("#table-container").show();
             $("#tabla01").dxDataGrid("getDataSource").reload();
-            //var nrows = 0;
-            //$("table tr").each(function () {
-            //    nrows++;
-            //})
-            //alert(nrows);
-
-            //var $num = document.getElementById('tblUsuario').getElementsByTagName('tr').length - 1;
-            //alert($num);
         }
         $(document).ready(function () {
             $("#tabla01 .dx-toolbar-after").prepend("<a class='btn btn-info btn-sm' href='" + hosturl + "PI/RegistroMarca?tipo=" + tipo_solicitud + "'><i class='fa fa-plus'></i> Nuevo registro</button>");
         });
 
-            
-
+        setTimeout(function () {
+            var nFilas = $("#tabla01 tr").length-4;
+            //var nColumnas = $("#tabla01 tr:last td").length;
+            //var msg = "Filas: " + nFilas + " - Columnas: " + nColumnas;
+            //alert(msg);
+            //document.getElementById("tituloregistro").innerHTML = "" + tipo_solicitud_nombre + " (" + nFilas+")";
+            //var nrows = 0; var nres = 0;
+            //$("#tabla01 tboby").each(function () {
+            //    nrows++;
+            //})
+            //alert(nrows);
+            //var table = document.getElementById("tabla01").getVisibleRows();
+            //var table = $("#tabla01").getVisibleRows();
+            //var tbody = table.tBodies[1];
+            // En lugar de alert, actualiza el valor del campo
+            //document.querySelector('#filas').value = tbody.rows.length;
+            //var nFilas = tbody.rows.length;
+            //var nFilas = table.rows.length;
+            //var rows = document.getElementById("tabla01").getVisibleRows();
+            //var visibleRows = rows.filter(function (row) {
+            //    return row.rowType == "data";
+            //});
+            //var rowCount = visibleRows.length;
+            //alert(rowCount);
+            document.getElementById("tituloregistro").innerHTML = "" + tipo_solicitud_nombre;
+            //document.getElementById("tituloregistro").innerHTML = "" + tipo_solicitud_nombre + " (" + nFilas + ")";
+        }, 800);
            
         </script>
         <script src="@Url.Content("~/Content/js/admin_registromarcas.js?t=" + DateTime.Now.Ticks.ToString())"></script>

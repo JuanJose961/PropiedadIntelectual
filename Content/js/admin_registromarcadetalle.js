@@ -510,11 +510,11 @@ $(document).ready(function () {
             document.getElementById("oficio_l").innerHTML = "Oficio de renovación";//oficio renovacion
         } else if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
             document.getElementById("pestaña_renovacion").innerHTML = "Quinquenio o Anualidad";// pestaña renovacion
-            document.getElementById("renovacion_l").innerHTML = "Crear quinquenio o anualidad";//quinquenio
-            document.getElementById("uu_29_l").innerHTML = "Solicita a la empresa instrucciones para quinquenio o anualidad";//fecha empresa
-            document.getElementById("uu_33_l").innerHTML = "Fecha de oficio de quinquenio o anualidad";//fecha oficio
+            document.getElementById("renovacion_l").innerHTML = "Crear pago";//quinquenio
+            document.getElementById("uu_29_l").innerHTML = "Solicita a la empresa instrucciones para mantenimiento";//fecha empresa
+            document.getElementById("uu_33_l").innerHTML = "Fecha oficio de mantenimiento";//fecha oficio
             document.getElementById("uu_41_l").innerHTML = "Nueva fecha de quinquenio o anualidad";//nueva fecha quinquenio
-            document.getElementById("oficio_l").innerHTML = "Oficio de quinquenio o anualidad";//oficio quinquenio
+            document.getElementById("oficio_l").innerHTML = "Oficio de mantenimiento";//oficio quinquenio
         }
         SelectRegistroMarca(mainid);
     } else {
@@ -1032,11 +1032,20 @@ function Validar() {
         tab = '#tab01';
     }
 
+    var renovacion = $("#renovacion").val();
+    var oficiold = $("#oficiol").attr("href");
     var fecha_oficio_renovacionS = $("#uu_33").val();
     var oficio_renovacion = $("#oficio").val();
     var id = $("#id_registro").val();
     var oficio_renovacion_old = $("#oficiol").text();
-    if (id > 0 && fecha_oficio_renovacionS != "" && oficio_renovacion == "") {
+
+    if ((id > 0 && fecha_oficio_renovacionS == "" && oficio_renovacion != "") || (id > 0 && fecha_oficio_renovacionS == "" && nueva_fecha_vencimientoS != "")) {
+        $("#uu_33_c").append("<p class='form-error'>El campo está vacío</p>");
+        errores += 1;
+        tab = '#tab01';
+    }
+
+    if ((id > 0 && oficio_renovacion == "" && fecha_oficio_renovacionS != "" && renovacion == 'on' && oficiold == "") || (id > 0 && oficio_renovacion == "" && nueva_fecha_vencimientoS != "" && renovacion == 'on' && oficiold == "")) {
         $("#oficioc").append("<p class='form-error'>Seleccione el archivo</p>");
         errores += 1;
         tab = '#tab01';
@@ -1786,7 +1795,9 @@ function SelectRegistroMarca(id) {
                         $("#notificacion_titulo").removeAttr("disabled").show();
                         $("#notificacion_vencimiento").removeAttr("disabled").show();
                         $(".nav-link[href='#tab07']").removeAttr("disabled").show();
-                        if (registro.solicitud_tipo >= 1 && registro.solicitud_tipo <= 6) {
+                        if (registro.solicitud_tipo >= 1 && registro.solicitud_tipo <= 2) {
+                            $(".nav-link[href='#tab08']").removeAttr("disabled").show();
+                        }else if (registro.solicitud_tipo >= 3 && registro.solicitud_tipo <= 6 && registro.fecha_quinquenio_anualidad != "1969-01-01T00:00:00" && registro.fecha_quinquenio_anualidad >= fechaAct) {
                             $(".nav-link[href='#tab08']").removeAttr("disabled").show();
                         }
                         //$("#valor").removeAttr("readonly")

@@ -117,7 +117,7 @@
                                 <a class="nav-link" data-toggle="tab" href="#tab07" role="tab"><i class="fa fa-file mr-1"></i> Oficios</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab08" role="tab"><i class="fa fa-file mr-1"></i> Renovación</a>
+                                <a class="nav-link" data-toggle="tab" href="#tab08" role="tab" id="pestaña_renovacion"><i class="fa fa-file mr-1"></i> Renovación</a>
                             </li>
                         </ul>
                         <div class="tab-content border border-top-0 p-3">
@@ -858,7 +858,7 @@
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="renovacion">
-                                                <label class="custom-control-label" for="renovacion">Crear renovación</label>
+                                                <label class="custom-control-label" for="renovacion" id="renovacion_l">Crear renovación</label>
                                             </div>
                                         </div>
                                     </div>
@@ -867,7 +867,7 @@
                                     <div class="row" style="">
                                         <div class="col-md-3">
                                             <div class="form-group" id="uu_29_c">
-                                                <label>Solicita a la empresa instrucciones para renovar</label>
+                                                <label id="uu_29_l">Solicita a la empresa instrucciones para renovar</label>
                                                 <input type="text" class="form-control input-sm" id="uu_29" autocomplete="off" readonly />
                                             </div>
                                         </div>
@@ -919,7 +919,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group" id="uu_33_c">
-                                                <label>
+                                                <label id="uu_33_l">
                                                     Fecha de oficio de renovación
                                                 </label>
                                                 <input type="text" class="form-control input-sm" id="uu_33" autocomplete="off" readonly />
@@ -927,7 +927,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group" id="uu_41_c">
-                                                <label>
+                                                <label id="uu_41_l">
                                                     Nueva fecha de vencimiento
                                                 </label>
                                                 <input type="text" class="form-control input-sm" id="uu_41" autocomplete="off" readonly />
@@ -939,7 +939,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group" id="oficiot" style="margin:0 !important;">
-                                                <label>Oficio de renovación</label>
+                                                <label id="oficio_l">Oficio de renovación</label>
                                             </div>
                                             <div class="form-group" id="oficioc">
                                                 @*<a href="" id="oficiol" class="btn btn-sm btn-success"><i class="fa fa-download"></i> Descargar documento</a>*@

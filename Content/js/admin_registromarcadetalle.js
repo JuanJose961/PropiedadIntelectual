@@ -501,6 +501,21 @@ $(document).ready(function () {
         } else {
             document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Intelectual";//titulo registro marca
         }
+        if (propiedad == 1 || propiedad == 2) {
+            document.getElementById("pestaña_renovacion").innerHTML = "Renovación";// pestaña renovacion
+            document.getElementById("renovacion_l").innerHTML = "Crear renovación";//renovacion
+            document.getElementById("uu_29_l").innerHTML = "Solicita a la empresa instrucciones para renovar";//fecha empresa
+            document.getElementById("uu_33_l").innerHTML = "Fecha de oficio de renovación";//fecha oficio
+            document.getElementById("uu_41_l").innerHTML = "Nueva fecha de vencimiento";//nueva fecha renovacion
+            document.getElementById("oficio_l").innerHTML = "Oficio de renovación";//oficio renovacion
+        } else if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
+            document.getElementById("pestaña_renovacion").innerHTML = "Quinquenio o Anualidad";// pestaña renovacion
+            document.getElementById("renovacion_l").innerHTML = "Crear quinquenio o anualidad";//quinquenio
+            document.getElementById("uu_29_l").innerHTML = "Solicita a la empresa instrucciones para quinquenio o anualidad";//fecha empresa
+            document.getElementById("uu_33_l").innerHTML = "Fecha de oficio de quinquenio o anualidad";//fecha oficio
+            document.getElementById("uu_41_l").innerHTML = "Nueva fecha de quinquenio o anualidad";//nueva fecha quinquenio
+            document.getElementById("oficio_l").innerHTML = "Oficio de quinquenio o anualidad";//oficio quinquenio
+        }
         SelectRegistroMarca(mainid);
     } else {
         if (propiedad >= 1 && propiedad <= 6) {
@@ -1771,7 +1786,7 @@ function SelectRegistroMarca(id) {
                         $("#notificacion_titulo").removeAttr("disabled").show();
                         $("#notificacion_vencimiento").removeAttr("disabled").show();
                         $(".nav-link[href='#tab07']").removeAttr("disabled").show();
-                        if (registro.solicitud_tipo == 1 || registro.solicitud_tipo == 2) {
+                        if (registro.solicitud_tipo >= 1 && registro.solicitud_tipo <= 6) {
                             $(".nav-link[href='#tab08']").removeAttr("disabled").show();
                         }
                         //$("#valor").removeAttr("readonly")

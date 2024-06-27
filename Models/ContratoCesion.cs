@@ -357,7 +357,7 @@ namespace GISMVC.Models
                             //item.solicitante = row[idx].ToString(); idx++;
                             //item.solicitante_nombre = row[idx].ToString(); idx++;
                             item.nombre = row[idx].ToString(); idx++;
-                            //item.numero_registro = row[idx].ToString(); idx++;
+                            item.numero_registro = row[idx].ToString(); idx++;
                             item.numero_expediente = row[idx].ToString(); idx++;
                             item.clase = Int32.Parse(row[idx].ToString()); idx++;
                             item.clase_nombre = row[idx].ToString(); idx++;

@@ -7,7 +7,8 @@ namespace GISMVC.Models
 {
     public class RecordatorioPI
     {
-        public int id { get; set; } = 0;
+        //public int id { get; set; } = 0;
+        public int id { get; set; }
         public string usuario { get; set; } = "";
         public string asignado { get; set; } = "";
         public DateTime fc { get; set; } = DateTime.Parse("01-01-1969");
@@ -16,6 +17,7 @@ namespace GISMVC.Models
         public int dias_vencimiento { get; set; } = 0;
         public int frecuencia { get; set; } = 0;
         public string descripcion { get; set; } = "";
+        public string nombre { get; set; } = "";
         public int estatus { get; set; } = 0;
         public DateTime fecha_pre_vencimiento { get; set; } = DateTime.Parse("01-01-1969");
         public DateTime fecha_siguiente_notif { get; set; } = DateTime.Parse("01-01-1969");
@@ -139,6 +141,7 @@ namespace GISMVC.Models
                     {
                         var row = dt.Rows[0];
                         int id = 0;
+                        //int id = modelo.id;
                         Int32.TryParse(row[3].ToString(), out id);
                         if (id > 0)
                         {
@@ -226,6 +229,7 @@ namespace GISMVC.Models
                         var item = new RecordatorioPI();
 
                         item.id = Int32.Parse(row[idx].ToString()); idx++;
+                        item.nombre = row[idx].ToString(); idx++;
                         item.usuario = row[idx].ToString(); idx++;
                         item.asignado = row[idx].ToString(); idx++;
                         item.fc = DateTime.Parse(row[idx].ToString()); idx++;
@@ -304,6 +308,7 @@ namespace GISMVC.Models
                             var item = new RecordatorioPI();
 
                             item.id = Int32.Parse(row[idx].ToString()); idx++;
+                            item.nombre = row[idx].ToString(); idx++;
                             item.usuario = row[idx].ToString(); idx++;
                             item.asignado = row[idx].ToString(); idx++;
                             item.fc = DateTime.Parse(row[idx].ToString()); idx++;

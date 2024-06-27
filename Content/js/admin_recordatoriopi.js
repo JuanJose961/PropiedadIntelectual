@@ -62,6 +62,7 @@ function ModalNuevo() {
     $("#uu_03").val(0);
     $("#uu_04").val(0);
     $("#uu_05").val("");
+    $("#uu_07").val("");
     $("#update01").modal("show");
 }
 
@@ -105,6 +106,7 @@ function Editar(id) {
                 $("#uu_03").val(catalogo_actual.dias_vencimiento);
                 $("#uu_04").val(catalogo_actual.frecuencia);
                 $("#uu_05").val(catalogo_actual.descripcion);
+                $("#uu_07").val(catalogo_actual.nombre);
 
                 $("#eliminausuario").show();
                 if (catalogo_actual.activo == 0) {
@@ -136,6 +138,7 @@ function Confirma01() {
         var dias_vencimiento = parseInt($("#uu_03").val());
         var frecuencia = parseInt($("#uu_04").val());
         var descripcion = $("#uu_05").val();
+        var nombre = $("#uu_07").val();
 
         catalogo_actual.asignado = asignado;
         catalogo_actual.fecha_recordatorioS = fecha_recordatorio;
@@ -143,6 +146,7 @@ function Confirma01() {
         catalogo_actual.dias_vencimiento = dias_vencimiento;
         catalogo_actual.frecuencia = frecuencia;
         catalogo_actual.descripcion = descripcion;
+        catalogo_actual.nombre = nombre;
 
         var sended_url = services_url + "AddRecordatorioPI";
         if (catalogo_actual.id > 0) {
@@ -200,6 +204,7 @@ function ValidaUpdate01() {
     var dias_vencimiento = parseInt($("#uu_03").val());
     var frecuencia = parseInt($("#uu_04").val());
     var descripcion = $("#uu_05").val();
+    var nombre = $("#uu_07").val();
 
     var errores = 0;
     var flag = false;
@@ -236,7 +241,12 @@ function ValidaUpdate01() {
 
     if (descripcion.length == "") {
         $("#uu_05").addClass("control-error");
-        $("#uu_05_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
+        errores += 1;
+    }
+    if (nombre.length == "") {
+        $("#uu_07").addClass("control-error");
+        $("#uu_07_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }
 

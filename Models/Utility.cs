@@ -346,7 +346,17 @@ namespace GISMVC.Models
                 mail.From = new MailAddress("j.delacruz@softdepot.mx", "Sender");
                 //mail.To.Add(email.to);
                 //mail.To.Add("j.delacruz@softdepot.mx");
-                mail.To.Add(email.to);
+                if (email.to != "")
+                {
+                    var tos = email.to.Split(';').ToList();
+                    foreach (string to in tos)
+                    {
+                        var copy = new MailAddress(to);
+                        //mail.To.Add(email.to);
+                        mail.To.Add(copy);
+                    }
+                }
+                //mail.To.Add(email.to);
                 mail.Subject = email.subject;
                 mail.Body = email.mensaje;
                 if (email.cc != "")

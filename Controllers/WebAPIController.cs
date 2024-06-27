@@ -3944,9 +3944,13 @@ namespace GISMVC.Controllers
                         //{
                         //    modelo.enviar_correo_registro = true;
                         //}
-                        if (preupdate.estatus != modelo.registro.estatus && modelo.registro.estatus > 2)
+                        if (preupdate.estatus != modelo.registro.estatus && modelo.registro.estatus >= 2 && (preupdate.notificacion_estatus !="" || modelo.registro.notificacion_estatus!=""))
                         {
                             modelo.enviar_correo_registro = true;
+                        }
+                        else
+                        {
+                            modelo.enviar_correo_registro = false;
                         }
                     }
                     else
@@ -4020,6 +4024,7 @@ namespace GISMVC.Controllers
                 //notificacion por correo de registro o actualizacion de solicitud
                 if (modelo.enviar_correo_registro == true)
                 {
+                    var preupdate = RegistroMarca.GetById(modelo.registro.id);
                     //correo de que ya esta en registro
 
                     var email = new EmailTmp();
@@ -4045,10 +4050,23 @@ namespace GISMVC.Controllers
                     "</body>" +
                     "</html>";
                     //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
-                    email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
-                    //email.from = "noreply@portalproveedores.com";
+                    //email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
+                    if (modelo.registro.notificacion_estatus != "")
+                    {
+                        email.to = preupdate.notificacion_estatus;
+                        
+                    }
+                    else if (modelo.registro.notificacion_estatus != "")
+                    {
+                        email.to = modelo.registro.notificacion_estatus;
+                    }
+                    else
+                    {
+                        email.to = "";
+                    }
+                    ////email.from = "noreply@portalproveedores.com";
                     email.from = "juanjouaem@gmail.com";
-                    var enviaUsuario = Utility.enviaEmail(0, email);
+                    if (email.to != "") { var enviaUsuario = Utility.enviaEmail(0, email); }
                 }
 
                 //notificacion por correo a despacho legal por renovacion

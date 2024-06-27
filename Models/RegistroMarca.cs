@@ -393,7 +393,7 @@ namespace GISMVC.Models
         public string notificacion_titulo { get; set; } = "";
         public string notificacion_vencimiento { get; set; } = "";
         public int vobo { get; set; } = 0;
-
+        public string notificacion_estatus { get; set; } = "";
         //
 
         public DateTime fecha_renovar { get; set; } = DateTime.Parse("1969-01-01");
@@ -748,6 +748,7 @@ namespace GISMVC.Models
                         res.fecha_declaracion = DateTime.Parse(row[idx].ToString()); idx++;
                         res.fecha_declaracion_completo = DateTime.Parse(row[idx].ToString()); idx++;
                         res.nueva_fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
+                        res.notificacion_estatus = row[idx].ToString(); idx++;
                         //
 
                         if (res.fecha_legal.Year > 1969)

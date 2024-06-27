@@ -5083,7 +5083,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[81];
+                SqlParameter[] @params = new SqlParameter[82];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@id", modelo.id); i++;
@@ -5188,6 +5188,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@fecha_vencimiento_prioridad", modelo.fecha_vencimiento_prioridad); i++;
                 @params[i] = new SqlParameter("@autor", modelo.autor); i++;
                 @params[i] = new SqlParameter("@nueva_fecha_vencimiento", modelo.nueva_fecha_vencimiento); i++;
+                @params[i] = new SqlParameter("@notificacion_estatus", modelo.notificacion_estatus); i++;
 
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_RegistroMarca", @params, out dt, 1000))
@@ -9248,14 +9249,15 @@ namespace GISMVC.Models
         public Boolean INS_RecordatorioPI(RecordatorioPI modelo, out DataTable dt, out String msgError)
         {
             bool boolProcess = true;
-            dt = new DataTable();
+             dt = new DataTable();
             msgError = string.Empty;
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[7];
+                SqlParameter[] @params = new SqlParameter[10];
 
                 int i = 0;
+                @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
                 @params[i] = new SqlParameter("@usuario", modelo.usuario); i++;
                 @params[i] = new SqlParameter("@asignado", modelo.asignado); i++;
                 @params[i] = new SqlParameter("@fecha_recordatorio", modelo.fecha_recordatorio); i++;
@@ -9266,7 +9268,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@tipo", modelo.tipo); i++;
                 @params[i] = new SqlParameter("@aux1", modelo.aux1); i++;
 
-                i++;
+                //i++;
                 if (!bd.ExecuteProcedure(conexion, "INS_RecordatorioPI", @params, out dt, 1000))
                 {
                     boolProcess = false;
@@ -9298,9 +9300,10 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[8];
+                SqlParameter[] @params = new SqlParameter[9];
 
                 int i = 0;
+                @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
                 @params[i] = new SqlParameter("@id", modelo.id); i++;
                 @params[i] = new SqlParameter("@usuario", modelo.usuario); i++;
                 @params[i] = new SqlParameter("@asignado", modelo.asignado); i++;
@@ -9310,7 +9313,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@descripcion", modelo.descripcion); i++;
                 @params[i] = new SqlParameter("@fecha_fin", modelo.fecha_fin); i++;
 
-                i++;
+                //i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_RecordatorioPI", @params, out dt, 1000))
                 {
                     boolProcess = false;

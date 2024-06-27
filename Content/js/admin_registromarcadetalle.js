@@ -262,6 +262,7 @@ $(document).ready(function () {
         $(".nav-link[href='#tab08']").attr("disabled", "disabled").hide();
         $("#notificacion_titulo").attr("disabled", "disabled").parent().hide();
         $("#notificacion_vencimiento").attr("disabled", "disabled").parent().hide();
+        $("#notificacion_estatus").attr("disabled", "disabled").parent().hide();
 
         $("#vobo").attr("disabled", "disabled");
         $("#btnGuardarVoBo").attr("disabled", "disabled").remove();
@@ -510,10 +511,10 @@ $(document).ready(function () {
             document.getElementById("oficio_l").innerHTML = "Oficio de renovación";//oficio renovacion
         } else if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
             document.getElementById("pestaña_renovacion").innerHTML = "Quinquenio o Anualidad";// pestaña renovacion
-            document.getElementById("renovacion_l").innerHTML = "Crear pago";//quinquenio
+            document.getElementById("renovacion_l").innerHTML = "Crear mantenimiento";//quinquenio
             document.getElementById("uu_29_l").innerHTML = "Solicita a la empresa instrucciones para mantenimiento";//fecha empresa
             document.getElementById("uu_33_l").innerHTML = "Fecha oficio de mantenimiento";//fecha oficio
-            document.getElementById("uu_41_l").innerHTML = "Nueva fecha de quinquenio o anualidad";//nueva fecha quinquenio
+            document.getElementById("uu_41_l").innerHTML = "Nueva fecha de pago de quinquenio o anualidad";//nueva fecha quinquenio
             document.getElementById("oficio_l").innerHTML = "Oficio de mantenimiento";//oficio quinquenio
         }
         SelectRegistroMarca(mainid);
@@ -1176,6 +1177,7 @@ function Guardar() {
         var nombre = $("#uu_022").val();
         var notificacion_titulo = $("#notificacion_titulo").val();
         var notificacion_vencimiento = $("#notificacion_vencimiento").val();
+        var notificacion_estatus = $("#notificacion_estatus").val();
 
         var fecha_quinquenio_anualidadS = "";
         if (solicitud_tipo == 3 || solicitud_tipo == 4 || solicitud_tipo == 5 || solicitud_tipo == 6) {
@@ -1283,6 +1285,7 @@ function Guardar() {
 
         registro.notificacion_titulo = notificacion_titulo;
         registro.notificacion_vencimiento = notificacion_vencimiento;
+        registro.notificacion_estatus = notificacion_estatus;
 
         registro.fecha_quinquenio_anualidadS = fecha_quinquenio_anualidadS;
         registro.tipo_pago = tipo_pago;
@@ -1731,6 +1734,7 @@ function SelectRegistroMarca(id) {
 
                     $("#notificacion_titulo").val(registro.notificacion_titulo);
                     $("#notificacion_vencimiento").val(registro.notificacion_vencimiento);
+                    $("#notificacion_estatus").val(registro.notificacion_estatus);
 
                     documentos01 = jsonResponse.content[2];
                     var dev_documentos01 = new DevExpress.data.DataSource(documentos01);
@@ -1767,6 +1771,7 @@ function SelectRegistroMarca(id) {
                         $(".nav-link[href='#tab06']").removeAttr("disabled").show();
                         $("#notificacion_titulo").removeAttr("disabled").parent().show();
                         $("#notificacion_vencimiento").removeAttr("disabled").parent().show();
+                        $("#notificacion_estatus").removeAttr("disabled").parent().show();
                     }
 
                     const hoy = new Date(Date.now());
@@ -1794,6 +1799,7 @@ function SelectRegistroMarca(id) {
                     if ((registro.fecha_vencimiento < fechaAct || registro.fecha_vencimiento >= fechaAct) && registro.estatus > 2) {
                         $("#notificacion_titulo").removeAttr("disabled").show();
                         $("#notificacion_vencimiento").removeAttr("disabled").show();
+                        $("#notificacion_estatus").removeAttr("disabled").show();
                         $(".nav-link[href='#tab07']").removeAttr("disabled").show();
                         if (registro.solicitud_tipo >= 1 && registro.solicitud_tipo <= 2) {
                             $(".nav-link[href='#tab08']").removeAttr("disabled").show();

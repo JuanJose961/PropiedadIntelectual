@@ -110,10 +110,11 @@
                             columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div class="row">
                                          <div class="col-md-6">
-                                             <button type="button" class="dx-oc-link"  onclick='VerMarca(<%- value %>);' title="Ver información"><i class="fa fa-eye"></i></button>
+                                             @*<button type="button" class="dx-oc-link"  onclick='VerMarca(<%- value %>);' title="Ver información"><i class="fa fa-eye"></i></button>*@
+                                             <a type="button" class="dx-oc-link" href="<%- data.permalink %>&desabilita=1" title="Ver Info"><i class="fa fa-eye"></i> </a>
                                          </div>
                                         <div class="col-md-6">
-                                            <a type="button" class="dx-oc-link" href="<%- data.permalink %>" title="Editar"><i class="fa fa-edit"></i> </a>
+                                            <a type="button" class="dx-oc-link" href="<%- data.permalink %>&desabilita=0" title="Editar"><i class="fa fa-edit"></i> </a>
                                         </div>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
@@ -174,9 +175,9 @@
                             .Paging(p => p.PageSize(10))
                             .FilterRow(f => f.Visible(true))
                             .HeaderFilter(f => f.Visible(true))
-                            
+
                             )
-                        
+
 
                     </div>
                 </div>

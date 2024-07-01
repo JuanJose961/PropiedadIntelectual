@@ -106,7 +106,8 @@ $(document).ready(function () {
     var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
     var propiedad = JSON.parse(url.searchParams.get('propiedad')); //Capturar el valor
     var solicitud = JSON.parse(url.searchParams.get('solicitud')); //Capturar el valor
-    //alert(propiedad);
+    var desabilitar = JSON.parse(url.searchParams.get('desabilita')); //Capturar el valor
+    //alert(desabilitar);
     var solicitud_select = "";
     var solicitudes_disponibles = null;
     var tipo_descrip = "Marca";
@@ -510,14 +511,14 @@ $(document).ready(function () {
             document.getElementById("uu_41_l").innerHTML = "Nueva fecha de vencimiento";//nueva fecha renovacion
             document.getElementById("oficio_l").innerHTML = "Oficio de renovación";//oficio renovacion
         } else if (propiedad == 3 || propiedad == 4 || propiedad == 5 || propiedad == 6) {
-            document.getElementById("pestaña_renovacion").innerHTML = "Quinquenio o Anualidad";// pestaña renovacion
+            document.getElementById("pestaña_renovacion").innerHTML = "Mantenimiento";// pestaña renovacion
             document.getElementById("renovacion_l").innerHTML = "Crear mantenimiento";//quinquenio
             document.getElementById("uu_29_l").innerHTML = "Solicita a la empresa instrucciones para mantenimiento";//fecha empresa
             document.getElementById("uu_33_l").innerHTML = "Fecha oficio de mantenimiento";//fecha oficio
             document.getElementById("uu_41_l").innerHTML = "Nueva fecha de pago de quinquenio o anualidad";//nueva fecha quinquenio
             document.getElementById("oficio_l").innerHTML = "Oficio de mantenimiento";//oficio quinquenio
         }
-        SelectRegistroMarca(mainid);
+        SelectRegistroMarca(mainid,desabilitar);
     } else {
         if (propiedad >= 1 && propiedad <= 6) {
             document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial";//titulo registro marca
@@ -1515,7 +1516,7 @@ function readURL(input, id, container) {
     }
 }
 
-function SelectRegistroMarca(id) {
+function SelectRegistroMarca(id, desabilitar) {
     $("#alertModal .close").hide();
     $("#alertModal .modal-title").text("Obteniendo información");
     $("#alertModal .modal-footer").empty();
@@ -1939,6 +1940,135 @@ function SelectRegistroMarca(id) {
                     }
 
                     $("#alertModal").modal("hide");
+
+                    if (desabilitar == 0) {
+                        $("#btnGuardar").show();
+                        $("#btnRemover").show();
+                        //$("#titulo").show();
+                        $("#titulo").removeAttr('disabled');
+                        $("#Comentarios1").show();
+                        //document.getElementById("btnGuardar").disabled = false;
+                        $("#uu_022").removeAttr('disabled');
+                        $("#uu_38").removeAttr('disabled');
+                        $("#uu_00").removeAttr('disabled');
+                        $("#uu_01").removeAttr('disabled');
+                        $("#uu_03").removeAttr('disabled');
+                        $("#uu_04").removeAttr('disabled');
+                        $("#uu_05").removeAttr('disabled');
+                        $("#uu_06").removeAttr('disabled');
+                        $("#uu_07").removeAttr('disabled');
+                        $("#uu_09").removeAttr('disabled');
+                        $("#uu_10").removeAttr('disabled');
+                        $("#uu_37").removeAttr('disabled');
+                        $("#uu_34").removeAttr('disabled');
+                        $("#uu_35").removeAttr('disabled');
+                        $("#uu_36").removeAttr('disabled');
+                        $("#uu_39").removeAttr('disabled');
+                        $("#notificacion_titulo").removeAttr('disabled');
+                        $("#notificacion_vencimiento").removeAttr('disabled');
+                        $("#notificacion_estatus").removeAttr('disabled');
+                        //en registro
+                        $("#solicitud").removeAttr('disabled');
+                        $("#contrato").removeAttr('disabled');
+                        $("#reivindicacion").removeAttr('disabled');
+                        $("#carta").removeAttr('disabled');
+                        $("#Comentarios2").show();
+                        $("#uu_11").removeAttr('disabled');
+                        $("#uu_12").removeAttr('disabled');
+                        $("#uu_13").removeAttr('disabled');
+                        $("#uu_14").removeAttr('disabled');
+                        $("#uu_15").removeAttr('disabled');
+                        //licencia
+                        $("#uu_16").removeAttr('disabled');
+                        $("#uu_17").removeAttr('disabled');
+                        //cesion
+                        $("#uu_18").removeAttr('disabled');
+                        $("#uu_19").removeAttr('disabled');
+                        //actividades
+                        $("#uu_21").removeAttr('disabled');
+                        $("#uu_210").removeAttr('disabled');
+                        $("#uu_22").removeAttr('disabled');
+                        $("#uu_220").removeAttr('disabled');
+                        $("#uu_23").removeAttr('disabled');
+                        $("#uu_230").removeAttr('disabled');
+                        $("#uu_24").removeAttr('disabled');
+                        $("#uu_240").removeAttr('disabled');
+                        $("#uu_25").removeAttr('disabled');
+                        $("#uu_250").removeAttr('disabled');
+                        $("#uu_26").removeAttr('disabled');
+                        $("#uu_260").removeAttr('disabled');
+                        $("#uu_40").removeAttr('disabled');
+                        $("#uu_400").removeAttr('disabled');
+                        //oficios
+                        $("#btnDocumento").show();
+                        //renovacion
+                        $("#renovacion_1").attr('disabled', 'disabled');//chek
+                    } else {
+                        //general
+                        $("#btnGuardar").hide();
+                        $("#btnRemover").hide();
+                        //$("#titulo").hide();
+                        $("#titulo").attr('disabled', 'disabled');//archivo titulo
+                        $("#Comentarios1").hide();
+                        //document.getElementById("btnGuardar").disabled = true;
+                        $("#uu_022").attr('disabled', 'disabled');//nombre
+                        $("#uu_38").attr('disabled', 'disabled');//autor
+                        $("#uu_00").attr('disabled', 'disabled');//empresa
+                        $("#uu_01").attr('disabled', 'disabled');//antigua empresa
+                        $("#uu_03").attr('disabled', 'disabled');//no registro
+                        $("#uu_04").attr('disabled', 'disabled');//fecha_legal
+                        $("#uu_05").attr('disabled', 'disabled');//fecha vencimiento
+                        $("#uu_06").attr('disabled', 'disabled');//fecha concesion
+                        $("#uu_07").attr('disabled', 'disabled');//clase
+                        $("#uu_09").attr('disabled', 'disabled');//pais
+                        $("#uu_10").attr('disabled', 'disabled');//estatus
+                        $("#uu_37").attr('disabled', 'disabled');//fecha quinquenio
+                        $("#uu_34").attr('disabled', 'disabled');//tipo pago
+                        $("#uu_35").attr('disabled', 'disabled');//prioridad
+                        $("#uu_36").attr('disabled', 'disabled');//fecha prioridad
+                        $("#uu_39").attr('disabled', 'disabled');//uso
+                        $("#notificacion_titulo").attr('disabled', 'disabled');//notificacion titulo
+                        $("#notificacion_vencimiento").attr('disabled', 'disabled');//notificacion vencimiento
+                        $("#notificacion_estatus").attr('disabled', 'disabled');//notificacion estatus
+                        //en registro
+                        $("#solicitud").attr('disabled', 'disabled');//archivo solicitud
+                        $("#contrato").attr('disabled', 'disabled');//archivo contrato
+                        $("#reivindicacion").attr('disabled', 'disabled');//archivo reivindicacion
+                        $("#carta").attr('disabled', 'disabled');//archivo carta
+                        $("#Comentarios2").hide();
+                        $("#uu_11").attr('disabled', 'disabled');//no solicitud
+                        $("#uu_12").attr('disabled', 'disabled');//tipo registro
+                        $("#uu_13").attr('disabled', 'disabled');//persona pidio registro
+                        $("#uu_14").attr('disabled', 'disabled');//despacho
+                        $("#uu_15").attr('disabled', 'disabled');//corresponsal
+                        //licencia
+                        $("#uu_16").attr('disabled', 'disabled');//persona que solicita licencia
+                        $("#uu_17").attr('disabled', 'disabled');//licencia
+                        //cesion
+                        $("#uu_18").attr('disabled', 'disabled');//persona que solicita cesion
+                        $("#uu_19").attr('disabled', 'disabled');//cesion
+                        //actividades
+                        $("#uu_21").attr('disabled', 'disabled');//requerimiento del negocio
+                        $("#uu_210").attr('disabled', 'disabled');//completo
+                        $("#uu_22").attr('disabled', 'disabled');//instrucciones al corresponsal
+                        $("#uu_220").attr('disabled', 'disabled');//completo
+                        $("#uu_23").attr('disabled', 'disabled');//registro ante la autoridad
+                        $("#uu_230").attr('disabled', 'disabled');//completo
+                        $("#uu_24").attr('disabled', 'disabled');//solicitud busqueda
+                        $("#uu_240").attr('disabled', 'disabled');//completo
+                        $("#uu_25").attr('disabled', 'disabled');//resultados al negocio
+                        $("#uu_250").attr('disabled', 'disabled');//completo
+                        $("#uu_26").attr('disabled', 'disabled');//comprobacion de uso
+                        $("#uu_260").attr('disabled', 'disabled');//completo
+                        $("#uu_40").attr('disabled', 'disabled');//declaracion de uso
+                        $("#uu_400").attr('disabled', 'disabled');//completo
+                        //oficios
+                        $("#btnDocumento").hide();
+                        //renovacion
+                        $("#renovacion_1").attr('disabled', 'disabled');//chek
+                        $("#uu_29").attr('disabled', 'disabled');//enpresa instrucciones
+                        $("#uu_290").attr('disabled', 'disabled');//completo
+                    }
                 } else {
                     registro = {
                         id: 0,

@@ -97,7 +97,8 @@
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div>
-                                        <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>
+                                        @*<button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>*@
+                                        <button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>

@@ -498,10 +498,18 @@ $(document).ready(function () {
     $("#cesionl").hide();
     
     if (mainid > 0) {
-        if (propiedad >= 1 && propiedad <= 6) {
-            document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial";//titulo registro marca
+        if (propiedad >= 1 && propiedad <= 6 && desabilitar == 0) {
+            if (desabilitar == 0) {
+                document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial";//titulo registro marca
+            } else {
+                document.getElementById("tituloregistromarca").innerHTML = "Ver Propiedad Industrial";//titulo registro marca
+            }
         } else {
-            document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Intelectual";//titulo registro marca
+            if (desabilitar == 0) {
+                document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Intelectual";//titulo registro marca
+            } else {
+                document.getElementById("tituloregistromarca").innerHTML = "Ver Propiedad Intelectual";//titulo registro marca
+            }
         }
         if (propiedad == 1 || propiedad == 2) {
             document.getElementById("pestaña_renovacion").innerHTML = "Renovación";// pestaña renovacion
@@ -1538,7 +1546,7 @@ function SelectRegistroMarca(id, desabilitar) {
                 if (jsonResponse.flag != false) {
                     registro = jsonResponse.content[0];
                     comentarios = jsonResponse.content[1];
-                    RedibujaComentarios();
+                    RedibujaComentarios(desabilitar);
                     //
                     //--------------------
                     if (registro.licencia>=1) {
@@ -1944,7 +1952,7 @@ function SelectRegistroMarca(id, desabilitar) {
                     if (desabilitar == 0) {
                         $("#btnGuardar").show();
                         $("#btnRemover").show();
-                        //$("#titulo").show();
+                        $("#tituloa").show();
                         $("#titulo").removeAttr('disabled');
                         $("#Comentarios1").show();
                         //document.getElementById("btnGuardar").disabled = false;
@@ -1968,10 +1976,14 @@ function SelectRegistroMarca(id, desabilitar) {
                         $("#notificacion_vencimiento").removeAttr('disabled');
                         $("#notificacion_estatus").removeAttr('disabled');
                         //en registro
-                        $("#solicitud").removeAttr('disabled');
-                        $("#contrato").removeAttr('disabled');
-                        $("#reivindicacion").removeAttr('disabled');
-                        $("#carta").removeAttr('disabled');
+                        $("#solicituda").show();
+                        //$("#solicitud").removeAttr('disabled');
+                        $("#contratoa").show();
+                        //$("#contrato").removeAttr('disabled');
+                        $("#reivindicaciona").show();
+                        //$("#reivindicacion").removeAttr('disabled');
+                        $("#cartaa").show();
+                        //$("#carta").removeAttr('disabled');
                         $("#Comentarios2").show();
                         $("#uu_11").removeAttr('disabled');
                         $("#uu_12").removeAttr('disabled');
@@ -2002,13 +2014,25 @@ function SelectRegistroMarca(id, desabilitar) {
                         //oficios
                         $("#btnDocumento").show();
                         //renovacion
+                        $("#oficioa").show();
+                        //$("#oficio").removeAttr('disabled');
                         $("#renovacion_1").attr('disabled', 'disabled');//chek
+                        $("#uu_29").removeAttr('disabled');
+                        $("#uu_290").removeAttr('disabled');
+                        $("#uu_30").removeAttr('disabled');
+                        $("#uu_300").removeAttr('disabled');
+                        $("#uu_31").removeAttr('disabled');
+                        $("#uu_310").removeAttr('disabled');
+                        $("#uu_32").removeAttr('disabled');
+                        $("#uu_320").removeAttr('disabled');
+                        $("#uu_33").removeAttr('disabled');
+                        $("#uu_41").removeAttr('disabled');
                     } else {
                         //general
                         $("#btnGuardar").hide();
                         $("#btnRemover").hide();
-                        //$("#titulo").hide();
-                        $("#titulo").attr('disabled', 'disabled');//archivo titulo
+                        $("#tituloa").hide();//archivo titulo
+                        //$("#titulo").attr('disabled', 'disabled');
                         $("#Comentarios1").hide();
                         //document.getElementById("btnGuardar").disabled = true;
                         $("#uu_022").attr('disabled', 'disabled');//nombre
@@ -2031,10 +2055,14 @@ function SelectRegistroMarca(id, desabilitar) {
                         $("#notificacion_vencimiento").attr('disabled', 'disabled');//notificacion vencimiento
                         $("#notificacion_estatus").attr('disabled', 'disabled');//notificacion estatus
                         //en registro
-                        $("#solicitud").attr('disabled', 'disabled');//archivo solicitud
-                        $("#contrato").attr('disabled', 'disabled');//archivo contrato
-                        $("#reivindicacion").attr('disabled', 'disabled');//archivo reivindicacion
-                        $("#carta").attr('disabled', 'disabled');//archivo carta
+                        $("#solicituda").hide();//archivo solicitud
+                        //$("#solicitud").attr('disabled', 'disabled');
+                        $("#contratoa").hide();//archivo contrato
+                        //$("#contrato").attr('disabled', 'disabled');
+                        $("#reivindicaciona").hide();//archivo reivindicacion
+                        //$("#reivindicacion").attr('disabled', 'disabled');
+                        $("#cartaa").hide();//archivo carta
+                        //$("#carta").attr('disabled', 'disabled');
                         $("#Comentarios2").hide();
                         $("#uu_11").attr('disabled', 'disabled');//no solicitud
                         $("#uu_12").attr('disabled', 'disabled');//tipo registro
@@ -2065,9 +2093,21 @@ function SelectRegistroMarca(id, desabilitar) {
                         //oficios
                         $("#btnDocumento").hide();
                         //renovacion
+                        $("#oficioa").hide();//archivo oficio
+                        //$("#oficio").attr('disabled', 'disabled');
                         $("#renovacion_1").attr('disabled', 'disabled');//chek
                         $("#uu_29").attr('disabled', 'disabled');//enpresa instrucciones
                         $("#uu_290").attr('disabled', 'disabled');//completo
+                        $("#uu_30").attr('disabled', 'disabled');//instrucciones corresponsal
+                        $("#uu_300").attr('disabled', 'disabled');//completo
+                        $("#uu_31").attr('disabled', 'disabled');//solicitud de informacion
+                        $("#uu_310").attr('disabled', 'disabled');//completo
+                        $("#uu_32").attr('disabled', 'disabled');//envio informacion despacho
+                        $("#uu_320").attr('disabled', 'disabled');//completo
+                        $("#uu_33").attr('disabled', 'disabled');//oficio de renovacion
+                        $("#uu_41").attr('disabled', 'disabled');//new fecha vencimiento
+
+                        $(".nav-link[href='#tab06']").attr("disabled", "disabled").hide();
                     }
                 } else {
                     registro = {
@@ -2463,7 +2503,7 @@ function ConfirmaComentario() {
                         if (jsonResponse.content.length > 0) {
                             comentarios.unshift(jsonResponse.content[0]);
                         }
-                        RedibujaComentarios();
+                        RedibujaComentarios(0);
                         $("#comentarioModal").modal("hide");
                         //RecargaHistorialActividades();
                     } else {
@@ -2485,7 +2525,7 @@ function ConfirmaComentario() {
     }
 }
 
-function RedibujaComentarios() {
+function RedibujaComentarios(desabilitar) {
     $("#general").empty();
     $("#registro").empty();
     $("#revision").empty();
@@ -2498,7 +2538,8 @@ function RedibujaComentarios() {
     if (general.length > 0) {
         for (var i = 0; i < general.length; i++) {
             var el = general[i];
-            var acciones = '<span onclick="EliminarComentario(' + el.id + ')"><i class="fa fa-times"></i></span>';
+            var acciones = '';
+            if (desabilitar == 0) { acciones = '<span onclick="EliminarComentario(' + el.id + ')"><i class="fa fa-times"></i></span>'; }
             if (el.usuario.id != eu_lu.id) {
                 acciones = "";
             }
@@ -2531,7 +2572,8 @@ function RedibujaComentarios() {
     if (registro.length > 0) {
         for (var i = 0; i < registro.length; i++) {
             var el = registro[i];
-            var acciones = '<span onclick="EliminarComentario(' + el.id + ')"><i class="fa fa-times"></i></span>';
+            var acciones = '';
+            if (desabilitar == 0) { acciones = '<span onclick="EliminarComentario(' + el.id + ')"><i class="fa fa-times"></i></span>'; }
             if (el.usuario.id != eu_lu.id) {
                 acciones = "";
             }
@@ -2643,7 +2685,7 @@ function ConfirmaEliminarComentario() {
                         removeFromArray(search.idx, comentarios);
                     }
 
-                    RedibujaComentarios();
+                    RedibujaComentarios(0);
 
                     $("#eliminarComentarioModal").modal("hide");
                     //RecargaHistorialActividades();

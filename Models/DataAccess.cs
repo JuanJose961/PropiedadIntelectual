@@ -9500,7 +9500,7 @@ namespace GISMVC.Models
                 @params[0] = new SqlParameter("@id", id);
 
                 i++;
-                if (!bd.ExecuteProcedure(conexion, "CONS_RecordatoriosPI2", @params, out dt, 1000))
+                if (!bd.ExecuteProcedure(conexion, "CONS_RecordatoriosPI", @params, out dt, 1000))
                 {
                     boolProcess = false;
                     msgError = bd._error.ToString();

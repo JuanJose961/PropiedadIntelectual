@@ -5,6 +5,36 @@ using System.Web;
 
 namespace GISMVC.Models
 {
+    public class TipoRecordatorio
+    {
+        public int id { get; set; } = 0;
+        public string nombre { get; set; } = "";
+        public static TipoRecordatorio GetById(int id)
+        {
+            TipoRecordatorio res = new TipoRecordatorio();
+            List<TipoRecordatorio> list = new List<TipoRecordatorio>();
+            list.Add(new TipoRecordatorio() { id = 1, nombre = "Por días" });
+            list.Add(new TipoRecordatorio() { id = 2, nombre = "Por frecuencia" });
+
+
+            if (id >= 1 && id <= 2)
+            {
+                res = list.Where(i => i.id == id).FirstOrDefault();
+            }
+            return res;
+        }
+
+        public static List<TipoRecordatorio> Get(int activo = -1)
+        {
+            List<TipoRecordatorio> list = new List<TipoRecordatorio>();
+            list.Add(new TipoRecordatorio() { id = 1, nombre = "Por días" });
+            list.Add(new TipoRecordatorio() { id = 2, nombre = "Por frecuencia" });
+
+
+            return list;
+        }
+
+    }
     public class RecordatorioPI
     {
         //public int id { get; set; } = 0;

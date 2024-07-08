@@ -923,10 +923,12 @@ namespace GISMVC.Controllers
                 ul = AspNetUsers.GetByName(HttpContext.User.Identity.Name);
 
                 var usuarios = GISMVC.Models.AspNetUsers.Get();
+                var tiporecordatorio= GISMVC.Models.TipoRecordatorio.Get();
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
                 ViewBag.usuarios = usuarios;
+                ViewBag.tiporecordatorio = tiporecordatorio;
                 return View();
             }
             else

@@ -13,8 +13,8 @@ namespace GISMVC.Models
         {
             TipoRecordatorio res = new TipoRecordatorio();
             List<TipoRecordatorio> list = new List<TipoRecordatorio>();
-            list.Add(new TipoRecordatorio() { id = 1, nombre = "Por días" });
-            list.Add(new TipoRecordatorio() { id = 2, nombre = "Por frecuencia" });
+            list.Add(new TipoRecordatorio() { id = 1, nombre = "Días de vencimiento" });
+            list.Add(new TipoRecordatorio() { id = 2, nombre = "Frecuencia" });
 
 
             if (id >= 1 && id <= 2)
@@ -27,8 +27,39 @@ namespace GISMVC.Models
         public static List<TipoRecordatorio> Get(int activo = -1)
         {
             List<TipoRecordatorio> list = new List<TipoRecordatorio>();
-            list.Add(new TipoRecordatorio() { id = 1, nombre = "Por días" });
-            list.Add(new TipoRecordatorio() { id = 2, nombre = "Por frecuencia" });
+            list.Add(new TipoRecordatorio() { id = 1, nombre = "Días de vencimiento" });
+            list.Add(new TipoRecordatorio() { id = 2, nombre = "Frecuencia" });
+
+
+            return list;
+        }
+
+    }
+
+    public class FechaValidacion
+    {
+        public int id { get; set; } = 0;
+        public string nombre { get; set; } = "";
+        public static FechaValidacion GetById(int id)
+        {
+            FechaValidacion res = new FechaValidacion();
+            List<FechaValidacion> list = new List<FechaValidacion>();
+            list.Add(new FechaValidacion() { id = 1, nombre = "Fecha de vencimiento" });
+            list.Add(new FechaValidacion() { id = 2, nombre = "Fecha legal" });
+
+
+            if (id >= 1 && id <= 2)
+            {
+                res = list.Where(i => i.id == id).FirstOrDefault();
+            }
+            return res;
+        }
+
+        public static List<FechaValidacion> Get(int activo = -1)
+        {
+            List<FechaValidacion> list = new List<FechaValidacion>();
+            list.Add(new FechaValidacion() { id = 1, nombre = "Fecha de vencimiento" });
+            list.Add(new FechaValidacion() { id = 2, nombre = "Fecha legal" });
 
 
             return list;
@@ -45,7 +76,8 @@ namespace GISMVC.Models
         public DateTime fu { get; set; } = DateTime.Parse("01-01-1969");
         public DateTime fecha_recordatorio { get; set; } = DateTime.Parse("01-01-1969");
         public int dias_vencimiento { get; set; } = 0;
-        public int frecuencia { get; set; } = 0;
+        //public int frecuencia { get; set; } = 0;
+        public string dias_frecuencia { get; set; } = "";
         public string descripcion { get; set; } = "";
         public string nombre { get; set; } = "";
         public int estatus { get; set; } = 0;
@@ -65,6 +97,9 @@ namespace GISMVC.Models
         public string tipo_desc { get; set; } = "";
         public int aux1 { get; set; } = 0;
         public string registro_desc { get; set; } = "";
+        public string mensaje { get; set; } = "";
+        public int fecha_validacion { get; set; } = 0;
+        public string fecha_validacion_desc { get; set; } = "";
         //
 
         public RecordatorioPI()
@@ -266,7 +301,8 @@ namespace GISMVC.Models
                         item.fu = DateTime.Parse(row[idx].ToString()); idx++;
                         item.fecha_recordatorio = DateTime.Parse(row[idx].ToString()); idx++;
                         item.dias_vencimiento = Int32.Parse(row[idx].ToString()); idx++;
-                        item.frecuencia = Int32.Parse(row[idx].ToString()); idx++;
+                        //item.frecuencia = Int32.Parse(row[idx].ToString()); idx++;
+                        item.dias_frecuencia = row[idx].ToString(); idx++;
                         item.descripcion = row[idx].ToString(); idx++;
                         item.estatus = Int32.Parse(row[idx].ToString()); idx++;
                         item.fecha_pre_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
@@ -284,6 +320,9 @@ namespace GISMVC.Models
                         item.tipo_desc = row[idx].ToString(); idx++;
                         item.aux1 = Int32.Parse(row[idx].ToString()); idx++;
                         item.registro_desc = row[idx].ToString(); idx++;
+                        item.mensaje = row[idx].ToString(); idx++;
+                        item.fecha_validacion = Int32.Parse(row[idx].ToString()); idx++;
+                        item.fecha_validacion_desc = row[idx].ToString(); idx++;
 
                         if (item.estatus == 1)
                         {
@@ -345,7 +384,8 @@ namespace GISMVC.Models
                             item.fu = DateTime.Parse(row[idx].ToString()); idx++;
                             item.fecha_recordatorio = DateTime.Parse(row[idx].ToString()); idx++;
                             item.dias_vencimiento = Int32.Parse(row[idx].ToString()); idx++;
-                            item.frecuencia = Int32.Parse(row[idx].ToString()); idx++;
+                            //item.frecuencia = Int32.Parse(row[idx].ToString()); idx++;
+                            item.dias_frecuencia = row[idx].ToString(); idx++;
                             item.descripcion = row[idx].ToString(); idx++;
                             item.estatus = Int32.Parse(row[idx].ToString()); idx++;
                             item.fecha_pre_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
@@ -356,6 +396,13 @@ namespace GISMVC.Models
                             item.usuario_correo = row[idx].ToString(); idx++;
                             item.asignado_nombre = row[idx].ToString(); idx++;
                             item.asignado_correo = row[idx].ToString(); idx++;
+                            item.fecha_fin = DateTime.Parse(row[idx].ToString()); idx++;
+                            idx++;
+                            item.tipo_desc = row[idx].ToString(); idx++;
+                            idx++; idx++;
+                            item.mensaje = row[idx].ToString(); idx++;
+                            item.fecha_validacion = Int32.Parse(row[idx].ToString()); idx++;
+                            item.fecha_validacion_desc = row[idx].ToString(); idx++;
 
                             if (item.estatus == 1)
                             {
@@ -411,7 +458,7 @@ namespace GISMVC.Models
                             item.fu = DateTime.Parse(row[idx].ToString()); idx++;
                             item.fecha_recordatorio = DateTime.Parse(row[idx].ToString()); idx++;
                             item.dias_vencimiento = Int32.Parse(row[idx].ToString()); idx++;
-                            item.frecuencia = Int32.Parse(row[idx].ToString()); idx++;
+                            item.dias_frecuencia = row[idx].ToString(); idx++;
                             item.descripcion = row[idx].ToString(); idx++;
                             item.estatus = Int32.Parse(row[idx].ToString()); idx++;
                             item.fecha_pre_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;

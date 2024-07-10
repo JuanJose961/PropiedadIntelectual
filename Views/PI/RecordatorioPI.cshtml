@@ -97,10 +97,11 @@
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div>
-                                        @*<button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>*@
+                                        <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>
+                                        @*<button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>*@
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
-                                columns.AddFor(m => m.nombre).CellTemplate(@<text>
+                                columns.AddFor(m => m.tipo_desc).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
                                     <div>
                                         <span class="dx-active-off"></span>
@@ -112,10 +113,15 @@
                                         <%- value %>
                                     </div>
                                     <% } %>
-                                </text>).Caption("Nombre");
+                                </text>).Caption("Tipo de Recordatorio");
+                                columns.AddFor(m => m.nombre).Caption("Nombre");
                                 columns.AddFor(m => m.descripcion).Caption("Descipción");
-                                columns.AddFor(m => m.asignado_nombre).Caption("Asignado");
-                                columns.AddFor(m => m.fecha_recordatorio).Caption("Fecha").Format("dd/MM/yyyy");
+                                //columns.AddFor(m => m.asignado_nombre).Caption("Asignado");
+                                //columns.AddFor(m => m.fecha_recordatorio).Caption("Fecha").Format("dd/MM/yyyy");
+                                columns.AddFor(m => m.dias_vencimiento).Caption("Días vencimiento");
+                                columns.AddFor(m => m.fecha_validacion_desc).Caption("Fecha de validación");
+                                columns.AddFor(m => m.dias_frecuencia).Caption("Días frecuencia");
+
                             })
                             .ColumnAutoWidth(true)
                             .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
@@ -143,7 +149,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group" id="uu_08_c">
-                        <label for="uu_08">Tipo de notificación <font size="4" style="color:#FF0000"> * </font></label>
+                        <label for="uu_08">Tipo de recordatorio <font size="4" style="color:#FF0000"> * </font></label>
                         <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
                             @*<option value="0" disabled selected>Seleccione una opción</option>*@
                             @foreach (TipoRecordatorio item in ViewBag.tiporecordatorio)
@@ -156,7 +162,7 @@
                         <label>Nombre</label>
                         <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
                     </div>
-                    <div class="form-group" id="uu_01_c">
+                    <div class="form-group" id="uu_01_c" style="display:none;">
                         <label for="uu_01">Asignado</label>
                         <select class="select2 form-control input-sm custom-select" id="uu_01" autocomplete="off" style="width: 100%;">
                             <option value="NA" selected>Seleccionar usuario</option>
@@ -166,12 +172,12 @@
                             }
                         </select>
                     </div>
-                    <div class="form-group" id="uu_02_c">
+                    <div class="form-group" id="uu_02_c" style="display:none;">
                         <label>Fecha recordatorio</label>
                         <input type="text" class="form-control input-sm" id="uu_02" autocomplete="off" readonly />
                     </div>
 
-                    <div class="form-group" id="uu_06_c">
+                    <div class="form-group" id="uu_06_c" style="display:none;">
                         <label>Fecha fin recordatorio</label>
                         <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
                     </div>
@@ -179,13 +185,28 @@
                         <label>Días a recordar antes del vencimiento</label>
                         <input type="number" class="form-control input-sm" id="uu_03" autocomplete="off" value="0" min="0" />
                     </div>
-                    <div class="form-group" id="uu_04_c">
-                        <label>Días a recordar despues del vencimiento</label>
-                        <input type="number" class="form-control input-sm" id="uu_04" autocomplete="off" value="0" min="0" />
+                    <div class="form-group" id="uu_04_c" style="display:none;">
+                        <label>Días del mes a recordar</label>
+                        <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" value="" />
                     </div>
                     <div class="form-group" id="uu_05_c">
-                        <label>Descripcion</label>
+                        <label>Descripción</label>
                         <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" value="" />
+                    </div>
+                    <div class="form-group" id="uu_09_c">
+                        <label>Mensaje</label>
+                        @*<input type="text" class="form-control input-sm" id="uu_09" autocomplete="off" value="" />*@
+                        <textarea type="text" name="uu_09" id="uu_09" class="form-control" value='' rows="8" cols="20" minlength="4" maxlength="250" placeholder="" required style="resize:none"></textarea>
+                    </div>
+                    <div class="form-group" id="uu_10_c">
+                        <label for="uu_10">Fecha de validación <font size="4" style="color:#FF0000"> * </font></label>
+                        <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
+                            <option value="0" disabled selected>Seleccione una opción</option>
+                            @foreach (FechaValidacion item in ViewBag.fechavalidacion)
+                            {
+                                <option value="@item.id">@item.nombre</option>
+                            }
+                        </select>
                     </div>
 
                     <div class="form-group">

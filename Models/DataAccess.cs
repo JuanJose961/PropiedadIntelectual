@@ -9254,7 +9254,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[10];
+                SqlParameter[] @params = new SqlParameter[14];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
@@ -9262,11 +9262,15 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@asignado", modelo.asignado); i++;
                 @params[i] = new SqlParameter("@fecha_recordatorio", modelo.fecha_recordatorio); i++;
                 @params[i] = new SqlParameter("@dias_vencimiento", modelo.dias_vencimiento); i++;
-                @params[i] = new SqlParameter("@frecuencia", modelo.frecuencia); i++;
+                @params[i] = new SqlParameter("@dias_frecuencia", modelo.dias_frecuencia); i++;
                 @params[i] = new SqlParameter("@descripcion", modelo.descripcion); i++;
                 @params[i] = new SqlParameter("@fecha_fin", modelo.fecha_fin); i++;
                 @params[i] = new SqlParameter("@tipo", modelo.tipo); i++;
                 @params[i] = new SqlParameter("@aux1", modelo.aux1); i++;
+                @params[i] = new SqlParameter("@tipo_desc", modelo.tipo_desc); i++;
+                @params[i] = new SqlParameter("@mensaje", modelo.mensaje); i++;
+                @params[i] = new SqlParameter("@fecha_validacion", modelo.fecha_validacion); i++;
+                @params[i] = new SqlParameter("@fecha_validacion_desc", modelo.fecha_validacion_desc); i++;
 
                 //i++;
                 if (!bd.ExecuteProcedure(conexion, "INS_RecordatorioPI", @params, out dt, 1000))
@@ -9300,7 +9304,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[9];
+                SqlParameter[] @params = new SqlParameter[12];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
@@ -9309,9 +9313,12 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@asignado", modelo.asignado); i++;
                 @params[i] = new SqlParameter("@fecha_recordatorio", modelo.fecha_recordatorio); i++;
                 @params[i] = new SqlParameter("@dias_vencimiento", modelo.dias_vencimiento); i++;
-                @params[i] = new SqlParameter("@frecuencia", modelo.frecuencia); i++;
+                @params[i] = new SqlParameter("@dias_frecuencia", modelo.dias_frecuencia); i++;
                 @params[i] = new SqlParameter("@descripcion", modelo.descripcion); i++;
                 @params[i] = new SqlParameter("@fecha_fin", modelo.fecha_fin); i++;
+                @params[i] = new SqlParameter("@mensaje", modelo.mensaje); i++;
+                @params[i] = new SqlParameter("@fecha_validacion", modelo.fecha_validacion); i++;
+                @params[i] = new SqlParameter("@fecha_validacion_desc", modelo.fecha_validacion_desc); i++;
 
                 //i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_RecordatorioPI", @params, out dt, 1000))

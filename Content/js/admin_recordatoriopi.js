@@ -79,6 +79,7 @@ function ModalNuevo() {
     $("#uu_05").val("");
     $("#uu_07").val("");
     $("#uu_08").removeAttr('disabled');
+    $("#uu_09").val("");
     $("#update01").modal("show");
 }
 
@@ -157,11 +158,12 @@ function Confirma01() {
         var fecha_fin = $("#uu_06").val();
         var dias_vencimiento = parseInt($("#uu_03").val());
         //var frecuencia = parseInt($("#uu_04").val());
-        var dias_frecuencia = $("#uu_04").val();
         var descripcion = $("#uu_05").val();
         var nombre = $("#uu_07").val();
         var tipo = $("#uu_08 option:selected").val();
         var tipo_desc = $("#uu_08 option:selected").text();
+        var dias_frecuencia = 0;
+        if (tipo == 2) dias_frecuencia = $("#uu_04").val();
         var mensaje = $("#uu_09").val();
         var fecha_validacion = 0;
         var fecha_validacion_desc = "";

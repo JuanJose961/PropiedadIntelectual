@@ -151,6 +151,25 @@
                                 columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
                                 columns.AddFor(m => m.pais_desc).Caption("PAIS");
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");
+                                @*columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
+                                    <% if (data.estatus == 3 || data.estatus == 8 || data.estatus == 9) { %>
+                                    <div>
+                                        <span style="background-color: #FF0000; color: white;"><%- value %></span>
+                                    </div>
+                                    <% } else if(data.estatus == 6) { %>
+                                    <div>
+                                        <span style="background-color: #FFF111;"><%- value %></span>
+                                    </div>
+                                    <% } else if(data.estatus == 7) { %>
+                                    <div>
+                                        <span style="background-color: #B011FF; color: white; "><%- value %></span>
+                                    </div>
+                                    <% } else { %>
+                                    <div>
+                                        <%- value %>
+                                    </div>
+                                    <% } %>
+                                </text>).Caption("ESTATUS");*@
                                 columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
                                     <% if (data.estatus == 6) { %>
                                     <div>

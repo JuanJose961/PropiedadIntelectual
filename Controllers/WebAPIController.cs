@@ -4022,7 +4022,7 @@ namespace GISMVC.Controllers
                 }
 
                 //notificacion por correo de registro o actualizacion de solicitud
-                if (modelo.enviar_correo_registro == true)
+                if (modelo.enviar_correo_registro == true && modelo.registro.estatus!=3 && modelo.registro.estatus != 8 && modelo.registro.estatus != 9)
                 {
                     var preupdate = RegistroMarca.GetById(modelo.registro.id);
                     //correo de que ya esta en registro
@@ -4064,13 +4064,13 @@ namespace GISMVC.Controllers
                     {
                         email.to = "";
                     }
-                    ////email.from = "noreply@portalproveedores.com";
+                    //email.from = "noreply@portalproveedores.com";
                     email.from = "juanjouaem@gmail.com";
                     if (email.to != "") { var enviaUsuario = Utility.enviaEmail(0, email); }
                 }
 
                 //notificacion por correo a despacho legal por renovacion
-                if (modelo.enviar_correo_renovacion == true && modelo.email_despacho!="")
+                if (modelo.enviar_correo_renovacion == true && modelo.email_despacho!="" && modelo.registro.estatus != 3 && modelo.registro.estatus != 8 && modelo.registro.estatus != 9)
                 {
                     //correo de que ya esta en registro
 
@@ -4098,7 +4098,8 @@ namespace GISMVC.Controllers
                     "</html>";
                     //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
                     //email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
-                    email.to = modelo.email_despacho;
+                    //email.to = modelo.email_despacho;
+                    email.to = "rocio.martinez@gis.com.mx";
                     //email.from = "noreply@portalproveedores.com";
                     email.from = "juanjouaem@gmail.com";
                     var enviaUsuario = Utility.enviaEmail(0, email);

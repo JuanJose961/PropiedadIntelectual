@@ -30,11 +30,11 @@ $(document).on("change", "#uu_08", function (event) { //tipo recordatorio
     if (val == 1) {
         document.getElementById("uu_03_c").style.display = "block";//dias antes vencimiento
         document.getElementById("uu_10_c").style.display = "block";//fecha validacion
-        document.getElementById("uu_04_c").style.display = "none";//dias del mes
+        //document.getElementById("uu_04_c").style.display = "block";//dias del mes
     } else { 
         document.getElementById("uu_03_c").style.display = "none";//dias antes vencimiento
         document.getElementById("uu_10_c").style.display = "none";//fecha validacion
-        document.getElementById("uu_04_c").style.display = "block";//dias del mes
+        //document.getElementById("uu_04_c").style.display = "block";//dias del mes
     }
 });
 
@@ -75,7 +75,7 @@ function ModalNuevo() {
     $("#uu_02").val("");
     $("#uu_06").val("");
     $("#uu_03").val(0);
-    $("#uu_04").val("");
+    $("#uu_04").val("0");
     $("#uu_05").val("");
     $("#uu_07").val("");
     $("#uu_08").removeAttr('disabled');
@@ -162,8 +162,8 @@ function Confirma01() {
         var nombre = $("#uu_07").val();
         var tipo = $("#uu_08 option:selected").val();
         var tipo_desc = $("#uu_08 option:selected").text();
-        var dias_frecuencia = 0;
-        if (tipo == 2) dias_frecuencia = $("#uu_04").val();
+        var dias_frecuencia = $("#uu_04").val();;
+        //if (tipo == 2) dias_frecuencia = $("#uu_04").val();
         var mensaje = $("#uu_09").val();
         var fecha_validacion = 0;
         var fecha_validacion_desc = "";
@@ -292,7 +292,7 @@ function ValidaUpdate01() {
     }
     
     //if (frecuencia.length < 0) {
-    if (dias_frecuencia.length =="" && tipo==2) {
+    if (dias_frecuencia.length =="") {
         $("#uu_04").addClass("control-error");
         $("#uu_04_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;

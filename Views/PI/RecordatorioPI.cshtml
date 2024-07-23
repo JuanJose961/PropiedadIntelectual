@@ -97,8 +97,8 @@
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div>
-                                        <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>
-                                        @*<button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>*@
+                                        @*<button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>*@
+                                        <button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.tipo_desc).CellTemplate(@<text>
@@ -185,7 +185,7 @@
                         <label>Días a recordar antes del vencimiento</label>
                         <input type="number" class="form-control input-sm" id="uu_03" autocomplete="off" value="0" min="0" />
                     </div>
-                    <div class="form-group" id="uu_04_c" style="display:none;">
+                    <div class="form-group" id="uu_04_c">
                         <label>Días del mes a recordar</label>
                         <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" value="" />
                     </div>

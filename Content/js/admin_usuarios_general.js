@@ -447,7 +447,7 @@ function RedibujarAccesos() {
     $("#accesos").empty();
     var modulos = new Array();
     for (var i = 0; i < accesos.length; i++) {
-        if (!modulos.includes(accesos[i].modulo)) {
+        if (!modulos.includes(accesos[i].modulo) && accesos[i].acceso==1) {
             modulos.push(accesos[i].modulo);
         }
     }

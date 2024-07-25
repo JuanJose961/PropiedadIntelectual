@@ -152,13 +152,13 @@
                                 columns.AddFor(m => m.pais_desc).Caption("PAIS");
                                 columns.AddFor(m => m.clase_desc).Caption("CLASE");
                                 columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
-                                    <% if (data.estatus == 3 || data.estatus == 8 || data.estatus == 9) { %>
+                                    <% if (data.estatus == 3 || data.estatus == 4 || data.estatus == 8 || data.estatus == 9) { %>
                                     <div>
                                         <span style="background-color: #FF0000; color: white;"><%- value %></span>
                                     </div>
                                     <% } else if(data.estatus == 6) { %>
                                     <div>
-                                        <span style="background-color: #FFF111;"><%- value %></span>
+                                        <span style="background-color: #FFF703; "><%- value %></span>
                                     </div>
                                     <% } else if(data.estatus == 7) { %>
                                     <div>
@@ -170,17 +170,6 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("ESTATUS");
-                                @*columns.AddFor(m => m.estatus_desc).CellTemplate(@<text>
-                                    <% if (data.estatus == 6) { %>
-                                    <div>
-                                        <span style="background-color: #FF0000; color: white;"><%- value %></span>
-                                    </div>
-                                    <% } else { %>
-                                    <div>
-                                        <%- value %>
-                                    </div>
-                                    <% } %>
-                                </text>).Caption("ESTATUS");*@
                                 //columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
                                 //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
                             })

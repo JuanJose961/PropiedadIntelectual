@@ -192,7 +192,9 @@
                                         <option value="NA" rid="" selected>Seleccionar Rol</option>
                                         @foreach (AspNetRoles item in ViewBag.roles)
                                         {
+                                            if (@item.Activo==1) {
                                             <option value="@item.descripcion" rid="@item.id">@item.descripcion</option>
+                                            }
                                         }
                                     </select>
                                 </div>

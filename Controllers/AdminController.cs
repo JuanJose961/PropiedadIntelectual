@@ -386,8 +386,7 @@ namespace GISMVC.Controllers
                 acceso.flag = true;
                 if (acceso.flag != false)
                 {
-                    if (ul.roles.id == "e4aacdfd-3425-42de-9ac5-7e0bcdf177c3" ||
-                        ul.roles.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d")
+                    if (ul.roles.id == "e4aacdfd-3425-42de-9ac5-7e0bcdf177c3" || ul.roles.id == "4c8ed3da-531b-4e4d-8b0f-2fb89e09119d")
                     {
                         return Redirect(Utility.hosturl + "PI/Index");
                     }

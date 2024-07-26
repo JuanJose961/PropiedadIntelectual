@@ -141,27 +141,85 @@
 
 @section Modals {
     <div id="update01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title"></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group" id="uu_08_c">
-                        <label for="uu_08">Tipo de recordatorio <font size="4" style="color:#FF0000"> * </font></label>
-                        <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
-                            @*<option value="0" disabled selected>Seleccione una opción</option>*@
-                            @foreach (TipoRecordatorio item in ViewBag.tiporecordatorio)
-                            {
-                                <option value="@item.id">@item.nombre</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group" id="uu_07_c">
-                        <label>Nombre</label>
-                        <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="uu_08_c">
+                                <label for="uu_08">Tipo de recordatorio <font size="4" style="color:#FF0000"> * </font></label>
+                                <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
+                                    @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                                    @foreach (TipoRecordatorio item in ViewBag.tiporecordatorio)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" id="uu_07_c">
+                                <label>Nombre <font size="4" style="color:#FF0000"> * </font></label>
+                                <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="uu_03_a">
+                            <div class="form-group" id="uu_03_c">
+                                <label>Días a recordar antes del vencimiento <font size="4" style="color:#FF0000"> * </font></label>
+                                <input type="number" class="form-control input-sm" id="uu_03" autocomplete="off" value="0" min="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" id="uu_04_c">
+                                <label>Días del mes a recordar <font size="4" style="color:#FF0000"> * </font></label>
+                                <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" id="uu_05_c">
+                                <label>Descripción <font size="4" style="color:#FF0000"> * </font></label>
+                                <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" id="uu_10_c">
+                                <label for="uu_10">Fecha de validación <font size="4" style="color:#FF0000"> * </font></label>
+                                <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
+                                    <option value="0" disabled selected>Seleccione una opción</option>
+                                    @foreach (FechaValidacion item in ViewBag.fechavalidacion)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group" id="uu_09_c">
+                                <label>Campos del mensaje</label>
+                                @*<input type="text" class="form-control input-sm" id="uu_09" autocomplete="off" value="" />*@
+                                @*<div class="form-group" id="negocios">*@
+                                <div class="row">
+                                    @foreach (RecordatorioPICampos item in ViewBag.campos)
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input cb_acceso_negocio" id="ng_@item.id" avid="@item.id">
+                                                    <label class="custom-control-label" for="ng_@item.id">@(item.nombre)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                @*</div>*@
+                            </div>
+                        </div>
+                    </div>@*row*@
+
                     <div class="form-group" id="uu_01_c" style="display:none;">
                         <label for="uu_01">Asignado</label>
                         <select class="select2 form-control input-sm custom-select" id="uu_01" autocomplete="off" style="width: 100%;">
@@ -181,39 +239,12 @@
                         <label>Fecha fin recordatorio</label>
                         <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
                     </div>
-                    <div class="form-group" id="uu_03_c">
-                        <label>Días a recordar antes del vencimiento</label>
-                        <input type="number" class="form-control input-sm" id="uu_03" autocomplete="off" value="0" min="0" />
-                    </div>
-                    <div class="form-group" id="uu_04_c">
-                        <label>Días del mes a recordar</label>
-                        <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" value="" />
-                    </div>
-                    <div class="form-group" id="uu_05_c">
-                        <label>Descripción</label>
-                        <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" value="" />
-                    </div>
-                    <div class="form-group" id="uu_09_c">
-                        <label>Mensaje</label>
-                        @*<input type="text" class="form-control input-sm" id="uu_09" autocomplete="off" value="" />*@
-                        <textarea type="text" name="uu_09" id="uu_09" class="form-control" value='' rows="8" cols="20" minlength="4" maxlength="250" placeholder="" required style="resize:none"></textarea>
-                    </div>
-                    <div class="form-group" id="uu_10_c">
-                        <label for="uu_10">Fecha de validación <font size="4" style="color:#FF0000"> * </font></label>
-                        <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
-                            <option value="0" disabled selected>Seleccione una opción</option>
-                            @foreach (FechaValidacion item in ViewBag.fechavalidacion)
-                            {
-                                <option value="@item.id">@item.nombre</option>
-                            }
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <button class="btn" onclick="" id="eliminausuario">Eliminar</button>
                     </div>
                     <div class="form-group errores"></div>
-                </div>
+                </div>@*modal-body*@
                 <div class="modal-footer red-border">
                     <div class="col-md-2"></div>
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>

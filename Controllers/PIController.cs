@@ -925,12 +925,16 @@ namespace GISMVC.Controllers
                 var usuarios = GISMVC.Models.AspNetUsers.Get();
                 var tiporecordatorio= GISMVC.Models.TipoRecordatorio.Get();
                 var fchvalidacion=GISMVC.Models.FechaValidacion.Get();
+                //var negocios = GISMVC.Models.Negocio.Get();
+                var campos = GISMVC.Models.RecordatorioPICampos.Get();
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
                 ViewBag.usuarios = usuarios;
                 ViewBag.tiporecordatorio = tiporecordatorio;
                 ViewBag.fechavalidacion = fchvalidacion;
+                //ViewBag.negocios = negocios;
+                ViewBag.campos = campos;
                 return View();
             }
             else

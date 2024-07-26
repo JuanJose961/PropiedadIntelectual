@@ -9566,6 +9566,44 @@ namespace GISMVC.Models
             }
             return boolProcess;
         }
+
+        public Boolean Cons_Proc_RecordatorioPICampos(out DataTable dt, out String msgError, int activo = -1)
+        {
+            bool boolProcess = true;
+            dt = new DataTable();
+            msgError = string.Empty;
+
+            try
+            {
+
+                SqlParameter[] @params = new SqlParameter[1];
+
+                int i = 0;
+                @params[0] = new SqlParameter("@id", activo);
+
+                i++;
+                if (!bd.ExecuteProcedure(conexion, "cons_proc_RecordatorioPICampos", @params, out dt, 1000))
+                {
+                    boolProcess = false;
+                    msgError = bd._error.ToString();
+                }
+                else
+                {
+                    if (dt.Rows.Count < 1)
+                    {
+                        boolProcess = false;
+                        msgError = "No hay datos a mostrar";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                boolProcess = false;
+                msgError = ex.ToString();
+            }
+            return boolProcess;
+        }
         #endregion
 
         public Boolean CONS_cat_Area(out DataTable dt, out String msgError)

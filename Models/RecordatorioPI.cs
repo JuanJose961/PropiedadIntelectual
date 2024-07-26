@@ -615,4 +615,160 @@ namespace GISMVC.Models
         }
         */
     }
+
+    /*jjjjjjjjjjjjjjjjjjj*/
+    public class RecordatorioPICampos
+    {
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public DateTime fc { get; set; }
+        public DateTime fu { get; set; }
+        public int activo { get; set; }
+        public int orden { get; set; }
+        public RecordatorioPICampos()
+        {
+            id = 0;
+            nombre = "";
+            descripcion = "";
+            fc = DateTime.Parse("1969-01-01");
+            fu = DateTime.Parse("1969-01-01");
+            activo = 0;
+            orden = 0;
+        }
+
+        //
+
+
+
+
+        //public static RecordatorioPI GetById(int id)
+        //{
+        //    RecordatorioPI res = new RecordatorioPI();
+        //    try
+        //    {
+        //        DataAccess da = new DataAccess();
+
+        //        var dt = new System.Data.DataTable();
+        //        var errores = "";
+        //        if (da.CONS_RecordatorioPIById(id, out dt, out errores))
+        //        {
+        //            if (dt.Rows.Count > 0)
+        //            {
+        //                int idx = 0;
+        //                var row = dt.Rows[0];
+        //                var item = new RecordatorioPI();
+
+        //                item.id = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.nombre = row[idx].ToString(); idx++;
+        //                item.usuario = row[idx].ToString(); idx++;
+        //                item.asignado = row[idx].ToString(); idx++;
+        //                item.fc = DateTime.Parse(row[idx].ToString()); idx++;
+        //                item.fu = DateTime.Parse(row[idx].ToString()); idx++;
+        //                item.fecha_recordatorio = DateTime.Parse(row[idx].ToString()); idx++;
+        //                item.dias_vencimiento = Int32.Parse(row[idx].ToString()); idx++;
+        //                #item.frecuencia = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.dias_frecuencia = row[idx].ToString(); idx++;
+        //                item.descripcion = row[idx].ToString(); idx++;
+        //                item.estatus = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.fecha_pre_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
+        //                item.fecha_siguiente_notif = DateTime.Parse(row[idx].ToString()); idx++;
+        //                item.notif_fecha_recordatorio = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.notif_vencimiento = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.usuario_nombre = row[idx].ToString(); idx++;
+        //                item.usuario_correo = row[idx].ToString(); idx++;
+        //                item.asignado_nombre = row[idx].ToString(); idx++;
+        //                item.asignado_correo = row[idx].ToString(); idx++;
+
+        //                item.fecha_fin = DateTime.Parse(row[idx].ToString()); idx++;
+
+        //                item.tipo = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.tipo_desc = row[idx].ToString(); idx++;
+        //                item.aux1 = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.registro_desc = row[idx].ToString(); idx++;
+        //                item.mensaje = row[idx].ToString(); idx++;
+        //                item.fecha_validacion = Int32.Parse(row[idx].ToString()); idx++;
+        //                item.fecha_validacion_desc = row[idx].ToString(); idx++;
+
+        //                if (item.estatus == 1)
+        //                {
+        //                    item.activo = true;
+        //                }
+        //                if (item.fecha_recordatorio.Year != 1969)
+        //                {
+        //                    item.fecha_recordatorioS = item.fecha_recordatorio.ToString("dd/MM/yyyy");
+        //                }
+        //                if (item.fecha_fin.Year != 1969)
+        //                {
+        //                    item.fecha_finS = item.fecha_fin.ToString("dd/MM/yyyy");
+        //                }
+        //                res = item;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //
+        //        }
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        res = new RecordatorioPI();
+        //    }
+        //    finally
+        //    {
+        //        //con.Close();
+        //    }
+        //    return res;
+        //}
+
+        public static List<RecordatorioPICampos> Get(int activo = -1)
+        {
+            List<RecordatorioPICampos> res = new List<RecordatorioPICampos>();
+            try
+            {
+                DataAccess da = new DataAccess();
+
+                var dt = new System.Data.DataTable();
+                var errores = "";
+                //if (da.Cons_RecordatorioPICampos(id, out dt, out errores))
+                if (da.Cons_Proc_RecordatorioPICampos(out dt, out errores, activo))
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            int idx = 0;
+                            var row = dt.Rows[i];
+                            var item = new RecordatorioPICampos();
+                            item.id = Int32.Parse(row[idx].ToString()); idx++;
+                            item.nombre = row[idx].ToString(); idx++;
+                            item.descripcion = row[idx].ToString(); idx++;
+                            item.fc = DateTime.Parse(row[idx].ToString()); idx++;
+                            item.fu = DateTime.Parse(row[idx].ToString()); idx++;
+                            item.activo = Int32.Parse(row[idx].ToString()); idx++;
+                            item.orden = Int32.Parse(row[idx].ToString()); idx++;
+                            res.Add(item);
+                        }
+                    }
+                }
+                else
+                {
+                    //
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                res = new List<RecordatorioPICampos>();
+            }
+            finally
+            {
+                //con.Close();
+            }
+            return res;
+        }
+    }//RecordatorioPICampos
 }

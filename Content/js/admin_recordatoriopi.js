@@ -28,12 +28,12 @@ $(document).ready(function () {
 $(document).on("change", "#uu_08", function (event) { //tipo recordatorio
     var val = parseInt($(this).val());
     if (val == 1) {
-        document.getElementById("uu_03_c").style.display = "block";//dias antes vencimiento
-        document.getElementById("uu_10_c").style.display = "block";//fecha validacion
+        document.getElementById("uu_03_a").style.display = "block";//dias antes vencimiento
+        //document.getElementById("uu_10_c").style.display = "block";//fecha validacion
         //document.getElementById("uu_04_c").style.display = "block";//dias del mes
     } else { 
-        document.getElementById("uu_03_c").style.display = "none";//dias antes vencimiento
-        document.getElementById("uu_10_c").style.display = "none";//fecha validacion
+        document.getElementById("uu_03_a").style.display = "none";//dias antes vencimiento
+        //document.getElementById("uu_10_c").style.display = "none";//fecha validacion
         //document.getElementById("uu_04_c").style.display = "block";//dias del mes
     }
 });
@@ -240,7 +240,8 @@ function ValidaUpdate01() {
     var asignado = $("#uu_01 option:selected").val();
     var fecha_recordatorio = $("#uu_02").val();
     var fecha_fin = $("#uu_06").val();
-    var dias_vencimiento = parseInt($("#uu_03").val());
+    //var dias_vencimiento = parseInt($("#uu_03").val());
+    var dias_vencimiento = $("#uu_03").val();
     //var frecuencia = parseInt($("#uu_04").val());
     var dias_frecuencia = $("#uu_04").val();
     var descripcion = $("#uu_05").val();
@@ -248,20 +249,21 @@ function ValidaUpdate01() {
     var tipo = $("#uu_08 option:selected").val();
     var mensaje = $("#uu_09").val();
     var fecha_validacion = $("#uu_10 option:selected").val();
-
+    
     var errores = 0;
     var flag = false;
 
-    if (fecha_validacion == 0 && tipo==1) {
+    if (fecha_validacion == 0) {
         $("#uu_10").addClass("control-error");
         $("#uu_10_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
     }
-    if (mensaje.length == "") {
-        $("#uu_09").addClass("control-error");
-        $("#uu_09_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-    }
+    //alert(nombre);
+    //if (mensaje.length == "") {
+    //    $("#uu_09").addClass("control-error");
+    //    $("#uu_09_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //}
     if (tipo == 0) {
         $("#uu_08").addClass("control-error");
         $("#uu_08_c").append("<p class='form-error'>Selecciona una opción válida</p>");
@@ -284,8 +286,7 @@ function ValidaUpdate01() {
         $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }*/
-
-    if (dias_vencimiento.length < 0 && tipo==1) {
+    if ((parseInt(dias_vencimiento) == 0 || dias_vencimiento =="") && tipo==1) {
         $("#uu_03").addClass("control-error");
         $("#uu_03_c").append("<p class='form-error'>Ingresa un valor válido</p>");
         errores += 1;

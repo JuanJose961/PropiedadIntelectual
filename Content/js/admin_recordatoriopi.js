@@ -47,7 +47,8 @@ var catalogo_actual = {
     descripcion: "",
     dias_vencimiento: 0,
     dias_frecuencia: "",
-    estatus: 1
+    estatus: 1,
+    campos: ""
 };
 
 function ModalNuevo() {
@@ -63,8 +64,10 @@ function ModalNuevo() {
         estatus: 1,
         tipo: 1,
         aux1: 0,
-        tipo_desc: ""
+        tipo_desc: "",
+        campos: ""
     };
+
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
     $("#update01 .form-control").removeAttr("disabled");
@@ -79,7 +82,8 @@ function ModalNuevo() {
     $("#uu_05").val("");
     $("#uu_07").val("");
     $("#uu_08").removeAttr('disabled');
-    $("#uu_09").val("");
+    //$("#uu_09").val(catalogo_actual.mensaje);
+    //$("#uu_05").val(usuario_actual.roles.descripcion).trigger("change");
     $("#update01").modal("show");
 }
 
@@ -93,7 +97,8 @@ function Editar(id) {
         descripcion: "",
         dias_vencimiento: 0,
         dias_frecuencia: "",
-        estatus: 1
+        estatus: 1,
+        campos: ""
     };
     var sended_url = services_url + "SelectRecordatorioPI";
     $.ajax({
@@ -112,7 +117,7 @@ function Editar(id) {
                 $("#update01 .modal-title").html("<span>Editar registro</span>");
 
                 $("#uu_10").val(catalogo_actual.fecha_validacion).trigger("change");
-                $("#uu_09").val(catalogo_actual.mensaje);
+                //$("#uu_09").val(catalogo_actual.mensaje);
                 $("#uu_08").val(catalogo_actual.tipo).trigger("change");
                 $("#uu_08").attr('disabled', 'disabled');//tipo
                 $("#uu_01").val(catalogo_actual.asignado).trigger("change");
@@ -128,6 +133,16 @@ function Editar(id) {
                 $("#uu_04").val(catalogo_actual.dias_frecuencia);
                 $("#uu_05").val(catalogo_actual.descripcion);
                 $("#uu_07").val(catalogo_actual.nombre);
+                //var campos = catalogo_actual.campos.Split(',').ToList();
+                //var campos = implode(",", catalogo_actual.campos);
+                //cadenaADividir.split(separador)
+                var campos = catalogo_actual.campos.split(',');
+                //alert(campos[0]);
+                for (var j = 0; j < campos.length; j++) {
+                    for (var i = 1; i < 20; i++){
+                        if(campos[j]==i)$("#cp_" + i).prop("checked", true);
+                    }
+                }
 
                 $("#eliminausuario").show();
                 if (catalogo_actual.activo == 0) {
@@ -164,7 +179,13 @@ function Confirma01() {
         var tipo_desc = $("#uu_08 option:selected").text();
         var dias_frecuencia = $("#uu_04").val();;
         //if (tipo == 2) dias_frecuencia = $("#uu_04").val();
-        var mensaje = $("#uu_09").val();
+        //var mensaje = $("#uu_09").val();
+        var campos = "";
+        for (var j = 1; j < 6; j++) {
+            if ($("#cp_" + j).prop('checked') == true) {
+                campos = campos == "" ? j : campos + "," + j;
+            }
+        }
         var fecha_validacion = 0;
         var fecha_validacion_desc = "";
         if (tipo == 1) {
@@ -183,7 +204,8 @@ function Confirma01() {
         catalogo_actual.nombre = nombre;
         catalogo_actual.tipo = tipo;
         catalogo_actual.tipo_desc = tipo_desc;
-        catalogo_actual.mensaje = mensaje;
+        //catalogo_actual.mensaje = mensaje;
+        catalogo_actual.campos = campos;
         catalogo_actual.fecha_validacion = fecha_validacion;
         catalogo_actual.fecha_validacion_desc = fecha_validacion_desc;
 
@@ -247,8 +269,17 @@ function ValidaUpdate01() {
     var descripcion = $("#uu_05").val();
     var nombre = $("#uu_07").val();
     var tipo = $("#uu_08 option:selected").val();
-    var mensaje = $("#uu_09").val();
+    //var mensaje = $("#uu_09").val();
     var fecha_validacion = $("#uu_10 option:selected").val();
+    //var campo = $("#uu_09 option:selected").val();
+    //var campo = $("#cp_1");
+    //alert(campo);
+    var campos = "";
+    for (var j = 1; j < 6; j++) {
+        if ($("#cp_" + j).prop('checked') == true) {
+            campos = campos == "" ? j : campos+","+j;
+        }
+    }
     
     var errores = 0;
     var flag = false;
@@ -309,6 +340,12 @@ function ValidaUpdate01() {
         $("#uu_07_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }
+    
+    if (campos=="") {
+        $("#uu_09").addClass("control-error");
+        $("#uu_09_c").append("<p class='form-error'>Selecciona un campo</p>");
+        errores += 1;
+    } 
 
     if (errores > 0) {
         flag = false;

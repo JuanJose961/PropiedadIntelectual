@@ -927,6 +927,7 @@ namespace GISMVC.Controllers
                 var fchvalidacion=GISMVC.Models.FechaValidacion.Get();
                 //var negocios = GISMVC.Models.Negocio.Get();
                 var campos = GISMVC.Models.RecordatorioPICampos.Get();
+                var tiposolicitudrecordatorio = GISMVC.Models.TipoSolicitudRecordatorio.Get();
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
@@ -935,6 +936,7 @@ namespace GISMVC.Controllers
                 ViewBag.fechavalidacion = fchvalidacion;
                 //ViewBag.negocios = negocios;
                 ViewBag.campos = campos;
+                ViewBag.tiposolicitudrecordatorio = tiposolicitudrecordatorio;
                 return View();
             }
             else

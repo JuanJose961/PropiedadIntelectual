@@ -97,8 +97,8 @@
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div>
-                                        @*<button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>*@
-                                        <button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>
+                                        @*<button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>*@
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.tipo_desc).CellTemplate(@<text>
@@ -162,6 +162,18 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="form-group" id="uu_11_c">
+                                <label for="uu_11">Tipo de solicitud <font size="4" style="color:#FF0000"> * </font></label>
+                                <select class="select2 form-control input-sm custom-select" id="uu_11" autocomplete="off" style="width: 100%;">
+                                    @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                                    @foreach (TipoSolicitudRecordatorio item in ViewBag.tiposolicitudrecordatorio)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group" id="uu_07_c">
                                 <label>Nombre <font size="4" style="color:#FF0000"> * </font></label>
                                 <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
@@ -206,10 +218,10 @@
                                     @foreach (RecordatorioPICampos item in ViewBag.campos)
                                     {
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group" id="uu_09">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input cb_acceso_negocio" id="ng_@item.id" avid="@item.id">
-                                                    <label class="custom-control-label" for="ng_@item.id">@(item.nombre)</label>
+                                                    <input type="checkbox" class="custom-control-input cb_acceso_negocio" id="cp_@item.id" avid="@item.id">
+                                                    <label class="custom-control-label" for="cp_@item.id">@(item.nombre)</label>
                                                 </div>
                                             </div>
                                         </div>

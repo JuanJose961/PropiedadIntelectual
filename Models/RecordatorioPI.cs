@@ -46,9 +46,18 @@ namespace GISMVC.Models
             List<FechaValidacion> list = new List<FechaValidacion>();
             list.Add(new FechaValidacion() { id = 1, nombre = "Fecha de vencimiento" });
             list.Add(new FechaValidacion() { id = 2, nombre = "Fecha legal" });
+            list.Add(new FechaValidacion() { id = 3, nombre = "Fecha concesión" });
+            list.Add(new FechaValidacion() { id = 4, nombre = "Requerimiento del negocio" });
+            list.Add(new FechaValidacion() { id = 5, nombre = "Instrucciones al corresponsal" });
+            list.Add(new FechaValidacion() { id = 6, nombre = "Solicitud de registro ante la autoridad competente" });
+            list.Add(new FechaValidacion() { id = 7, nombre = "Solicitud de busqueda" });
+            list.Add(new FechaValidacion() { id = 8, nombre = "Información de resultados al negocio" });
+            list.Add(new FechaValidacion() { id = 9, nombre = "Comprobación de uso" });
+            list.Add(new FechaValidacion() { id = 10, nombre = "Declaración de uso" });
+            list.Add(new FechaValidacion() { id = 11, nombre = "Fecha para pagar quinquenios o anualidades" });
+            list.Add(new FechaValidacion() { id = 12, nombre = "Fecha de vencimiento de prioridad" });
 
-
-            if (id >= 1 && id <= 2)
+            if (id >= 1 && id <= 10)
             {
                 res = list.Where(i => i.id == id).FirstOrDefault();
             }
@@ -60,7 +69,57 @@ namespace GISMVC.Models
             List<FechaValidacion> list = new List<FechaValidacion>();
             list.Add(new FechaValidacion() { id = 1, nombre = "Fecha de vencimiento" });
             list.Add(new FechaValidacion() { id = 2, nombre = "Fecha legal" });
+            list.Add(new FechaValidacion() { id = 3, nombre = "Fecha concesión" });
+            list.Add(new FechaValidacion() { id = 4, nombre = "Requerimiento del negocio" });
+            list.Add(new FechaValidacion() { id = 5, nombre = "Instrucciones al corresponsal" });
+            list.Add(new FechaValidacion() { id = 6, nombre = "Solicitud de registro ante la autoridad competente" });
+            list.Add(new FechaValidacion() { id = 7, nombre = "Solicitud de busqueda" });
+            list.Add(new FechaValidacion() { id = 8, nombre = "Información de resultados al negocio" });
+            list.Add(new FechaValidacion() { id = 9, nombre = "Comprobación de uso" });
+            list.Add(new FechaValidacion() { id = 10, nombre = "Declaración de uso" });
+            list.Add(new FechaValidacion() { id = 11, nombre = "Fecha para pagar quinquenios o anualidades" });
+            list.Add(new FechaValidacion() { id = 12, nombre = "Fecha de vencimiento de prioridad" });
 
+            return list;
+        }
+
+    }
+
+    public class TipoSolicitudRecordatorio
+    {
+        public int id { get; set; } = 0;
+        public string nombre { get; set; } = "";
+        public static TipoSolicitudRecordatorio GetById(int id)
+        {
+            TipoSolicitudRecordatorio res = new TipoSolicitudRecordatorio();
+            List<TipoSolicitudRecordatorio> list = new List<TipoSolicitudRecordatorio>();
+            list.Add(new TipoSolicitudRecordatorio() { id = 1, nombre = "Marcas y Avisos" });
+            list.Add(new TipoSolicitudRecordatorio() { id = 2, nombre = "Invenciones" });
+            list.Add(new TipoSolicitudRecordatorio() { id = 3, nombre = "Obras" });
+            list.Add(new TipoSolicitudRecordatorio() { id = 4, nombre = "Todos" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 5, nombre = "Modelo de Utilidad" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 6, nombre = "Modelo Industrial" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 7, nombre = "Obra Artística" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 8, nombre = "Obra Visual" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 9, nombre = "Obra Literaria" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 10, nombre = "Obra Auditiva" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 11, nombre = "Obra Gráfica" });
+            //list.Add(new TipoSolicitudRecordatorio() { id = 12, nombre = "Obra Tecnológica" });
+
+            if (id >= 1 && id <= 4)
+            {
+                res = list.Where(i => i.id == id).FirstOrDefault();
+            }
+            return res;
+        }
+
+        public static List<TipoSolicitudRecordatorio> Get(int activo = -1)
+        {
+            List<TipoSolicitudRecordatorio> list = new List<TipoSolicitudRecordatorio>();
+            list.Add(new TipoSolicitudRecordatorio() { id = 1, nombre = "Marcas y Avisos" });
+            list.Add(new TipoSolicitudRecordatorio() { id = 2, nombre = "Invenciones" });
+            list.Add(new TipoSolicitudRecordatorio() { id = 3, nombre = "Obras" });
+            list.Add(new TipoSolicitudRecordatorio() { id = 4, nombre = "Todos" });
 
             return list;
         }
@@ -97,7 +156,7 @@ namespace GISMVC.Models
         public string tipo_desc { get; set; } = "";
         public int aux1 { get; set; } = 0;
         public string registro_desc { get; set; } = "";
-        public string mensaje { get; set; } = "";
+        public string campos { get; set; } = "";
         public int fecha_validacion { get; set; } = 0;
         public string fecha_validacion_desc { get; set; } = "";
         //
@@ -320,7 +379,7 @@ namespace GISMVC.Models
                         item.tipo_desc = row[idx].ToString(); idx++;
                         item.aux1 = Int32.Parse(row[idx].ToString()); idx++;
                         item.registro_desc = row[idx].ToString(); idx++;
-                        item.mensaje = row[idx].ToString(); idx++;
+                        item.campos = row[idx].ToString(); idx++;
                         item.fecha_validacion = Int32.Parse(row[idx].ToString()); idx++;
                         item.fecha_validacion_desc = row[idx].ToString(); idx++;
 
@@ -400,7 +459,7 @@ namespace GISMVC.Models
                             idx++;
                             item.tipo_desc = row[idx].ToString(); idx++;
                             idx++; idx++;
-                            item.mensaje = row[idx].ToString(); idx++;
+                            item.campos = row[idx].ToString(); idx++;
                             item.fecha_validacion = Int32.Parse(row[idx].ToString()); idx++;
                             item.fecha_validacion_desc = row[idx].ToString(); idx++;
 
@@ -686,7 +745,7 @@ namespace GISMVC.Models
         //                item.tipo_desc = row[idx].ToString(); idx++;
         //                item.aux1 = Int32.Parse(row[idx].ToString()); idx++;
         //                item.registro_desc = row[idx].ToString(); idx++;
-        //                item.mensaje = row[idx].ToString(); idx++;
+        //                item.campos = row[idx].ToString(); idx++;
         //                item.fecha_validacion = Int32.Parse(row[idx].ToString()); idx++;
         //                item.fecha_validacion_desc = row[idx].ToString(); idx++;
 

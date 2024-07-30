@@ -9268,7 +9268,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@tipo", modelo.tipo); i++;
                 @params[i] = new SqlParameter("@aux1", modelo.aux1); i++;
                 @params[i] = new SqlParameter("@tipo_desc", modelo.tipo_desc); i++;
-                @params[i] = new SqlParameter("@mensaje", modelo.mensaje); i++;
+                @params[i] = new SqlParameter("@campos", modelo.campos); i++;
                 @params[i] = new SqlParameter("@fecha_validacion", modelo.fecha_validacion); i++;
                 @params[i] = new SqlParameter("@fecha_validacion_desc", modelo.fecha_validacion_desc); i++;
 
@@ -9316,7 +9316,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@dias_frecuencia", modelo.dias_frecuencia); i++;
                 @params[i] = new SqlParameter("@descripcion", modelo.descripcion); i++;
                 @params[i] = new SqlParameter("@fecha_fin", modelo.fecha_fin); i++;
-                @params[i] = new SqlParameter("@mensaje", modelo.mensaje); i++;
+                @params[i] = new SqlParameter("@campos", modelo.campos); i++;
                 @params[i] = new SqlParameter("@fecha_validacion", modelo.fecha_validacion); i++;
                 @params[i] = new SqlParameter("@fecha_validacion_desc", modelo.fecha_validacion_desc); i++;
 

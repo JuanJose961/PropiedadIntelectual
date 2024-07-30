@@ -48,7 +48,9 @@ var catalogo_actual = {
     dias_vencimiento: 0,
     dias_frecuencia: "",
     estatus: 1,
-    campos: ""
+    campos: "",
+    tipo_solicitud: 0,
+    tipo_solicitud_desc: ""
 };
 
 function ModalNuevo() {
@@ -65,7 +67,9 @@ function ModalNuevo() {
         tipo: 1,
         aux1: 0,
         tipo_desc: "",
-        campos: ""
+        campos: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_desc: ""
     };
 
     $("#update01 .form-error").remove();
@@ -98,7 +102,9 @@ function Editar(id) {
         dias_vencimiento: 0,
         dias_frecuencia: "",
         estatus: 1,
-        campos: ""
+        campos: "",
+        tipo_solicitud: 0,
+        tipo_solicitud_desc: ""
     };
     var sended_url = services_url + "SelectRecordatorioPI";
     $.ajax({
@@ -116,6 +122,7 @@ function Editar(id) {
                 $("#update01 .form-control").removeAttr("disabled");
                 $("#update01 .modal-title").html("<span>Editar registro</span>");
 
+                $("#uu_11").val(catalogo_actual.tipo_solicitud).trigger("change");
                 $("#uu_10").val(catalogo_actual.fecha_validacion).trigger("change");
                 //$("#uu_09").val(catalogo_actual.mensaje);
                 $("#uu_08").val(catalogo_actual.tipo).trigger("change");
@@ -181,18 +188,22 @@ function Confirma01() {
         //if (tipo == 2) dias_frecuencia = $("#uu_04").val();
         //var mensaje = $("#uu_09").val();
         var campos = "";
-        for (var j = 1; j < 6; j++) {
+        for (var j = 1; j < 50; j++) {
             if ($("#cp_" + j).prop('checked') == true) {
                 campos = campos == "" ? j : campos + "," + j;
             }
         }
-        var fecha_validacion = 0;
-        var fecha_validacion_desc = "";
-        if (tipo == 1) {
-            fecha_validacion = $("#uu_10 option:selected").val();
-            fecha_validacion_desc = $("#uu_10 option:selected").text();
-        }
-        
+
+        //var fecha_validacion = 0;
+        //var fecha_validacion_desc = "";
+        //if (tipo == 1) {
+        //    fecha_validacion = $("#uu_10 option:selected").val();
+        //    fecha_validacion_desc = $("#uu_10 option:selected").text();
+        //}
+        var fecha_validacion = $("#uu_10 option:selected").val();
+        var fecha_validacion_desc = $("#uu_10 option:selected").text();
+        var tipo_solicitud = $("#uu_11 option:selected").val();
+        var tipo_solicitud_desc = $("#uu_11 option:selected").text();
         
 
         catalogo_actual.asignado = asignado;
@@ -208,6 +219,8 @@ function Confirma01() {
         catalogo_actual.campos = campos;
         catalogo_actual.fecha_validacion = fecha_validacion;
         catalogo_actual.fecha_validacion_desc = fecha_validacion_desc;
+        catalogo_actual.tipo_solicitud = tipo_solicitud;
+        catalogo_actual.tipo_solicitud_desc = tipo_solicitud_desc;
 
         var sended_url = services_url + "AddRecordatorioPI";
         if (catalogo_actual.id > 0) {
@@ -280,6 +293,7 @@ function ValidaUpdate01() {
             campos = campos == "" ? j : campos+","+j;
         }
     }
+    var tipo_solicitud = $("#uu_11 option:selected").val();
     
     var errores = 0;
     var flag = false;
@@ -346,6 +360,11 @@ function ValidaUpdate01() {
         $("#uu_09_c").append("<p class='form-error'>Selecciona un campo</p>");
         errores += 1;
     } 
+    if (tipo_solicitud == 0) {
+        $("#uu_11").addClass("control-error");
+        $("#uu_11_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        errores += 1;
+    }
 
     if (errores > 0) {
         flag = false;

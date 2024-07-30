@@ -114,6 +114,7 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("Tipo de Recordatorio");
+                                columns.AddFor(m => m.tipo_solicitud_desc).Caption("Tipo solicitud");
                                 columns.AddFor(m => m.nombre).Caption("Nombre");
                                 columns.AddFor(m => m.descripcion).Caption("Descipción");
                                 //columns.AddFor(m => m.asignado_nombre).Caption("Asignado");
@@ -165,7 +166,7 @@
                             <div class="form-group" id="uu_11_c">
                                 <label for="uu_11">Tipo de solicitud <font size="4" style="color:#FF0000"> * </font></label>
                                 <select class="select2 form-control input-sm custom-select" id="uu_11" autocomplete="off" style="width: 100%;">
-                                    @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                                    <option value="0" disabled selected>Seleccione una opción</option>
                                     @foreach (TipoSolicitudRecordatorio item in ViewBag.tiposolicitudrecordatorio)
                                     {
                                         <option value="@item.id">@item.nombre</option>

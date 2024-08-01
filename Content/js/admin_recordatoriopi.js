@@ -28,11 +28,11 @@ $(document).ready(function () {
 $(document).on("change", "#uu_08", function (event) { //tipo recordatorio
     var val = parseInt($(this).val());
     if (val == 1) {
-        document.getElementById("uu_03_a").style.display = "block";//dias antes vencimiento
+        document.getElementById("uu_03_c").style.display = "block";//dias antes vencimiento
         //document.getElementById("uu_10_c").style.display = "block";//fecha validacion
         //document.getElementById("uu_04_c").style.display = "block";//dias del mes
     } else { 
-        document.getElementById("uu_03_a").style.display = "none";//dias antes vencimiento
+        document.getElementById("uu_03_c").style.display = "none";//dias antes vencimiento
         //document.getElementById("uu_10_c").style.display = "none";//fecha validacion
         //document.getElementById("uu_04_c").style.display = "block";//dias del mes
     }
@@ -81,13 +81,19 @@ function ModalNuevo() {
     $("#uu_01").val(catalogo_actual.asignado).trigger("change");
     $("#uu_02").val("");
     $("#uu_06").val("");
-    $("#uu_03").val(0);
-    $("#uu_04").val("0");
+    $("#uu_03").val("");
+    $("#uu_04").val("");
     $("#uu_05").val("");
     $("#uu_07").val("");
     $("#uu_08").removeAttr('disabled');
     //$("#uu_09").val(catalogo_actual.mensaje);
     //$("#uu_05").val(usuario_actual.roles.descripcion).trigger("change");
+    //for (var j = 1; j <=3; j++) {
+    //    $("#cp_" + j).prop("checked", true);
+    //}
+    for (var i = 1; i < 50; i++) {
+        $("#cp_" + i).prop("checked", false);
+    }
     $("#update01").modal("show");
 }
 
@@ -146,7 +152,7 @@ function Editar(id) {
                 var campos = catalogo_actual.campos.split(',');
                 //alert(campos[0]);
                 for (var j = 0; j < campos.length; j++) {
-                    for (var i = 1; i < 20; i++){
+                    for (var i = 1; i < 50; i++){
                         if(campos[j]==i)$("#cp_" + i).prop("checked", true);
                     }
                 }
@@ -331,9 +337,13 @@ function ValidaUpdate01() {
         $("#uu_06_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }*/
-    if ((parseInt(dias_vencimiento) == 0 || dias_vencimiento =="") && tipo==1) {
+    if (parseInt(dias_vencimiento) <= 0 && tipo == 1) {
         $("#uu_03").addClass("control-error");
         $("#uu_03_c").append("<p class='form-error'>Ingresa un valor válido</p>");
+        errores += 1;
+    } else if (dias_vencimiento == "" && tipo == 1) {
+        $("#uu_03").addClass("control-error");
+        $("#uu_03_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
     }
     
@@ -426,3 +436,83 @@ function ConfirmaEliminar01() {
         }
     });
 }
+
+//var campos = new Array();
+//$(document).on("change", "#uu_11", function (event) {
+
+//    var val = $("#uu_05 option:selected").attr("rid");
+//    if (usuario_actual.id == "") {
+//        var sended_url = services_url + "SelectAccesoVistaByRol";
+//        $.ajax({
+//            type: "POST",
+//            url: sended_url,
+//            data: JSON.stringify({ id: val }),
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            success: function (response) {
+//                var jsonResponse = response;
+//                if (jsonResponse.flag != false) {
+
+//                    console.log("accesovistas");
+//                    console.log(jsonResponse.content[0]);
+//                    accesos = jsonResponse.content[0];
+//                    RedibujarAccesos();
+//                } else {
+//                    console.log("success");
+//                    console.log(jsonResponse.description);
+//                    //$("#btn-confirma").removeAttr("disabled");
+//                }
+//            },
+//            failure: function (response) {
+//                //$("#update01 .form-control").removeAttr("disabled");
+//                console.log("failure");
+//                console.log(response);
+//                //$("#btn-confirma").removeAttr("disabled");
+//            },
+//            error: function (response) {
+//                //$("#update01 .form-control").removeAttr("disabled");
+//                console.log("error");
+//                console.log(response);
+//                //$("#btn-confirma").removeAttr("disabled");
+//            }
+//        });
+//    }
+//});
+
+//function RedibujarAccesos() {
+//    $("#accesos").empty();
+//    var modulos = new Array();
+//    for (var i = 0; i < accesos.length; i++) {
+//        if (!modulos.includes(accesos[i].modulo) && accesos[i].acceso == 1) {
+//            modulos.push(accesos[i].modulo);
+//        }
+//    }
+
+//    console.log(modulos);
+//    for (var i = 0; i < modulos.length; i++) {
+//        var arr = accesos.filter(item => item.modulo == modulos[i]);
+//        var opciones = "";
+//        for (var j = 0; j < arr.length; j++) {
+//            var checked = "";
+//            if (arr[j].acceso == 1) {
+//                checked = "checked";
+//            }
+//            var opcion = '<div class="col-md-6">' +
+//                '<div class="form-group">' +
+//                '<div class="custom-control custom-checkbox">' +
+//                '<input type="checkbox" class="custom-control-input cb_acceso_vista" id="cb_' + arr[j].pagina + '" avid="' + arr[j].pagina + '" ' + checked + '>' +
+//                '<label class="custom-control-label" for="cb_' + arr[j].pagina + '">' + arr[j].descripcion + '</label>' +
+//                '</div>' +
+//                '</div>' +
+//                '</div>';
+//            opciones += opcion;
+//        }
+//        var html = '<div class="row">' +
+//            '<div class="col-md-12">' +
+//            '<h6 style="font-weight: 500;">' + modulos[i] + '</h6>' +
+//            '</div>' +
+//            opciones +
+//            '</div>';
+//        $("#accesos").append(html);
+//    }
+//}

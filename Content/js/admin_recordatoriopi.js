@@ -91,7 +91,7 @@ function ModalNuevo() {
     //for (var j = 1; j <=3; j++) {
     //    $("#cp_" + j).prop("checked", true);
     //}
-    for (var i = 1; i < 50; i++) {
+    for (var i = 1; i <= 35; i++) {
         $("#cp_" + i).prop("checked", false);
     }
     $("#update01").modal("show");
@@ -149,10 +149,13 @@ function Editar(id) {
                 //var campos = catalogo_actual.campos.Split(',').ToList();
                 //var campos = implode(",", catalogo_actual.campos);
                 //cadenaADividir.split(separador)
+                for (var i = 1; i <=35; i++) {
+                    $("#cp_" + i).prop("checked", false);
+                }
                 var campos = catalogo_actual.campos.split(',');
                 //alert(campos[0]);
                 for (var j = 0; j < campos.length; j++) {
-                    for (var i = 1; i < 50; i++){
+                    for (var i = 1; i <=35; i++){
                         if(campos[j]==i)$("#cp_" + i).prop("checked", true);
                     }
                 }
@@ -194,7 +197,7 @@ function Confirma01() {
         //if (tipo == 2) dias_frecuencia = $("#uu_04").val();
         //var mensaje = $("#uu_09").val();
         var campos = "";
-        for (var j = 1; j < 50; j++) {
+        for (var j = 1; j <=35; j++) {
             if ($("#cp_" + j).prop('checked') == true) {
                 campos = campos == "" ? j : campos + "," + j;
             }
@@ -294,7 +297,7 @@ function ValidaUpdate01() {
     //var campo = $("#cp_1");
     //alert(campo);
     var campos = "";
-    for (var j = 1; j < 6; j++) {
+    for (var j = 1; j <=35; j++) {
         if ($("#cp_" + j).prop('checked') == true) {
             campos = campos == "" ? j : campos+","+j;
         }

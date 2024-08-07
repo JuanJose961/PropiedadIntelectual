@@ -92,13 +92,24 @@
                             ()
                             .ID("tabla01")
                             .ShowBorders(true)
+                            .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+                            .Paging(paging => paging.PageSize(20))
+                            .Pager(pager =>
+                            {
+                                pager.Visible(true);
+                                //pager.DisplayMode(GridPagerDisplayMode.Full);
+                                pager.ShowPageSizeSelector(true);
+                                pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
+                                pager.ShowInfo(true);
+                                pager.ShowNavigationButtons(true);
+                            })
                             .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
                             .Columns(columns =>
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
                                     <div>
-                                        <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>
-                                        @*<button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>*@
+                                        @*<button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)"><i class="fa fa-edit"></i></button>*@
+                                        <button type="button" class="dx-oc-link" onclick=""><i class="fa fa-edit"></i></button>
                                     </div>
                                 </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.tipo_desc).CellTemplate(@<text>
@@ -114,14 +125,14 @@
                                     </div>
                                     <% } %>
                                 </text>).Caption("Tipo de Recordatorio");
-                                columns.AddFor(m => m.tipo_solicitud_desc).Caption("Tipo solicitud");
                                 columns.AddFor(m => m.nombre).Caption("Nombre");
+                                columns.AddFor(m => m.tipo_solicitud_desc).Caption("Tipo solicitud");
                                 columns.AddFor(m => m.descripcion).Caption("Descipción");
                                 //columns.AddFor(m => m.asignado_nombre).Caption("Asignado");
                                 //columns.AddFor(m => m.fecha_recordatorio).Caption("Fecha").Format("dd/MM/yyyy");
-                                columns.AddFor(m => m.dias_vencimiento).Caption("Días vencimiento");
-                                columns.AddFor(m => m.fecha_validacion_desc).Caption("Fecha de validación");
+                                columns.AddFor(m => m.dias_vencimiento).Caption("Días antes vencimiento");
                                 columns.AddFor(m => m.dias_frecuencia).Caption("Días frecuencia");
+                                columns.AddFor(m => m.fecha_validacion_desc).Caption("Fecha de validación");
 
                             })
                             .ColumnAutoWidth(true)
@@ -142,7 +153,7 @@
 
 @section Modals {
     <div id="update01" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title"></h4>
@@ -156,7 +167,7 @@
                                 <a class="nav-link active" data-toggle="tab" href="#tab01" role="tab"><i class="fa fa-info mr-1"></i> General</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab02" role="tab"><i class="fa fa-file mr-1"></i>Campos mensaje</a>
+                                <a class="nav-link" data-toggle="tab" href="#tab02" role="tab"><i class="fa fa-file mr-1"></i>Campos</a>
                             </li>
                             @*<li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tab03" role="tab"><i class="fa fa-file mr-1"></i> Accesos</a>
@@ -164,51 +175,53 @@
                         </ul>
                         <div class="tab-content border border-top-0 p-3">
                             <div class="tab-pane fade active show" id="tab01" role="tabpanel">
-                                <div class="form-group" id="uu_08_c">
-                                    <label for="uu_08">Tipo de recordatorio <font size="4" style="color:#FF0000"> * </font></label>
-                                    <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
-                                        @*<option value="0" disabled selected>Seleccione una opción</option>*@
-                                        @foreach (TipoRecordatorio item in ViewBag.tiporecordatorio)
-                                        {
-                                            <option value="@item.id">@item.nombre</option>
-                                        }
-                                    </select>
-                                </div>
-                                <div class="form-group" id="uu_11_c">
-                                    <label for="uu_11">Tipo de solicitud <font size="4" style="color:#FF0000"> * </font></label>
-                                    <select class="select2 form-control input-sm custom-select" id="uu_11" autocomplete="off" style="width: 100%;">
-                                        <option value="0" disabled selected>Seleccione una opción</option>
-                                        @foreach (TipoSolicitudRecordatorio item in ViewBag.tiposolicitudrecordatorio)
-                                        {
-                                            <option value="@item.id" rid="@item.id">@item.nombre</option>
-                                        }
-                                    </select>
-                                </div>
-                                <div class="form-group" id="uu_07_c">
-                                    <label>Nombre <font size="4" style="color:#FF0000"> * </font></label>
-                                    <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
-                                </div>
-                                <div class="form-group" id="uu_03_c">
-                                    <label>Días a recordar antes del vencimiento <font size="4" style="color:#FF0000"> * </font></label>
-                                    <input type="number" class="form-control input-sm" id="uu_03" autocomplete="off" value="0" min="0" />
-                                </div>
-                                <div class="form-group" id="uu_04_c">
-                                    <label>Días del mes a recordar <font size="4" style="color:#FF0000"> * </font></label>
-                                    <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" value="" />
-                                </div>
-                                <div class="form-group" id="uu_05_c">
-                                    <label>Descripción <font size="4" style="color:#FF0000"> * </font></label>
-                                    <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" value="" />
-                                </div>
-                                <div class="form-group" id="uu_10_c">
-                                    <label for="uu_10">Fecha de validación <font size="4" style="color:#FF0000"> * </font></label>
-                                    <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
-                                        <option value="0" disabled selected>Seleccione una opción</option>
-                                        @foreach (FechaValidacion item in ViewBag.fechavalidacion)
-                                        {
-                                            <option value="@item.id">@item.nombre</option>
-                                        }
-                                    </select>
+                                <div class="row">
+                                    <div class="form-group col-md-6" id="uu_08_c">
+                                        <label for="uu_08">Tipo de recordatorio <font size="4" style="color:#FF0000"> * </font></label>
+                                        <select class="select2 form-control input-sm custom-select" id="uu_08" autocomplete="off" style="width: 100%;">
+                                            @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                                            @foreach (TipoRecordatorio item in ViewBag.tiporecordatorio)
+                                            {
+                                                <option value="@item.id">@item.nombre</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6" id="uu_11_c">
+                                        <label for="uu_11">Tipo de solicitud <font size="4" style="color:#FF0000"> * </font></label>
+                                        <select class="select2 form-control input-sm custom-select" id="uu_11" autocomplete="off" style="width: 100%;">
+                                            <option value="0" disabled selected>Seleccione una opción</option>
+                                            @foreach (TipoSolicitudRecordatorio item in ViewBag.tiposolicitudrecordatorio)
+                                            {
+                                                <option value="@item.id" rid="@item.id">@item.nombre</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12" id="uu_07_c">
+                                        <label>Nombre <font size="4" style="color:#FF0000"> * </font></label>
+                                        <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
+                                    </div>
+                                    <div class="form-group col-md-12" id="uu_05_c">
+                                        <label>Descripción <font size="4" style="color:#FF0000"> * </font></label>
+                                        <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" value="" />
+                                    </div>
+                                    <div class="form-group col-md-6" id="uu_03_c">
+                                        <label>Días a recordar antes del vencimiento <font size="4" style="color:#FF0000"> * </font></label>
+                                        <input type="number" class="form-control input-sm" id="uu_03" autocomplete="off" value="0" min="0" />
+                                    </div>
+                                    <div class="form-group col-md-6" id="uu_04_c">
+                                        <label>Días del mes a recordar <font size="4" style="color:#FF0000"> * </font></label>
+                                        <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" value="" />
+                                    </div>
+                                    <div class="form-group col-md-6" id="uu_10_c">
+                                        <label for="uu_10">Fecha de validación <font size="4" style="color:#FF0000"> * </font></label>
+                                        <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
+                                            <option value="0" disabled selected>Seleccione una opción</option>
+                                            @foreach (FechaValidacion item in ViewBag.fechavalidacion)
+                                            {
+                                                <option value="@item.id">@item.nombre</option>
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tab02" role="tabpanel">

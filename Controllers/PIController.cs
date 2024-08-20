@@ -1047,6 +1047,7 @@ namespace GISMVC.Controllers
                 ViewBag.licencia = licencia;
                 ViewBag.cesion = cesion;
                 ViewBag.usuarios = usuarios;
+                ViewBag.idRol = ul.roles.id;
                 return View();
             }
             else

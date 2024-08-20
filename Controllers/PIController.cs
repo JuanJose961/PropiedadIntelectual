@@ -962,6 +962,7 @@ namespace GISMVC.Controllers
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
+                ViewBag.idRol = ul.roles.id;
                 return View();
             }
             else

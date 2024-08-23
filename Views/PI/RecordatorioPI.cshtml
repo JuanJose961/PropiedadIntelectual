@@ -126,11 +126,21 @@
                                 </text>).Caption("Tipo de Recordatorio");
                                 columns.AddFor(m => m.nombre).Caption("Nombre");
                                 columns.AddFor(m => m.tipo_solicitud_desc).Caption("Tipo solicitud");
-                                columns.AddFor(m => m.descripcion).Caption("Descipción");
+                                //columns.AddFor(m => m.descripcion).Caption("Descipción");
                                 //columns.AddFor(m => m.asignado_nombre).Caption("Asignado");
                                 //columns.AddFor(m => m.fecha_recordatorio).Caption("Fecha").Format("dd/MM/yyyy");
-                                columns.AddFor(m => m.dias_vencimiento).Caption("Días antes vencimiento");
-                                columns.AddFor(m => m.dias_frecuencia).Caption("Días frecuencia");
+                                columns.AddFor(m => m.dias_vencimiento).CellTemplate(@<text>
+                                    <div class="text-lg-center">
+                                        <%- value %>
+                                    </div>
+                                </text>).Caption("Días antes vencimiento");
+                                columns.AddFor(m => m.dias_frecuencia).CellTemplate(@<text>
+                                    <div class="text-lg-center">
+                                        <%- value %>
+                                    </div>
+                                </text>).Caption("Días frecuencia");
+                                //columns.AddFor(m => m.dias_vencimiento).Caption("Días antes vencimiento");
+                                //columns.AddFor(m => m.dias_frecuencia).Caption("Días frecuencia");
                                 columns.AddFor(m => m.fecha_validacion_desc).Caption("Fecha de validación");
 
                             })
@@ -200,7 +210,7 @@
                                         <input type="text" class="form-control input-sm" id="uu_07" autocomplete="off" value="" />
                                     </div>
                                     <div class="form-group col-md-12" id="uu_05_c">
-                                        <label>Descripción <font size="4" style="color:#FF0000"> * </font></label>
+                                        <label>Asunto <font size="4" style="color:#FF0000"> * </font></label>
                                         <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" value="" />
                                     </div>
                                     <div class="form-group col-md-6" id="uu_03_c">
@@ -220,6 +230,11 @@
                                                 <option value="@item.id">@item.nombre</option>
                                             }
                                         </select>
+                                    </div>
+                                    <div class="form-group col-md-12" id="uu_12_c">
+                                        <label>Cuerpo del mensaje</label>
+                                        @*<input type="text" class="form-control input-sm" id="uu_09" autocomplete="off" value="" />*@
+                                        <textarea type="text" name="uu_12" id="uu_12" class="form-control" value='' rows="4" cols="20" minlength="4" maxlength="250" placeholder="" required style="resize:none"></textarea>
                                     </div>
                                 </div>
                             </div>

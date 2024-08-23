@@ -50,7 +50,8 @@ var catalogo_actual = {
     estatus: 1,
     campos: "",
     tipo_solicitud: 0,
-    tipo_solicitud_desc: ""
+    tipo_solicitud_desc: "",
+    mensaje: ""
 };
 
 function ModalNuevo() {
@@ -69,7 +70,8 @@ function ModalNuevo() {
         tipo_desc: "",
         campos: "",
         tipo_solicitud: 0,
-        tipo_solicitud_desc: ""
+        tipo_solicitud_desc: "",
+        mensaje: ""
     };
 
     $("#update01 .form-error").remove();
@@ -86,6 +88,7 @@ function ModalNuevo() {
     $("#uu_05").val("");
     $("#uu_07").val("");
     $("#uu_08").removeAttr('disabled');
+    $("#uu_12").val("");
     //$("#uu_09").val(catalogo_actual.mensaje);
     //$("#uu_05").val(usuario_actual.roles.descripcion).trigger("change");
     //for (var j = 1; j <=3; j++) {
@@ -110,7 +113,8 @@ function Editar(id) {
         estatus: 1,
         campos: "",
         tipo_solicitud: 0,
-        tipo_solicitud_desc: ""
+        tipo_solicitud_desc: "",
+        mensaje: "",
     };
     var sended_url = services_url + "SelectRecordatorioPI";
     $.ajax({
@@ -128,6 +132,7 @@ function Editar(id) {
                 $("#update01 .form-control").removeAttr("disabled");
                 $("#update01 .modal-title").html("<span>Editar registro</span>");
 
+                $("#uu_12").val(catalogo_actual.mensaje);
                 $("#uu_11").val(catalogo_actual.tipo_solicitud).trigger("change");
                 $("#uu_10").val(catalogo_actual.fecha_validacion).trigger("change");
                 //$("#uu_09").val(catalogo_actual.mensaje);
@@ -213,6 +218,7 @@ function Confirma01() {
         var fecha_validacion_desc = $("#uu_10 option:selected").text();
         var tipo_solicitud = $("#uu_11 option:selected").val();
         var tipo_solicitud_desc = $("#uu_11 option:selected").text();
+        var mensaje = $("#uu_12").val();
         
 
         catalogo_actual.asignado = asignado;
@@ -230,6 +236,7 @@ function Confirma01() {
         catalogo_actual.fecha_validacion_desc = fecha_validacion_desc;
         catalogo_actual.tipo_solicitud = tipo_solicitud;
         catalogo_actual.tipo_solicitud_desc = tipo_solicitud_desc;
+        catalogo_actual.mensaje = mensaje;
 
         var sended_url = services_url + "AddRecordatorioPI";
         if (catalogo_actual.id > 0) {

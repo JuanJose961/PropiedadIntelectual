@@ -9254,7 +9254,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[16];
+                SqlParameter[] @params = new SqlParameter[17];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
@@ -9273,6 +9273,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@fecha_validacion_desc", modelo.fecha_validacion_desc); i++;
                 @params[i] = new SqlParameter("@tipo_solicitud", modelo.tipo_solicitud); i++;
                 @params[i] = new SqlParameter("@tipo_solicitud_desc", modelo.tipo_solicitud_desc); i++;
+                @params[i] = new SqlParameter("@mensaje", modelo.mensaje); i++;
 
                 //i++;
                 if (!bd.ExecuteProcedure(conexion, "INS_RecordatorioPI", @params, out dt, 1000))
@@ -9306,7 +9307,7 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[14];
+                SqlParameter[] @params = new SqlParameter[15];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@nombre", modelo.nombre); i++;
@@ -9323,6 +9324,7 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@fecha_validacion_desc", modelo.fecha_validacion_desc); i++;
                 @params[i] = new SqlParameter("@tipo_solicitud", modelo.tipo_solicitud); i++;
                 @params[i] = new SqlParameter("@tipo_solicitud_desc", modelo.tipo_solicitud_desc); i++;
+                @params[i] = new SqlParameter("@mensaje", modelo.mensaje); i++;
 
                 //i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_RecordatorioPI", @params, out dt, 1000))

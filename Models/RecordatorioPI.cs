@@ -161,6 +161,7 @@ namespace GISMVC.Models
         public string fecha_validacion_desc { get; set; } = "";
         public int tipo_solicitud { get; set; } = 0;
         public string tipo_solicitud_desc { get; set; } = "";
+        public string mensaje { get; set; } = "";
         //
 
         public RecordatorioPI()
@@ -386,6 +387,7 @@ namespace GISMVC.Models
                         item.fecha_validacion_desc = row[idx].ToString(); idx++;
                         item.tipo_solicitud = Int32.Parse(row[idx].ToString()); idx++;
                         item.tipo_solicitud_desc = row[idx].ToString(); idx++;
+                        item.mensaje = row[idx].ToString(); idx++;
 
                         if (item.estatus == 1)
                         {
@@ -420,7 +422,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<RecordatorioPI> Get(int id = -1)
+        public static List<RecordatorioPI> Get(int id = 1)
         {
             List<RecordatorioPI> res = new List<RecordatorioPI>();
             try
@@ -468,6 +470,7 @@ namespace GISMVC.Models
                             item.fecha_validacion_desc = row[idx].ToString(); idx++;
                             item.tipo_solicitud = Int32.Parse(row[idx].ToString()); idx++;
                             item.tipo_solicitud_desc = row[idx].ToString(); idx++;
+                            item.mensaje = row[idx].ToString(); idx++;
 
                             if (item.estatus == 1)
                             {

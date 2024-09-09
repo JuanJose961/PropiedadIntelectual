@@ -176,12 +176,12 @@ namespace GISMVC.Models
                     {
                         if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcas" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_otros = true;
+                            //res.pi_otros = true;
                             res.pi_RegistroMarcas = true;
                         }
                         if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarca" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_otros = true;
+                            //res.pi_otros = true;
                             //res.pi_RegistroMarcas = true;
                             res.pi_RegistroMarca = true;
                         }

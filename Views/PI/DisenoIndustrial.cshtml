@@ -96,6 +96,7 @@
                             .Columns(columns =>
                             {
                                 columns.AddFor(m => m.id).CellTemplate(@<text>
+                                    <% if(eu_lu.role.id == "8566d71d-72f0-489d-92d4-410804d82e60"){ %>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <button type="button" class="dx-oc-link" onclick="Editar(<%- value %>)" title="Editar"><i class="fa fa-edit"></i></button>
@@ -106,6 +107,7 @@
                                         </div>
                                         <% } %>
                                     </div>
+                                    <% } %>
                                 </text>).Caption("ACCIONES").Width(150);
                                 columns.AddFor(m => m.nombre).CellTemplate(@<text>
                                     <% if (data.activo == false) { %>
@@ -449,7 +451,9 @@
             $("#tabla01").dxDataGrid("getDataSource").reload();
         }
         $(document).ready(function () {
-            $("#tabla01 .dx-toolbar-after").prepend("<button class='btn btn-info btn-sm' onclick='ModalNuevo();'><i class='fa fa-plus'></i> Nuevo registro</button>");
+            if (eu_lu.role.id == "8566d71d-72f0-489d-92d4-410804d82e60") {
+                $("#tabla01 .dx-toolbar-after").prepend("<button class='btn btn-info btn-sm' onclick='ModalNuevo();'><i class='fa fa-plus'></i> Nuevo registro</button>");
+            }
         });
     </script>
     <script src="@Url.Content("~/Content/js/admin_disenoindustrial.js?t=" + DateTime.Now.Ticks.ToString())"></script>

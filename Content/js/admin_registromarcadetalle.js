@@ -500,15 +500,15 @@ $(document).ready(function () {
     if (mainid > 0) {
         if (propiedad >= 1 && propiedad <= 6 && desabilitar == 0) {
             if (desabilitar == 0) {
-                document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Industrial";//titulo registro marca
+                document.getElementById("tituloregistromarca").innerHTML = "Edición de " + tipo_descrip;//titulo registro marca
             } else {
-                document.getElementById("tituloregistromarca").innerHTML = "Ver Propiedad Industrial";//titulo registro marca
+                document.getElementById("tituloregistromarca").innerHTML = "Información de " + tipo_descrip;//titulo registro marca
             }
         } else {
             if (desabilitar == 0) {
-                document.getElementById("tituloregistromarca").innerHTML = "Edición de Propiedad Intelectual";//titulo registro marca
+                document.getElementById("tituloregistromarca").innerHTML = "Edición de " + tipo_descrip;//titulo registro marca
             } else {
-                document.getElementById("tituloregistromarca").innerHTML = "Ver Propiedad Intelectual";//titulo registro marca
+                document.getElementById("tituloregistromarca").innerHTML = "Información de " + tipo_descrip;//titulo registro marca
             }
         }
         if (propiedad == 1 || propiedad == 2) {
@@ -529,9 +529,9 @@ $(document).ready(function () {
         SelectRegistroMarca(mainid,desabilitar);
     } else {
         if (propiedad >= 1 && propiedad <= 6) {
-            document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial";//titulo registro marca
+            document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Industrial " + tipo_descrip;//titulo registro marca
         } else {
-            document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Intelectual";//titulo registro marca
+            document.getElementById("tituloregistromarca").innerHTML = "Registro de Propiedad Intelectual " + tipo_descrip;//titulo registro marca
         }
     }
 });
@@ -1948,6 +1948,36 @@ function SelectRegistroMarca(id, desabilitar) {
                     }
 
                     $("#alertModal").modal("hide");
+
+                    //VISTAS
+                    if (eu_lu.role.id == "8566d71d-72f0-489d-92d4-410804d82e60") {//super admin
+                        document.getElementById("comentarios_a").style.display = "block";
+                        document.getElementById("uu_14_a").style.display = "block";//despacho, lo utiliza todos
+                        document.getElementById("uu_15_a").style.display = "block";//corresponsal, lo utiliza todos
+                        document.getElementById("comentarios_b").style.display = "block";
+                        //clase se muestra para propiedad 1,2, pero ya se oculta o muestra arriba
+                        document.getElementById("contrato_a").style.display = "block";
+                        //tipo registro se muestra para propiedad 1,2, pero ya se oculta o muestra arriba
+                        //document.getElementById("renovacion_check").style.display = "block";
+                        //document.getElementById("renovacion_a").style.display = "block";
+                        //document.getElementById("tab05").style.display = "block";
+                    } else {
+                        document.getElementById("comentarios_a").style.display = "none";
+                        document.getElementById("uu_14_a").style.display = "none";//despacho, lo utiliza todos
+                        document.getElementById("uu_15_a").style.display = "none";//corresponsal, lo utiliza todos
+                        document.getElementById("notificacion_titulo_a").style.display = "none";//notificacion titulo
+                        document.getElementById("notificacion_vencimiento_a").style.display = "none";//notificacion vencimiento
+                        document.getElementById("notificacion_estatus_a").style.display = "none";//notificacion estatus
+                        document.getElementById("comentarios_b").style.display = "none";
+                        //clase se oculta para propiedad 3,4,5,6,7,8,9,10,11,12, pero ya se oculta o muestra arriba
+                        document.getElementById("contrato_a").style.display = "none";
+                        //tipo registro se oculta para propiedad 3,4,5,6,7,8,9,10,11,12, pero ya se oculta o muestra arriba
+                        document.getElementById("renovacion_check").style.display = "none";
+                        document.getElementById("renovacion_a").style.display = "none";
+                        document.getElementById("tabActividades").style.display = "none";
+
+                        
+                    }
 
                     if (desabilitar == 0) {
                         $("#btnGuardar").show();

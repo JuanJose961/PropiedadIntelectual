@@ -87,7 +87,7 @@ function ModalNuevo() {
     $("#uu_04").val("");
     $("#uu_05").val("");
     $("#uu_07").val("");
-    $("#uu_08").removeAttr('disabled');
+    //$("#uu_08").removeAttr('disabled');
     $("#uu_12").val("");
     //$("#uu_09").val(catalogo_actual.mensaje);
     //$("#uu_05").val(usuario_actual.roles.descripcion).trigger("change");

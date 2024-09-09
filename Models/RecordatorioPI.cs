@@ -47,15 +47,15 @@ namespace GISMVC.Models
             list.Add(new FechaValidacion() { id = 1, nombre = "Fecha de vencimiento" });
             list.Add(new FechaValidacion() { id = 2, nombre = "Fecha legal" });
             list.Add(new FechaValidacion() { id = 3, nombre = "Fecha concesión" });
-            list.Add(new FechaValidacion() { id = 4, nombre = "Requerimiento del negocio" });
-            list.Add(new FechaValidacion() { id = 5, nombre = "Instrucciones al corresponsal" });
-            list.Add(new FechaValidacion() { id = 6, nombre = "Solicitud de registro ante la autoridad competente" });
-            list.Add(new FechaValidacion() { id = 7, nombre = "Solicitud de busqueda" });
-            list.Add(new FechaValidacion() { id = 8, nombre = "Información de resultados al negocio" });
-            list.Add(new FechaValidacion() { id = 9, nombre = "Comprobación de uso" });
-            list.Add(new FechaValidacion() { id = 10, nombre = "Declaración de uso" });
-            list.Add(new FechaValidacion() { id = 11, nombre = "Fecha para pagar quinquenios o anualidades" });
-            list.Add(new FechaValidacion() { id = 12, nombre = "Fecha de vencimiento de prioridad" });
+            list.Add(new FechaValidacion() { id = 4, nombre = "Fecha para pagar quinquenios o anualidades" });
+            list.Add(new FechaValidacion() { id = 5, nombre = "Fecha de vencimiento de prioridad" });
+            list.Add(new FechaValidacion() { id = 6, nombre = "Requerimiento del negocio" });
+            list.Add(new FechaValidacion() { id = 7, nombre = "Instrucciones al corresponsal" });
+            list.Add(new FechaValidacion() { id = 8, nombre = "Solicitud de registro ante la autoridad competente" });
+            list.Add(new FechaValidacion() { id = 9, nombre = "Solicitud de busqueda" });
+            list.Add(new FechaValidacion() { id = 10, nombre = "Información de resultados al negocio" });
+            list.Add(new FechaValidacion() { id = 11, nombre = "Comprobación de uso" });
+            list.Add(new FechaValidacion() { id = 12, nombre = "Declaración de uso" });
 
             if (id >= 1 && id <= 10)
             {
@@ -70,15 +70,16 @@ namespace GISMVC.Models
             list.Add(new FechaValidacion() { id = 1, nombre = "Fecha de vencimiento" });
             list.Add(new FechaValidacion() { id = 2, nombre = "Fecha legal" });
             list.Add(new FechaValidacion() { id = 3, nombre = "Fecha concesión" });
-            list.Add(new FechaValidacion() { id = 4, nombre = "Requerimiento del negocio" });
-            list.Add(new FechaValidacion() { id = 5, nombre = "Instrucciones al corresponsal" });
-            list.Add(new FechaValidacion() { id = 6, nombre = "Solicitud de registro ante la autoridad competente" });
-            list.Add(new FechaValidacion() { id = 7, nombre = "Solicitud de busqueda" });
-            list.Add(new FechaValidacion() { id = 8, nombre = "Información de resultados al negocio" });
-            list.Add(new FechaValidacion() { id = 9, nombre = "Comprobación de uso" });
-            list.Add(new FechaValidacion() { id = 10, nombre = "Declaración de uso" });
-            list.Add(new FechaValidacion() { id = 11, nombre = "Fecha para pagar quinquenios o anualidades" });
-            list.Add(new FechaValidacion() { id = 12, nombre = "Fecha de vencimiento de prioridad" });
+            list.Add(new FechaValidacion() { id = 4, nombre = "Fecha para pagar quinquenios o anualidades" });
+            list.Add(new FechaValidacion() { id = 5, nombre = "Fecha de vencimiento de prioridad" });
+            list.Add(new FechaValidacion() { id = 6, nombre = "Requerimiento del negocio" });
+            list.Add(new FechaValidacion() { id = 7, nombre = "Instrucciones al corresponsal" });
+            list.Add(new FechaValidacion() { id = 8, nombre = "Solicitud de registro ante la autoridad competente" });
+            list.Add(new FechaValidacion() { id = 9, nombre = "Solicitud de busqueda" });
+            list.Add(new FechaValidacion() { id = 10, nombre = "Información de resultados al negocio" });
+            list.Add(new FechaValidacion() { id = 11, nombre = "Comprobación de uso" });
+            list.Add(new FechaValidacion() { id = 12, nombre = "Declaración de uso" });
+            
 
             return list;
         }

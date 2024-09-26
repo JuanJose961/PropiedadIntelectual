@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using GISMVC.Models;
 using System.Web.Mvc;
+using DocumentFormat.OpenXml.Office.Word;
 
 namespace GISMVC.Controllers
 {
@@ -24,6 +25,7 @@ namespace GISMVC.Controllers
             public string TIPO { get; set; }
             public int TIPO_SOLICITUD { get; set; }
             public int TIPO_REGISTRO { get; set; }
+            public string ID_USUARIO { get; set; }
         }
 
         [System.Web.Http.HttpGet]
@@ -74,28 +76,28 @@ namespace GISMVC.Controllers
                     ocl = ContratoCesion.Get();
                     break;
                 case "Marca":
-                    ocl = Marca.Get();
+                    ocl = Marca.Get(parametros.ID_USUARIO);
                     break;
                 case "AvisoComercial":
-                    ocl = AvisoComercial.Get();
+                    ocl = AvisoComercial.Get(parametros.ID_USUARIO);
                     break;
                 case "Patente":
-                    ocl = Patente.Get();
+                    ocl = Patente.Get(parametros.ID_USUARIO);
                     break;
                 case "DisenoIndustrial":
-                    ocl = DisenoIndustrial.Get();
+                    ocl = DisenoIndustrial.Get(parametros.ID_USUARIO);
                     break;
                 case "ModeloUtilidad":
-                    ocl = ModeloUtilidad.Get();
+                    ocl = ModeloUtilidad.Get(parametros.ID_USUARIO);
                     break;
                 case "ModeloIndustrial":
-                    ocl = ModeloIndustrial.Get();
+                    ocl = ModeloIndustrial.Get(parametros.ID_USUARIO);
                     break;
                 case "Obra":
-                    ocl = Obra.Get(parametros.TIPO_SOLICITUD);
+                    ocl = Obra.Get(parametros.TIPO_SOLICITUD, parametros.ID_USUARIO);
                     break;
                 case "RegistroMarca":
-                    ocl = RegistroMarca.Get(parametros.TIPO_REGISTRO);
+                    ocl = RegistroMarca.Get(parametros.TIPO_REGISTRO,parametros.ID_USUARIO);
                     break;
                 case "RecordatorioPI":
                     ocl = RecordatorioPI.Get();

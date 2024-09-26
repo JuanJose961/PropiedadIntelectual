@@ -1975,7 +1975,18 @@ function SelectRegistroMarca(id, desabilitar) {
                         document.getElementById("renovacion_check").style.display = "none";
                         document.getElementById("renovacion_a").style.display = "none";
                         document.getElementById("tabActividades").style.display = "none";
+                        if (eu_lu.role.id == "c696ba3f-4b65-4fb4-b31a-b2e96c9ffc99" || eu_lu.role.id == "e4aacdfd-3425-42de-9ac5-7e0bcdf177c3") { //auditor y director
+                            document.getElementById("uu_35_a").style.display = "none";//prioridad lo utiliza admin y usuario
+                            document.getElementById("uu_36_a").style.display = "none";//fecha vencimineto prioridad lo utiliza admin y usuario
+                            document.getElementById("uu_39_a").style.display = "none";//uso lo utiliza admin y usuario
+                            if (registro.solicitud_tipo >= 1 && registro.solicitud_tipo <= 6) {
+                                document.getElementById("solicitud_a").style.display = "none";
+                            }
+                            if (registro.solicitud_tipo >= 7 && registro.solicitud_tipo <= 12) {
+                                document.getElementById("carta_a").style.display = "none";
+                            }
 
+                        }
                         
                     }
 

@@ -141,7 +141,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<Obra> Get(int tipo_solicitud=0,int activo = -1)
+        public static List<Obra> Get(int tipo_solicitud=0, string id_usuario = "", int activo = -1)
         {
             List<Obra> res = new List<Obra>();
             try
@@ -150,7 +150,7 @@ namespace GISMVC.Models
 
                 var dt = new System.Data.DataTable();
                 var errores = "";
-                if (da.Cons_proc_Obra(out dt, out errores, tipo_solicitud, activo))
+                if (da.Cons_proc_Obra(out dt, out errores, tipo_solicitud,id_usuario, activo))
                 {
                     if (dt.Rows.Count > 0)
                     {

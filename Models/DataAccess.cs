@@ -4544,7 +4544,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_Marca(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_Marca(out DataTable dt, out String msgError,string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -4552,11 +4552,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_Marca", @params, out dt, 1000))
                 {
@@ -4913,21 +4914,23 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_RegistroMarca(out DataTable dt, out String msgError, int tipo_registro, int activo = -1)
+        public Boolean Cons_proc_RegistroMarca(out DataTable dt, out String msgError, int tipo_registro,string id_usuario, int activo = -1)
         {
             
             bool boolProcess = true;
             dt = new DataTable();
             msgError = string.Empty;
-
+            //var usuario = "bef7d03f-d37b-41a2-8ec6-eb204d313a78";
             try
             {
-                SqlParameter[] @params = new SqlParameter[2];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
                 i++;
                 @params[1] = new SqlParameter("@tipo_registro", tipo_registro);
+                i++;
+                @params[2] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_RegistroMarca", @params, out dt, 1000))
                 {
@@ -5375,7 +5378,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_AvisoComercial(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_AvisoComercial(out DataTable dt, out String msgError, string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -5383,11 +5386,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_AvisoComercial", @params, out dt, 1000))
                 {
@@ -5591,7 +5595,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_Patente(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_Patente(out DataTable dt, out String msgError, string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -5599,11 +5603,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_Patente", @params, out dt, 1000))
                 {
@@ -5822,7 +5827,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_DisenoIndustrial(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_DisenoIndustrial(out DataTable dt, out String msgError,string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -5830,11 +5835,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_DisenoIndustrial", @params, out dt, 1000))
                 {
@@ -6053,7 +6059,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_ModeloUtilidad(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_ModeloUtilidad(out DataTable dt, out String msgError,string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -6061,11 +6067,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_ModeloUtilidad", @params, out dt, 1000))
                 {
@@ -6283,7 +6290,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_Obra(out DataTable dt, out String msgError, int tipo_solicitud, int activo = -1)
+        public Boolean Cons_proc_Obra(out DataTable dt, out String msgError, int tipo_solicitud,string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -6291,12 +6298,14 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[2];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
                 i++;
                 @params[1] = new SqlParameter("@tipo_solicitud", tipo_solicitud);
+                i++;
+                @params[2] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_Obra", @params, out dt, 1000))
                 {
@@ -6515,7 +6524,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_ModeloIndustrial(out DataTable dt, out String msgError, int activo = -1)
+        public Boolean Cons_proc_ModeloIndustrial(out DataTable dt, out String msgError,string id_usuario, int activo = -1)
         {
             bool boolProcess = true;
             dt = new DataTable();
@@ -6523,11 +6532,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", activo);
-
+                i++;
+                @params[1] = new SqlParameter("@usuario", id_usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_ModeloIndustrial", @params, out dt, 1000))
                 {

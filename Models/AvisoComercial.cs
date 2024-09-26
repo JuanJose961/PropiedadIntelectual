@@ -120,7 +120,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<AvisoComercial> Get(int activo = -1)
+        public static List<AvisoComercial> Get(string id_usuario = "", int activo = -1)
         {
             List<AvisoComercial> res = new List<AvisoComercial>();
             try
@@ -129,7 +129,7 @@ namespace GISMVC.Models
 
                 var dt = new System.Data.DataTable();
                 var errores = "";
-                if (da.Cons_proc_AvisoComercial(out dt, out errores, activo))
+                if (da.Cons_proc_AvisoComercial(out dt, out errores,id_usuario, activo))
                 {
                     if (dt.Rows.Count > 0)
                     {

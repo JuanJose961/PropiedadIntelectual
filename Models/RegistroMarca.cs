@@ -868,7 +868,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<RegistroMarca> Get(int tipo_registro = 0, int activo = -1)
+        public static List<RegistroMarca> Get(int tipo_registro = 0,string id_usuario="", int activo = -1)
         {
             List<RegistroMarca> list = new List<RegistroMarca>();
             Funciones funcion = new Funciones();
@@ -878,7 +878,7 @@ namespace GISMVC.Models
 
                 var dt = new System.Data.DataTable();
                 var errores = "";
-                if (da.Cons_proc_RegistroMarca(out dt, out errores, tipo_registro, activo))
+                if (da.Cons_proc_RegistroMarca(out dt, out errores, tipo_registro,id_usuario ,activo))
                 {
                     if (dt.Rows.Count > 0)
                     {

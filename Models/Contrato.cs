@@ -15,6 +15,28 @@ namespace GISMVC.Models
 
     public class Indicadores
     {
+        public int solpendientes { get; set; }
+        public int solpendientesconcesion { get; set; }
+        public int solbusqueda { get; set; }
+        public int forpendientes { get; set; }
+        public int solvencimiento { get; set; }
+        public int solvencimientotiempo { get; set; }
+        public int solvencimientovencido { get; set; }
+        public int soldeclaracion { get; set; }
+        public int soldeclaraciontiempo { get; set; }
+        public int soldeclaracionvencido { get; set; }
+        public int solmarcas { get; set; }
+        public int solavisos { get; set; }
+        public int solpatentes { get; set; }
+        public int soldisenosindustrial { get; set; }
+        public int solmodelosutilidad { get; set; }
+        public int solmodelosindustrial { get; set; }
+        public int solobrasartistica { get; set; }
+        public int solobrasvisual { get; set; }
+        public int solobrasliteraria { get; set; }
+        public int solobrasauditiva { get; set; }
+        public int solobrasgrafica { get; set; }
+        public int solobrastecnologica { get; set; }
         public int enproceso { get; set; }
         public int enproceso_et { get; set; }
         public int enproceso_v { get; set; }
@@ -48,6 +70,28 @@ namespace GISMVC.Models
             enprocesoT_et = 0;
             enprocesoT_v = 0;
 
+            solpendientes = 0;
+            solpendientesconcesion = 0;
+            solbusqueda = 0;
+            forpendientes = 0;
+            solvencimiento = 0;
+            solvencimientotiempo = 0;
+            solvencimientovencido = 0;
+            soldeclaracion = 0;
+            soldeclaraciontiempo = 0;
+            soldeclaracionvencido = 0;
+            solmarcas = 0;
+            solavisos = 0;
+            solpatentes = 0;
+            soldisenosindustrial = 0;
+            solmodelosutilidad = 0;
+            solmodelosindustrial = 0;
+            solobrasartistica = 0;
+            solobrasvisual = 0;
+            solobrasliteraria = 0;
+            solobrasauditiva = 0;
+            solobrasgrafica = 0;
+            solobrastecnologica = 0;
             enproceso = 0;
             enproceso_et = 0;
             enproceso_v = 0;
@@ -100,7 +144,29 @@ namespace GISMVC.Models
                     {
                         int idx = 0;
                         var row = dt.Rows[0];
-
+                        res.solpendientes = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solpendientesconcesion = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solbusqueda = Int32.Parse(row[idx].ToString()); idx++;
+                        res.forpendientes = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solvencimiento = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solvencimientotiempo = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solvencimientovencido = Int32.Parse(row[idx].ToString()); idx++;
+                        res.soldeclaracion = Int32.Parse(row[idx].ToString()); idx++;
+                        res.soldeclaraciontiempo = Int32.Parse(row[idx].ToString()); idx++;
+                        res.soldeclaracionvencido = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solmarcas = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solavisos = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solpatentes = Int32.Parse(row[idx].ToString()); idx++;
+                        res.soldisenosindustrial = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solmodelosutilidad = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solmodelosindustrial = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solobrasartistica = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solobrasvisual = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solobrasliteraria = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solobrasauditiva = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solobrasgrafica = Int32.Parse(row[idx].ToString()); idx++;
+                        res.solobrastecnologica = Int32.Parse(row[idx].ToString()); idx++;
+                        /*
                         res.enproceso = Int32.Parse(row[idx].ToString()); idx++;
                         res.enproceso_et = Int32.Parse(row[idx].ToString()); idx++;
                         res.enproceso_v = Int32.Parse(row[idx].ToString()); idx++;
@@ -127,6 +193,7 @@ namespace GISMVC.Models
                         res.enprocesoT = res.enproceso + res.envalidacionA;// + res.envalidacionU;
                         res.enprocesoT_et = res.enproceso_et + res.envalidacionA_et;// + res.envalidacionU2_et;
                         res.enprocesoT_v = res.enproceso_v + res.envalidacionA_v;// + res.envalidacionU_v;
+                        */
                     }
                 }
                 else

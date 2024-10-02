@@ -96,8 +96,8 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                         <div class="ctm-graph-box" box="022">
                             <div class="ctm-graph-box-header filtrado" filtrado="08">
                                 <div class="ctm-graph-box-info">
-                                    <h4>Pendientes de validar por usuario</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionU2)</h3>
+                                    <h4>Solicitudes Pendientes por Atender</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solpendientes)</h3>
                                 </div>
                             </div>
                             <div class="ctm-graph-box-footer">
@@ -129,102 +129,126 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                 }
                 else
                 {
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="ctm-graph-box" box="00">
-                            <div class="ctm-graph-box-header filtrado" filtrado="01">
+                            <div class="ctm-graph-box-header">
                                 <div class="ctm-graph-box-info">
-                                    <h4>En proceso</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enprocesoT)</h3>
+                                    <h4>Solicitudes Pendientes por Atender</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solpendientes)</h3>
                                 </div>
                             </div>
-                            <div class="ctm-graph-box-footer">
-                                <div class="ctm-graph-box-item filtrado" filtrado="011">
-                                    <div class="ctm-graph-box-info">
-                                        <h4>En tiempo</h4>
-                                        <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_et)</h3>
-                                    </div>
-                                </div>
-                                <div class="ctm-graph-box-item filtrado" filtrado="012">
-                                    <div class="ctm-graph-box-info">
-                                        <h4>Vencidas</h4>
-                                        <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_v)</h3>
-                                    </div>
+                            @*<div class="ctm-graph-box-footer">
+                            <div class="ctm-graph-box-item filtrado" filtrado="011">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En tiempo</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_et)</h3>
                                 </div>
                             </div>
+                            <div class="ctm-graph-box-item filtrado" filtrado="012">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Vencidas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_v)</h3>
+                                </div>
+                            </div>
+                        </div>*@
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="ctm-graph-box" box="01">
-                            <div class="ctm-graph-box-header filtrado" filtrado="02">
+                            <div class="ctm-graph-box-header">
                                 <div class="ctm-graph-box-info">
-                                    <h4>Pendientes de validar por abogado</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA)</h3>
+                                    <h4>Solicitudes Pendientes de Otorgar Concesión</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solpendientesconcesion)</h3>
                                 </div>
                             </div>
-                            <div class="ctm-graph-box-footer">
-                                <div class="ctm-graph-box-item filtrado" filtrado="021">
-                                    <div class="ctm-graph-box-info">
-                                        <h4>En tiempo</h4>
-                                        <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_et)</h3>
-                                    </div>
-                                </div>
-                                <div class="ctm-graph-box-item filtrado" filtrado="022">
-                                    <div class="ctm-graph-box-info">
-                                        <h4>Vencidas</h4>
-                                        <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_v)</h3>
-                                    </div>
+                            @*<div class="ctm-graph-box-footer">
+                            <div class="ctm-graph-box-item filtrado" filtrado="021">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En tiempo</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_et)</h3>
                                 </div>
                             </div>
+                            <div class="ctm-graph-box-item filtrado" filtrado="022">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Vencidas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_v)</h3>
+                                </div>
+                            </div>
+                        </div>*@
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="ctm-graph-box" box="02">
-                            <div class="ctm-graph-box-header filtrado" filtrado="03">
+                    <div class="col-md-3">
+                        <div class="ctm-graph-box" box="07">
+                            <div class="ctm-graph-box-header">
                                 <div class="ctm-graph-box-info">
-                                    <h4>Pendientes de validar por usuario</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso)</h3>
+                                    <h4>Solicitudes en Busqueda</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solbusqueda)</h3>
                                 </div>
                             </div>
-                            <div class="ctm-graph-box-footer">
-                                <div class="ctm-graph-box-item filtrado" filtrado="031">
-                                    <div class="ctm-graph-box-info">
-                                        <h4>En tiempo</h4>
-                                        <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
-                                    </div>
-                                </div>
-                                <div class="ctm-graph-box-item filtrado" filtrado="032">
-                                    <div class="ctm-graph-box-info">
-                                        <h4>Vencidas</h4>
-                                        <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
-                                    </div>
+                            @*<div class="ctm-graph-box-footer">
+                            <div class="ctm-graph-box-item filtrado" filtrado="031">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En tiempo</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
                                 </div>
                             </div>
+                            <div class="ctm-graph-box-item filtrado" filtrado="032">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Vencidas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
+                                </div>
+                            </div>
+                        </div>*@
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="ctm-graph-box" box="02">
+                            <div class="ctm-graph-box-header">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Formatos Pendientes por Atender</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.forpendientes)</h3>
+                                </div>
+                            </div>
+                            @*<div class="ctm-graph-box-footer">
+                            <div class="ctm-graph-box-item filtrado" filtrado="031">
+                                <div class="ctm-graph-box-info">
+                                    <h4>En tiempo</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
+                                </div>
+                            </div>
+                            <div class="ctm-graph-box-item filtrado" filtrado="032">
+                                <div class="ctm-graph-box-info">
+                                    <h4>Vencidas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
+                                </div>
+                            </div>
+                        </div>*@
                         </div>
                     </div>
                 }
             </div>
 
-            <h5 class="ctm-graph-box-title">En esta sección podrás visualizar los contratos en general</h5>
+            <h5 class="ctm-graph-box-title">En esta sección podrás visualizar solicitudes en tiempo y vencidas</h5>
             <div class="row">
                 <div class="col-md-6">
                     <div class="ctm-graph-box" box="03">
-                        <div class="ctm-graph-box-header filtrado" filtrado="04">
+                        <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
-                                <h4>Aprobados y enviados a firmas</h4>
-                                <h3>@Html.Raw(ViewBag.indicadores.aprobados)</h3>
+                                <h4>Vencimientos con Fecha de Vencimiento</h4>
+                                <h3>@Html.Raw(ViewBag.indicadores.solvencimiento)</h3>
                             </div>
                         </div>
                         <div class="ctm-graph-box-footer">
-                            <div class="ctm-graph-box-item filtrado" filtrado="041">
+                            <div class="ctm-graph-box-item">
                                 <div class="ctm-graph-box-info">
                                     <h4>En tiempo</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.aprobados_et)</h3>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solvencimientotiempo)</h3>
                                 </div>
                             </div>
-                            <div class="ctm-graph-box-item filtrado" filtrado="042">
+                            <div class="ctm-graph-box-item">
                                 <div class="ctm-graph-box-info">
                                     <h4>Vencidas</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.aprobados_v)</h3>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solvencimientovencido)</h3>
                                 </div>
                             </div>
                         </div>
@@ -232,23 +256,23 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                 </div>
                 <div class="col-md-6">
                     <div class="ctm-graph-box" box="04">
-                        <div class="ctm-graph-box-header filtrado" filtrado="05">
+                        <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
-                                <h4>Contratos firmados</h4>
-                                <h3>@Html.Raw(ViewBag.indicadores.firmados)</h3>
+                                <h4>Solicitudes Pendientes de Fecha de Declaracion</h4>
+                                <h3>@Html.Raw(ViewBag.indicadores.soldeclaracion)</h3>
                             </div>
                         </div>
                         <div class="ctm-graph-box-footer">
-                            <div class="ctm-graph-box-item filtrado" filtrado="051">
+                            <div class="ctm-graph-box-item">
                                 <div class="ctm-graph-box-info">
                                     <h4>En tiempo</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.firmados_et)</h3>
+                                    <h3>@Html.Raw(ViewBag.indicadores.soldeclaraciontiempo)</h3>
                                 </div>
                             </div>
-                            <div class="ctm-graph-box-item filtrado" filtrado="052">
+                            <div class="ctm-graph-box-item">
                                 <div class="ctm-graph-box-info">
                                     <h4>Vencidas</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.firmados_v)</h3>
+                                    <h3>@Html.Raw(ViewBag.indicadores.soldeclaracionvencido)</h3>
                                 </div>
                             </div>
                         </div>
@@ -256,23 +280,148 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                 </div>
             </div>
 
+            <h5 class="ctm-graph-box-title">En esta sección podrás visualizar el total de solicitudes por rubro</h5>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="ctm-graph-box" box="05">
                         <div class="ctm-graph-box-header filtrado" filtrado="06">
                             <div class="ctm-graph-box-info">
-                                <h4>Contratos Cancelados</h4>
-                                <h3>@Html.Raw(ViewBag.indicadores.cancelados)</h3>
+                                <a href="/PI/RegistroMarcas?tipo=1" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Marcas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solmarcas)</h3>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="ctm-graph-box" box="06">
                         <div class="ctm-graph-box-header filtrado" filtrado="07">
                             <div class="ctm-graph-box-info">
-                                <h4>Contratos Suspendidos</h4>
-                                <h3>@Html.Raw(ViewBag.indicadores.suspendidos)</h3>
+                                <a href="/PI/RegistroMarcas?tipo=2" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Avisos Comerciales</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solavisos)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=3" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Patentes</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solpatentes)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=4" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Diseños Industriales</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.soldisenosindustrial)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=5" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Modelos Utilidades</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solmodelosutilidad)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=6" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Modelos Industriales</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solmodelosindustrial)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=7" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Obras Artisticas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solobrasartistica)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=8" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Obras Visuales</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solobrasvisual)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=9" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Obras Literarias</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solobrasliteraria)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=10" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Obras Auditivas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solobrasauditiva)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=11" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Obras Graficas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solobrasgrafica)</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="ctm-graph-box" box="06">
+                        <div class="ctm-graph-box-header filtrado" filtrado="07">
+                            <div class="ctm-graph-box-info">
+                                <a href="/PI/RegistroMarcas?tipo=12" title="Link title" style="color:#FFFFFF">
+                                    <h4>Solicitudes Obras Tecnologicas</h4>
+                                    <h3>@Html.Raw(ViewBag.indicadores.solobrastecnologica)</h3>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -3645,15 +3645,16 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[3];
+                SqlParameter[] @params = new SqlParameter[1];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@usuario", id); i++;
-                @params[i] = new SqlParameter("@inicio", inicio); i++;
-                @params[i] = new SqlParameter("@fin", fin); i++;
+                /*@params[i] = new SqlParameter("@inicio", inicio); i++;
+                @params[i] = new SqlParameter("@fin", fin); i++;*/
 
                 i++;
-                if (!bd.ExecuteProcedure(conexion, "CONS_IndicadoresPorTiempoV2", @params, out dt, 1000))
+                //if (!bd.ExecuteProcedure(conexion, "CONS_IndicadoresPorTiempoV2", @params, out dt, 1000))
+                if (!bd.ExecuteProcedure(conexion, "CONS_IndicadoresV2", @params, out dt, 1000))
                 {
                     boolProcess = false;
                     msgError = bd._error.ToString();

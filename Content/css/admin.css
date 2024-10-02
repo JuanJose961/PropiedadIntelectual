@@ -2418,7 +2418,7 @@ input[type="radio"]:checked + .custom-control-label, input[type="checkbox"]:chec
         background-color: #4A4A4A;
     }
     .ctm-graph-box[box='07'] {
-        background-color: #FF0000;
+        background-color: #529DD5;
     }
 .dx-datagrid-table {
     background-color: #fff !important;

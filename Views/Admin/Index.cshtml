@@ -36,6 +36,8 @@
     <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
     <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
     <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/admin.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/admin.css")">
     <style>
         .slick-slide {
             margin: 0px 10px;
@@ -138,19 +140,19 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                                 </div>
                             </div>
                             @*<div class="ctm-graph-box-footer">
-                            <div class="ctm-graph-box-item filtrado" filtrado="011">
-                                <div class="ctm-graph-box-info">
-                                    <h4>En tiempo</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_et)</h3>
-                                </div>
-                            </div>
-                            <div class="ctm-graph-box-item filtrado" filtrado="012">
-                                <div class="ctm-graph-box-info">
-                                    <h4>Vencidas</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_v)</h3>
-                                </div>
-                            </div>
-                        </div>*@
+                                    <div class="ctm-graph-box-item filtrado" filtrado="011">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>En tiempo</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_et)</h3>
+                                        </div>
+                                    </div>
+                                    <div class="ctm-graph-box-item filtrado" filtrado="012">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>Vencidas</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.enprocesoT_v)</h3>
+                                        </div>
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -162,23 +164,23 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                                 </div>
                             </div>
                             @*<div class="ctm-graph-box-footer">
-                            <div class="ctm-graph-box-item filtrado" filtrado="021">
-                                <div class="ctm-graph-box-info">
-                                    <h4>En tiempo</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_et)</h3>
-                                </div>
-                            </div>
-                            <div class="ctm-graph-box-item filtrado" filtrado="022">
-                                <div class="ctm-graph-box-info">
-                                    <h4>Vencidas</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_v)</h3>
-                                </div>
-                            </div>
-                        </div>*@
+                                    <div class="ctm-graph-box-item filtrado" filtrado="021">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>En tiempo</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_et)</h3>
+                                        </div>
+                                    </div>
+                                    <div class="ctm-graph-box-item filtrado" filtrado="022">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>Vencidas</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.envalidacionA_v)</h3>
+                                        </div>
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="ctm-graph-box" box="07">
+                        <div class="ctm-graph-box" style="background-color:#FF0000;">
                             <div class="ctm-graph-box-header">
                                 <div class="ctm-graph-box-info">
                                     <h4>Solicitudes en Busqueda</h4>
@@ -186,23 +188,23 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                                 </div>
                             </div>
                             @*<div class="ctm-graph-box-footer">
-                            <div class="ctm-graph-box-item filtrado" filtrado="031">
-                                <div class="ctm-graph-box-info">
-                                    <h4>En tiempo</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
-                                </div>
-                            </div>
-                            <div class="ctm-graph-box-item filtrado" filtrado="032">
-                                <div class="ctm-graph-box-info">
-                                    <h4>Vencidas</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
-                                </div>
-                            </div>
-                        </div>*@
+                                    <div class="ctm-graph-box-item filtrado" filtrado="031">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>En tiempo</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
+                                        </div>
+                                    </div>
+                                    <div class="ctm-graph-box-item filtrado" filtrado="032">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>Vencidas</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
+                                        </div>
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="ctm-graph-box" box="02">
+                        <div class="ctm-graph-box" box="01">
                             <div class="ctm-graph-box-header">
                                 <div class="ctm-graph-box-info">
                                     <h4>Formatos Pendientes por Atender</h4>
@@ -210,19 +212,19 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                                 </div>
                             </div>
                             @*<div class="ctm-graph-box-footer">
-                            <div class="ctm-graph-box-item filtrado" filtrado="031">
-                                <div class="ctm-graph-box-info">
-                                    <h4>En tiempo</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
-                                </div>
-                            </div>
-                            <div class="ctm-graph-box-item filtrado" filtrado="032">
-                                <div class="ctm-graph-box-info">
-                                    <h4>Vencidas</h4>
-                                    <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
-                                </div>
-                            </div>
-                        </div>*@
+                                    <div class="ctm-graph-box-item filtrado" filtrado="031">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>En tiempo</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.enproceso_et)</h3>
+                                        </div>
+                                    </div>
+                                    <div class="ctm-graph-box-item filtrado" filtrado="032">
+                                        <div class="ctm-graph-box-info">
+                                            <h4>Vencidas</h4>
+                                            <h3>@Html.Raw(ViewBag.indicadores.enproceso_v)</h3>
+                                        </div>
+                                    </div>
+                                </div>*@
                         </div>
                     </div>
                 }
@@ -283,7 +285,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
             <h5 class="ctm-graph-box-title">En esta sección podrás visualizar el total de solicitudes por rubro</h5>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="05">
+                    <div class="ctm-graph-box" style="background-color:#254368;">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=1" title="Link title" style="color:#FFFFFF">
@@ -295,7 +297,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="02">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=2" title="Link title" style="color:#FFFFFF">
@@ -307,7 +309,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="02">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=3" title="Link title" style="color:#FFFFFF">
@@ -319,7 +321,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="02">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=4" title="Link title" style="color:#FFFFFF">
@@ -379,7 +381,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="05">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=9" title="Link title" style="color:#FFFFFF">
@@ -391,7 +393,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="05">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=10" title="Link title" style="color:#FFFFFF">
@@ -403,7 +405,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="05">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=11" title="Link title" style="color:#FFFFFF">
@@ -415,7 +417,7 @@ ViewBag.ul.roles.id == "a78f7e2f-69af-43aa-9e41-4df768bf24b1"
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="ctm-graph-box" box="06">
+                    <div class="ctm-graph-box" box="05">
                         <div class="ctm-graph-box-header">
                             <div class="ctm-graph-box-info">
                                 <a href="/PI/RegistroMarcas?tipo=12" title="Link title" style="color:#FFFFFF">

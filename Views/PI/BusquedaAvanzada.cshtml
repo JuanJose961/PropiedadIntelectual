@@ -1,0 +1,682 @@
+﻿@using GISMVC.Models;
+@{
+    ViewData["Title"] = ViewBag.pagina.nombre;
+    Layout = "~/Views/Shared/_admin.cshtml";
+}
+
+@section permisos {
+    <script type="text/javascript">
+        @*
+            mp_p = @Html.Raw(Json.Serialize(ViewBag.mp_p));
+        *@
+    </script>
+}
+
+@section ol {
+    @*<ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
+            <li class="breadcrumb-item">Application Intel</li>
+            <li class="breadcrumb-item active">Introduction</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>*@
+}
+
+@section metas {
+    <meta name="title" content="@ViewBag.pagina.nombre">
+    <meta name="description" content="@ViewBag.pagina.descripcion">
+    <meta name="keywords" content="@Html.Raw(ViewBag.pagina.keywords)">
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/slick-master/slick/slick-theme.css")">
+    <link href="@Url.Content("~/Content/plugins/select2/dist/css/select2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/plugins/datatables/media/css/dataTables.bootstrap4.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
+
+    <style>
+        .slick-slide {
+            margin: 0px 10px;
+        }
+
+            .slick-slide img {
+                width: 98%;
+            }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: #002b50;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            opacity: 1;
+        }
+
+        .slick-active {
+            opacity: 1;
+        }
+
+        .slick-current {
+            opacity: 1;
+        }
+
+        td[role="columnheader"] .dx-datagrid-text-content.dx-header-filter-indicator {
+            white-space: break-spaces;
+        }
+
+        .columm-color-00 {
+            /*background-color: blue;*/
+        }
+    </style>
+}
+<div class="subheader">
+    <h1 class="subheader-title">
+        Busqueda Avanzada
+        @*<div id="tituloregistro">Propiedad Industrial e Intelectual</div>*@
+        <small>
+        </small>
+    </h1>
+</div>
+<input type="hidden" name="idRol" id="idRol" value='@ViewBag.idRol'>
+<input type="hidden" name="tipo_registro" id="tipo_registro" value="0">
+
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-info btn-block waves-effect waves-themed collapsed" type="button" data-toggle="collapse" data-target="#collapsefiltro" aria-expanded="false" aria-controls="collapsefiltro">Filtros</button>
+    </div>
+    <div class="row collapse" id="collapsefiltro">
+        <div class="col-md-3">
+            <div class="form-group" id="uu_02_c">
+                <label for="uu_02">Tipo de solicitud <font size="4" style="color:#FF0000"> * </font></label>
+                <select class="select2 form-control input-sm custom-select" id="uu_02" autocomplete="off" style="width: 100%;">
+                    @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                    @foreach (TipoSolicitud item in ViewBag.tipo_solicitud)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_00_c">
+                <label for="uu_00">Empresa propietaria</label>
+                <select class="select2 form-control input-sm custom-select" id="uu_00" autocomplete="off" style="width: 100%;">
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (NegocioPI item in ViewBag.empresa)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_01_c">
+                <label for="uu_01">Antigua empresa propietaria</label>
+                <select class="select2 form-control input-sm custom-select" id="uu_01" autocomplete="off" style="width: 100%;">
+                    @*<option value="0" selected>Antigua empresa propietaria</option>*@
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (NegocioPI item in ViewBag.empresa)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_07_a">
+            <div class="form-group" id="uu_07_c">
+                <label for="uu_07">Clase </label>
+                <select class="select2 form-control input-sm custom-select" id="uu_07" autocomplete="off" style="width: 100%;">
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (Clase item in ViewBag.clase)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_09_a">
+            <div class="form-group" id="uu_09_c">
+                <label for="uu_09">País</label>
+                <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (Pais item in ViewBag.pais)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_10_c">
+                <label for="uu_10">Estatus</label>
+                <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (EstatusCatalogo item in ViewBag.estatus)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_39_a">
+            <div class="form-group" id="uu_39_c">
+                <label for="uu_39">Uso</label>
+                <select class="select2 form-control input-sm custom-select" id="uu_39" autocomplete="off" style="width: 100%;">
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (Uso item in ViewBag.uso)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_12_a">
+            <div class="form-group" id="uu_12_c">
+                <label for="uu_12">Tipo de registro</label>
+                <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
+                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
+                    {
+                        <option value="@item.id">@item.nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_022_c">
+                @*<label>Descripción corta</label>*@
+                <label>Nombre</label>
+                <input type="text" class="form-control input-sm" id="uu_022" autocomplete="off" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_03_c">
+                <label>Número de registro</label>
+                <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_11_c">
+                <label>Número de solicitud</label>
+                <input type="text" class="form-control input-sm" id="uu_11" autocomplete="off" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_04_c">
+                <label>Fecha legal</label>
+                <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_05_a">
+            <div class="form-group" id="uu_05_c">
+                <label>Fecha de vencimiento</label>
+                <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_06_a">
+            <div class="form-group" id="uu_06_c">
+                <label id="uu_06_l">Fecha de concesión</label>
+                <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_37_a">
+            <div class="form-group" id="uu_37_c">
+                <label id="uu_06_l">Fecha para pagar los quinquenios o anualidades</label>
+                <input type="text" class="form-control input-sm" id="uu_37" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_21_c">
+                <label id="uu_21_l">Fecha Requerimiento del negocio</label>
+                <input type="text" class="form-control input-sm" id="uu_21" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_22_c">
+                <label>Fecha Instrucciones al correponsal</label>
+                <input type="text" class="form-control input-sm" id="uu_22" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" id="uu_23_c">
+                <label>Fecha Solicitud de registro ante la autoridad competente</label>
+                <input type="text" class="form-control input-sm" id="uu_23" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_24_a">
+            <div class="form-group" id="uu_24_c">
+                <label>Fecha Solicitud de búsqueda</label>
+                <input type="text" class="form-control input-sm" id="uu_24" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_25_a">
+            <div class="form-group" id="uu_25_c">
+                <label id="uu_25_l">Fecha Información de resultados al negocio</label>
+                <input type="text" class="form-control input-sm" id="uu_25" autocomplete="off" readonly />
+            </div>
+        </div>
+        <div class="col-md-3" id="uu_26_a">
+            <div class="form-group" id="uu_26_c">
+                <label>Fecha Comprobación de uso</label>
+                <input type="text" class="form-control input-sm" id="uu_26" autocomplete="off" readonly />
+            </div>
+        </div>
+
+        <div class="col-md-12 text-center">
+            @*<button type="button" class="btn btn-default waves-effect waves-themed" onclick="window.location = '/PI/RegistroMarcas?tipo=1';" id="btnCancelar"><i class="fa fa-ban"></i> Cancelar</button>*@
+            <button type="button" class="btn btn-default waves-effect waves-themed" onclick="Limpiar();" id="btnCancelar"><i class="fa fa-ban"></i> Limpiar</button>
+            <button type="button" class="btn btn-info" onclick="BuscarRegistroMarca();" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
+            @*<a type="button" class="btn btn-info" href="~/PI/BusquedaAvanzada?tipo=1" id="btnBuscar"><i class="fa fa-search"></i> Buscar</a>*@
+            <button type="button" class="btn btn-success" onclick="Excel();" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel ctm-panel" id="">
+            <div class="panel-container ctm-panel-container show">
+                <div class="panel-content ctm-panel-content">
+                    <div id="cTabla" style="overflow-x:auto;">
+                        <table id="cTabla1_3" class="table table-bordered table-hover table-striped w-100">
+                            <thead>
+                                <tr style="background-color:#254368;color:white;" align="center">
+                                    <th>Tipo Solicitud</th>
+                                    <th>Nombre</th>
+                                    <th>Empresa Propietaria</th>
+                                    <th>Enpresa Anterior</th>
+                                    <th>Fecha Legal</th>
+                                    <th>Fecha Vencimiento</th>
+                                    <th>Fecha Concesión</th>
+                                    <th>No. Registro</th>
+                                    <th>Pais</th>
+                                    <th>Clase</th>
+                                    <th>Estatus</th>
+                                    <th>Uso</th>
+                                    <th>No. Solicitud</th>
+                                    <th>Tipo Registro</th>
+                                    <th>Persona Solicito Registro</th>
+                                    <th>Despacho</th>
+                                    <th>Corresponsal</th>
+                                    <th>Licencia</th>
+                                    <th>Persona Solicito Licencia</th>
+                                    <th>Cesión</th>
+                                    <th>Persona Solicito Cesión</th>
+                                    <th>Requerimiento del Negocio</th>
+                                    <th>Instrucciones al Corresponsal</th>
+                                    <th>Solicitud de Registro Ante Autoridad Competente</th>
+                                    <th>Solicitud de Busqueda</th>
+                                    <th>Información de Resultados al Negocio</th>
+                                    <th>Comprobación de Uso</th>
+                                    <th>Declaración de Uso</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    @*<div id="table-container">
+
+                            @(Html.DevExtreme().DataGrid<RegistroMarca>
+                                ()
+                                .ID("tabla01")
+                                .ShowBorders(true)
+                                .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+                                .Paging(paging => paging.PageSize(10))
+                                .Pager(pager =>
+                                {
+                                    pager.Visible(true);
+                                    //pager.DisplayMode(GridPagerDisplayMode.Full);
+                                    pager.ShowPageSizeSelector(true);
+                                    pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
+                                    pager.ShowInfo(true);
+                                    pager.ShowNavigationButtons(true);
+                                })
+                                .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
+                                .Columns(columns =>
+                                {
+                                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
+                                        <% if (data.activo == false) { %>
+                                        <div>
+                                            <span class="dx-active-off"></span>
+                                            <%- value %>
+                                        </div>
+                                        <% } else { %>
+                                        <div>
+                                            <span class="dx-active-on"></span>
+                                            <%- value %>
+                                        </div>
+                                        <% } %>
+                                    </text>).Caption("TIPO DE SOLICITUD");
+                                    columns.AddFor(m => m.nombre).Caption("NOMBRE");
+                                    columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
+                                    columns.AddFor(m => m.empresa_anterior_desc).Caption("EMPRESA ANTIGUA");
+                                    columns.AddFor(m => m.fecha_legalS).Caption("FECHA LEGAL").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_vencimientoS).Caption("FECHA VENCIMIENTO").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_concesionS).Caption("FECHA CONCESIÓN").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
+                                    columns.AddFor(m => m.pais_desc).Caption("PAIS");
+                                    columns.AddFor(m => m.clase_desc).Caption("CLASE");
+                                    columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
+                                    columns.AddFor(m => m.uso_desc).Caption("USO");
+                                    columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
+                                    columns.AddFor(m => m.tipo_registro_desc).Caption("TIPO REGISTRO");
+                                    columns.AddFor(m => m.autor_registro_desc).Caption("PERSONA SOLICITO REGISTRO");
+                                    columns.AddFor(m => m.despacho_desc).Caption("DESPACHO");
+                                    columns.AddFor(m => m.corresponsal_desc).Caption("CORRESPONSAL");
+                                    columns.AddFor(m => m.licencia_desc).Caption("LICENCIA");
+                                    columns.AddFor(m => m.solicitante_licencia_desc).Caption("PERSONA SOLICITO LICENCIA");
+                                    columns.AddFor(m => m.cesion_desc).Caption("CESIÓN");
+                                    columns.AddFor(m => m.solicitante_cesion_desc).Caption("PERSONA SOLICITO CESIÓN");
+                                    columns.AddFor(m => m.fecha_requerimientoS).Caption("REQUERIMIENTO DEL NEGOCIO").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_instruccionesS).Caption("INSTRUCCIONES AL CORRESPONSAL").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_registroS).Caption("SOLICITUD DE REGISTRO AUTORIDAD COMPETENTE").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_busquedaS).Caption("SOLICITUD DE BUSQUEDA").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_resultadosS).Caption("INFORMACIÓN DE RESULTADOS AL NEGOCIO").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_comprobacionS).Caption("COMPROBACIÓN DE USO").Format("dd/MM/yyyy");
+                                    //columns.AddFor(m => m.fecha_declaracionS).Caption("DECLARACIÓN DE USO").Format("dd/MM/yyyy");
+                                    //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
+                                })
+                            .Summary(s => s.TotalItems(items =>
+                            {
+                                items.Add().Column("nombre")
+                                .SummaryType(SummaryType.Count);
+                            })
+                            )
+                            .ColumnAutoWidth(true)
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(10))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+
+                            )
+
+
+                        </div>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Modals {
+    <div id="alertModal" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h1></h1>
+
+                    <div class="modal-spinner text-center">
+                        <img src="~/Content/images/spinner.gif" />
+                    </div>
+
+                    <div class="form-group">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modalview1" class="modal fade ctm-modal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <section class="tabs-nobg">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tab01" role="tab"><i class="fa fa-info mr-1"></i> General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab02" role="tab"><i class="fa fa-file mr-1"></i> En registro</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab03" role="tab"><i class="fa fa-file mr-1"></i> Licencias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab04" role="tab"><i class="fa fa-file mr-1"></i> Cesiones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab05" role="tab"><i class="fa fa-calendar mr-1"></i> Actividades</a>
+                            </li>
+                            @*<li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab06" role="tab"><i class="fa fa-file mr-1"></i> Revisión Usuario Negocio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab07" role="tab"><i class="fa fa-file mr-1"></i> Oficios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tab08" role="tab"><i class="fa fa-file mr-1"></i> Renovación</a>
+                                </li>*@
+                        </ul>
+                        <div class="tab-content border border-top-0 p-3">
+                            <div class="tab-pane fade active show" id="tab01" role="tabpanel">
+                                <table class="table table-hover" id="tablita">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="tab02" role="tabpanel">
+                                <table class="table table-hover" id="tablita1">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="tab03" role="tabpanel">
+                                <table class="table table-hover" id="tablita2">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="tab04" role="tabpanel">
+                                <table class="table table-hover" id="tablita3">
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="tab05" role="tabpanel">
+                                <table class="table table-hover" id="tablita4">
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                    @*<label>General</label>
+
+                        <br />
+                        <label>En registro</label>*@
+
+                    <div class="modal-footer red-border">
+                        <div class="col-md-2"></div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Content/plugins/slick-master/slick/slick.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/Content/plugins/select2/dist/js/select2.full.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/plugins/bootstrap-select/bootstrap-select.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
+
+    <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var today = new Date();
+            var now = today.toLocaleString();
+            //$('#cTabla1_3 thead tr').clone(true).appendTo('#cTabla1_3 thead');
+            //$('#cTabla1_3 thead tr:eq(1) th').each(function (i) {
+            //    var title = $(this).text();
+            //    if (parseInt(i) >= 0 && parseInt(i) < 20) {
+            //        $(this).html('<input type="text" class="form-control form-control-sm" placeholder="' + title + '" data-index="' + i + '"/>');
+            //    }
+            //    else {
+            //        $(this).html('');
+            //    }
+
+            //});
+
+            tablita3 = $('#cTabla1_3').DataTable({
+                scrollY: 500,
+                scrollX: true,
+                scrollCollapse: true,
+                autoWidth: false,
+                pageLength: 10,
+                paging: true,
+                bPaginate: true,
+                pagingType: "full_numbers",
+                orderCellsTop: true,
+                stateSave: false,
+                "search": {
+                    "search": busqueda
+                },
+                /*responsive: true,*/
+                dom:
+                    /*	--- Layout Structure 
+                        --- Options
+                        l	-	length changing input control
+                        f	-	filtering input
+                        t	-	The table!
+                        i	-	Table information summary
+                        p	-	pagination control
+                        r	-	processing display element
+                        B	-	buttons
+                        R	-	ColReorder
+                        S	-	Select
+        
+                        --- Markup
+                        < and >				- div element
+                        <"class" and >		- div with a class
+                        <"#id" and >		- div with an ID
+                        <"#id.class" and >	- div with an ID and a class
+        
+                        
+                    */
+                    "<'row mb-3'<'col-sm-12 col-md-3 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-9 d-flex align-items-center justify-content-end'B>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        titleAttr: 'Descargar Excel',
+                        filename: 'Solicitudes ' + now,
+                        className: 'btn-outline-success btn-sm mr-1'
+                    }
+                ],
+                'columnDefs': [
+                    {
+                        "targets": [1],
+                        "visible": false,
+                        "searchable": false
+                    }],
+                /*select: {
+                    style:    'multi',
+                    selector: 'td:first-child'
+                },*/
+                order: [
+                    [1, "desc"], [0, 'asc']
+                ]
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $(tablita3.table().container()).on('keyup', 'thead input', function () {
+                tablita3
+                    .column($(this).data('index'))
+                    .search(this.value)
+                    .draw();
+            });
+
+            $(tablita3.table().container()).on('change', 'thead select', function () {
+                tablita3
+                    .column($(this).data('index'))
+                    .search(this.value)
+                    .draw();
+            });
+
+
+        });
+        //$(function () {
+        //    $('#cTabla1_3').pagination({
+        //        items: 20,
+        //        itemsOnPage: 2,
+        //        cssStyle: 'light-theme',
+        //        onPageClick: function (pageNumber) { test(pageNumber) }
+        //    });
+        //});
+</script>
+    <script type="text/javascript">
+        var START_DATE = "@Html.Raw(DateTime.Now.AddDays(-60).ToString("yyyy-MM-dd"))";
+        var END_DATE = "@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd"))";
+
+        var url = new URL(location.href); //Mediante esta propiedad accedemos a la dirección URL completa de la página mostrada en una ventana
+        const urlParams = new URLSearchParams(url.search);
+        var tipo_registro = urlParams.get('tipo');
+
+        //var tipourl = parseInt($("#tipo_registro").val());
+        //if (tipourl == 0) tipourl = 1;
+        switch (parseInt(tipo_registro)) {
+            case 1: tipo_solicitud = 1; tipo_solicitud_nombre = "Propiedad Industrial Marcas"; break;
+            case 2: tipo_solicitud = 2; tipo_solicitud_nombre = "Propiedad Industrial Avisos Comerciales"; break;
+            case 3: tipo_solicitud = 3; tipo_solicitud_nombre = "Propiedad Industrial Patentes"; break;
+            case 4: tipo_solicitud = 4; tipo_solicitud_nombre = "Propiedad Industrial Diseños Industriales"; break;
+            case 5: tipo_solicitud = 5; tipo_solicitud_nombre = "Propiedad Industrial Modelos Utilidades"; break;
+            case 6: tipo_solicitud = 6; tipo_solicitud_nombre = "Propiedad Industrial Modelos Industriales"; break;
+            case 7: tipo_solicitud = 7; tipo_solicitud_nombre = "Propiedad Intelectual Obras Artisticas"; break;
+            case 8: tipo_solicitud = 8; tipo_solicitud_nombre = "Propiedad Intelectual Obras Visuales"; break;
+            case 9: tipo_solicitud = 9; tipo_solicitud_nombre = "Propiedad Intelectual Obras Literarias"; break;
+            case 10: tipo_solicitud = 10; tipo_solicitud_nombre = "Propiedad Intelectual Obras Auditivas"; break;
+            case 11: tipo_solicitud = 11; tipo_solicitud_nombre = "Propiedad Intelectual Obras Gr&aacute;ficas"; break;
+            case 12: tipo_solicitud = 12; tipo_solicitud_nombre = "Propiedad Intelectual Obras Tecnol&oacute;gicas"; break;
+            default: tipo_solicitud = 0; tipo_solicitud_nombre = "Propiedad Industrial e Intelectual"; break;
+        }
+        document.getElementById("tipo_registro").value = tipo_solicitud;
+
+        var valReqData = {
+            ID: 0,
+            START_DATE: START_DATE,
+            END_DATE: END_DATE,
+            USUARIO: "@ViewBag.ul.id",
+            STR: "aa",
+            TIPO: "BusquedaAvanzada",
+            TIPO_REGISTRO: 0,
+            ID_USUARIO: eu_lu.id
+        };
+        var tipo = valReqData.TIPO;
+        function buildValidationSuggestionRequest() {
+            return JSON.stringify(valReqData);
+        }
+
+
+        function reloadDataRange() {
+            $("#table-container").show();
+            $("#tabla01").dxDataGrid("getDataSource").reload();
+        }
+        //$(document).ready(function () {
+        //    if (eu_lu.role.id =="8566d71d-72f0-489d-92d4-410804d82e60") {
+        //        $("#tabla01 .dx-toolbar-after").prepend("<a class='btn btn-info btn-sm' href='" + hosturl + "PI/RegistroMarca?tipo=" + tipo_solicitud + "' id='btnuevo'><i class='fa fa-plus'></i> Nuevo registro</button>");
+        //    }
+        //});
+
+        setTimeout(function () {
+            var nFilas = $("#tabla01 tr").length-4;
+
+            document.getElementById("tituloregistro").innerHTML = "" + tipo_solicitud_nombre;
+            //document.getElementById("tituloregistro").innerHTML = "" + tipo_solicitud_nombre + " (" + nFilas + ")";
+        }, 800);
+
+    </script>
+    <script src="@Url.Content("~/Content/js/admin_busquedaavanzada.js?t=" + DateTime.Now.Ticks.ToString())"></script>
+}

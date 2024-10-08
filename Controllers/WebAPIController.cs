@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using GISMVC.Data;
 using GISMVC.Models;
 using Microsoft.AspNet.Identity;
@@ -4187,6 +4188,38 @@ namespace GISMVC.Controllers
                 }
                 else
                 {
+                    res.description = "No existe la información";
+                }
+            }
+            catch (Exception ex)
+            {
+                res.flag = false;
+                res.description = "Error: " + ex.Message;
+            }
+            finally
+            {
+            }
+            //--------------------
+            //--------------------
+            return res;
+        }
+
+        [Route("api/WebAPI/BusquedaRegistroMarca")]
+        [HttpPost]
+        public RespuestaFormato BusquedaRegistroMarca([FromBody] RegistroMarca modelo)
+        {
+            var res = new RespuestaFormato();
+            //--------------------
+            try
+            {
+                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.tipo_registro_solicitud,modelo.id_usuario);
+                if (data.Count > 0) { 
+                res.flag = true;
+                res.content.Add(data);
+                //res.content.Add(comentarios);
+                //res.content.Add(archivos);
+                }else{
+                    res.flag = false;
                     res.description = "No existe la información";
                 }
             }

@@ -610,6 +610,7 @@
     <Content Include="Content\images\vitromex%402x.png" />
     <Content Include="Content\js\admin.js" />
     <Content Include="Content\js\admin_avisocomercial.js" />
+    <Content Include="Content\js\admin_busquedaavanzada.js" />
     <Content Include="Content\js\admin_recordatoriopi.js" />
     <Content Include="Content\js\admin_indexpi.js" />
     <Content Include="Content\js\admin_registromarcadetalle.js" />
@@ -1972,6 +1973,7 @@
     <Content Include="Views\Administracion\Roles.cshtml" />
     <Content Include="Views\PI\Politicas.cshtml" />
     <Content Include="Views\PI\PoliticasAdm.cshtml" />
+    <Content Include="Views\PI\BusquedaAvanzada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

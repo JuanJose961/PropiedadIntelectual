@@ -105,6 +105,9 @@ namespace GISMVC.Controllers
                 case "UsuariosV2":
                     ocl = AspNetUsers.GetAllV2("");
                     break;
+                case "BusquedaAvanzada":
+                    //ocl = RegistroMarca.Get(parametros.TIPO_REGISTRO, parametros.ID_USUARIO);
+                    break;
             }
             return Request.CreateResponse(DataSourceLoader.Load(ocl, loadOptions));
         }

@@ -478,6 +478,7 @@ namespace GISMVC.Models
         public string cesion_pais { get; set; } = "";
         public DateTime nueva_fecha_vencimiento { get; set; } = DateTime.Parse("1969-01-01");
         public string nueva_fecha_vencimientoS { get; set; } = "";
+        public string id_usuario { get; set; } = "";
         public RegistroMarca()
         {
         }
@@ -1268,6 +1269,191 @@ namespace GISMVC.Models
                 //con.Close();
             }
             return res;
+        }
+
+        public static List<RegistroMarca> BusquedaAvanzadaRegistroMarca(int tipo_registro = 0, string id_usuario = "", int activo = -1)
+        {
+            List<RegistroMarca> list = new List<RegistroMarca>();
+            Funciones funcion = new Funciones();
+            try
+            {
+                DataAccess da = new DataAccess();
+
+                var dt = new System.Data.DataTable();
+                var errores = "";
+                if (da.Cons_proc_RegistroMarca(out dt, out errores, tipo_registro, id_usuario, activo))
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            int idx = 0;
+                            var row = dt.Rows[i];
+                            var res = new RegistroMarca();
+                            res.id = Int32.Parse(row[idx].ToString()); idx++;
+                            res.empresa = Int32.Parse(row[idx].ToString()); idx++;
+                            res.empresa_desc = row[idx].ToString(); idx++;
+                            res.empresa_anterior = Int32.Parse(row[idx].ToString()); idx++;
+                            res.empresa_anterior_desc = row[idx].ToString(); idx++;
+                            res.nombre = row[idx].ToString(); idx++;
+                            res.no_registro = row[idx].ToString(); idx++;
+                            res.titulo = row[idx].ToString(); idx++;
+                            res.fecha_legal = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_concesion = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.clase = Int32.Parse(row[idx].ToString()); idx++;
+                            res.clase_desc = row[idx].ToString(); idx++;
+                            res.tipo_registro = Int32.Parse(row[idx].ToString()); idx++;
+                            res.tipo_registro_desc = row[idx].ToString(); idx++;
+                            res.pais = Int32.Parse(row[idx].ToString()); idx++;
+                            res.pais_desc = row[idx].ToString(); idx++;
+                            res.estatus = Int32.Parse(row[idx].ToString()); idx++;
+                            res.estatus_desc = row[idx].ToString(); idx++;
+                            res.solicitud_nombre = row[idx].ToString(); idx++;
+                            if (res.solicitud_nombre != "")
+                            {
+                                res.solicitud_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("solicitud"));
+                            }
+                            //if (res.solicitud_nombre != "" && row[idx] != null) { res.solicitud_data = (byte[])row[idx]; }
+                            idx++;
+                            res.solicitud_content_type = row[idx].ToString(); idx++;
+                            res.solicitud_size = Int32.Parse(row[idx].ToString()); idx++;
+                            res.solicitud_extension = row[idx].ToString(); idx++;
+                            res.solicitud_nombre_original = row[idx].ToString(); idx++;
+                            res.solicitud_url = row[idx].ToString(); idx++;
+                            res.no_solicitud = row[idx].ToString(); idx++;
+                            res.tipo_registro_solicitud = Int32.Parse(row[idx].ToString()); idx++;
+                            res.tipo_registro_solicitud_desc = row[idx].ToString(); idx++;
+                            res.autor_registro = row[idx].ToString(); idx++;
+                            res.autor_registro_desc = row[idx].ToString(); idx++;
+                            res.despacho = Int32.Parse(row[idx].ToString()); idx++;
+                            res.despacho_desc = row[idx].ToString(); idx++;
+                            res.corresponsal = Int32.Parse(row[idx].ToString()); idx++;
+                            res.corresponsal_desc = row[idx].ToString(); idx++;
+                            res.solicitante_licencia = row[idx].ToString(); idx++;
+                            res.solicitante_licencia_desc = row[idx].ToString(); idx++;
+                            res.licencia = Int32.Parse(row[idx].ToString()); idx++;
+                            res.licencia_desc = row[idx].ToString(); idx++;
+                            res.solicitante_cesion = row[idx].ToString(); idx++;
+                            res.solicitante_cesion_desc = row[idx].ToString(); idx++;
+                            res.cesion = Int32.Parse(row[idx].ToString()); idx++;
+                            res.cesion_desc = row[idx].ToString(); idx++;
+                            res.fecha_requerimiento = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_requerimiento_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_instrucciones = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_instrucciones_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_registro = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_registro_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_busqueda = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_busqueda_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_resultados = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_resultados_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_comprobacion = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_comprobacion_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_vencimiento_workflow = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_vencimiento_workflow_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_concesion_workflow = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_concesion_workflow_completo = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fc = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fu = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.usuario = row[idx].ToString(); idx++;
+                            res.usuario_desc = row[idx].ToString(); idx++;
+                            res.activo = Int32.Parse(row[idx].ToString()); idx++;
+
+                            res.titulo_nombre = row[idx].ToString(); idx++;
+                            if (res.titulo_nombre != "")
+                            {
+                                res.titulo_permalink = Utility.hosturl + "PI/RegistroMarcaDocumento?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tp=" + HttpUtility.UrlEncode(funcion.Encriptar("titulo"));
+                            }
+                            //if (res.titulo_nombre != "" && row[idx] != null) { res.titulo_data = (byte[])row[idx]; }
+                            idx++;
+                            res.titulo_content_type = row[idx].ToString(); idx++;
+                            res.titulo_size = Int32.Parse(row[idx].ToString()); idx++;
+                            res.titulo_extension = row[idx].ToString(); idx++;
+                            res.titulo_nombre_original = row[idx].ToString(); idx++;
+                            res.titulo_url = row[idx].ToString(); idx++;
+                            res.solicitud = Int32.Parse(row[idx].ToString()); idx++;
+                            res.solicitud_desc = row[idx].ToString(); idx++;
+                            res.solicitud_tipo = Int32.Parse(row[idx].ToString()); idx++;
+                            res.solicitud_tipo_desc = row[idx].ToString(); idx++;
+                            //res.nueva_fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
+
+                            if (res.fecha_legal.Year > 1969)
+                                res.fecha_legalS = res.fecha_legal.ToString("dd/MM/yyyyy");
+                            if (res.fecha_vencimiento.Year > 1969)
+                                res.fecha_vencimientoS = res.fecha_vencimiento.ToString("dd/MM/yyyyy");
+                            if (res.fecha_concesion.Year > 1969)
+                                res.fecha_concesionS = res.fecha_concesion.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_requerimiento.Year > 1969)
+                                res.fecha_requerimientoS = res.fecha_requerimiento.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_requerimiento_completo.Year > 1969)
+                                res.fecha_requerimiento_completoS = res.fecha_requerimiento_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_instrucciones.Year > 1969)
+                                res.fecha_instruccionesS = res.fecha_instrucciones.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_instrucciones_completo.Year > 1969)
+                                res.fecha_instrucciones_completoS = res.fecha_instrucciones_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_registro.Year > 1969)
+                                res.fecha_registroS = res.fecha_registro.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_registro_completo.Year > 1969)
+                                res.fecha_registro_completoS = res.fecha_registro_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_busqueda.Year > 1969)
+                                res.fecha_busquedaS = res.fecha_busqueda.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_busqueda_completo.Year > 1969)
+                                res.fecha_busqueda_completoS = res.fecha_busqueda_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_resultados.Year > 1969)
+                                res.fecha_resultadosS = res.fecha_resultados.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_resultados_completo.Year > 1969)
+                                res.fecha_resultados_completoS = res.fecha_resultados_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_comprobacion.Year > 1969)
+                                res.fecha_comprobacionS = res.fecha_comprobacion.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_comprobacion_completo.Year > 1969)
+                                res.fecha_comprobacion_completoS = res.fecha_comprobacion_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_vencimiento_workflow.Year > 1969)
+                                res.fecha_vencimiento_workflowS = res.fecha_vencimiento_workflow.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_vencimiento_workflow_completo.Year > 1969)
+                                res.fecha_vencimiento_workflow_completoS = res.fecha_vencimiento_workflow_completo.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_concesion_workflow.Year > 1969)
+                                res.fecha_concesion_workflowS = res.fecha_concesion_workflow.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_concesion_workflow_completo.Year > 1969)
+                                res.fecha_concesion_workflow_completoS = res.fecha_concesion_workflow_completo.ToString("dd/MM/yyyyy");
+
+                            res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tipo=" + tipo_registro;
+                            list.Add(res);
+                        }
+                    }
+                }
+                else
+                {
+                    //
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                list = new List<RegistroMarca>();
+            }
+            finally
+            {
+                //con.Close();
+            }
+            return list;
         }
     }
 }

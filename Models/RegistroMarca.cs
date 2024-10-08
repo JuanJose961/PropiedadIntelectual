@@ -1271,7 +1271,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<RegistroMarca> BusquedaAvanzadaRegistroMarca(int tipo_registro = 0, string id_usuario = "", int activo = -1)
+        public static List<RegistroMarca> BusquedaAvanzadaRegistroMarca(int solicitud_tipo = 0, string id_usuario = "", int empresa = 0, int empresa_anterior = 0, int clase = 0, int pais = 0, int estatus = 0, int uso = 0,int tipo_registro_solicitud = 0, string nombre="", int activo = -1)
         {
             List<RegistroMarca> list = new List<RegistroMarca>();
             Funciones funcion = new Funciones();
@@ -1281,7 +1281,7 @@ namespace GISMVC.Models
 
                 var dt = new System.Data.DataTable();
                 var errores = "";
-                if (da.Cons_proc_RegistroMarca(out dt, out errores, tipo_registro, id_usuario, activo))
+                if (da.Cons_proc_BusquedaAvanzadaRegistroMarca(out dt, out errores, solicitud_tipo, id_usuario, empresa,empresa_anterior,clase,pais,estatus,uso,tipo_registro_solicitud, nombre, activo))
                 {
                     if (dt.Rows.Count > 0)
                     {
@@ -1376,6 +1376,8 @@ namespace GISMVC.Models
                             res.solicitud_desc = row[idx].ToString(); idx++;
                             res.solicitud_tipo = Int32.Parse(row[idx].ToString()); idx++;
                             res.solicitud_tipo_desc = row[idx].ToString(); idx++;
+                            res.fecha_declaracion = DateTime.Parse(row[idx].ToString()); idx++;
+                            res.fecha_declaracion_completo = DateTime.Parse(row[idx].ToString()); idx++;
                             //res.nueva_fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
 
                             if (res.fecha_legal.Year > 1969)
@@ -1433,7 +1435,13 @@ namespace GISMVC.Models
                             if (res.fecha_concesion_workflow_completo.Year > 1969)
                                 res.fecha_concesion_workflow_completoS = res.fecha_concesion_workflow_completo.ToString("dd/MM/yyyyy");
 
-                            res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tipo=" + tipo_registro;
+                            if (res.fecha_declaracion.Year > 1969)
+                                res.fecha_declaracionS = res.fecha_declaracion.ToString("dd/MM/yyyyy");
+
+                            if (res.fecha_declaracion_completo.Year > 1969)
+                                res.fecha_declaracion_completoS = res.fecha_declaracion_completo.ToString("dd/MM/yyyyy");
+
+                            res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tipo=" + tipo_registro_solicitud;
                             list.Add(res);
                         }
                     }

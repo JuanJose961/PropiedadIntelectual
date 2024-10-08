@@ -4956,6 +4956,53 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
+        public Boolean Cons_proc_BusquedaAvanzadaRegistroMarca(out DataTable dt, out String msgError, int solicitud_tipo, string id_usuario, int empresa, int empresa_anterior,int clase,int pais, int estatus, int uso,int tipo_registro_solicitud, string nombre, int activo = -1)
+        {
+
+            bool boolProcess = true;
+            dt = new DataTable();
+            msgError = string.Empty;
+            //var usuario = "bef7d03f-d37b-41a2-8ec6-eb204d313a78";
+            try
+            {
+                SqlParameter[] @params = new SqlParameter[11];
+
+                int i = 0;
+                @params[i] = new SqlParameter("@id", activo);i++;
+                @params[i] = new SqlParameter("@solicitud_tipo", solicitud_tipo);i++;
+                @params[i] = new SqlParameter("@usuario", id_usuario);i++;
+                @params[i] = new SqlParameter("@empresa", empresa); i++;
+                @params[i] = new SqlParameter("@empresa_anterior", empresa_anterior); i++;
+                @params[i] = new SqlParameter("@clase", clase); i++;
+                @params[i] = new SqlParameter("@pais", pais); i++;
+                @params[i] = new SqlParameter("@estatus", estatus); i++;
+                @params[i] = new SqlParameter("@uso", uso); i++;
+                @params[i] = new SqlParameter("@tipo_registro_solicitud", tipo_registro_solicitud); i++;
+                @params[i] = new SqlParameter("@nombre", nombre); i++;
+
+                if (!bd.ExecuteProcedure(conexion, "Cons_proc_BusquedaAvanzadaRegistroMarca", @params, out dt, 1000))
+                {
+                    boolProcess = false;
+                    msgError = bd._error.ToString();
+                }
+                else
+                {
+                    if (dt.Rows.Count < 1)
+                    {
+                        boolProcess = false;
+                        msgError = "No hay datos a mostrar";
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                boolProcess = false;
+                msgError = ex.ToString();
+            }
+            return boolProcess;
+        }
+
         public Boolean INS_proc_RegistroMarca(RegistroMarca modelo, out DataTable dt, out String msgError)
         {
             bool boolProcess = true;

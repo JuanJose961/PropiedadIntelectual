@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
 using GISMVC.Data;
 using GISMVC.Models;
@@ -16,6 +17,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Http;
+
+using dll_Gis;
+using System.Web.Mvc;
+using System.IO;
+using System.Configuration;
+using System.Text;
 
 namespace GISMVC.Controllers
 {
@@ -4212,13 +4219,51 @@ namespace GISMVC.Controllers
             //--------------------
             try
             {
-                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.tipo_registro_solicitud,modelo.id_usuario);
+                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo,modelo.id_usuario,modelo.empresa,modelo.empresa_anterior,modelo.clase,modelo.pais,modelo.estatus,modelo.uso,modelo.tipo_registro_solicitud,modelo.nombre);
                 if (data.Count > 0) { 
                 res.flag = true;
                 res.content.Add(data);
                 //res.content.Add(comentarios);
                 //res.content.Add(archivos);
                 }else{
+                    res.flag = false;
+                    res.description = "No existe la información";
+                }
+            }
+            catch (Exception ex)
+            {
+                res.flag = false;
+                res.description = "Error: " + ex.Message;
+            }
+            finally
+            {
+            }
+            //--------------------
+            //--------------------
+            return res;
+        }
+
+        [Route("api/WebAPI/ExcelRegistroMarca")]
+        [HttpPost]
+        public RespuestaFormato ExcelRegistroMarca([FromBody] RegistroMarca modelo)
+        {
+            var res = new RespuestaFormato();
+            //--------------------
+            try
+            {
+                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo, modelo.id_usuario, modelo.empresa, modelo.empresa_anterior, modelo.clase, modelo.pais, modelo.estatus, modelo.uso, modelo.tipo_registro_solicitud, modelo.nombre);
+                if (data.Count > 0)
+                {
+                    res.flag = true;
+                    res.description = "Se genero el archivo";
+                    res.content.Add(data);
+                    //res.content.Add(comentarios);
+                    //res.content.Add(archivos);
+                    var datos = data[0].nombre;
+                    
+                }
+                else
+                {
                     res.flag = false;
                     res.description = "No existe la información";
                 }

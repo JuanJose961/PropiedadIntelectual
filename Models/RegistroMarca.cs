@@ -10,6 +10,9 @@ using System.Configuration;
 using dll_Gis;
 using System.Web;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DevExtreme.AspNet.Data;
+using GISMVC.Controllers;
 
 namespace GISMVC.Models
 {
@@ -1271,7 +1274,7 @@ namespace GISMVC.Models
             return res;
         }
 
-        public static List<RegistroMarca> BusquedaAvanzadaRegistroMarca(int solicitud_tipo = 0, string id_usuario = "", int empresa = 0, int empresa_anterior = 0, int clase = 0, int pais = 0, int estatus = 0, int uso = 0,int tipo_registro_solicitud = 0, string nombre="", int activo = -1)
+        public static List<RegistroMarca> BusquedaAvanzadaRegistroMarca(int solicitud_tipo = 0, string id_usuario = "", int empresa = 0, int empresa_anterior = 0, int clase = 0, int pais = 0, int estatus = 0, int uso = 0,int tipo_registro_solicitud = 0, string nombre="", string no_registro = "", string no_solicitud = "",string fecha_legalS="", string fecha_vencimientoS = "", string fecha_concesionS = "",string fecha_quinquenio_anualidadS="",string fecha_requerimientoS="",string fecha_instruccionesS="",string fecha_registroS="",string fecha_busquedaS="",string fecha_resultadosS="",string fecha_comprobacionS="", int activo = -1)
         {
             List<RegistroMarca> list = new List<RegistroMarca>();
             Funciones funcion = new Funciones();
@@ -1281,7 +1284,7 @@ namespace GISMVC.Models
 
                 var dt = new System.Data.DataTable();
                 var errores = "";
-                if (da.Cons_proc_BusquedaAvanzadaRegistroMarca(out dt, out errores, solicitud_tipo, id_usuario, empresa,empresa_anterior,clase,pais,estatus,uso,tipo_registro_solicitud, nombre, activo))
+                if (da.Cons_proc_BusquedaAvanzadaRegistroMarca(out dt, out errores, solicitud_tipo, id_usuario, empresa,empresa_anterior,clase,pais,estatus,uso,tipo_registro_solicitud, nombre,no_registro,no_solicitud,fecha_legalS,fecha_vencimientoS,fecha_concesionS, fecha_quinquenio_anualidadS, fecha_requerimientoS, fecha_instruccionesS, fecha_registroS, fecha_busquedaS, fecha_resultadosS, fecha_comprobacionS, activo))
                 {
                     if (dt.Rows.Count > 0)
                     {
@@ -1381,69 +1384,75 @@ namespace GISMVC.Models
                             //res.nueva_fecha_vencimiento = DateTime.Parse(row[idx].ToString()); idx++;
 
                             if (res.fecha_legal.Year > 1969)
-                                res.fecha_legalS = res.fecha_legal.ToString("dd/MM/yyyyy");
+                                res.fecha_legalS = res.fecha_legal.ToString("dd/MM/yyyy");
                             if (res.fecha_vencimiento.Year > 1969)
-                                res.fecha_vencimientoS = res.fecha_vencimiento.ToString("dd/MM/yyyyy");
+                                res.fecha_vencimientoS = res.fecha_vencimiento.ToString("dd/MM/yyyy");
                             if (res.fecha_concesion.Year > 1969)
-                                res.fecha_concesionS = res.fecha_concesion.ToString("dd/MM/yyyyy");
+                                res.fecha_concesionS = res.fecha_concesion.ToString("dd/MM/yyyy");
 
                             if (res.fecha_requerimiento.Year > 1969)
-                                res.fecha_requerimientoS = res.fecha_requerimiento.ToString("dd/MM/yyyyy");
+                                res.fecha_requerimientoS = res.fecha_requerimiento.ToString("dd/MM/yyyy");
 
                             if (res.fecha_requerimiento_completo.Year > 1969)
-                                res.fecha_requerimiento_completoS = res.fecha_requerimiento_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_requerimiento_completoS = res.fecha_requerimiento_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_instrucciones.Year > 1969)
-                                res.fecha_instruccionesS = res.fecha_instrucciones.ToString("dd/MM/yyyyy");
+                                res.fecha_instruccionesS = res.fecha_instrucciones.ToString("dd/MM/yyyy");
 
                             if (res.fecha_instrucciones_completo.Year > 1969)
-                                res.fecha_instrucciones_completoS = res.fecha_instrucciones_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_instrucciones_completoS = res.fecha_instrucciones_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_registro.Year > 1969)
-                                res.fecha_registroS = res.fecha_registro.ToString("dd/MM/yyyyy");
+                                res.fecha_registroS = res.fecha_registro.ToString("dd/MM/yyyy");
 
                             if (res.fecha_registro_completo.Year > 1969)
-                                res.fecha_registro_completoS = res.fecha_registro_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_registro_completoS = res.fecha_registro_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_busqueda.Year > 1969)
-                                res.fecha_busquedaS = res.fecha_busqueda.ToString("dd/MM/yyyyy");
+                                res.fecha_busquedaS = res.fecha_busqueda.ToString("dd/MM/yyyy");
 
                             if (res.fecha_busqueda_completo.Year > 1969)
-                                res.fecha_busqueda_completoS = res.fecha_busqueda_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_busqueda_completoS = res.fecha_busqueda_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_resultados.Year > 1969)
-                                res.fecha_resultadosS = res.fecha_resultados.ToString("dd/MM/yyyyy");
+                                res.fecha_resultadosS = res.fecha_resultados.ToString("dd/MM/yyyy");
 
                             if (res.fecha_resultados_completo.Year > 1969)
-                                res.fecha_resultados_completoS = res.fecha_resultados_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_resultados_completoS = res.fecha_resultados_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_comprobacion.Year > 1969)
-                                res.fecha_comprobacionS = res.fecha_comprobacion.ToString("dd/MM/yyyyy");
+                                res.fecha_comprobacionS = res.fecha_comprobacion.ToString("dd/MM/yyyy");
 
                             if (res.fecha_comprobacion_completo.Year > 1969)
-                                res.fecha_comprobacion_completoS = res.fecha_comprobacion_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_comprobacion_completoS = res.fecha_comprobacion_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_vencimiento_workflow.Year > 1969)
-                                res.fecha_vencimiento_workflowS = res.fecha_vencimiento_workflow.ToString("dd/MM/yyyyy");
+                                res.fecha_vencimiento_workflowS = res.fecha_vencimiento_workflow.ToString("dd/MM/yyyy");
 
                             if (res.fecha_vencimiento_workflow_completo.Year > 1969)
-                                res.fecha_vencimiento_workflow_completoS = res.fecha_vencimiento_workflow_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_vencimiento_workflow_completoS = res.fecha_vencimiento_workflow_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_concesion_workflow.Year > 1969)
-                                res.fecha_concesion_workflowS = res.fecha_concesion_workflow.ToString("dd/MM/yyyyy");
+                                res.fecha_concesion_workflowS = res.fecha_concesion_workflow.ToString("dd/MM/yyyy");
 
                             if (res.fecha_concesion_workflow_completo.Year > 1969)
-                                res.fecha_concesion_workflow_completoS = res.fecha_concesion_workflow_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_concesion_workflow_completoS = res.fecha_concesion_workflow_completo.ToString("dd/MM/yyyy");
 
                             if (res.fecha_declaracion.Year > 1969)
-                                res.fecha_declaracionS = res.fecha_declaracion.ToString("dd/MM/yyyyy");
+                                res.fecha_declaracionS = res.fecha_declaracion.ToString("dd/MM/yyyy");
 
                             if (res.fecha_declaracion_completo.Year > 1969)
-                                res.fecha_declaracion_completoS = res.fecha_declaracion_completo.ToString("dd/MM/yyyyy");
+                                res.fecha_declaracion_completoS = res.fecha_declaracion_completo.ToString("dd/MM/yyyy");
 
                             res.permalink = Utility.hosturl + "PI/RegistroMarca?id=" + HttpUtility.UrlEncode(funcion.Encriptar(res.id.ToString())) + "&tipo=" + tipo_registro_solicitud;
                             list.Add(res);
                         }
+                        //var descarga = Utility.hosturl + "Admin/DescargarExcelRegistroMarca()";
+                        //var ocl2 = RegistroMarca.Get(1, "bef7d03f-d37b-41a2-8ec6-eb204d313a78");
+                        //return Request.CreateResponse(DataSourceLoader.Load(ocl2));
+                        //return Utility.hosturl + "Admin/DescargarExcelRegistroMarca";
+                        //var tu = new AdminController();
+                        //var solic = tu.DescargarExcelRegistroMarca();
                     }
                 }
                 else
@@ -1464,4 +1473,5 @@ namespace GISMVC.Models
             return list;
         }
     }
+
 }

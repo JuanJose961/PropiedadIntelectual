@@ -18,12 +18,6 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Http;
 
-using dll_Gis;
-using System.Web.Mvc;
-using System.IO;
-using System.Configuration;
-using System.Text;
-
 namespace GISMVC.Controllers
 {
     public class WebAPIController : ApiController
@@ -4219,7 +4213,7 @@ namespace GISMVC.Controllers
             //--------------------
             try
             {
-                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo,modelo.id_usuario,modelo.empresa,modelo.empresa_anterior,modelo.clase,modelo.pais,modelo.estatus,modelo.uso,modelo.tipo_registro_solicitud,modelo.nombre);
+                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo,modelo.id_usuario,modelo.empresa,modelo.empresa_anterior,modelo.clase,modelo.pais,modelo.estatus,modelo.uso,modelo.tipo_registro_solicitud,modelo.nombre, modelo.no_registro, modelo.no_solicitud,modelo.fecha_legalS,modelo.fecha_vencimientoS,modelo.fecha_concesionS, modelo.fecha_quinquenio_anualidadS, modelo.fecha_requerimientoS, modelo.fecha_instruccionesS, modelo.fecha_registroS, modelo.fecha_busquedaS, modelo.fecha_resultadosS, modelo.fecha_comprobacionS);
                 if (data.Count > 0) { 
                 res.flag = true;
                 res.content.Add(data);
@@ -4259,8 +4253,8 @@ namespace GISMVC.Controllers
                     res.content.Add(data);
                     //res.content.Add(comentarios);
                     //res.content.Add(archivos);
-                    var datos = data[0].nombre;
-                    
+                    //var datos = data[0].nombre;
+                    //var descarga = Utility.hosturl + "Admin/DescargarExcelRegistroMarca(modelo)";
                 }
                 else
                 {

@@ -6,6 +6,7 @@ using dll_Gis;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO.Packaging;
 
 namespace GISMVC.Models
 {
@@ -4956,7 +4957,7 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
-        public Boolean Cons_proc_BusquedaAvanzadaRegistroMarca(out DataTable dt, out String msgError, int solicitud_tipo, string id_usuario, int empresa, int empresa_anterior,int clase,int pais, int estatus, int uso,int tipo_registro_solicitud, string nombre, int activo = -1)
+        public Boolean Cons_proc_BusquedaAvanzadaRegistroMarca(out DataTable dt, out String msgError, int solicitud_tipo, string id_usuario, int empresa, int empresa_anterior,int clase,int pais, int estatus, int uso,int tipo_registro_solicitud, string nombre, string no_registro, string no_solicitud,string fecha_legalS,string fecha_vencimientoS,string fecha_concesionS,string fecha_quinquenio_anualidadS, string fecha_requerimientoS, string fecha_instruccionesS, string fecha_registroS, string fecha_busquedaS, string fecha_resultadosS, string fecha_comprobacionS, int activo = -1)
         {
 
             bool boolProcess = true;
@@ -4965,7 +4966,28 @@ namespace GISMVC.Models
             //var usuario = "bef7d03f-d37b-41a2-8ec6-eb204d313a78";
             try
             {
-                SqlParameter[] @params = new SqlParameter[11];
+                var fecha1 = "";
+                if (fecha_legalS != "")  fecha1 = Utility.FechaDefault(fecha_legalS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha2 = "";
+                if (fecha_vencimientoS != "") fecha2 = Utility.FechaDefault(fecha_vencimientoS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha3 = "";
+                if (fecha_concesionS != "") fecha3 = Utility.FechaDefault(fecha_concesionS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha4 = "";
+                if (fecha_quinquenio_anualidadS != "") fecha4 = Utility.FechaDefault(fecha_quinquenio_anualidadS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha5 = "";
+                if (fecha_requerimientoS != "") fecha5 = Utility.FechaDefault(fecha_requerimientoS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha6 = "";
+                if (fecha_instruccionesS != "") fecha6 = Utility.FechaDefault(fecha_instruccionesS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha7 = "";
+                if (fecha_registroS != "") fecha7 = Utility.FechaDefault(fecha_registroS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha8 = "";
+                if (fecha_busquedaS != "") fecha8 = Utility.FechaDefault(fecha_busquedaS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha9 = "";
+                if (fecha_resultadosS != "") fecha9 = Utility.FechaDefault(fecha_resultadosS, "dd/MM/yyyy", "yyyy-MM-dd");
+                var fecha10 = "";
+                if (fecha_comprobacionS != "") fecha10 = Utility.FechaDefault(fecha_comprobacionS, "dd/MM/yyyy", "yyyy-MM-dd");
+
+                SqlParameter[] @params = new SqlParameter[23];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@id", activo);i++;
@@ -4979,6 +5001,18 @@ namespace GISMVC.Models
                 @params[i] = new SqlParameter("@uso", uso); i++;
                 @params[i] = new SqlParameter("@tipo_registro_solicitud", tipo_registro_solicitud); i++;
                 @params[i] = new SqlParameter("@nombre", nombre); i++;
+                @params[i] = new SqlParameter("@no_registro", no_registro); i++;
+                @params[i] = new SqlParameter("@no_solicitud", no_solicitud); i++;
+                @params[i] = new SqlParameter("@fecha_legal", fecha1); i++; 
+                @params[i] = new SqlParameter("@fecha_vencimiento", fecha2); i++;
+                @params[i] = new SqlParameter("@fecha_concesion", fecha3); i++;
+                @params[i] = new SqlParameter("@fecha_quinquenio_anualidad", fecha4); i++;
+                @params[i] = new SqlParameter("@fecha_requerimiento", fecha5); i++;
+                @params[i] = new SqlParameter("@fecha_instrucciones", fecha6); i++;
+                @params[i] = new SqlParameter("@fecha_registro", fecha7); i++;
+                @params[i] = new SqlParameter("@fecha_busqueda", fecha8); i++;
+                @params[i] = new SqlParameter("@fecha_resultados", fecha9); i++;
+                @params[i] = new SqlParameter("@fecha_comprobacion", fecha10); i++;
 
                 if (!bd.ExecuteProcedure(conexion, "Cons_proc_BusquedaAvanzadaRegistroMarca", @params, out dt, 1000))
                 {

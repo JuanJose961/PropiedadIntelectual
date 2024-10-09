@@ -86,7 +86,7 @@
 <input type="hidden" name="tipo_registro" id="tipo_registro" value="0">
 
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-1">
         <button class="btn btn-info btn-block waves-effect waves-themed collapsed" type="button" data-toggle="collapse" data-target="#collapsefiltro" aria-expanded="false" aria-controls="collapsefiltro">Filtros</button>
     </div>
     <div class="row collapse" id="collapsefiltro">
@@ -106,7 +106,7 @@
             <div class="form-group" id="uu_00_c">
                 <label for="uu_00">Empresa propietaria</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_00" autocomplete="off" style="width: 100%;">
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    <option value="0" selected>Todos</option>
                     @foreach (NegocioPI item in ViewBag.empresa)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -118,8 +118,8 @@
             <div class="form-group" id="uu_01_c">
                 <label for="uu_01">Antigua empresa propietaria</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_01" autocomplete="off" style="width: 100%;">
-                    @*<option value="0" selected>Antigua empresa propietaria</option>*@
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    @*<option value="0" disabled selected>Antigua empresa propietaria</option>*@
+                    <option value="0" selected>Todos</option>
                     @foreach (NegocioPI item in ViewBag.empresa)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -131,7 +131,7 @@
             <div class="form-group" id="uu_07_c">
                 <label for="uu_07">Clase </label>
                 <select class="select2 form-control input-sm custom-select" id="uu_07" autocomplete="off" style="width: 100%;">
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    <option value="0" selected>Todos</option>
                     @foreach (Clase item in ViewBag.clase)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -143,7 +143,7 @@
             <div class="form-group" id="uu_09_c">
                 <label for="uu_09">País</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    <option value="0" selected>Todos</option>
                     @foreach (Pais item in ViewBag.pais)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -155,7 +155,7 @@
             <div class="form-group" id="uu_10_c">
                 <label for="uu_10">Estatus</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    <option value="0" selected>Todos</option>
                     @foreach (EstatusCatalogo item in ViewBag.estatus)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -167,7 +167,7 @@
             <div class="form-group" id="uu_39_c">
                 <label for="uu_39">Uso</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_39" autocomplete="off" style="width: 100%;">
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    <option value="0" selected>Todos</option>
                     @foreach (Uso item in ViewBag.uso)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -179,7 +179,7 @@
             <div class="form-group" id="uu_12_c">
                 <label for="uu_12">Tipo de registro</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
-                    <option value="0" disabled selected>Seleccione una opción</option>
+                    <option value="0" selected>Todos</option>
                     @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -226,43 +226,43 @@
         </div>
         <div class="col-md-3" id="uu_37_a">
             <div class="form-group" id="uu_37_c">
-                <label id="uu_06_l">Fecha para pagar los quinquenios o anualidades</label>
+                <label id="uu_37_l">Fecha para pagar los quinquenios o anualidades</label>
                 <input type="text" class="form-control input-sm" id="uu_37" autocomplete="off" readonly />
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group" id="uu_21_c">
-                <label id="uu_21_l">Fecha Requerimiento del negocio</label>
+                <label id="uu_21_l">Fecha requerimiento del negocio</label>
                 <input type="text" class="form-control input-sm" id="uu_21" autocomplete="off" readonly />
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group" id="uu_22_c">
-                <label>Fecha Instrucciones al correponsal</label>
+                <label>Fecha instrucciones al correponsal</label>
                 <input type="text" class="form-control input-sm" id="uu_22" autocomplete="off" readonly />
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group" id="uu_23_c">
-                <label>Fecha Solicitud de registro ante la autoridad competente</label>
+                <label>Fecha solicitud de registro ante la autoridad competente</label>
                 <input type="text" class="form-control input-sm" id="uu_23" autocomplete="off" readonly />
             </div>
         </div>
         <div class="col-md-3" id="uu_24_a">
             <div class="form-group" id="uu_24_c">
-                <label>Fecha Solicitud de búsqueda</label>
+                <label>Fecha solicitud de búsqueda</label>
                 <input type="text" class="form-control input-sm" id="uu_24" autocomplete="off" readonly />
             </div>
         </div>
         <div class="col-md-3" id="uu_25_a">
             <div class="form-group" id="uu_25_c">
-                <label id="uu_25_l">Fecha Información de resultados al negocio</label>
+                <label id="uu_25_l">Fecha información de resultados al negocio</label>
                 <input type="text" class="form-control input-sm" id="uu_25" autocomplete="off" readonly />
             </div>
         </div>
         <div class="col-md-3" id="uu_26_a">
             <div class="form-group" id="uu_26_c">
-                <label>Fecha Comprobación de uso</label>
+                <label>Fecha comprobación de uso</label>
                 <input type="text" class="form-control input-sm" id="uu_26" autocomplete="off" readonly />
             </div>
         </div>
@@ -272,7 +272,9 @@
             <button type="button" class="btn btn-default waves-effect waves-themed" onclick="Limpiar();" id="btnCancelar"><i class="fa fa-ban"></i> Limpiar</button>
             <button type="button" class="btn btn-info" onclick="BuscarRegistroMarca();" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
             @*<a type="button" class="btn btn-info" href="~/PI/BusquedaAvanzada?tipo=1" id="btnBuscar"><i class="fa fa-search"></i> Buscar</a>*@
-            <button type="button" class="btn btn-success" onclick="Excel();" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>
+            @*<button type="button" class="btn btn-success" onclick="Excel();" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>*@
+        <button type="button" class="btn btn-success" onclick="location.href = '/Admin/DescargarExcelRegistroMarca';" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>
+            @*<a type="button" href="/Admin/DescargarExcelRegistroMarca" class="btn btn-success btn-sm waves-effect waves-themed"><i class="fa fa-download"></i> Excel</a>*@
         </div>
     </div>
 </div>
@@ -288,34 +290,34 @@
                         <table id="cTabla1_3" class="table table-bordered table-hover table-striped w-100">
                             <thead>
                                 <tr style="background-color:#254368;color:white;" align="center">
-                                    <th>Tipo Solicitud</th>
+                                    <th>Tipo de Solicitud</th>
                                     <th>Nombre</th>
                                     <th>Empresa Propietaria</th>
                                     <th>Enpresa Anterior</th>
                                     <th>Fecha Legal</th>
-                                    <th>Fecha Vencimiento</th>
-                                    <th>Fecha Concesión</th>
+                                    <th>Fecha de Vencimiento</th>
+                                    <th>Fecha de Concesión</th>
                                     <th>No. Registro</th>
                                     <th>Pais</th>
                                     <th>Clase</th>
                                     <th>Estatus</th>
                                     <th>Uso</th>
                                     <th>No. Solicitud</th>
-                                    <th>Tipo Registro</th>
-                                    <th>Persona Solicito Registro</th>
+                                    <th>Tipo de Registro</th>
+                                    <th>Persona que Solicito Registro</th>
                                     <th>Despacho</th>
                                     <th>Corresponsal</th>
                                     <th>Licencia</th>
-                                    <th>Persona Solicito Licencia</th>
+                                    <th>Persona que Solicito Licencia</th>
                                     <th>Cesión</th>
-                                    <th>Persona Solicito Cesión</th>
-                                    <th>Requerimiento del Negocio</th>
-                                    <th>Instrucciones al Corresponsal</th>
-                                    <th>Solicitud de Registro Ante Autoridad Competente</th>
-                                    <th>Solicitud de Busqueda</th>
-                                    <th>Información de Resultados al Negocio</th>
-                                    <th>Comprobación de Uso</th>
-                                    <th>Declaración de Uso</th>
+                                    <th>Persona que Solicito Cesión</th>
+                                    <th>Fecha de Requerimiento del Negocio</th>
+                                    <th>Fecha de Instrucciones al Corresponsal</th>
+                                    <th>Fecha de Solicitud de Registro Ante la Autoridad Competente</th>
+                                    <th>Fecha de Solicitud de Busqueda</th>
+                                    <th>Fecha de Información de Resultados al Negocio</th>
+                                    <th>Fecha Comprobación de Uso</th>
+                                    <th>Fecha Declaración de Uso</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>

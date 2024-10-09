@@ -354,6 +354,137 @@ namespace GISMVC.Controllers
 
         }
 
+        public async Task<ActionResult> DescargarExcelRegistroMarca()
+        {
+            try
+            {
+                //var busqueda = new RegistroMarca();
+                //busqueda.inicio = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd") + " 00:00:00";
+                //busqueda.fin = DateTime.Now.AddMonths(3).ToString("yyyy-MM-dd") + " 23:59:59";
+                //busqueda.abogado = "";
+                //busqueda.min_monto = 0;
+                //busqueda.max_monto = 999999999;
+                //int total = 0;
+                //var contratos = GISMVC.Models.RegistroMarca.Get(busqueda, out total);
+
+                var solicitudes = GISMVC.Models.RegistroMarca.Get(0, "bef7d03f-d37b-41a2-8ec6-eb204d313a78");
+                string filename = "excel_solicitudes.xlsx";
+                XLWorkbook wb = new XLWorkbook();
+
+                var contentfolder = HttpContext.Server.MapPath("~/Content");
+                var url = Path.Combine(
+                       contentfolder, filename);
+
+
+                var ws1 = wb.Worksheets.Add("DATOS GENERALES");
+
+                ws1.Cell("A2").Value = "TIPO DE SOLICITUD";
+                ws1.Cell("B2").Value = "NOMBRE";
+                //ws1.Cell("A2").Style.Font.Bold = true;
+                //ws1.Cell("B2").Style.Font.Bold = true;
+                ws1.Cell("C2").Value = "EMPRESA";
+                ws1.Cell("D2").Value = "EMPRESA ANTERIOR";
+                ws1.Cell("E2").Value = "FECHA LEGAL";
+                ws1.Cell("F2").Value = "FECHA VENCIMIENTO";
+                ws1.Cell("G2").Value = "FECHA CONCESIÓN";
+                //ws1.Cell("H2").Value = "Apoderado Legal GIS";
+                //ws1.Cell("I2").Value = "Fecha inicio de la vigencia";
+                //ws1.Cell("J2").Value = "Fecha de fin de la vigencia";
+                //ws1.Cell("K2").Value = "Contraprestación";
+                //ws1.Cell("L2").Value = "Término de pago";
+                //ws1.Cell("M2").Value = "Tipo de moneda";
+                //ws1.Cell("N2").Value = "Importe total del Contrato";
+                //ws1.Cell("O2").Value = "Tipo de Contrato";
+                //ws1.Cell("P2").Value = "Objeto";
+                //ws1.Cell("Q2").Value = "Descripción del servicio";
+                //ws1.Cell("R2").Value = "Intercompañia";
+                //ws1.Cell("S2").Value = "Días Vencido";
+                //ws1.Cell("T2").Value = "Estatus del Contrato";
+                //ws1.Cell("U2").Value = "Comentarios";
+                //ws1.Cell("V2").Value = "Usuario solicitante";
+                //ws1.Cell("W2").Value = "Abogado asignado";
+                ws1.Cell("A2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("B2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("C2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("D2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("E2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("F2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("G2").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("H7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("I7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("J7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("K7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("L7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("M7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("N7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("O7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("P7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("Q7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("R7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("S7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("T7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("U7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("V7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                //ws1.Cell("W7").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+
+                int cellIdx = 3;
+                foreach (var item in solicitudes)
+                {
+                    ws1.Cell("A" + cellIdx).Value = item.solicitud_tipo_desc;
+                    ws1.Cell("B" + cellIdx).Value = item.nombre;
+                    ws1.Cell("C" + cellIdx).Value = item.empresa_desc;
+                    ws1.Cell("D" + cellIdx).Value = item.empresa_anterior_desc;
+                    ws1.Cell("E" + cellIdx).Value = item.fecha_legalS;
+                    ws1.Cell("F" + cellIdx).Value = item.fecha_vencimientoS;
+                    ws1.Cell("G" + cellIdx).Value = item.fecha_concesionS;
+                    //ws1.Cell("E" + cellIdx).Value = item.rfc;
+                    //ws1.Cell("F" + cellIdx).Value = "---";
+                    //ws1.Cell("G" + cellIdx).Value = item.negocio_desc;
+                    //ws1.Cell("H" + cellIdx).Value = "---";
+                    //ws1.Cell("I" + cellIdx).Value = item.inicio_vigencia.ddmmyyyy;
+                    //ws1.Cell("J" + cellIdx).Value = item.termino_contrato.ddmmyyyy;
+                    //ws1.Cell("K" + cellIdx).Value = item.monto.ToString("C", CultureInfo.CurrentCulture).Replace("$", "");
+                    //ws1.Cell("L" + cellIdx).Value = "---";
+                    //ws1.Cell("M" + cellIdx).Value = item.moneda_desc;
+                    //ws1.Cell("N" + cellIdx).Value = "---";
+                    //ws1.Cell("O" + cellIdx).Value = item.tipo_contrato_desc;
+                    //ws1.Cell("P" + cellIdx).Value = "---";
+                    //ws1.Cell("Q" + cellIdx).Value = item.descripcion;
+                    //ws1.Cell("R" + cellIdx).Value = "---";
+                    //ws1.Cell("S" + cellIdx).Value = "Pendiente calcular";
+                    //ws1.Cell("T" + cellIdx).Value = "Pendiente calcular/Ajustar Estatus";
+                    //ws1.Cell("U" + cellIdx).Value = "---";
+                    //ws1.Cell("V" + cellIdx).Value = item.usuario.name;
+                    //ws1.Cell("W" + cellIdx).Value = item.abogado_nombre;
+                    cellIdx += 1;
+                }
+                if (filename != "")
+                {
+                    wb.SaveAs(url);
+                    //--
+                    var memory = new MemoryStream();
+                    using (var stream = new FileStream(url, FileMode.Open))
+                    {
+                        await stream.CopyToAsync(memory);
+                    }
+                    memory.Position = 0;
+                    string ctype = Utility.GetContentType(url);
+                    string dname = Path.GetFileName(url);
+                    System.IO.File.Delete(url);
+                    return File(memory, ctype, dname);
+                }
+                else
+                {
+                    return View("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+
+        }
+
         //[HttpGet("Admin/PlanoMecanico/{id}", nameof = "PlanoMecanico")]
         public async Task<ActionResult> Index()
         {

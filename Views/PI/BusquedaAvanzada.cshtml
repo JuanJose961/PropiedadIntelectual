@@ -266,14 +266,31 @@
                 <input type="text" class="form-control input-sm" id="uu_26" autocomplete="off" readonly />
             </div>
         </div>
-
+        @*<div class="col-md-3">
+            <div class="form-group">
+                <label></label><label></label>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="chektodo" name="chektodo" />
+                    <label for="scales">Ver todo</label>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-4">
+            <div class="form-group">
+                <label></label>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="chektodo">
+                    <label class="custom-control-label" for="chektodo" id="chektodo_l">Todas las columnas</label>
+                </div>
+            </div>
+        </div>
         <div class="col-md-12 text-center">
             @*<button type="button" class="btn btn-default waves-effect waves-themed" onclick="window.location = '/PI/RegistroMarcas?tipo=1';" id="btnCancelar"><i class="fa fa-ban"></i> Cancelar</button>*@
             <button type="button" class="btn btn-default waves-effect waves-themed" onclick="Limpiar();" id="btnCancelar"><i class="fa fa-ban"></i> Limpiar</button>
             <button type="button" class="btn btn-info" onclick="BuscarRegistroMarca();" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
             @*<a type="button" class="btn btn-info" href="~/PI/BusquedaAvanzada?tipo=1" id="btnBuscar"><i class="fa fa-search"></i> Buscar</a>*@
             @*<button type="button" class="btn btn-success" onclick="Excel();" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>*@
-        <button type="button" class="btn btn-success" onclick="location.href = '/Admin/DescargarExcelRegistroMarca';" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>
+            <button type="button" class="btn btn-success" onclick="location.href = '/Admin/DescargarExcelRegistroMarca';" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>
             @*<a type="button" href="/Admin/DescargarExcelRegistroMarca" class="btn btn-success btn-sm waves-effect waves-themed"><i class="fa fa-download"></i> Excel</a>*@
         </div>
     </div>
@@ -288,119 +305,88 @@
                 <div class="panel-content ctm-panel-content">
                     <div id="cTabla" style="overflow-x:auto;">
                         <table id="cTabla1_3" class="table table-bordered table-hover table-striped w-100">
-                            <thead>
-                                <tr style="background-color:#254368;color:white;" align="center">
-                                    <th>Tipo de Solicitud</th>
-                                    <th>Nombre</th>
-                                    <th>Empresa Propietaria</th>
-                                    <th>Enpresa Anterior</th>
-                                    <th>Fecha Legal</th>
-                                    <th>Fecha de Vencimiento</th>
-                                    <th>Fecha de Concesión</th>
-                                    <th>No. Registro</th>
-                                    <th>Pais</th>
-                                    <th>Clase</th>
-                                    <th>Estatus</th>
-                                    <th>Uso</th>
-                                    <th>No. Solicitud</th>
-                                    <th>Tipo de Registro</th>
-                                    <th>Persona que Solicito Registro</th>
-                                    <th>Despacho</th>
-                                    <th>Corresponsal</th>
-                                    <th>Licencia</th>
-                                    <th>Persona que Solicito Licencia</th>
-                                    <th>Cesión</th>
-                                    <th>Persona que Solicito Cesión</th>
-                                    <th>Fecha de Requerimiento del Negocio</th>
-                                    <th>Fecha de Instrucciones al Corresponsal</th>
-                                    <th>Fecha de Solicitud de Registro Ante la Autoridad Competente</th>
-                                    <th>Fecha de Solicitud de Busqueda</th>
-                                    <th>Fecha de Información de Resultados al Negocio</th>
-                                    <th>Fecha Comprobación de Uso</th>
-                                    <th>Fecha Declaración de Uso</th>
-                                </tr>
-                            </thead>
+                            <thead></thead>
                             <tbody></tbody>
                         </table>
                     </div>
                     @*<div id="table-container">
 
-                            @(Html.DevExtreme().DataGrid<RegistroMarca>
-                                ()
-                                .ID("tabla01")
-                                .ShowBorders(true)
-                                .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
-                                .Paging(paging => paging.PageSize(10))
-                                .Pager(pager =>
-                                {
-                                    pager.Visible(true);
-                                    //pager.DisplayMode(GridPagerDisplayMode.Full);
-                                    pager.ShowPageSizeSelector(true);
-                                    pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
-                                    pager.ShowInfo(true);
-                                    pager.ShowNavigationButtons(true);
-                                })
-                                .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
-                                .Columns(columns =>
-                                {
-                                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
-                                        <% if (data.activo == false) { %>
-                                        <div>
-                                            <span class="dx-active-off"></span>
-                                            <%- value %>
-                                        </div>
-                                        <% } else { %>
-                                        <div>
-                                            <span class="dx-active-on"></span>
-                                            <%- value %>
-                                        </div>
-                                        <% } %>
-                                    </text>).Caption("TIPO DE SOLICITUD");
-                                    columns.AddFor(m => m.nombre).Caption("NOMBRE");
-                                    columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
-                                    columns.AddFor(m => m.empresa_anterior_desc).Caption("EMPRESA ANTIGUA");
-                                    columns.AddFor(m => m.fecha_legalS).Caption("FECHA LEGAL").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_vencimientoS).Caption("FECHA VENCIMIENTO").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_concesionS).Caption("FECHA CONCESIÓN").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
-                                    columns.AddFor(m => m.pais_desc).Caption("PAIS");
-                                    columns.AddFor(m => m.clase_desc).Caption("CLASE");
-                                    columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
-                                    columns.AddFor(m => m.uso_desc).Caption("USO");
-                                    columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
-                                    columns.AddFor(m => m.tipo_registro_desc).Caption("TIPO REGISTRO");
-                                    columns.AddFor(m => m.autor_registro_desc).Caption("PERSONA SOLICITO REGISTRO");
-                                    columns.AddFor(m => m.despacho_desc).Caption("DESPACHO");
-                                    columns.AddFor(m => m.corresponsal_desc).Caption("CORRESPONSAL");
-                                    columns.AddFor(m => m.licencia_desc).Caption("LICENCIA");
-                                    columns.AddFor(m => m.solicitante_licencia_desc).Caption("PERSONA SOLICITO LICENCIA");
-                                    columns.AddFor(m => m.cesion_desc).Caption("CESIÓN");
-                                    columns.AddFor(m => m.solicitante_cesion_desc).Caption("PERSONA SOLICITO CESIÓN");
-                                    columns.AddFor(m => m.fecha_requerimientoS).Caption("REQUERIMIENTO DEL NEGOCIO").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_instruccionesS).Caption("INSTRUCCIONES AL CORRESPONSAL").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_registroS).Caption("SOLICITUD DE REGISTRO AUTORIDAD COMPETENTE").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_busquedaS).Caption("SOLICITUD DE BUSQUEDA").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_resultadosS).Caption("INFORMACIÓN DE RESULTADOS AL NEGOCIO").Format("dd/MM/yyyy");
-                                    columns.AddFor(m => m.fecha_comprobacionS).Caption("COMPROBACIÓN DE USO").Format("dd/MM/yyyy");
-                                    //columns.AddFor(m => m.fecha_declaracionS).Caption("DECLARACIÓN DE USO").Format("dd/MM/yyyy");
-                                    //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
-                                })
-                            .Summary(s => s.TotalItems(items =>
-                            {
-                                items.Add().Column("nombre")
-                                .SummaryType(SummaryType.Count);
-                            })
-                            )
-                            .ColumnAutoWidth(true)
-                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
-                            .Paging(p => p.PageSize(10))
-                            .FilterRow(f => f.Visible(true))
-                            .HeaderFilter(f => f.Visible(true))
+            @(Html.DevExtreme().DataGrid<RegistroMarca>
+                ()
+                .ID("tabla01")
+                .ShowBorders(true)
+                .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+                .Paging(paging => paging.PageSize(10))
+                .Pager(pager =>
+                {
+                    pager.Visible(true);
+                    //pager.DisplayMode(GridPagerDisplayMode.Full);
+                    pager.ShowPageSizeSelector(true);
+                    pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
+                    pager.ShowInfo(true);
+                    pager.ShowNavigationButtons(true);
+                })
+                .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
+                .Columns(columns =>
+                {
+                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
+                        <% if (data.activo == false) { %>
+                        <div>
+                            <span class="dx-active-off"></span>
+                            <%- value %>
+                        </div>
+                        <% } else { %>
+                        <div>
+                            <span class="dx-active-on"></span>
+                            <%- value %>
+                        </div>
+                        <% } %>
+                    </text>).Caption("TIPO DE SOLICITUD");
+                    columns.AddFor(m => m.nombre).Caption("NOMBRE");
+                    columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
+                    columns.AddFor(m => m.empresa_anterior_desc).Caption("EMPRESA ANTIGUA");
+                    columns.AddFor(m => m.fecha_legalS).Caption("FECHA LEGAL").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_vencimientoS).Caption("FECHA VENCIMIENTO").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_concesionS).Caption("FECHA CONCESIÓN").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
+                    columns.AddFor(m => m.pais_desc).Caption("PAIS");
+                    columns.AddFor(m => m.clase_desc).Caption("CLASE");
+                    columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
+                    columns.AddFor(m => m.uso_desc).Caption("USO");
+                    columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
+                    columns.AddFor(m => m.tipo_registro_desc).Caption("TIPO REGISTRO");
+                    columns.AddFor(m => m.autor_registro_desc).Caption("PERSONA SOLICITO REGISTRO");
+                    columns.AddFor(m => m.despacho_desc).Caption("DESPACHO");
+                    columns.AddFor(m => m.corresponsal_desc).Caption("CORRESPONSAL");
+                    columns.AddFor(m => m.licencia_desc).Caption("LICENCIA");
+                    columns.AddFor(m => m.solicitante_licencia_desc).Caption("PERSONA SOLICITO LICENCIA");
+                    columns.AddFor(m => m.cesion_desc).Caption("CESIÓN");
+                    columns.AddFor(m => m.solicitante_cesion_desc).Caption("PERSONA SOLICITO CESIÓN");
+                    columns.AddFor(m => m.fecha_requerimientoS).Caption("REQUERIMIENTO DEL NEGOCIO").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_instruccionesS).Caption("INSTRUCCIONES AL CORRESPONSAL").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_registroS).Caption("SOLICITUD DE REGISTRO AUTORIDAD COMPETENTE").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_busquedaS).Caption("SOLICITUD DE BUSQUEDA").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_resultadosS).Caption("INFORMACIÓN DE RESULTADOS AL NEGOCIO").Format("dd/MM/yyyy");
+                    columns.AddFor(m => m.fecha_comprobacionS).Caption("COMPROBACIÓN DE USO").Format("dd/MM/yyyy");
+                    //columns.AddFor(m => m.fecha_declaracionS).Caption("DECLARACIÓN DE USO").Format("dd/MM/yyyy");
+                    //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
+                })
+            .Summary(s => s.TotalItems(items =>
+            {
+                items.Add().Column("nombre")
+                .SummaryType(SummaryType.Count);
+            })
+            )
+            .ColumnAutoWidth(true)
+            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+            .Paging(p => p.PageSize(10))
+            .FilterRow(f => f.Visible(true))
+            .HeaderFilter(f => f.Visible(true))
 
-                            )
+            )
 
 
-                        </div>*@
+        </div>*@
                 </div>
             </div>
 

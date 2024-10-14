@@ -84,6 +84,7 @@ function Limpiar() {
 }
 function BuscarRegistroMarca() {
     if (Validar() != false) {
+        var cktodo=document.getElementById("chektodo");
         var solicitud_tipo = $("#uu_02 option:selected").val();
         var id_usuario = eu_lu.id;
         var empresa = $("#uu_00 option:selected").val();
@@ -148,14 +149,31 @@ function BuscarRegistroMarca() {
                         //alert(registro.length);
                         //var renglones = "<table id='cTabla1_3' class='table table - bordered table - hover table - striped w - 100'>< thead ><tr style='background-color:#254368;color:white;' align='center'><th>Tipo Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha Vencimiento</th><th>Fecha Concesión</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo Registro</th><th>Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Solicito Licencia</th><th>Cesión</th><th>Solicito Cesión</th></tr></thead >";
                         document.getElementById("titulobusquedavanzada").innerHTML = "Busqueda Avanzada de Solicitudes (" + registro.length + " registros)";
-                        var renglones = "";
-                        if (registro.length > 0) {
-                            for (let i = 0; i < registro.length; i++) {
-                                renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td><td>" + registro[i].fecha_requerimientoS + "</td><td>" + registro[i].fecha_instruccionesS + "</td><td>" + registro[i].fecha_registroS + "</td><td>" + registro[i].fecha_busquedaS + "</td><td>" + registro[i].fecha_resultadosS + "</td><td>" + registro[i].fecha_comprobacionS + "</td><td>" + registro[i].fecha_declaracionS + "</td></tr>";
-                            }
-                        }
+                        document.getElementById("cTabla1_3").querySelector("thead").innerHTML = "";
                         document.getElementById("cTabla1_3").querySelector("tbody").innerHTML = "";
-                        document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+                        var encabezados = "";
+                        var renglones = "";
+                        if (cktodo.checked == true) {
+                            encabezados = "<tr style='background-color:#254368; color: white;' align='center'><th> Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th><th>Fecha de Requerimiento del Negocio</th><th>Fecha de Instrucciones al Corresponsal</th><th>Fecha de Registro Ante la Autoridad Competente</th><th>Fecha de Solicitud de Busqueda</th><th>Fecha de Informacion de Resultados al Negocio</th><th>Fecha Comprobacion de Uso</th><th>Fecha Declaracion de Uso</th></tr >";
+                            document.getElementById("cTabla1_3").querySelector("thead").innerHTML += encabezados;
+                            if (registro.length > 0) {
+                                for (let i = 0; i < registro.length; i++) {
+                                    renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td><td>" + registro[i].fecha_requerimientoS + "</td><td>" + registro[i].fecha_instruccionesS + "</td><td>" + registro[i].fecha_registroS + "</td><td>" + registro[i].fecha_busquedaS + "</td><td>" + registro[i].fecha_resultadosS + "</td><td>" + registro[i].fecha_comprobacionS + "</td><td>" + registro[i].fecha_declaracionS + "</td></tr>";
+                                }
+                            }
+                            document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+                        } else {
+                            encabezados = "<tr style='background-color:#254368; color: white;' align='center'><th> Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th></tr >";
+                            document.getElementById("cTabla1_3").querySelector("thead").innerHTML += encabezados;
+                            if (registro.length > 0) {
+                                for (let i = 0; i < registro.length; i++) {
+                                    renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td></tr>";
+                                }
+                            }
+                            document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+                        }
+                       
+                        
                         //renglones += "</tbody>";
                         //document.getElementById('cTabla1_3').innerHTML += renglones;
 

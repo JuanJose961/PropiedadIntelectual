@@ -141,46 +141,117 @@ function BuscarRegistroMarca() {
                 setTimeout(function () {
                     var jsonResponse = response;
                     if (jsonResponse.flag != false) {
-                        // $("#tabla02").html('');
-                        //document.getElementById("cTabla1_3").querySelector("thead").innerHTML = "<tr style='background-color:#254368;color:white;' align='center'><th>Tipo Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha Vencimiento</th><th>Fecha Concesión</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo Registro</th><th>Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Solicito Licencia</th><th>Cesión</th><th>Solicito Cesión</th></tr>";
-                        //$("#tabla01").empty();
-                        //$('#cTabla1_3').remove()
                         registro = jsonResponse.content[0];
-                        //alert(registro.length);
-                        //var renglones = "<table id='cTabla1_3' class='table table - bordered table - hover table - striped w - 100'>< thead ><tr style='background-color:#254368;color:white;' align='center'><th>Tipo Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha Vencimiento</th><th>Fecha Concesión</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo Registro</th><th>Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Solicito Licencia</th><th>Cesión</th><th>Solicito Cesión</th></tr></thead >";
+                        var today = new Date();
+                        var now = today.toLocaleString();
+                        $('#cTabla1_3').remove();
                         document.getElementById("titulobusquedavanzada").innerHTML = "Busqueda Avanzada de Solicitudes (" + registro.length + " registros)";
-                        document.getElementById("cTabla1_3").querySelector("thead").innerHTML = "";
-                        document.getElementById("cTabla1_3").querySelector("tbody").innerHTML = "";
+                        //document.getElementById("cTabla1_3").querySelector("thead").innerHTML = "";
+                        //document.getElementById("cTabla1_3").querySelector("tbody").innerHTML = "";
+                        //var encabezados = "";
+                        //var renglones = "";
+                        //if (cktodo.checked == true) {
+                        //    encabezados = "<tr style='background-color:#254368; color: white;' align='center'><th> Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th><th>Fecha de Requerimiento del Negocio</th><th>Fecha de Instrucciones al Corresponsal</th><th>Fecha de Registro Ante la Autoridad Competente</th><th>Fecha de Solicitud de Busqueda</th><th>Fecha de Informacion de Resultados al Negocio</th><th>Fecha Comprobacion de Uso</th><th>Fecha Declaracion de Uso</th></tr >";
+                        //    document.getElementById("cTabla1_3").querySelector("thead").innerHTML += encabezados;
+                        //    if (registro.length > 0) {
+                        //        for (let i = 0; i < registro.length; i++) {
+                        //            renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td><td>" + registro[i].fecha_requerimientoS + "</td><td>" + registro[i].fecha_instruccionesS + "</td><td>" + registro[i].fecha_registroS + "</td><td>" + registro[i].fecha_busquedaS + "</td><td>" + registro[i].fecha_resultadosS + "</td><td>" + registro[i].fecha_comprobacionS + "</td><td>" + registro[i].fecha_declaracionS + "</td></tr>";
+                        //        }
+                        //    }
+                        //    document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+                        //} else {
+                        //    encabezados = "<tr style='background-color:#254368; color: white;' align='center'><th> Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th></tr >";
+                        //    document.getElementById("cTabla1_3").querySelector("thead").innerHTML += encabezados;
+                        //    if (registro.length > 0) {
+                        //        for (let i = 0; i < registro.length; i++) {
+                        //            renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td></tr>";
+                        //        }
+                        //    }
+                        //    document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+                        //}
+                        var tablecontent;
                         var encabezados = "";
                         var renglones = "";
-                        if (cktodo.checked == true) {
-                            encabezados = "<tr style='background-color:#254368; color: white;' align='center'><th> Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th><th>Fecha de Requerimiento del Negocio</th><th>Fecha de Instrucciones al Corresponsal</th><th>Fecha de Registro Ante la Autoridad Competente</th><th>Fecha de Solicitud de Busqueda</th><th>Fecha de Informacion de Resultados al Negocio</th><th>Fecha Comprobacion de Uso</th><th>Fecha Declaracion de Uso</th></tr >";
-                            document.getElementById("cTabla1_3").querySelector("thead").innerHTML += encabezados;
-                            if (registro.length > 0) {
-                                for (let i = 0; i < registro.length; i++) {
-                                    renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td><td>" + registro[i].fecha_requerimientoS + "</td><td>" + registro[i].fecha_instruccionesS + "</td><td>" + registro[i].fecha_registroS + "</td><td>" + registro[i].fecha_busquedaS + "</td><td>" + registro[i].fecha_resultadosS + "</td><td>" + registro[i].fecha_comprobacionS + "</td><td>" + registro[i].fecha_declaracionS + "</td></tr>";
-                                }
-                            }
-                            document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
-                        } else {
-                            encabezados = "<tr style='background-color:#254368; color: white;' align='center'><th> Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th></tr >";
-                            document.getElementById("cTabla1_3").querySelector("thead").innerHTML += encabezados;
+                        if (cktodo.checked == false) {
+                            encabezados = "<th>Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th>";
                             if (registro.length > 0) {
                                 for (let i = 0; i < registro.length; i++) {
                                     renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td></tr>";
                                 }
                             }
-                            document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+                        } else {
+                            encabezados = "<th>Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th><th>Fecha de Requerimiento del Negocio</th><th>Fecha de Instrucciones al Corresponsal</th><th>Fecha de Registro Ante la Autoridad Competente</th><th>Fecha de Solicitud de Busqueda</th><th>Fecha de Informacion de Resultados al Negocio</th><th>Fecha Comprobacion de Uso</th><th>Fecha Declaracion de Uso</th>";
+                            if (registro.length > 0) {
+                                for (let i = 0; i < registro.length; i++) {
+                                    renglones += "<tr><td>" + registro[i].solicitud_tipo_desc + "</td><td>" + registro[i].nombre + "</td><td>" + registro[i].empresa_desc + "</td><td>" + registro[i].empresa_anterior_desc + "</td><td>" + registro[i].fecha_legalS + "</td><td>" + registro[i].fecha_vencimientoS + "</td><td>" + registro[i].fecha_concesionS + "</td><td>" + registro[i].no_registro + "</td><td>" + registro[i].pais_desc + "</td><td>" + registro[i].clase_desc + "</td><td>" + registro[i].estatus_desc + "</td><td>" + registro[i].uso_desc + "</td><td>" + registro[i].no_solicitud + "</td><td>" + registro[i].tipo_registro_solicitud_desc + "</td><td>" + registro[i].autor_registro_desc + "</td><td>" + registro[i].despacho_desc + "</td><td>" + registro[i].corresponsal_desc + "</td><td>" + registro[i].licencia_desc + "</td><td>" + registro[i].solicitante_licencia_desc + "</td><td>" + registro[i].cesion_desc + "</td><td>" + registro[i].solicitante_cesion_desc + "</td><td>" + registro[i].fecha_requerimientoS + "</td><td>" + registro[i].fecha_instruccionesS + "</td><td>" + registro[i].fecha_registroS + "</td><td>" + registro[i].fecha_busquedaS + "</td><td>" + registro[i].fecha_resultadosS + "</td><td>" + registro[i].fecha_comprobacionS + "</td><td>" + registro[i].fecha_declaracionS + "</td></tr>";
+                                }
+                            }
                         }
-                       
+                        //class='table table-bordered table-striped display nowrap" style = "width:100%'
+                        //class='table table-bordered table-hover table-striped w-100'
+                        tablecontent = "<table id='cTabla1_3'><thead><tr style='background-color: #161DEE; color: white;' align='center'>" + encabezados + "</tr></thead><tbody></tbody></table>";
+                        $("#cTabla").html(tablecontent);
+                        document.getElementById("cTabla1_3").querySelector("tbody").innerHTML = "";
+                        document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
                         
-                        //renglones += "</tbody>";
-                        //document.getElementById('cTabla1_3').innerHTML += renglones;
-
-                        //document.getElementById('tabla01').innerHTML = "<table><thead><tr style='background-color:#254368; color: white;'><th>Tipo de solicitud</th><th>Nombre</th></tr></thead><tbody><tr><td>" + registro[0].solicitud_tipo_desc + "</td><td>" + registro[0].nombre +"</td></tr></tbody></table>";
-                        /*document.getElementById('tabla01').innerHTML = "<tr><td>"+registro[0].solicitud_tipo_desc+"</td><td>"+registro[0].nombre+"</td></tr>";*/
-                        //comentarios = jsonResponse.content[1];
-                        //RedibujaComentarios(desabilitar);
+                        $('#cTabla1_3').DataTable(
+                            {
+                                clear: true,
+                                destroy: true,
+                                scrollY: 700,
+                                scrollX: true,
+                                scrollCollapse: true,
+                                autoWidth: false,
+                                pageLength: 25,
+                                paging: true,
+                                lengthMenu: [[10, 25, 50, 100, 100000], [10, 25, 50, 100, "All"]],
+                                autoFill: false,
+                                //dom:
+                                //    "<'row mb-3'<'col-sm-12 col-md-3 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-9 d-flex align-items-center justify-content-end'B>>" +
+                                //                "<'row'<'col-sm-12'tr>>" +
+                                //                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                                //dom: 'Bfrtip',
+                                //buttons: [
+                                //    {
+                                //        extend: 'copyHtml5',
+                                //        exportOptions: { orthogonal: 'export' }
+                                //    },
+                                //    {
+                                //        extend: 'excelHtml5',
+                                //        exportOptions: { orthogonal: 'export' }
+                                //    },
+                                //    {
+                                //        extend: 'pdfHtml5',
+                                //        exportOptions: { orthogonal: 'export' }
+                                //    }
+                                //],
+                                //layout: {
+                                //    topStart: {
+                                //        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                                //    }
+                                //},
+                                language: {
+                                    "decimal": "",
+                                    "emptyTable": "No hay información",
+                                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                                    "infoPostFix": "",
+                                    "thousands": ",",
+                                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                                    "loadingRecords": "Cargando...",
+                                    "processing": "Procesando...",
+                                    "search": "Buscar:",
+                                    "zeroRecords": "Sin resultados encontrados",
+                                    "paginate": {
+                                        "first": "Primero",
+                                        "last": "Ultimo",
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+                                },
+                                
+                            });
 
                     } else {
                         registro = {
@@ -256,7 +327,54 @@ function BuscarRegistroMarca() {
                             nueva_fecha_vencimientoS: "",
                         };
                         document.getElementById("titulobusquedavanzada").innerHTML = "Busqueda Avanzada de Solicitudes (0 registros)";
+                        $('#cTabla1_3').remove();
+                        var tablecontent;
+                        var encabezados = "";
+                        var renglones = "";
+                        if (cktodo.checked == false) {
+                            encabezados = "<th>Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th>";
+                        } else {
+                            encabezados = "<th>Tipo de Solicitud</th><th>Nombre</th><th>Empresa Propietaria</th><th>Enpresa Anterior</th><th>Fecha Legal</th><th>Fecha de Vencimiento</th><th>Fecha de Concesion</th><th>No. Registro</th><th>Pais</th><th>Clase</th><th>Estatus</th><th>Uso</th><th>No. Solicitud</th><th>Tipo de Registro</th><th>Persona que Solicito Registro</th><th>Despacho</th><th>Corresponsal</th><th>Licencia</th><th>Persona que Solicito Licencia</th><th>Cesion</th><th>Persona que Solicito Cesion</th><th>Fecha de Requerimiento del Negocio</th><th>Fecha de Instrucciones al Corresponsal</th><th>Fecha de Registro Ante la Autoridad Competente</th><th>Fecha de Solicitud de Busqueda</th><th>Fecha de Informacion de Resultados al Negocio</th><th>Fecha Comprobacion de Uso</th><th>Fecha Declaracion de Uso</th>";
+                        }
+                        tablecontent = "<table id='cTabla1_3'><thead><tr style='background-color: #161DEE; color: white;' align='center'>" + encabezados + "</tr></thead><tbody></tbody></table>";
+                        $("#cTabla").html(tablecontent);
                         document.getElementById("cTabla1_3").querySelector("tbody").innerHTML = "";
+                        document.getElementById("cTabla1_3").querySelector("tbody").innerHTML += renglones;
+
+                        $('#cTabla1_3').DataTable(
+                            {
+                                clear: true,
+                                destroy: true,
+                                scrollY: 700,
+                                scrollX: true,
+                                scrollCollapse: true,
+                                autoWidth: false,
+                                pageLength: 25,
+                                paging: true,
+                                lengthMenu: [[10, 25, 50, 100, 100000], [10, 25, 50, 100, "All"]],
+                                autoFill: false,
+                                language: {
+                                    "decimal": "",
+                                    "emptyTable": "No hay informacion",
+                                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                                    "infoPostFix": "",
+                                    "thousands": ",",
+                                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                                    "loadingRecords": "Cargando...",
+                                    "processing": "Procesando...",
+                                    "search": "Buscar:",
+                                    "zeroRecords": "Sin resultados encontrados",
+                                    "paginate": {
+                                        "first": "Primero",
+                                        "last": "Ultimo",
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+                                },
+
+                            });
                         //$("#alertModal .modal-footer").html('<button type="button" data-dismiss="modal" class="btn btn-default"><i class="fa fa-undo"></i> Ok</button>');
                         for (var i = 0; i < jsonResponse.errors.length; i++) {
                             $("#alertModal .form-group").append("<p class='form-error'>" + jsonResponse.errors[i] + "</p>");

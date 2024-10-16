@@ -36,7 +36,20 @@
     <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css")">
     <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/css/jquery-ui.css")">
     <link rel="stylesheet" media="screen, print" href="@Url.Content("~/Content/smartadmin/css/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.css")">
-
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    @*<link href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/3.1.2/css/buttons.dataTables.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.print.min.js"></script>*@
     <style>
         .slick-slide {
             margin: 0px 10px;
@@ -267,14 +280,14 @@
             </div>
         </div>
         @*<div class="col-md-3">
-            <div class="form-group">
-                <label></label><label></label>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" id="chektodo" name="chektodo" />
-                    <label for="scales">Ver todo</label>
+                <div class="form-group">
+                    <label></label><label></label>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="chektodo" name="chektodo" />
+                        <label for="scales">Ver todo</label>
+                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         <div class="col-md-4">
             <div class="form-group">
                 <label></label>
@@ -303,122 +316,123 @@
         <div class="panel ctm-panel" id="">
             <div class="panel-container ctm-panel-container show">
                 <div class="panel-content ctm-panel-content">
-                    <div id="cTabla" style="overflow-x:auto;">
-                        <table id="cTabla1_3" class="table table-bordered table-hover table-striped w-100">
-                            <thead>
-                                <tr style="background-color:#254368;color:white;" align="center">
-                                    <th>Tipo de Solicitud</th>
-                                    <th>Nombre</th>
-                                    <th>Empresa Propietaria</th>
-                                    <th>Enpresa Anterior</th>
-                                    <th>Fecha Legal</th>
-                                    <th>Fecha de Vencimiento</th>
-                                    <th>Fecha de Concesión</th>
-                                    <th>No. Registro</th>
-                                    <th>Pais</th>
-                                    <th>Clase</th>
-                                    <th>Estatus</th>
-                                    <th>Uso</th>
-                                    <th>No. Solicitud</th>
-                                    <th>Tipo de Registro</th>
-                                    <th>Persona que Solicito Registro</th>
-                                    <th>Despacho</th>
-                                    <th>Corresponsal</th>
-                                    <th>Licencia</th>
-                                    <th>Persona que Solicito Licencia</th>
-                                    <th>Cesión</th>
-                                    <th>Persona que Solicito Cesión</th>
-                                    <th>Fecha de Requerimiento del Negocio</th>
-                                    <th>Fecha de Instrucciones al Corresponsal</th>
-                                    <th>Fecha de Solicitud de Registro Ante la Autoridad Competente</th>
-                                    <th>Fecha de Solicitud de Busqueda</th>
-                                    <th>Fecha de Información de Resultados al Negocio</th>
-                                    <th>Fecha Comprobación de Uso</th>
-                                    <th>Fecha Declaración de Uso</th>
-                                </tr>
+                    <div id="cTabla">
+                        @*<table id="cTabla1" class="table table-bordered table-hover table-striped w-100">
+                                <thead>
+                                    <tr style="background-color:#254368;color:white;" align="center">
+                                        <th>Tipo de Solicitud</th>
+                                        <th>Nombre</th>
+                                        <th>Empresa Propietaria</th>
+                                        <th>Enpresa Anterior</th>
+                                        <th>Fecha Legal</th>
+                                        <th>Fecha de Vencimiento</th>
+                                        <th>Fecha de Concesión</th>
+                                        <th>No. Registro</th>
+                                        <th>Pais</th>
+                                        <th>Clase</th>
+                                        <th>Estatus</th>
+                                        <th>Uso</th>
+                                        <th>No. Solicitud</th>
+                                        <th>Tipo de Registro</th>
+                                        <th>Persona que Solicito Registro</th>
+                                        <th>Despacho</th>
+                                        <th>Corresponsal</th>
+                                        <th>Licencia</th>
+                                        <th>Persona que Solicito Licencia</th>
+                                        <th>Cesión</th>
+                                        <th>Persona que Solicito Cesión</th>
+                                        <th>Fecha de Requerimiento del Negocio</th>
+                                        <th>Fecha de Instrucciones al Corresponsal</th>
+                                        <th>Fecha de Solicitud de Registro Ante la Autoridad Competente</th>
+                                        <th>Fecha de Solicitud de Busqueda</th>
+                                        <th>Fecha de Información de Resultados al Negocio</th>
+                                        <th>Fecha Comprobación de Uso</th>
+                                        <th>Fecha Declaración de Uso</th>
+                                    </tr>
 
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                                </thead>
+                                <tbody></tbody>
+                            </table>*@
                     </div>
+
                     @*<div id="table-container">
 
-            @(Html.DevExtreme().DataGrid<RegistroMarca>
-                ()
-                .ID("tabla01")
-                .ShowBorders(true)
-                .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
-                .Paging(paging => paging.PageSize(10))
-                .Pager(pager =>
-                {
-                    pager.Visible(true);
-                    //pager.DisplayMode(GridPagerDisplayMode.Full);
-                    pager.ShowPageSizeSelector(true);
-                    pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
-                    pager.ShowInfo(true);
-                    pager.ShowNavigationButtons(true);
-                })
-                .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
-                .Columns(columns =>
-                {
-                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
-                        <% if (data.activo == false) { %>
-                        <div>
-                            <span class="dx-active-off"></span>
-                            <%- value %>
-                        </div>
-                        <% } else { %>
-                        <div>
-                            <span class="dx-active-on"></span>
-                            <%- value %>
-                        </div>
-                        <% } %>
-                    </text>).Caption("TIPO DE SOLICITUD");
-                    columns.AddFor(m => m.nombre).Caption("NOMBRE");
-                    columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
-                    columns.AddFor(m => m.empresa_anterior_desc).Caption("EMPRESA ANTIGUA");
-                    columns.AddFor(m => m.fecha_legalS).Caption("FECHA LEGAL").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_vencimientoS).Caption("FECHA VENCIMIENTO").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_concesionS).Caption("FECHA CONCESIÓN").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
-                    columns.AddFor(m => m.pais_desc).Caption("PAIS");
-                    columns.AddFor(m => m.clase_desc).Caption("CLASE");
-                    columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
-                    columns.AddFor(m => m.uso_desc).Caption("USO");
-                    columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
-                    columns.AddFor(m => m.tipo_registro_desc).Caption("TIPO REGISTRO");
-                    columns.AddFor(m => m.autor_registro_desc).Caption("PERSONA SOLICITO REGISTRO");
-                    columns.AddFor(m => m.despacho_desc).Caption("DESPACHO");
-                    columns.AddFor(m => m.corresponsal_desc).Caption("CORRESPONSAL");
-                    columns.AddFor(m => m.licencia_desc).Caption("LICENCIA");
-                    columns.AddFor(m => m.solicitante_licencia_desc).Caption("PERSONA SOLICITO LICENCIA");
-                    columns.AddFor(m => m.cesion_desc).Caption("CESIÓN");
-                    columns.AddFor(m => m.solicitante_cesion_desc).Caption("PERSONA SOLICITO CESIÓN");
-                    columns.AddFor(m => m.fecha_requerimientoS).Caption("REQUERIMIENTO DEL NEGOCIO").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_instruccionesS).Caption("INSTRUCCIONES AL CORRESPONSAL").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_registroS).Caption("SOLICITUD DE REGISTRO AUTORIDAD COMPETENTE").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_busquedaS).Caption("SOLICITUD DE BUSQUEDA").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_resultadosS).Caption("INFORMACIÓN DE RESULTADOS AL NEGOCIO").Format("dd/MM/yyyy");
-                    columns.AddFor(m => m.fecha_comprobacionS).Caption("COMPROBACIÓN DE USO").Format("dd/MM/yyyy");
-                    //columns.AddFor(m => m.fecha_declaracionS).Caption("DECLARACIÓN DE USO").Format("dd/MM/yyyy");
-                    //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
-                })
-            .Summary(s => s.TotalItems(items =>
-            {
-                items.Add().Column("nombre")
-                .SummaryType(SummaryType.Count);
-            })
-            )
-            .ColumnAutoWidth(true)
-            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
-            .Paging(p => p.PageSize(10))
-            .FilterRow(f => f.Visible(true))
-            .HeaderFilter(f => f.Visible(true))
+                            @(Html.DevExtreme().DataGrid<RegistroMarca>
+                                ()
+                                .ID("tabla01")
+                                .ShowBorders(true)
+                                .Scrolling(scrolling => scrolling.RowRenderingMode(GridRowRenderingMode.Virtual))
+                                .Paging(paging => paging.PageSize(10))
+                                .Pager(pager =>
+                                {
+                                    pager.Visible(true);
+                                    //pager.DisplayMode(GridPagerDisplayMode.Full);
+                                    pager.ShowPageSizeSelector(true);
+                                    pager.AllowedPageSizes(new JS("[10, 20, 50, 100]"));
+                                    pager.ShowInfo(true);
+                                    pager.ShowNavigationButtons(true);
+                                })
+                                .DataSource(d => d.WebApi().Controller("Tablas").LoadAction("Get").Key("id").LoadParams(new { _params = new JS("function() { return buildValidationSuggestionRequest(); }") }))
+                                .Columns(columns =>
+                                {
+                                columns.AddFor(m => m.solicitud_tipo_desc).CellTemplate(@<text>
+                                        <% if (data.activo == false) { %>
+                                        <div>
+                                            <span class="dx-active-off"></span>
+                                            <%- value %>
+                                        </div>
+                                        <% } else { %>
+                                        <div>
+                                            <span class="dx-active-on"></span>
+                                            <%- value %>
+                                        </div>
+                                        <% } %>
+                                    </text>).Caption("TIPO DE SOLICITUD");
+                                    columns.AddFor(m => m.nombre).Caption("NOMBRE");
+                                    columns.AddFor(m => m.empresa_desc).Caption("EMPRESA PROPIETARIA");
+                                    columns.AddFor(m => m.empresa_anterior_desc).Caption("EMPRESA ANTIGUA");
+                                    columns.AddFor(m => m.fecha_legalS).Caption("FECHA LEGAL").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_vencimientoS).Caption("FECHA VENCIMIENTO").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_concesionS).Caption("FECHA CONCESIÓN").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.no_registro).Caption("No REGISTRO");
+                                    columns.AddFor(m => m.pais_desc).Caption("PAIS");
+                                    columns.AddFor(m => m.clase_desc).Caption("CLASE");
+                                    columns.AddFor(m => m.estatus_desc).Caption("ESTATUS");
+                                    columns.AddFor(m => m.uso_desc).Caption("USO");
+                                    columns.AddFor(m => m.no_solicitud).Caption("No SOLICITUD");
+                                    columns.AddFor(m => m.tipo_registro_desc).Caption("TIPO REGISTRO");
+                                    columns.AddFor(m => m.autor_registro_desc).Caption("PERSONA SOLICITO REGISTRO");
+                                    columns.AddFor(m => m.despacho_desc).Caption("DESPACHO");
+                                    columns.AddFor(m => m.corresponsal_desc).Caption("CORRESPONSAL");
+                                    columns.AddFor(m => m.licencia_desc).Caption("LICENCIA");
+                                    columns.AddFor(m => m.solicitante_licencia_desc).Caption("PERSONA SOLICITO LICENCIA");
+                                    columns.AddFor(m => m.cesion_desc).Caption("CESIÓN");
+                                    columns.AddFor(m => m.solicitante_cesion_desc).Caption("PERSONA SOLICITO CESIÓN");
+                                    columns.AddFor(m => m.fecha_requerimientoS).Caption("REQUERIMIENTO DEL NEGOCIO").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_instruccionesS).Caption("INSTRUCCIONES AL CORRESPONSAL").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_registroS).Caption("SOLICITUD DE REGISTRO AUTORIDAD COMPETENTE").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_busquedaS).Caption("SOLICITUD DE BUSQUEDA").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_resultadosS).Caption("INFORMACIÓN DE RESULTADOS AL NEGOCIO").Format("dd/MM/yyyy");
+                                    columns.AddFor(m => m.fecha_comprobacionS).Caption("COMPROBACIÓN DE USO").Format("dd/MM/yyyy");
+                                    //columns.AddFor(m => m.fecha_declaracionS).Caption("DECLARACIÓN DE USO").Format("dd/MM/yyyy");
+                                    //columns.AddFor(m => m.fc).Caption("FECHA DE REGISTRO").Format("dd/MM/yyyy");
+                                })
+                            .Summary(s => s.TotalItems(items =>
+                            {
+                                items.Add().Column("nombre")
+                                .SummaryType(SummaryType.Count);
+                            })
+                            )
+                            .ColumnAutoWidth(true)
+                            .SearchPanel(p => p.Visible(true).Placeholder("Buscar"))
+                            .Paging(p => p.PageSize(10))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
 
-            )
+                            )
 
 
-        </div>*@
+                        </div>*@
                 </div>
             </div>
 
@@ -531,112 +545,11 @@
     <script src="@Url.Content("~/Content/smartadmin/js/formplugins/bootstrap-daterangepicker/bootstrap-daterangepicker.js")"></script>
 
     <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            var today = new Date();
-            var now = today.toLocaleString();
-            //$('#cTabla1_3 thead tr').clone(true).appendTo('#cTabla1_3 thead');
-            //$('#cTabla1_3 thead tr:eq(1) th').each(function (i) {
-            //    var title = $(this).text();
-            //    if (parseInt(i) >= 0 && parseInt(i) < 20) {
-            //        $(this).html('<input type="text" class="form-control form-control-sm" placeholder="' + title + '" data-index="' + i + '"/>');
-            //    }
-            //    else {
-            //        $(this).html('');
-            //    }
 
-            //});
-
-            tablita3 = $('#cTabla1_3').DataTable({
-                scrollY: 500,
-                scrollX: true,
-                scrollCollapse: true,
-                autoWidth: false,
-                pageLength: 10,
-                paging: true,
-                bPaginate: true,
-                pagingType: "full_numbers",
-                orderCellsTop: true,
-                stateSave: false,
-                "search": {
-                    "search": busqueda
-                },
-                /*responsive: true,*/
-                dom:
-                    /*	--- Layout Structure 
-                        --- Options
-                        l	-	length changing input control
-                        f	-	filtering input
-                        t	-	The table!
-                        i	-	Table information summary
-                        p	-	pagination control
-                        r	-	processing display element
-                        B	-	buttons
-                        R	-	ColReorder
-                        S	-	Select
-        
-                        --- Markup
-                        < and >				- div element
-                        <"class" and >		- div with a class
-                        <"#id" and >		- div with an ID
-                        <"#id.class" and >	- div with an ID and a class
-        
-                        
-                    */
-                    "<'row mb-3'<'col-sm-12 col-md-3 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-9 d-flex align-items-center justify-content-end'B>>" +
-                    "<'row'<'col-sm-12'tr>>" +
-                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-                buttons: [
-                    {
-                        extend: 'excelHtml5',
-                        text: 'Excel',
-                        titleAttr: 'Descargar Excel',
-                        filename: 'Solicitudes ' + now,
-                        className: 'btn-outline-success btn-sm mr-1'
-                    }
-                ],
-                'columnDefs': [
-                    {
-                        "targets": [1],
-                        "visible": false,
-                        "searchable": false
-                    }],
-                /*select: {
-                    style:    'multi',
-                    selector: 'td:first-child'
-                },*/
-                order: [
-                    [1, "desc"], [0, 'asc']
-                ]
-            });
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $(tablita3.table().container()).on('keyup', 'thead input', function () {
-                tablita3
-                    .column($(this).data('index'))
-                    .search(this.value)
-                    .draw();
-            });
-
-            $(tablita3.table().container()).on('change', 'thead select', function () {
-                tablita3
-                    .column($(this).data('index'))
-                    .search(this.value)
-                    .draw();
-            });
-
-
-        });
-        //$(function () {
-        //    $('#cTabla1_3').pagination({
-        //        items: 20,
-        //        itemsOnPage: 2,
-        //        cssStyle: 'light-theme',
-        //        onPageClick: function (pageNumber) { test(pageNumber) }
-        //    });
-        //});
-</script>
+    </script>
     <script type="text/javascript">
         var START_DATE = "@Html.Raw(DateTime.Now.AddDays(-60).ToString("yyyy-MM-dd"))";
         var END_DATE = "@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd"))";

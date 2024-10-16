@@ -368,7 +368,9 @@ namespace GISMVC.Controllers
                 //var contratos = GISMVC.Models.RegistroMarca.Get(busqueda, out total);
 
                 var solicitudes = GISMVC.Models.RegistroMarca.Get(0, "bef7d03f-d37b-41a2-8ec6-eb204d313a78");
-                string filename = "excel_solicitudes.xlsx";
+                DateTime localDate = DateTime.Now;
+                string formatted = localDate.ToString("yyyyMdd_Hmmss");
+                string filename = "solicitudes"+formatted+".xlsx";
                 XLWorkbook wb = new XLWorkbook();
 
                 var contentfolder = HttpContext.Server.MapPath("~/Content");
@@ -376,7 +378,7 @@ namespace GISMVC.Controllers
                        contentfolder, filename);
 
 
-                var ws1 = wb.Worksheets.Add("DATOS GENERALES");
+                var ws1 = wb.Worksheets.Add("Solicitudes");
 
                 ws1.Cell("A1").Value = "TIPO DE SOLICITUD";
                 ws1.Cell("B1").Value = "NOMBRE";

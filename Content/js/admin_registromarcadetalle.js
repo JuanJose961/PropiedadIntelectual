@@ -148,7 +148,7 @@ $(document).ready(function () {
     } else {
         document.getElementById("tipo_registromarca").value = propiedad;
         solicitud_select = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.id == solicitud & i.activo == 1 & i.atendido==0);
-        //alert(solicitud_select[0]);
+        //alert(solicitud_select[0].nombre);
         solicitudes_disponibles = solicitudes.filter(i => i.tipo_solicitud == propiedad & i.activo == 1 & i.atendido==0);
         $("#uu_021 option[value!=0]").remove();
         for (var i = 0; i < solicitudes_disponibles.length; i++) {

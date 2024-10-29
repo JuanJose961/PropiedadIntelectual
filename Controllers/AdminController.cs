@@ -410,8 +410,36 @@ namespace GISMVC.Controllers
                 ws1.Cell("Z1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
                 ws1.Cell("AA1").Value = "FECHA COMPROBACIÓN DE USO";
                 ws1.Cell("AB1").Value = "FECHA DECLARACIÓN DE USO";
+                ws1.Cell("AC1").Value = "ACTIVO";
                 ws1.Cell("A1").Style.Font.Bold = true;
                 ws1.Cell("B1").Style.Font.Bold = true;
+                ws1.Cell("C1").Style.Font.Bold = true;
+                ws1.Cell("D1").Style.Font.Bold = true;
+                ws1.Cell("E1").Style.Font.Bold = true;
+                ws1.Cell("F1").Style.Font.Bold = true;
+                ws1.Cell("G1").Style.Font.Bold = true;
+                ws1.Cell("H1").Style.Font.Bold = true;
+                ws1.Cell("I1").Style.Font.Bold = true;
+                ws1.Cell("J1").Style.Font.Bold = true;
+                ws1.Cell("K1").Style.Font.Bold = true;
+                ws1.Cell("L1").Style.Font.Bold = true;
+                ws1.Cell("M1").Style.Font.Bold = true;
+                ws1.Cell("N1").Style.Font.Bold = true;
+                ws1.Cell("O1").Style.Font.Bold = true;
+                ws1.Cell("P1").Style.Font.Bold = true;
+                ws1.Cell("Q1").Style.Font.Bold = true;
+                ws1.Cell("R1").Style.Font.Bold = true;
+                ws1.Cell("S1").Style.Font.Bold = true;
+                ws1.Cell("T1").Style.Font.Bold = true;
+                ws1.Cell("U1").Style.Font.Bold = true;
+                ws1.Cell("V1").Style.Font.Bold = true;
+                ws1.Cell("W1").Style.Font.Bold = true;
+                ws1.Cell("X1").Style.Font.Bold = true;
+                ws1.Cell("Y1").Style.Font.Bold = true;
+                ws1.Cell("Z1").Style.Font.Bold = true;
+                ws1.Cell("AA1").Style.Font.Bold = true;
+                ws1.Cell("AB1").Style.Font.Bold = true;
+                ws1.Cell("AC1").Style.Font.Bold = true;
                 ws1.Cell("A1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                 ws1.Cell("B1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                 ws1.Cell("C1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
@@ -440,6 +468,7 @@ namespace GISMVC.Controllers
                 ws1.Cell("Z1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                 ws1.Cell("AA1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                 ws1.Cell("AB1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                ws1.Cell("AC1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
 
                 int cellIdx = 2;
                 foreach (var item in solicitudes)
@@ -472,6 +501,7 @@ namespace GISMVC.Controllers
                     ws1.Cell("Z" + cellIdx).Value = item.fecha_resultadosS;
                     ws1.Cell("AA" + cellIdx).Value = item.fecha_comprobacionS;
                     ws1.Cell("AB" + cellIdx).Value = item.fecha_declaracionS;
+                    ws1.Cell("AC" + cellIdx).Value = item.activo;
                     cellIdx += 1;
                 }
                 if (filename != "")

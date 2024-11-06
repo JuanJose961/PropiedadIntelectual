@@ -180,7 +180,7 @@
                     <div class="form-group" id="uu_05_c">
                         <label>Rol</label>
                         <select class="select2 form-control input-sm custom-select" id="uu_05" autocomplete="off" style="width: 100%;">
-                            <option value="NA" selected>Seleccionar Rol</option>
+                            <option value="NA" selected disabled>Seleccionar Rol</option>
                             @foreach (AspNetRoles item in ViewBag.roles)
                             {
                                 <option value="@item.descripcion">@item.descripcion</option>

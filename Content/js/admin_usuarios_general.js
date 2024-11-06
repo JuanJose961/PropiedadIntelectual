@@ -50,8 +50,12 @@ function ModalUsuario() {
     $("#uu_02").val(usuario_actual.email);
     /*$("#uu_03").val(usuario_actual.phone);
     $("#uu_04").val(usuario_actual.cellphone);*/
+    $("#accesos").empty();
     $("#uu_05").val(usuario_actual.roles.descripcion).trigger("change");
     //$("#uu_06").val(usuario_actual.negocio.id).trigger("change");
+    for (var i = 1; i <= 200; i++) {
+        $("#ng_" + i).prop("checked", false);
+    }
     $("#update01").modal("show");
 }
 
@@ -396,7 +400,7 @@ function ConfirmaEliminar01() {
 }
 var accesos = new Array();
 $(document).on("change", "#uu_05", function (event) {
-
+    $("#accesos").empty();
     var val = $("#uu_05 option:selected").attr("rid");
     if (usuario_actual.id == "") {
         var sended_url = services_url + "SelectAccesoVistaByRol";

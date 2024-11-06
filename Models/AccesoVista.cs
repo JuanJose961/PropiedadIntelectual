@@ -19,6 +19,7 @@ namespace GISMVC.Models
         //
         public bool adm_usuarios { get; set; } = false;
         public bool adm_roles { get; set; } = false;
+        public bool adm_dashboard { get; set; } = false;
         ////
         public bool pi_propiedadindustrial { get; set; } = false;
         public bool pi_propiedadintelectual { get; set; } = false;
@@ -73,6 +74,10 @@ namespace GISMVC.Models
                     if (accesos.Where(i => i.modulo == "GENERAL" && i.url == "Roles" && i.acceso == 1).Count() > 0)
                     {
                         res.adm_roles = true;
+                    }
+                    if (accesos.Where(i => i.modulo == "GENERAL" && i.url == "Dashboard" && i.acceso == 1).Count() > 0)
+                    {
+                        res.adm_dashboard = true;
                     }
                 }
                 if (accesos.Where(i => i.modulo == "PI" && i.acceso == 1).Count() > 0)

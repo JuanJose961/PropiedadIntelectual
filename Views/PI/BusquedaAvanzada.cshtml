@@ -108,6 +108,7 @@
                 <label for="uu_02">Tipo de solicitud</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_02" autocomplete="off" style="width: 100%;">
                     @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                    @*<option value="0" selected>Todos</option>*@
                     @foreach (TipoSolicitud item in ViewBag.tipo_solicitud)
                     {
                         <option value="@item.id">@item.nombre</option>
@@ -304,8 +305,8 @@
             <button type="button" class="btn btn-default waves-effect waves-themed" onclick="Limpiar();" id="btnCancelar"><i class="fa fa-ban"></i> Limpiar</button>
             <button type="button" class="btn btn-info" onclick="BuscarRegistroMarca();" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
             @*<a type="button" class="btn btn-info" href="~/PI/BusquedaAvanzada?tipo=1" id="btnBuscar"><i class="fa fa-search"></i> Buscar</a>*@
-            @*<button type="button" class="btn btn-success" onclick="Excel();" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>*@
-            <button type="button" class="btn btn-success" onclick="location.href = '/Admin/DescargarExcelRegistroMarca';" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>
+            <button type="button" class="btn btn-success" onclick="Excel();" id="btnGenerar"><i class="fa fa-file-excel"></i> Generar</button>
+            @*<button type="button" class="btn btn-success" onclick="location.href = '/Admin/DescargarExcelRegistroMarca';" id="btnBuscar"><i class="fa fa-file-excel"></i> Excel</button>ok*@
             @*<a type="button" href="/Admin/DescargarExcelRegistroMarca" class="btn btn-success btn-sm waves-effect waves-themed"><i class="fa fa-download"></i> Excel</a>*@
         </div>
     </div>

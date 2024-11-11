@@ -400,6 +400,7 @@ function BuscarRegistroMarca() {
 
 function Excel() {
     if (Validar() != false) {
+        var cktodo = document.getElementById("chektodo");
         var solicitud_tipo = $("#uu_02 option:selected").val();
         var id_usuario = eu_lu.id;
         var empresa = $("#uu_00 option:selected").val();
@@ -410,8 +411,18 @@ function Excel() {
         var uso = $("#uu_39 option:selected").val();
         var tipo_registro_solicitud = $("#uu_12 option:selected").val();
         var nombre = $("#uu_022").val();
-        
-        
+        var no_registro = $("#uu_03").val();
+        var no_solicitud = $("#uu_11").val();
+        var fecha_legalS = $("#uu_04").val();
+        var fecha_vencimientoS = $("#uu_05").val();
+        var fecha_concesionS = $("#uu_06").val();
+        var fecha_quinquenio_anualidadS = $("#uu_37").val();
+        var fecha_requerimientoS = $("#uu_21").val();
+        var fecha_instruccionesS = $("#uu_22").val();
+        var fecha_registroS = $("#uu_23").val();
+        var fecha_busquedaS = $("#uu_24").val();
+        var fecha_resultadosS = $("#uu_25").val();
+        var fecha_comprobacionS = $("#uu_26").val();
         var sended_url = services_url + "ExcelRegistroMarca";
         //location.href = hosturl + "Admin/DescargarExcelRegistroMarca";
         //location.href = hosturl + "PI/BusquedaAvanzada";
@@ -428,7 +439,19 @@ function Excel() {
                 estatus: estatus,
                 uso: uso,
                 tipo_registro_solicitud: tipo_registro_solicitud,
-                nombre: nombre
+                nombre: nombre,
+                no_registro: no_registro,
+                no_solicitud: no_solicitud,
+                fecha_legalS: fecha_legalS,
+                fecha_vencimientoS: fecha_vencimientoS,
+                fecha_concesionS: fecha_concesionS,
+                fecha_quinquenio_anualidadS: fecha_quinquenio_anualidadS,
+                fecha_requerimientoS: fecha_requerimientoS,
+                fecha_instruccionesS: fecha_instruccionesS,
+                fecha_registroS: fecha_registroS,
+                fecha_busquedaS: fecha_busquedaS,
+                fecha_resultadosS: fecha_resultadosS,
+                fecha_comprobacionS: fecha_comprobacionS,
             }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -459,7 +482,9 @@ function Excel() {
                         /*document.getElementById('tabla01').innerHTML = "<tr><td>"+registro[0].solicitud_tipo_desc+"</td><td>"+registro[0].nombre+"</td></tr>";*/
                         //comentarios = jsonResponse.content[1];
                         //RedibujaComentarios(desabilitar);
-
+                        var rutaDocumento = hosturl + 'Content/PI/' + jsonResponse.info;
+                        window.open(rutaDocumento, 'Download');
+                        console.log("success");
                     } else {
                         registro = {
                             id: 0,

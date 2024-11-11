@@ -4245,27 +4245,262 @@ namespace GISMVC.Controllers
             //--------------------
             try
             {
-                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo, modelo.id_usuario, modelo.empresa, modelo.empresa_anterior, modelo.clase, modelo.pais, modelo.estatus, modelo.uso, modelo.tipo_registro_solicitud, modelo.nombre);
+                //var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo, modelo.id_usuario, modelo.empresa, modelo.empresa_anterior, modelo.clase, modelo.pais, modelo.estatus, modelo.uso, modelo.tipo_registro_solicitud, modelo.nombre);
+                var data = RegistroMarca.BusquedaAvanzadaRegistroMarca(modelo.solicitud_tipo, modelo.id_usuario, modelo.empresa, modelo.empresa_anterior, modelo.clase, modelo.pais, modelo.estatus, modelo.uso, modelo.tipo_registro_solicitud, modelo.nombre, modelo.no_registro, modelo.no_solicitud, modelo.fecha_legalS, modelo.fecha_vencimientoS, modelo.fecha_concesionS, modelo.fecha_quinquenio_anualidadS, modelo.fecha_requerimientoS, modelo.fecha_instruccionesS, modelo.fecha_registroS, modelo.fecha_busquedaS, modelo.fecha_resultadosS, modelo.fecha_comprobacionS);
                 if (data.Count > 0)
                 {
-                    res.flag = true;
-                    res.description = "Se genero el archivo";
-                    res.content.Add(data);
+                    //res.flag = true;
+                    //res.description = "Se genero el archivo";
+                    //res.content.Add(data);
                     //res.content.Add(comentarios);
                     //res.content.Add(archivos);
                     //var datos = data[0].nombre;
                     //var descarga = Utility.hosturl + "Admin/DescargarExcelRegistroMarca(modelo)";
+                    //var solicitudes = GISMVC.Models.RegistroMarca.Get(0, "bef7d03f-d37b-41a2-8ec6-eb204d313a78");
+                    DateTime localDate = DateTime.Now;
+                    string formatted = localDate.ToString("yyyyMdd_Hmmss");
+                    string fileName = "solicitudes" + formatted + ".xlsx";
+                    XLWorkbook wb = new XLWorkbook();
+                    string pathFile = AppDomain.CurrentDomain.BaseDirectory + "Content/PI/" + fileName;
+
+                    var ws1 = wb.Worksheets.Add("Solicitudes");
+                    ws1.Cell("C1").Value = "EMPRESA";
+                    ws1.Cell("D1").Value = "EMPRESA ANTERIOR";
+                    ws1.Cell("E1").Value = "FECHA LEGAL";
+                    ws1.Cell("F1").Value = "FECHA VENCIMIENTO";
+                    ws1.Cell("G1").Value = "FECHA CONCESIÓN";
+                    ws1.Cell("H1").Value = "No. REGISTRO";
+                    ws1.Cell("I1").Value = "PAIS";
+                    ws1.Cell("J1").Value = "CLASE";
+                    ws1.Cell("K1").Value = "ESTATUS";
+                    ws1.Cell("L1").Value = "USO";
+                    ws1.Cell("M1").Value = "No. SOLICITUD";
+                    ws1.Cell("N1").Value = "TIPO REGISTRO";
+                    ws1.Cell("O1").Value = "SOLICITO REGISTRO";
+                    ws1.Cell("P1").Value = "DESPACHO";
+                    ws1.Cell("Q1").Value = "CORRESPONSAL";
+                    ws1.Cell("R1").Value = "LICENCIA";
+                    ws1.Cell("S1").Value = "SOLICITO LICENCIA";
+                    ws1.Cell("T1").Value = "CESIÓN";
+                    ws1.Cell("U1").Value = "SOLICITO CESIÓN";
+                    ws1.Cell("V1").Value = "FECHA REQUERIMIENTO DEL NEGOCIO";
+                    ws1.Cell("W1").Value = "FECHA INSTRUCCIONES AL CORRESPONSAL";
+                    ws1.Cell("X1").Value = "FECHA REGISTRO ANTE LA AUTOTIDAD";
+                    ws1.Cell("Y1").Value = "FECHA SOLICITUD DE BUSQUEDA";
+                    ws1.Cell("Z1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
+                    ws1.Cell("AA1").Value = "FECHA COMPROBACIÓN DE USO";
+                    ws1.Cell("AB1").Value = "FECHA DECLARACIÓN DE USO";
+                    ws1.Cell("AC1").Value = "ACTIVO";
+                    ws1.Cell("A1").Style.Font.Bold = true;
+                    ws1.Cell("B1").Style.Font.Bold = true;
+                    ws1.Cell("C1").Style.Font.Bold = true;
+                    ws1.Cell("D1").Style.Font.Bold = true;
+                    ws1.Cell("E1").Style.Font.Bold = true;
+                    ws1.Cell("F1").Style.Font.Bold = true;
+                    ws1.Cell("G1").Style.Font.Bold = true;
+                    ws1.Cell("H1").Style.Font.Bold = true;
+                    ws1.Cell("I1").Style.Font.Bold = true;
+                    ws1.Cell("J1").Style.Font.Bold = true;
+                    ws1.Cell("K1").Style.Font.Bold = true;
+                    ws1.Cell("L1").Style.Font.Bold = true;
+                    ws1.Cell("M1").Style.Font.Bold = true;
+                    ws1.Cell("N1").Style.Font.Bold = true;
+                    ws1.Cell("O1").Style.Font.Bold = true;
+                    ws1.Cell("P1").Style.Font.Bold = true;
+                    ws1.Cell("Q1").Style.Font.Bold = true;
+                    ws1.Cell("R1").Style.Font.Bold = true;
+                    ws1.Cell("S1").Style.Font.Bold = true;
+                    ws1.Cell("T1").Style.Font.Bold = true;
+                    ws1.Cell("U1").Style.Font.Bold = true;
+                    ws1.Cell("V1").Style.Font.Bold = true;
+                    ws1.Cell("W1").Style.Font.Bold = true;
+                    ws1.Cell("X1").Style.Font.Bold = true;
+                    ws1.Cell("Y1").Style.Font.Bold = true;
+                    ws1.Cell("Z1").Style.Font.Bold = true;
+                    ws1.Cell("AA1").Style.Font.Bold = true;
+                    ws1.Cell("AB1").Style.Font.Bold = true;
+                    ws1.Cell("AC1").Style.Font.Bold = true;
+                    ws1.Cell("A1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("B1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("C1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("D1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("E1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("F1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("G1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("H1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("I1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("J1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("K1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("L1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("M1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("N1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("O1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("P1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("Q1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("R1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("S1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("T1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("U1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("V1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("W1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("X1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("Y1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("Z1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AA1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AB1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AC1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    int cellIdx = 2;
+                    //foreach (var item in solicitudes)
+                    foreach (var item in data)
+                    {
+                        ws1.Cell("A" + cellIdx).Value = item.solicitud_tipo_desc;
+                        ws1.Cell("B" + cellIdx).Value = item.nombre;
+                        ws1.Cell("C" + cellIdx).Value = item.empresa_desc;
+                        ws1.Cell("D" + cellIdx).Value = item.empresa_anterior_desc;
+                        ws1.Cell("E" + cellIdx).Value = item.fecha_legalS;
+                        ws1.Cell("F" + cellIdx).Value = item.fecha_vencimientoS;
+                        ws1.Cell("G" + cellIdx).Value = item.fecha_concesionS;
+                        ws1.Cell("H" + cellIdx).Value = item.no_registro;
+                        ws1.Cell("I" + cellIdx).Value = item.pais_desc;
+                        ws1.Cell("J" + cellIdx).Value = item.clase_desc;
+                        ws1.Cell("K" + cellIdx).Value = item.estatus_desc;
+                        ws1.Cell("L" + cellIdx).Value = item.uso_desc;
+                        ws1.Cell("M" + cellIdx).Value = item.no_solicitud;
+                        ws1.Cell("N" + cellIdx).Value = item.tipo_registro_desc;
+                        ws1.Cell("O" + cellIdx).Value = item.autor_registro_desc;
+                        ws1.Cell("P" + cellIdx).Value = item.despacho_desc;
+                        ws1.Cell("Q" + cellIdx).Value = item.corresponsal_desc;
+                        ws1.Cell("R" + cellIdx).Value = item.licencia_desc;
+                        ws1.Cell("S" + cellIdx).Value = item.solicitante_licencia_desc;
+                        ws1.Cell("T" + cellIdx).Value = item.cesion_desc;
+                        ws1.Cell("U" + cellIdx).Value = item.solicitante_cesion_desc;
+                        ws1.Cell("V" + cellIdx).Value = item.fecha_requerimientoS;
+                        ws1.Cell("W" + cellIdx).Value = item.fecha_instruccionesS;
+                        ws1.Cell("X" + cellIdx).Value = item.fecha_registroS;
+                        ws1.Cell("Y" + cellIdx).Value = item.fecha_busquedaS;
+                        ws1.Cell("Z" + cellIdx).Value = item.fecha_resultadosS;
+                        ws1.Cell("AA" + cellIdx).Value = item.fecha_comprobacionS;
+                        ws1.Cell("AB" + cellIdx).Value = item.fecha_declaracionS;
+                        ws1.Cell("AC" + cellIdx).Value = item.activo;
+                        cellIdx += 1;
+                    }
+                    if (fileName != "")
+                    {
+                        wb.SaveAs(pathFile);
+                        res.flag = true;
+                        res.description = "Se genero el archivo";
+                        res.info = fileName;
+                    }
                 }
                 else
                 {
-                    res.flag = false;
-                    res.description = "No existe la información";
+                    DateTime localDate = DateTime.Now;
+                    string formatted = localDate.ToString("yyyyMdd_Hmmss");
+                    string fileName = "solicitudes" + formatted + ".xlsx";
+                    XLWorkbook wb = new XLWorkbook();
+                    string pathFile = AppDomain.CurrentDomain.BaseDirectory + "Content/PI/" + fileName;
+
+                    var ws1 = wb.Worksheets.Add("Solicitudes");
+                    ws1.Cell("C1").Value = "EMPRESA";
+                    ws1.Cell("D1").Value = "EMPRESA ANTERIOR";
+                    ws1.Cell("E1").Value = "FECHA LEGAL";
+                    ws1.Cell("F1").Value = "FECHA VENCIMIENTO";
+                    ws1.Cell("G1").Value = "FECHA CONCESIÓN";
+                    ws1.Cell("H1").Value = "No. REGISTRO";
+                    ws1.Cell("I1").Value = "PAIS";
+                    ws1.Cell("J1").Value = "CLASE";
+                    ws1.Cell("K1").Value = "ESTATUS";
+                    ws1.Cell("L1").Value = "USO";
+                    ws1.Cell("M1").Value = "No. SOLICITUD";
+                    ws1.Cell("N1").Value = "TIPO REGISTRO";
+                    ws1.Cell("O1").Value = "SOLICITO REGISTRO";
+                    ws1.Cell("P1").Value = "DESPACHO";
+                    ws1.Cell("Q1").Value = "CORRESPONSAL";
+                    ws1.Cell("R1").Value = "LICENCIA";
+                    ws1.Cell("S1").Value = "SOLICITO LICENCIA";
+                    ws1.Cell("T1").Value = "CESIÓN";
+                    ws1.Cell("U1").Value = "SOLICITO CESIÓN";
+                    ws1.Cell("V1").Value = "FECHA REQUERIMIENTO DEL NEGOCIO";
+                    ws1.Cell("W1").Value = "FECHA INSTRUCCIONES AL CORRESPONSAL";
+                    ws1.Cell("X1").Value = "FECHA REGISTRO ANTE LA AUTOTIDAD";
+                    ws1.Cell("Y1").Value = "FECHA SOLICITUD DE BUSQUEDA";
+                    ws1.Cell("Z1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
+                    ws1.Cell("AA1").Value = "FECHA COMPROBACIÓN DE USO";
+                    ws1.Cell("AB1").Value = "FECHA DECLARACIÓN DE USO";
+                    ws1.Cell("AC1").Value = "ACTIVO";
+                    ws1.Cell("A1").Style.Font.Bold = true;
+                    ws1.Cell("B1").Style.Font.Bold = true;
+                    ws1.Cell("C1").Style.Font.Bold = true;
+                    ws1.Cell("D1").Style.Font.Bold = true;
+                    ws1.Cell("E1").Style.Font.Bold = true;
+                    ws1.Cell("F1").Style.Font.Bold = true;
+                    ws1.Cell("G1").Style.Font.Bold = true;
+                    ws1.Cell("H1").Style.Font.Bold = true;
+                    ws1.Cell("I1").Style.Font.Bold = true;
+                    ws1.Cell("J1").Style.Font.Bold = true;
+                    ws1.Cell("K1").Style.Font.Bold = true;
+                    ws1.Cell("L1").Style.Font.Bold = true;
+                    ws1.Cell("M1").Style.Font.Bold = true;
+                    ws1.Cell("N1").Style.Font.Bold = true;
+                    ws1.Cell("O1").Style.Font.Bold = true;
+                    ws1.Cell("P1").Style.Font.Bold = true;
+                    ws1.Cell("Q1").Style.Font.Bold = true;
+                    ws1.Cell("R1").Style.Font.Bold = true;
+                    ws1.Cell("S1").Style.Font.Bold = true;
+                    ws1.Cell("T1").Style.Font.Bold = true;
+                    ws1.Cell("U1").Style.Font.Bold = true;
+                    ws1.Cell("V1").Style.Font.Bold = true;
+                    ws1.Cell("W1").Style.Font.Bold = true;
+                    ws1.Cell("X1").Style.Font.Bold = true;
+                    ws1.Cell("Y1").Style.Font.Bold = true;
+                    ws1.Cell("Z1").Style.Font.Bold = true;
+                    ws1.Cell("AA1").Style.Font.Bold = true;
+                    ws1.Cell("AB1").Style.Font.Bold = true;
+                    ws1.Cell("AC1").Style.Font.Bold = true;
+                    ws1.Cell("A1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("B1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("C1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("D1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("E1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("F1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("G1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("H1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("I1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("J1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("K1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("L1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("M1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("N1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("O1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("P1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("Q1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("R1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("S1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("T1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("U1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("V1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("W1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("X1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("Y1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("Z1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AA1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AB1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AC1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("A2").Value = "No existe información con los filtros seleccionados";
+                    if (fileName != "")
+                    {
+                        wb.SaveAs(pathFile);
+                        res.flag = true;
+                        res.description = "No existe la información";
+                        res.info = fileName;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 res.flag = false;
                 res.description = "Error: " + ex.Message;
+                res.info = "Error";
             }
             finally
             {

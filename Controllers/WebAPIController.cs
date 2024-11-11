@@ -4283,14 +4283,24 @@ namespace GISMVC.Controllers
                     ws1.Cell("S1").Value = "SOLICITO LICENCIA";
                     ws1.Cell("T1").Value = "CESIÓN";
                     ws1.Cell("U1").Value = "SOLICITO CESIÓN";
-                    ws1.Cell("V1").Value = "FECHA REQUERIMIENTO DEL NEGOCIO";
-                    ws1.Cell("W1").Value = "FECHA INSTRUCCIONES AL CORRESPONSAL";
-                    ws1.Cell("X1").Value = "FECHA REGISTRO ANTE LA AUTOTIDAD";
-                    ws1.Cell("Y1").Value = "FECHA SOLICITUD DE BUSQUEDA";
-                    ws1.Cell("Z1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
-                    ws1.Cell("AA1").Value = "FECHA COMPROBACIÓN DE USO";
-                    ws1.Cell("AB1").Value = "FECHA DECLARACIÓN DE USO";
-                    ws1.Cell("AC1").Value = "ACTIVO";
+                    ws1.Cell("V1").Value = "ACTIVO";
+                    if (modelo.cktodo == 1)
+                    {
+                        ws1.Cell("W1").Value = "FECHA REQUERIMIENTO DEL NEGOCIO";
+                        ws1.Cell("X1").Value = "COMPLETO";
+                        ws1.Cell("Y1").Value = "FECHA INSTRUCCIONES AL CORRESPONSAL";
+                        ws1.Cell("Z1").Value = "COMPLETO";
+                        ws1.Cell("AA1").Value = "FECHA REGISTRO ANTE LA AUTOTIDAD";
+                        ws1.Cell("AB1").Value = "COMPLETO";
+                        ws1.Cell("AC1").Value = "FECHA SOLICITUD DE BUSQUEDA";
+                        ws1.Cell("AD1").Value = "COMPLETO";
+                        ws1.Cell("AE1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
+                        ws1.Cell("AF1").Value = "COMPLETO";
+                        ws1.Cell("AG1").Value = "FECHA COMPROBACIÓN DE USO";
+                        ws1.Cell("AH1").Value = "COMPLETO";
+                        ws1.Cell("AI1").Value = "FECHA DECLARACIÓN DE USO";
+                        ws1.Cell("AJ1").Value = "COMPLETO";
+                    }
                     ws1.Cell("A1").Style.Font.Bold = true;
                     ws1.Cell("B1").Style.Font.Bold = true;
                     ws1.Cell("C1").Style.Font.Bold = true;
@@ -4313,13 +4323,23 @@ namespace GISMVC.Controllers
                     ws1.Cell("T1").Style.Font.Bold = true;
                     ws1.Cell("U1").Style.Font.Bold = true;
                     ws1.Cell("V1").Style.Font.Bold = true;
-                    ws1.Cell("W1").Style.Font.Bold = true;
-                    ws1.Cell("X1").Style.Font.Bold = true;
-                    ws1.Cell("Y1").Style.Font.Bold = true;
-                    ws1.Cell("Z1").Style.Font.Bold = true;
-                    ws1.Cell("AA1").Style.Font.Bold = true;
-                    ws1.Cell("AB1").Style.Font.Bold = true;
-                    ws1.Cell("AC1").Style.Font.Bold = true;
+                    if (modelo.cktodo == 1)
+                    {
+                        ws1.Cell("W1").Style.Font.Bold = true;
+                        ws1.Cell("X1").Style.Font.Bold = true;
+                        ws1.Cell("Y1").Style.Font.Bold = true;
+                        ws1.Cell("Z1").Style.Font.Bold = true;
+                        ws1.Cell("AA1").Style.Font.Bold = true;
+                        ws1.Cell("AB1").Style.Font.Bold = true;
+                        ws1.Cell("AC1").Style.Font.Bold = true;
+                        ws1.Cell("AD1").Style.Font.Bold = true;
+                        ws1.Cell("AE1").Style.Font.Bold = true;
+                        ws1.Cell("AF1").Style.Font.Bold = true;
+                        ws1.Cell("AG1").Style.Font.Bold = true;
+                        ws1.Cell("AH1").Style.Font.Bold = true;
+                        ws1.Cell("AI1").Style.Font.Bold = true;
+                        ws1.Cell("AJ1").Style.Font.Bold = true;
+                    }
                     ws1.Cell("A1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("B1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("C1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
@@ -4342,13 +4362,23 @@ namespace GISMVC.Controllers
                     ws1.Cell("T1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("U1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("V1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("W1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("X1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("Y1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("Z1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("AA1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("AB1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
-                    ws1.Cell("AC1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    if (modelo.cktodo == 1)
+                    {
+                        ws1.Cell("W1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("X1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("Y1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("Z1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AA1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AB1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AC1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AD1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AE1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AF1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AG1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AH1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AI1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                        ws1.Cell("AJ1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    }
                     int cellIdx = 2;
                     //foreach (var item in solicitudes)
                     foreach (var item in data)
@@ -4374,14 +4404,25 @@ namespace GISMVC.Controllers
                         ws1.Cell("S" + cellIdx).Value = item.solicitante_licencia_desc;
                         ws1.Cell("T" + cellIdx).Value = item.cesion_desc;
                         ws1.Cell("U" + cellIdx).Value = item.solicitante_cesion_desc;
-                        ws1.Cell("V" + cellIdx).Value = item.fecha_requerimientoS;
-                        ws1.Cell("W" + cellIdx).Value = item.fecha_instruccionesS;
-                        ws1.Cell("X" + cellIdx).Value = item.fecha_registroS;
-                        ws1.Cell("Y" + cellIdx).Value = item.fecha_busquedaS;
-                        ws1.Cell("Z" + cellIdx).Value = item.fecha_resultadosS;
-                        ws1.Cell("AA" + cellIdx).Value = item.fecha_comprobacionS;
-                        ws1.Cell("AB" + cellIdx).Value = item.fecha_declaracionS;
-                        ws1.Cell("AC" + cellIdx).Value = item.activo;
+                        ws1.Cell("V" + cellIdx).Value = item.activo;
+                        if (modelo.cktodo == 1)
+                        {
+                            ws1.Cell("W" + cellIdx).Value = item.fecha_requerimientoS;
+                            ws1.Cell("X" + cellIdx).Value = item.fecha_requerimiento_completoS;
+                            ws1.Cell("Y" + cellIdx).Value = item.fecha_instruccionesS;
+                            ws1.Cell("Z" + cellIdx).Value = item.fecha_instrucciones_completoS;
+                            ws1.Cell("AA" + cellIdx).Value = item.fecha_registroS;
+                            ws1.Cell("AB" + cellIdx).Value = item.fecha_registro_completoS;
+                            ws1.Cell("AC" + cellIdx).Value = item.fecha_busquedaS;
+                            ws1.Cell("AD" + cellIdx).Value = item.fecha_busqueda_completoS;
+                            ws1.Cell("AE" + cellIdx).Value = item.fecha_resultadosS;
+                            ws1.Cell("AF" + cellIdx).Value = item.fecha_resultados_completoS;
+                            ws1.Cell("AG" + cellIdx).Value = item.fecha_comprobacionS;
+                            ws1.Cell("AH" + cellIdx).Value = item.fecha_comprobacion_completoS;
+                            ws1.Cell("AI" + cellIdx).Value = item.fecha_declaracionS;
+                            ws1.Cell("AJ" + cellIdx).Value = item.fecha_declaracion_completoS;
+                        }
+                        
                         cellIdx += 1;
                     }
                     if (fileName != "")
@@ -4421,13 +4462,20 @@ namespace GISMVC.Controllers
                     ws1.Cell("T1").Value = "CESIÓN";
                     ws1.Cell("U1").Value = "SOLICITO CESIÓN";
                     ws1.Cell("V1").Value = "FECHA REQUERIMIENTO DEL NEGOCIO";
-                    ws1.Cell("W1").Value = "FECHA INSTRUCCIONES AL CORRESPONSAL";
-                    ws1.Cell("X1").Value = "FECHA REGISTRO ANTE LA AUTOTIDAD";
-                    ws1.Cell("Y1").Value = "FECHA SOLICITUD DE BUSQUEDA";
-                    ws1.Cell("Z1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
-                    ws1.Cell("AA1").Value = "FECHA COMPROBACIÓN DE USO";
-                    ws1.Cell("AB1").Value = "FECHA DECLARACIÓN DE USO";
-                    ws1.Cell("AC1").Value = "ACTIVO";
+                    ws1.Cell("W1").Value = "COMPLETO";
+                    ws1.Cell("X1").Value = "FECHA INSTRUCCIONES AL CORRESPONSAL";
+                    ws1.Cell("Y1").Value = "COMPLETO";
+                    ws1.Cell("Z1").Value = "FECHA REGISTRO ANTE LA AUTOTIDAD";
+                    ws1.Cell("AA1").Value = "COMPLETO";
+                    ws1.Cell("AB1").Value = "FECHA SOLICITUD DE BUSQUEDA";
+                    ws1.Cell("AC1").Value = "COMPLETO";
+                    ws1.Cell("AD1").Value = "FECHA INFORMACIÓN DE RESULTADOS";
+                    ws1.Cell("AE1").Value = "COMPLETO";
+                    ws1.Cell("AF1").Value = "FECHA COMPROBACIÓN DE USO";
+                    ws1.Cell("AG1").Value = "COMPLETO";
+                    ws1.Cell("AH1").Value = "FECHA DECLARACIÓN DE USO";
+                    ws1.Cell("AI1").Value = "COMPLETO";
+                    ws1.Cell("AJ1").Value = "ACTIVO";
                     ws1.Cell("A1").Style.Font.Bold = true;
                     ws1.Cell("B1").Style.Font.Bold = true;
                     ws1.Cell("C1").Style.Font.Bold = true;
@@ -4457,6 +4505,13 @@ namespace GISMVC.Controllers
                     ws1.Cell("AA1").Style.Font.Bold = true;
                     ws1.Cell("AB1").Style.Font.Bold = true;
                     ws1.Cell("AC1").Style.Font.Bold = true;
+                    ws1.Cell("AD1").Style.Font.Bold = true;
+                    ws1.Cell("AE1").Style.Font.Bold = true;
+                    ws1.Cell("AF1").Style.Font.Bold = true;
+                    ws1.Cell("AG1").Style.Font.Bold = true;
+                    ws1.Cell("AH1").Style.Font.Bold = true;
+                    ws1.Cell("AI1").Style.Font.Bold = true;
+                    ws1.Cell("AJ1").Style.Font.Bold = true;
                     ws1.Cell("A1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("B1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("C1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
@@ -4486,6 +4541,13 @@ namespace GISMVC.Controllers
                     ws1.Cell("AA1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("AB1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("AC1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AD1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AE1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AF1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AG1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AH1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AI1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
+                    ws1.Cell("AJ1").Style.Fill.BackgroundColor = XLColor.FromArgb(189, 215, 238);
                     ws1.Cell("A2").Value = "No existe información con los filtros seleccionados";
                     if (fileName != "")
                     {

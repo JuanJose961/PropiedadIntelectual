@@ -482,6 +482,7 @@ namespace GISMVC.Models
         public DateTime nueva_fecha_vencimiento { get; set; } = DateTime.Parse("1969-01-01");
         public string nueva_fecha_vencimientoS { get; set; } = "";
         public string id_usuario { get; set; } = "";
+        public int cktodo { get; set; } = 0;
         public RegistroMarca()
         {
         }

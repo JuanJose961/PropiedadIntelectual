@@ -727,7 +727,7 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
         var tipo = parseInt($("#uu_02 option:selected").val());
         //var solicitud = solicitudes.filter(i => i.tipo == tipo & i.id == val);
         var solicitud = solicitudes.filter(i => i.solicitud_tipo == tipo & i.id == val);
-        document.getElementById("uu_022").value = solicitud[0].nombre; //nombre
+        //document.getElementById("uu_022").value = solicitud[0].nombre; //nombre ya no aplica, se oculto select
         if (solicitud.length > 0) {
             var empresa = solicitud[0].empresa;
             var pais = solicitud[0].pais;

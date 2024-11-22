@@ -129,6 +129,21 @@ function Editar(id) {
                 $("#uu_01").val(catalogo_actual.nombre);
                 $("#uu_02").val(catalogo_actual.productos);
                 $("#uu_03").datepicker("update", catalogo_actual.fecha_usoS);
+                $("#uu_07").val(catalogo_actual.usuario);
+                let date = new Date(catalogo_actual.fc)
+                let day = `${(date.getDate())}`.padStart(2, '0');
+                let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
+                let year = date.getFullYear();
+                let hrs = date.getHours();
+                let min = date.getMinutes();
+                let seg = date.getSeconds();
+                if (year > "1969") {
+                    $("#uu_08").val(`${day}/${month}/${year}  ${hrs}:${min}:${seg}`);
+                } else {
+                    $("#uu_08").val('');
+                }
+                document.getElementById("uu_07_c").style.display = "block";
+                document.getElementById("uu_08_c").style.display = "block";
 
                 $("#eliminausuario").show();
                 if (catalogo_actual.activo == 0) {

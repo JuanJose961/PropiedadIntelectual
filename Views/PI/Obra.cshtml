@@ -121,7 +121,7 @@
                                         <%- value %>
                                     </div>
                                     <% } %>
-                                </text>).Caption("NOMBRE");
+                                </text>).Caption("Nombre");
                                 columns.AddFor(m => m.tipo_solicitud_nombre).Caption("Tipo de Obra");
                                 columns.AddFor(m => m.empresa_nombre).Caption("Empresa");
                                 columns.AddFor(m => m.pais_nombre).Caption("Pais");
@@ -165,7 +165,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_06_c">
-                                        <label>Nombre</label>
+                                        <label>Nombre de inventor</label>
                                         <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" />
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group" id="uu_01_c">
-                                        <label>Nombre Patente</label>
+                                        <label>Nombre de obra</label>
                                         <input type="text" class="form-control input-sm" id="uu_01" autocomplete="off" />
                                     </div>
                                 </div>
@@ -263,6 +263,18 @@
                                     <div class="form-group" id="uu_13_c">
                                         <label>Observaciones</label>
                                         <input type="text" class="form-control input-sm" id="uu_13" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="col-md-8" id="uu_14_c" style="display:none;">
+                                    <div class="form-group">
+                                        <label>Creado por</label>
+                                        <input type="text" value="" class="form-control input-sm" id="uu_14" autocomplete="off" readonly disabled/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" id="uu_15_c" style="display:none;">
+                                    <div class="form-group">
+                                        <label>Fecha y Hora de creaci&oacuten</label>
+                                        <input type="text" value="" class="form-control input-sm" id="uu_15" autocomplete="off" readonly disabled/>
                                     </div>
                                 </div>
                             </div>

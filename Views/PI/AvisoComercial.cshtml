@@ -172,14 +172,12 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <div class="form-group" id="uu_01_c">
-                                            <label>Nombre</label>
+                                            <label>Nombre de aviso comercial</label>
                                             <input type="text" class="form-control input-sm" id="uu_01" autocomplete="off" />
                                         </div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <div class="form-group" id="uu_05_c">
                                             <label for="uu_05">Pa&iacute;s</label>
@@ -192,29 +190,44 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <div class="form-group" id="uu_03_c">
                                             <label>Fecha de uso</label>
                                             <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
                                         </div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <div class="form-group" id="uu_02_c">
                                             <label>Productos que protege</label>
                                             <input type="text" class="form-control input-sm" id="uu_02" autocomplete="off" />
                                         </div>
                                     </div>
-
                                     <div class="col-md-4">
                                         <div class="form-group" id="uu_06_c">
-                                            <label for="uu_04">Tipo</label>
+                                            <label for="uu_04">Tipo de registro</label>
                                             <select class="select2 form-control input-sm custom-select" id="uu_06" autocomplete="off" style="width: 100%;" disabled>
-                                                <option value="1" selected>Por definir</option>
+                                                @*<option value="1" selected>Por definir</option>*@
+                                                <option value="0" disabled selected>Seleccione una opci&oacuten</option>
+                                                @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
+                                                {
+                                                    <option value="@item.id">@item.nombre</option>
+                                                }
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-8" id="uu_07_c" style="display:none;">
+                                        <div class="form-group">
+                                            <label>Creado por</label>
+                                            <input type="text" value="" class="form-control input-sm" id="uu_07" autocomplete="off" readonly disabled />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" id="uu_08_c" style="display:none;">
+                                        <div class="form-group">
+                                            <label>Fecha y Hora de creaci&oacuten</label>
+                                            <input type="text" value="" class="form-control input-sm" id="uu_08" autocomplete="off" readonly disabled />
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tab02" role="tabpanel">

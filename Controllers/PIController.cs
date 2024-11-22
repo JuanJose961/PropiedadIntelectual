@@ -682,6 +682,7 @@ namespace GISMVC.Controllers
                 var empresas = GISMVC.Models.NegocioPI.Get();
                 var paises = GISMVC.Models.Pais.Get();
                 var usuarios = GISMVC.Models.AspNetUsers.Get();
+                var tipo_registro_solicitud = GISMVC.Models.TipoRegistro.Get();
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
@@ -689,6 +690,7 @@ namespace GISMVC.Controllers
                 ViewBag.empresas = empresas;
                 ViewBag.paises = paises;
                 ViewBag.usuarios = usuarios;
+                ViewBag.tipo_registro_solicitud = tipo_registro_solicitud;
                 return View();
             }
             else
@@ -712,6 +714,7 @@ namespace GISMVC.Controllers
                 var empresas = GISMVC.Models.NegocioPI.Get();
                 var paises = GISMVC.Models.Pais.Get();
                 var usuarios = GISMVC.Models.AspNetUsers.Get();
+                var tipo_registro_solicitud = GISMVC.Models.TipoRegistro.Get();
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
@@ -719,6 +722,7 @@ namespace GISMVC.Controllers
                 ViewBag.empresas = empresas;
                 ViewBag.paises = paises;
                 ViewBag.usuarios = usuarios;
+                ViewBag.tipo_registro_solicitud = tipo_registro_solicitud;
                 return View();
             }
             else

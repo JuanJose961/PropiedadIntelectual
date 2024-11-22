@@ -173,6 +173,21 @@ function Editar(id) {
                 $("#uu_10").val(catalogo_actual.domicilio);
                 $("#uu_11").val(catalogo_actual.rfc);
                 $("#uu_12").val(catalogo_actual.curp);
+                $("#uu_13").val(catalogo_actual.usuario);
+                let date = new Date(catalogo_actual.fc)
+                let day = `${(date.getDate())}`.padStart(2, '0');
+                let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
+                let year = date.getFullYear();
+                let hrs = date.getHours();
+                let min = date.getMinutes();
+                let seg = date.getSeconds();
+                if (year > "1969") {
+                    $("#uu_14").val(`${day}/${month}/${year}  ${hrs}:${min}:${seg}`);
+                } else {
+                    $("#uu_14").val('');
+                }
+                document.getElementById("uu_13_c").style.display = "block";
+                document.getElementById("uu_14_c").style.display = "block";
 
                 $("#eliminausuario").show();
                 if (catalogo_actual.activo == 0) {

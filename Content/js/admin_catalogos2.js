@@ -215,17 +215,17 @@ function ValidaUpdate01() {
         errores += 1;
     }
 
-    if (abogado == "NA") {
-        $("#uu_04").addClass("control-error");
-        $("#uu_04_c").append("<p class='form-error'>Selecciona una opción válida</p>");
-        errores += 1;
-    }
+    //if (abogado == "NA") {
+    //    $("#uu_04").addClass("control-error");
+    //    $("#uu_04_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+    //    errores += 1;
+    //}
 
-    if (abogado_nombre.length <= 0) {
-        $("#uu_05").addClass("control-error");
-        $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
-        errores += 1;
-    }
+    //if (abogado_nombre.length <= 0) {
+    //    $("#uu_05").addClass("control-error");
+    //    $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
+    //    errores += 1;
+    //}
 
     if (abogado_email.length <= 0) {
         $("#uu_06").addClass("control-error");

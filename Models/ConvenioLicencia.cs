@@ -93,6 +93,8 @@ namespace GISMVC.Models
         public string licencia_tipo { get; set; }
         public DateTime fecha_solicitud_completado { get; set; }
         public string fecha_solicitud_completadoS { get; set; }
+        public string usuario { get; set; } = "";
+        public string usuario_nombre { get; set; } = "";
         public ConvenioLicencia()
         {
 
@@ -176,6 +178,8 @@ namespace GISMVC.Models
             licencia_tipo = "";
             fecha_solicitud_completado = DateTime.Parse("1969-01-01");
             fecha_solicitud_completadoS = "";
+            usuario = "";
+            usuario_nombre = "";
         }
 
         

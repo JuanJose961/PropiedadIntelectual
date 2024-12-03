@@ -116,6 +116,8 @@ var catalogo_actual = {
     contrato_fechaS: "",
     tipo: tipo,
     fecha_solicitud_completadoS: "",
+    usuario: "",
+    usuario_nombre: ""
 }
 
 function ModalNuevo() {
@@ -171,6 +173,8 @@ function ModalNuevo() {
         contrato_fechaS: "",
         tipo: tipo,
         fecha_solicitud_completadoS: "",
+        usuario: "",
+        usuario_nombre: ""
     }
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -272,6 +276,8 @@ function Editar(id) {
         contrato_fechaS: "",
         tipo: tipo,
         fecha_solicitud_completadoS: "",
+        usuario: "",
+        usuario_nombre: ""
     }
     var sended_url = services_url + "SelectCatalogoById";
     $.ajax({
@@ -408,7 +414,8 @@ function Confirma01() {
             catalogo_actual.tipo = tipo;
             catalogo_actual.tipo_cesion = parseInt($("#uu_20 option:selected").val());
             catalogo_actual.tipo_cesion_nombre = $("#uu_20 option:selected").text();
-
+            catalogo_actual.usuario = eu_lu.id;
+            catalogo_actual.usuario_nombre = eu_lu.name;
             var sended_url = services_url + "AddCatalogo";
             if (catalogo_actual.id > 0) {
                 sended_url = services_url + "UpdateCatalogo";

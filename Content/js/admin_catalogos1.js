@@ -13,7 +13,9 @@ function ModalNuevo() {
         nombre: "",
         descripcion: "",
         rfc: "",
-        tipo: tipo
+        tipo: tipo,
+        usuario: "",
+        usuario_nombre: ""
     };
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -45,7 +47,9 @@ function Editar(id) {
         nombre: "",
         descripcion: "",
         rfc: "",
-        tipo: tipo
+        tipo: tipo,
+        usuario: "",
+        usuario_nombre: ""
     };
     var sended_url = services_url + "SelectCatalogoById";
     $.ajax({
@@ -111,14 +115,15 @@ function Confirma01() {
         catalogo_actual.descripcion = descripcion;
         catalogo_actual.rfc = rfc;
         catalogo_actual.tipo = tipo;
-
+        catalogo_actual.usuario = eu_lu.id;
+        catalogo_actual.usuario_nombre = eu_lu.name;
         var sended_url = services_url + "AddCatalogo";
         if (catalogo_actual.id > 0) {
             sended_url = services_url + "UpdateCatalogo";
         }
 
         $("#update01 .form-control").attr("disabled", "disabled");
-
+        
         $.ajax({
             type: "POST",
             url: sended_url,

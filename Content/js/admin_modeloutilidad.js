@@ -36,6 +36,7 @@ var catalogo_actual = {
     activo: 0,
     orden: 0,
     usuario: "",
+    usuario_nombre: "",
     empresa_nombre: "",
     prioridad_nombre: "",
     pais_nombre: "",
@@ -61,6 +62,7 @@ function ModalNuevo() {
         activo: 0,
         orden: 0,
         usuario: "",
+        usuario_nombre: "",
         empresa_nombre: "",
         prioridad_nombre: "",
         pais_nombre: "",
@@ -131,6 +133,7 @@ function Editar(id) {
         activo: 0,
         orden: 0,
         usuario: "",
+        usuario_nombre: "",
         empresa_nombre: "",
         prioridad_nombre: "",
         pais_nombre: "",
@@ -173,7 +176,7 @@ function Editar(id) {
                 $("#uu_10").val(catalogo_actual.domicilio);
                 $("#uu_11").val(catalogo_actual.rfc);
                 $("#uu_12").val(catalogo_actual.curp);
-                $("#uu_13").val(catalogo_actual.usuario);
+                $("#uu_13").val(catalogo_actual.usuario_nombre);
                 let date = new Date(catalogo_actual.fc)
                 let day = `${(date.getDate())}`.padStart(2, '0');
                 let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
@@ -249,7 +252,7 @@ function Confirma01() {
         catalogo_actual.rfc = $("#uu_11").val();
         catalogo_actual.curp = $("#uu_12").val();
         catalogo_actual.usuario = eu_lu.id;
-
+        catalogo_actual.usuario_nombre = eu_lu.name;
         var sended_url = services_url + "AddModeloUtilidad";
         if (catalogo_actual.id > 0) {
             sended_url = services_url + "UpdateModeloUtilidad";

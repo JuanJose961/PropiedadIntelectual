@@ -26,6 +26,7 @@ namespace GISMVC.Models
         public DateTime fc { get; set; }
         public DateTime fu { get; set; }
         public string usuario { get; set; }
+        public string usuario_nombre { get; set; } = "";
         public string empresa_nombre { get; set; }
         public string rama_nombre { get; set; }
         public string pais_nombre { get; set; }
@@ -71,6 +72,7 @@ namespace GISMVC.Models
             tipo_solicitud = 0;
             tipo_solicitud_nombre = "";
             atendido = 0;
+            usuario_nombre = "";
             obra = new List<Archivo>();
         }
 
@@ -114,7 +116,7 @@ namespace GISMVC.Models
                         res.curp = row[idx].ToString(); idx++;
                         res.lugar_nacimiento = row[idx].ToString(); idx++;
                         res.observaciones = row[idx].ToString(); idx++;
-
+                        res.usuario_nombre = row[idx].ToString(); idx++;
                         if (res.fecha_nacimiento.Year != 1969)
                         {
                             res.fecha_nacimientoS = res.fecha_nacimiento.ToString("dd/MM/yyyy");

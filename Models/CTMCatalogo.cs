@@ -97,6 +97,8 @@ namespace GISMVC.Models
         public string licencia_tipo { get; set; }
         public DateTime fecha_solicitud_completado { get; set; }
         public string fecha_solicitud_completadoS { get; set; }
+        public string usuario { get; set; } = "";
+        public string usuario_nombre { get; set; } = "";
         public CTMCatalogo()
         {
             id = 0;
@@ -185,6 +187,8 @@ namespace GISMVC.Models
             licencia_tipo = "";
             fecha_solicitud_completado = DateTime.Parse("1969-01-01");
             fecha_solicitud_completadoS = "";
+            usuario = "";
+            usuario_nombre = "";
         }
 
         public NegocioPI ToNegocioPI()
@@ -201,6 +205,8 @@ namespace GISMVC.Models
                 res.updated_by = this.updated_by;
                 res.orden = this.orden;
                 res.rfc = this.rfc;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -244,6 +250,8 @@ namespace GISMVC.Models
                 res.activo = this.activo;
                 res.updated_by = this.updated_by;
                 res.orden = this.orden;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -265,6 +273,8 @@ namespace GISMVC.Models
                 res.activo = this.activo;
                 res.updated_by = this.updated_by;
                 res.orden = this.orden;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -285,6 +295,8 @@ namespace GISMVC.Models
                 res.activo = this.activo;
                 res.updated_by = this.updated_by;
                 res.orden = this.orden;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -306,6 +318,8 @@ namespace GISMVC.Models
                 res.activo = this.activo;
                 res.updated_by = this.updated_by;
                 res.orden = this.orden;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -329,6 +343,8 @@ namespace GISMVC.Models
                 res.abogado = this.abogado;
                 res.abogado_nombre = this.abogado_nombre;
                 res.abogado_email = this.abogado_email;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -352,6 +368,8 @@ namespace GISMVC.Models
                 res.abogado = this.abogado;
                 res.abogado_nombre = this.abogado_nombre;
                 res.abogado_email = this.abogado_email;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -439,6 +457,8 @@ namespace GISMVC.Models
                 res.licencia_tipo = this.licencia_tipo;
                 res.fecha_solicitud_completado = this.fecha_solicitud_completado;
                 res.fecha_solicitud_completadoS = this.fecha_solicitud_completadoS;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {
@@ -524,6 +544,8 @@ namespace GISMVC.Models
                 res.fecha_vencimientoS = this.fecha_vencimientoS;
                 res.fecha_solicitud_completado = this.fecha_solicitud_completado;
                 res.fecha_solicitud_completadoS = this.fecha_solicitud_completadoS;
+                res.usuario = this.usuario;
+                res.usuario_nombre = this.usuario_nombre;
             }
             catch (Exception ex)
             {

@@ -21,7 +21,9 @@ var catalogo_actual = {
     abogado: "",
     abogado_nombre: "",
     abogado_email: "",
-    tipo: tipo
+    tipo: tipo,
+    usuario: "",
+    usuario_nombre: ""
 };
 
 function ModalNuevo() {
@@ -33,7 +35,9 @@ function ModalNuevo() {
         abogado: "NA",
         abogado_nombre: "",
         abogado_email: "",
-        tipo: tipo
+        tipo: tipo,
+        usuario: "",
+        usuario_nombre: ""
     };
     $("#update01 .form-error").remove();
     $("#update01 .form-control").removeClass("control-error");
@@ -60,7 +64,9 @@ function Editar(id) {
         abogado: "",
         abogado_nombre: "",
         abogado_email: "",
-        tipo: tipo
+        tipo: tipo,
+        usuario: "",
+        usuario_nombre: ""
     };
     var sended_url = services_url + "SelectCatalogoById";
     $.ajax({
@@ -136,7 +142,8 @@ function Confirma01() {
         catalogo_actual.abogado_nombre = abogado_nombre;
         catalogo_actual.abogado_email = abogado_email;
         catalogo_actual.tipo = tipo;
-
+        catalogo_actual.usuario = eu_lu.id;
+        catalogo_actual.usuario_nombre = eu_lu.name;
         var sended_url = services_url + "AddCatalogo";
         if (catalogo_actual.id > 0) {
             sended_url = services_url + "UpdateCatalogo";

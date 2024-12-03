@@ -20,6 +20,8 @@ namespace GISMVC.Models
         public int activo { get; set; }
         public string updated_by { get; set; }
         public int orden { get; set; }
+        public string usuario { get; set; } = "";
+        public string usuario_nombre { get; set; } = "";
         public Pais()
         {
             id = 0;
@@ -30,6 +32,8 @@ namespace GISMVC.Models
             activo = 0;
             updated_by = "";
             orden = 0;
+            usuario = "";
+            usuario_nombre = "";
         }
 
 

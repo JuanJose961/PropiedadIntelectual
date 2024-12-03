@@ -12,14 +12,16 @@ namespace GISMVC.Models
 {
     public class Clase
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public DateTime fc { get; set; }
-        public DateTime fu { get; set; }
-        public int activo { get; set; }
-        public string updated_by { get; set; }
-        public int orden { get; set; }
+        public int id { get; set; } = 0;
+        public string nombre { get; set; } = "";
+        public string descripcion { get; set; } = "";
+        public DateTime fc { get; set; } = DateTime.Parse("1969-01-01");
+        public DateTime fu { get; set; } = DateTime.Parse("1969-01-01");
+        public int activo { get; set; } = 0;
+        public string updated_by { get; set; } = "";
+        public int orden { get; set; } = 0;
+        public string usuario { get; set; } = "";
+        public string usuario_nombre { get; set; } = "";
         public Clase()
         {
             id = 0;
@@ -30,6 +32,8 @@ namespace GISMVC.Models
             activo = 0;
             updated_by = "";
             orden = 0;
+            usuario = "";
+            usuario_nombre = "";
         }
 
 

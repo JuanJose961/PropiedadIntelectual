@@ -21,6 +21,8 @@ namespace GISMVC.Models
         public string updated_by { get; set; }
         public int orden { get; set; }
         public string rfc { get; set; }
+        public string usuario { get; set; } = "";
+        public string usuario_nombre { get; set; } = "";
         public NegocioPI()
         {
             id = 0;
@@ -32,6 +34,8 @@ namespace GISMVC.Models
             updated_by = "";
             orden = 0;
             rfc = "";
+            usuario = "";
+            usuario_nombre = "";
         }
 
 

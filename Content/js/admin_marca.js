@@ -34,6 +34,7 @@ var catalogo_actual = {
     activo: 0,
     orden: 0,
     usuario: "",
+    usuario_nombre: "",
     empresa_nombre: "",
     tipo_nombre: "",
     pais_nombre: "",
@@ -54,6 +55,7 @@ function ModalNuevo() {
         activo: 0,
         orden: 0,
         usuario: "",
+        usuario_nombre: "",
         empresa_nombre: "",
         tipo_nombre: "",
         pais_nombre: "",
@@ -100,6 +102,7 @@ function Editar(id) {
         activo: 0,
         orden: 0,
         usuario: "",
+        usuario_nombre: "",
         empresa_nombre: "",
         tipo_nombre: "",
         pais_nombre: "",
@@ -129,7 +132,7 @@ function Editar(id) {
                 $("#uu_01").val(catalogo_actual.nombre);
                 $("#uu_02").val(catalogo_actual.productos);
                 $("#uu_03").datepicker("update", catalogo_actual.fecha_usoS);
-                $("#uu_07").val(catalogo_actual.usuario);
+                $("#uu_07").val(catalogo_actual.usuario_nombre);
                 let date = new Date(catalogo_actual.fc)
                 let day = `${(date.getDate())}`.padStart(2, '0');
                 let month = `${(date.getMonth() + 1)}`.padStart(2, '0');
@@ -189,6 +192,7 @@ function Confirma01() {
         catalogo_actual.productos = $("#uu_02").val();
         catalogo_actual.fecha_usoS = $("#uu_03").val();
         catalogo_actual.usuario = eu_lu.id;
+        catalogo_actual.usuario_nombre = eu_lu.name;
         catalogo_actual.tipo = parseInt($("#uu_06 option:selected").val());
         catalogo_actual.tipo_nombre = $("#uu_06 option:selected").text();
 

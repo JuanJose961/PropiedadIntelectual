@@ -32,6 +32,7 @@ namespace GISMVC.Models
         public int tipo_solicitud { get; set; }
         public string tipo_solicitud_nombre { get; set; }
         public int atendido { get; set; }
+        public string usuario_nombre { get; set; } = "";
         public List<Archivo> anexos { get; set; }
         public AvisoComercial()
         {
@@ -55,6 +56,7 @@ namespace GISMVC.Models
             tipo_solicitud = 0;
             tipo_solicitud_nombre = "";
             atendido = 0;
+            usuario_nombre = "";
             anexos = new List<Archivo>();
         }
 
@@ -91,9 +93,9 @@ namespace GISMVC.Models
                         res.tipo_nombre = row[idx].ToString(); idx++;
                         res.pais_nombre = row[idx].ToString(); idx++;
                         res.identificador = row[idx].ToString(); idx++;
+                        res.usuario_nombre = row[idx].ToString(); idx++;
 
-
-                        if(res.fecha_uso.Year != 1969)
+                        if (res.fecha_uso.Year != 1969)
                         {
                             res.fecha_usoS = res.fecha_uso.ToString("dd/MM/yyyy");
                         }

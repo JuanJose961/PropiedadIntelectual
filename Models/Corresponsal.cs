@@ -23,6 +23,8 @@ namespace GISMVC.Models
         public DateTime fu { get; set; }
         public int activo { get; set; }
         public int orden { get; set; }
+        public string usuario { get; set; } = "";
+        public string usuario_nombre { get; set; } = "";
         public Corresponsal()
         {
             id = 0;
@@ -36,6 +38,8 @@ namespace GISMVC.Models
             fu = DateTime.Parse("1969-01-01");
             activo = 0;
             orden = 0;
+            usuario = "";
+            usuario_nombre = "";
         }
 
 

@@ -49,6 +49,7 @@ namespace GISMVC.Models
             fc = DateTime.Parse("1969-01-01");
             fu = DateTime.Parse("1969-01-01");
             usuario = "";
+            usuario_nombre = "";
             empresa_nombre = "";
             tipo_nombre = "";
             pais_nombre = "";
@@ -92,9 +93,9 @@ namespace GISMVC.Models
                         res.tipo_nombre = row[idx].ToString(); idx++;
                         res.pais_nombre = row[idx].ToString(); idx++;
                         res.identificador = row[idx].ToString(); idx++;
+                        res.usuario_nombre = row[idx].ToString(); idx++;
 
-
-                        if(res.fecha_uso.Year != 1969)
+                        if (res.fecha_uso.Year != 1969)
                         {
                             res.fecha_usoS = res.fecha_uso.ToString("dd/MM/yyyy");
                         }

@@ -1267,7 +1267,7 @@ function Guardar() {
         registro.cesion = cesion;
         registro.cesion_desc = cesion_desc;
         registro.usuario = eu_lu.id;
-        //registro.usuario_desc = usuario_desc;
+        registro.usuario_desc = eu_lu.name;
         //registro.activo = resutlado;
         registro.solicitud = solicitud;
         registro.solicitud_desc = solicitud_desc;

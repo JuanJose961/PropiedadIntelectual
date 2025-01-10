@@ -95,6 +95,8 @@ function ModalNuevo() {
     $("#uu_10").val(catalogo_actual.domicilio);
     $("#uu_11").val(catalogo_actual.rfc);
     $("#uu_12").val(catalogo_actual.curp);
+    document.getElementById("uu_13_c").style.display = "none";
+    document.getElementById("uu_14_c").style.display = "none";
 
 
     documentos01 = new Array();

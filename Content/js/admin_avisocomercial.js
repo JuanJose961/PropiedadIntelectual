@@ -75,6 +75,8 @@ function ModalNuevo() {
     $("#uu_01").val(catalogo_actual.nombre);
     $("#uu_02").val(catalogo_actual.productos);
     $("#uu_03").datepicker("update", catalogo_actual.fecha_usoS);
+    document.getElementById("uu_07_c").style.display = "none";
+    document.getElementById("uu_08_c").style.display = "none";
 
 
     documentos = new Array();
@@ -132,6 +134,7 @@ function Editar(id) {
                 $("#uu_01").val(catalogo_actual.nombre);
                 $("#uu_02").val(catalogo_actual.productos);
                 $("#uu_03").datepicker("update", catalogo_actual.fecha_usoS);
+                $("#uu_06").val(catalogo_actual.tipo).trigger("change");
                 $("#uu_07").val(catalogo_actual.usuario_nombre);
                 let date = new Date(catalogo_actual.fc)
                 let day = `${(date.getDate())}`.padStart(2, '0');

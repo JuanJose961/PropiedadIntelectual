@@ -23,7 +23,7 @@ $(document).ready(function () {
             dropdownParent: $(this).parent().parent()
         });
     });
-
+    
     $(".select2").select2({
         placeholder: "Seleccionar",
         allowClear: false
@@ -111,6 +111,8 @@ function ModalNuevo() {
     $("#uu_11").val(catalogo_actual.rfc);
     $("#uu_12").val(catalogo_actual.curp);
     $("#uu_13").val(catalogo_actual.observaciones);
+    document.getElementById("uu_14_c").style.display = "none";
+    document.getElementById("uu_15_c").style.display = "none";
 
     documentos01 = new Array();
     var dev_documentos01 = new DevExpress.data.DataSource(documentos01);

@@ -123,6 +123,7 @@
                                     <% } %>
                                 </text>).Caption("Nombre");
                                 columns.AddFor(m => m.tipo_solicitud_nombre).Caption("Tipo de Obra");
+                                //columns.AddFor(m => m.nombre_obra).Caption("Nombre");
                                 columns.AddFor(m => m.empresa_nombre).Caption("Empresa");
                                 columns.AddFor(m => m.pais_nombre).Caption("Pais");
                             })
@@ -387,7 +388,7 @@
 
     <script src="@Url.Content("~/Content/plugins/dropzone/dropzone.js")"></script>
     <script type="text/javascript">
-    </script>
+</script>
 
     <script type="text/javascript">
         var START_DATE = "@Html.Raw(DateTime.Now.AddDays(-60).ToString("yyyy-MM-dd"))";
@@ -409,7 +410,7 @@
         }
         document.getElementById("tipo_obra").value = tipo_solicitud;
         document.getElementById("titulobra").innerHTML = "" + tipo_solicitud_nombre;
-
+        
         var valReqData = {
             ID: 0,
             START_DATE: START_DATE,
@@ -422,6 +423,7 @@
         };
         var tipo = valReqData.TIPO;
         function buildValidationSuggestionRequest() {
+            //alert(valReqData.ID);
             return JSON.stringify(valReqData);
         }
 

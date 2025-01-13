@@ -538,7 +538,9 @@ namespace GISMVC.Controllers
                         role = modelo.usuario.role,
                         name = modelo.usuario.name,
                         nombre = modelo.usuario.name,
-                        gispassword = ""
+                        gispassword = "",
+                        usuariolg=modelo.usuario.usuariolg,
+                        usuariolg_name = modelo.usuario.usuariolg_name
                     };
                     AspNetUsers user = new AspNetUsers();
                     res = await user.AddAspNetUser(usuario, userManager);

@@ -24,6 +24,8 @@ namespace GISMVC.Data
         public string Notas { get; internal set; }
         //public string FormatoMail { get; internal set; }
         public string GisPassword { get; internal set; }
+        public string Usuario { get; internal set; }
+        public string UsuarioNombre { get; internal set; }
         //public int VendorId { get; internal set; }
     }
 

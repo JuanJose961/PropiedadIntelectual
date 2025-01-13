@@ -4,6 +4,8 @@ var usuario_actual = {
     name: "",
     email: "",
     phone: "",
+    usuariolg: "",
+    usuariolg_name: "",
     cellphone: "",
     role: "USUARIO",
     roles: {
@@ -28,6 +30,8 @@ function ModalUsuario() {
         phone: "",
         cellphone: "",
         role: "USUARIO",
+        usuariolg: "",
+        usuariolg_name: "",
         roles: {
             id: "",
             descripcion: "NA"
@@ -142,7 +146,8 @@ function Confirma01() {
         usuario_actual.puesto = puesto;
         usuario_actual.terminos = pass1;
         usuario_actual.negocio.id = negocio;
-
+        usuario_actual.usuariolg = eu_lu.id;
+        usuario_actual.usuariolg_name = eu_lu.name;
         console.log(usuario_actual);
 
         var sended_url = services_url + "AddUserV2";

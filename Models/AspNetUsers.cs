@@ -198,6 +198,8 @@ namespace GISMVC.Models
         public string phone { get; set; }
         public string cellphone { get; set; }
         public string role { get; set; }
+        public string usuariolg { get; set; }
+        public string usuariolg_name { get; set; }
         public FechasFormato fecha_creacion { get; set; }
         public bool activo { get; set; }
         public string preflang { get; set; }
@@ -240,6 +242,8 @@ namespace GISMVC.Models
             username = "";
             fecha_creacion = new FechasFormato();
             role = "";
+            usuariolg = "";
+            usuariolg_name = "";
             activo = false;
             password = "";
             puesto = "";
@@ -331,6 +335,8 @@ namespace GISMVC.Models
                     Notas = modelo.notas,
                     //FormatoMail = modelo.formatomail,
                     GisPassword = modelo.gispassword,
+                    Usuario = modelo.usuariolg,
+                    UsuarioNombre = modelo.usuariolg_name
                     //VendorId = modelo.vendorid
                 };
                 var manager_store = new UserStore<ApplicationUser>(new ApplicationDbContext());

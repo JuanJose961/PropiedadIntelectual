@@ -586,14 +586,15 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[4];
+                SqlParameter[] @params = new SqlParameter[6];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
                 @params[1] = new SqlParameter("@nombre", modelo.name);
                 @params[2] = new SqlParameter("@rol", modelo.role);
                 @params[3] = new SqlParameter("@puesto", modelo.puesto);
-
+                @params[4] = new SqlParameter("@usuario", modelo.usuariolg);
+                @params[5] = new SqlParameter("@usuario_nombre", modelo.usuariolg_name);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "upd_Usuario", @params, out dt, 1000))
                 {

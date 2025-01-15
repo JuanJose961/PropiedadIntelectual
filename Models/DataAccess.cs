@@ -2144,11 +2144,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_cat_NegocioPI_Activo", @params, out dt, 1000))
                 {
@@ -4481,11 +4482,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_cat_Pais_Activo", @params, out dt, 1000))
                 {
@@ -4697,8 +4699,9 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
-
+                SqlParameter[] @params = new SqlParameter[3];
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
 
@@ -5357,11 +5360,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_desc", modelo.usuario_desc);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_RegistroMarca_Activo", @params, out dt, 1000))
                 {
@@ -5611,11 +5615,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_AvisoComercial_Activo", @params, out dt, 1000))
                 {
@@ -5843,11 +5848,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_Patente_Activo", @params, out dt, 1000))
                 {
@@ -6075,11 +6081,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_DisenoIndustrial_Activo", @params, out dt, 1000))
                 {
@@ -6307,11 +6314,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_ModeloUtilidad_Activo", @params, out dt, 1000))
                 {
@@ -6541,11 +6549,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_Obra_Activo", @params, out dt, 1000))
                 {
@@ -6772,11 +6781,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_ModeloIndustrial_Activo", @params, out dt, 1000))
                 {
@@ -7074,11 +7084,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_cat_Clase_Activo", @params, out dt, 1000))
                 {
@@ -7299,11 +7310,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_cat_EstatusCatalogo_Activo", @params, out dt, 1000))
                 {
@@ -7524,11 +7536,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_cat_TipoRegistro_Activo", @params, out dt, 1000))
                 {
@@ -8552,11 +8565,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_ConvenioLicencia_Activo", @params, out dt, 1000))
                 {
@@ -8892,11 +8906,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_ContratoCesion_Activo", @params, out dt, 1000))
                 {
@@ -9090,11 +9105,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_Despacho_Activo", @params, out dt, 1000))
                 {
@@ -9287,11 +9303,12 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[3];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
+                @params[2] = new SqlParameter("@usuario_nombre", modelo.usuario_nombre);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_Corresponsal_Activo", @params, out dt, 1000))
                 {
@@ -9327,11 +9344,11 @@ namespace GISMVC.Models
 
             try
             {
-                SqlParameter[] @params = new SqlParameter[1];
+                SqlParameter[] @params = new SqlParameter[2];
 
                 int i = 0;
                 @params[0] = new SqlParameter("@id", modelo.id);
-
+                @params[1] = new SqlParameter("@usuario", modelo.usuario);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "UPD_proc_RecordatorioPI_Activo", @params, out dt, 1000))
                 {

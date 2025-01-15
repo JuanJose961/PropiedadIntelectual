@@ -57,7 +57,7 @@ var catalogo_actual = {
 function ModalNuevo() {
     catalogo_actual = {
         id: 0,
-        usuario: eu_lu.id,
+        usuario: "",
         asignado: "NA",
         fecha_recordatorioS: "",
         fecha_finS: "",
@@ -103,7 +103,7 @@ function ModalNuevo() {
 function Editar(id) {
     catalogo_actual = {
         id: id,
-        usuario: eu_lu.id,
+        usuario: "",
         asignado: "",
         fecha_recordatorioS: "",
         fecha_finS: "",
@@ -237,6 +237,7 @@ function Confirma01() {
         catalogo_actual.tipo_solicitud = tipo_solicitud;
         catalogo_actual.tipo_solicitud_desc = tipo_solicitud_desc;
         catalogo_actual.mensaje = mensaje;
+        catalogo_actual.usuario = eu_lu.id;
 
         var sended_url = services_url + "AddRecordatorioPI";
         if (catalogo_actual.id > 0) {
@@ -410,6 +411,7 @@ function eliminar01(id, val) {
 var estatus_activo = 0;
 function ConfirmaEliminar01() {
     catalogo_actual.tipo = tipo;
+    catalogo_actual.usuario = eu_lu.id;
     var sended_url = services_url + "UpdateRegistroPIActivo";
     $.ajax({
         type: "POST",

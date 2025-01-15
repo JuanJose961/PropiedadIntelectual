@@ -306,6 +306,8 @@ function eliminar01(id, val) {
 
 var estatus_activo = 0;
 function ConfirmaEliminar01() {
+    catalogo_actual.usuario = eu_lu.id;
+    catalogo_actual.usuario_nombre = eu_lu.name;
     var sended_url = services_url + "UpdateAvisoComercialActivo";
     $.ajax({
         type: "POST",

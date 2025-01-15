@@ -1758,10 +1758,10 @@ function SelectRegistroMarca(id, desabilitar) {
 
                     if (registro.activo == 0) {
                         $("#btnRemover").removeClass("btn-danger")
-                            .addClass("btn-success").html('<i class="fa fa-check"></i> Reactivar');
+                            .addClass("btn-success").html('<i class="fa fa-check"></i> Activar');
                     } else {
                         $("#btnRemover").removeClass("btn-success")
-                            .addClass("btn-danger").html('<i class="fa fa-ban"></i> Remover');
+                            .addClass("btn-danger").html('<i class=""></i> Inactivar');
                     }
 
                     if (registro.renovacion == 1) {
@@ -2850,7 +2850,7 @@ function ConfirmaRemoverRegistro() {
     $.ajax({
         type: "POST",
         url: sended_url,
-        data: JSON.stringify({ id: registro.id }),
+        data: JSON.stringify({ id: registro.id, usuario: eu_lu.id, usuario_desc: eu_lu.name }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {

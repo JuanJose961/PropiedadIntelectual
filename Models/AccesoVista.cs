@@ -56,7 +56,7 @@ namespace GISMVC.Models
         public bool pi_otros { get; set; } = false;
         public bool pi_RecordatorioPI { get; set; } = false;
         public bool pi_BusquedaAvanzada { get; set; } = false;
-
+        public bool pi_HistorialMovimientos { get; set; } = false;
         //
 
         public static PortalSideBar Get(List<AccesoVistas> accesos)
@@ -204,6 +204,11 @@ namespace GISMVC.Models
                         {
                             res.pi_otros = true;
                             res.pi_BusquedaAvanzada = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "ADMINISTRACION" && i.url == "HistorialMovimientos" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_otros = true;
+                            res.pi_HistorialMovimientos = true;
                         }
                     }
                 }

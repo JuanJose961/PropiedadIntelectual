@@ -378,7 +378,7 @@ function ConfirmaEliminar01() {
     $.ajax({
         type: "POST",
         url: sended_url,
-        data: JSON.stringify({ id: usuario_actual.id }),
+        data: JSON.stringify({ id: usuario_actual.id, usuariolg: eu_lu.id, usuariolg_name: eu_lu.name }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {

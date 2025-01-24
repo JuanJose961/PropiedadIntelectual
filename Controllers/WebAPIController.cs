@@ -4606,6 +4606,42 @@ namespace GISMVC.Controllers
             return res;
         }
 
+        [Route("api/WebAPI/BusquedaHistorialMovimientos")]
+        [HttpPost]
+        public RespuestaFormato BusquedaHistorialMovimientos([FromBody] HistorialMovimientos modelo)
+        {
+            var res = new RespuestaFormato();
+            //--------------------
+            try
+            {
+                //var data = HistorialMovimientos.BusquedaHistorialMovimientos(modelo.solicitud_tipo, modelo.id_usuario, modelo.empresa, modelo.empresa_anterior, modelo.clase, modelo.pais, modelo.estatus, modelo.uso, modelo.tipo_registro_solicitud, modelo.nombre, modelo.no_registro, modelo.no_solicitud, modelo.fecha_legalS, modelo.fecha_vencimientoS, modelo.fecha_concesionS, modelo.fecha_quinquenio_anualidadS, modelo.fecha_requerimientoS, modelo.fecha_instruccionesS, modelo.fecha_registroS, modelo.fecha_busquedaS, modelo.fecha_resultadosS, modelo.fecha_comprobacionS);
+                var data = HistorialMovimientos.BusquedaHistorialMovimientos(modelo.modulo, modelo.tipo,modelo.usuario);
+                if (data.Count > 0)
+                {
+                    res.flag = true;
+                    res.content.Add(data);
+                    //res.content.Add(comentarios);
+                    //res.content.Add(archivos);
+                }
+                else
+                {
+                    res.flag = false;
+                    res.description = "No existe la información";
+                }
+            }
+            catch (Exception ex)
+            {
+                res.flag = false;
+                res.description = "Error: " + ex.Message;
+            }
+            finally
+            {
+            }
+            //--------------------
+            //--------------------
+            return res;
+        }
+
         [Route("api/WebAPI/SelectRegistrMarcaoArchivos")]
         [HttpPost]
         public RespuestaFormato SelectRegistrMarcaoArchivos([FromBody] RegistroMarca modelo)

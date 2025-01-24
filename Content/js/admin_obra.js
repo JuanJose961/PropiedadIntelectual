@@ -244,7 +244,7 @@ function Confirma01() {
                 case "Visuales": tipo_solicitud = 8; tipo_solicitud_nombre = "Obra Visual"; break;
                 case "Literarias": tipo_solicitud = 9; tipo_solicitud_nombre = "Obra Literaria"; break;
                 case "Auditivas": tipo_solicitud = 10; tipo_solicitud_nombre = "Obra Auditiva"; break;
-                case "Gráficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obra Gráfica"; break;
+                case "Graficas": tipo_solicitud = 11; tipo_solicitud_nombre = "Obra Gráfica"; break;
                 case "Tecnologicas": tipo_solicitud = 12; tipo_solicitud_nombre = "Obra Tecnológica"; break;
                 default: tipo_solicitud = 0; tipo_solicitud_nombre = ""; break;
             }

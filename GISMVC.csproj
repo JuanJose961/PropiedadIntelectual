@@ -611,6 +611,7 @@
     <Content Include="Content\js\admin.js" />
     <Content Include="Content\js\admin_avisocomercial.js" />
     <Content Include="Content\js\admin_busquedaavanzada.js" />
+    <Content Include="Content\js\admin_historialmovimientos.js" />
     <Content Include="Content\js\admin_recordatoriopi.js" />
     <Content Include="Content\js\admin_indexpi.js" />
     <Content Include="Content\js\admin_registromarcadetalle.js" />
@@ -1974,6 +1975,7 @@
     <Content Include="Views\PI\Politicas.cshtml" />
     <Content Include="Views\PI\PoliticasAdm.cshtml" />
     <Content Include="Views\PI\BusquedaAvanzada.cshtml" />
+    <Content Include="Views\PI\HistorialMovimientos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2011,6 +2013,7 @@
     <Compile Include="Models\CambioEstatus.cs" />
     <Compile Include="Models\CambioEstatusValidacion.cs" />
     <Compile Include="Models\DocumentoCliente.cs" />
+    <Compile Include="Models\HistorialMovimientos.cs" />
     <Compile Include="Models\RecordatorioPI.cs" />
     <Compile Include="Models\RegistroMarcaComentario.cs" />
     <Compile Include="Models\RegistroMarca.cs" />

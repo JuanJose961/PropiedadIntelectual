@@ -162,6 +162,11 @@ $(document).ready(function () {
                 CheckIfOptionExists("#uu_021", solicitud_select[0].id, solicitud_select[0].nombre, true, true);
                 document.getElementById("uu_022").value = solicitud_select[0].nombre;
                 CheckIfOptionExists("#uu_10", 1, 'En búsqueda', true, true);
+                //ya funciona empresa y pais
+                //CheckIfOptionExists("#uu_00", solicitud_select[0].empresa, true);
+                //if (propiedad >= 1 && propiedad <= 6) {
+                //    CheckIfOptionExists("#uu_09", solicitud_select[0].pais, true);
+                //}
             }
         }, 500);
     }

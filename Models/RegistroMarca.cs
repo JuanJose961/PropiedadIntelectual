@@ -94,7 +94,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 3, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre_patente, item.empresa, item.pais, 3, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
                     list.Add(solicitud);
                 }
             }
@@ -112,7 +112,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 4, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre_patente, item.empresa, item.pais, 4, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
                     list.Add(solicitud);
                 }
             }
@@ -130,7 +130,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 5, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre_patente, item.empresa, item.pais, 5, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
                     list.Add(solicitud);
                 }
             }
@@ -148,7 +148,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 6, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre_patente, item.empresa, item.pais, 6, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
                     list.Add(solicitud);
                 }
             }
@@ -166,7 +166,7 @@ namespace GISMVC.Models
             {
                 foreach (var item in lista)
                 {
-                    Solicitud solicitud = new Solicitud(item.id, item.nombre, item.empresa, item.pais, 7, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
+                    Solicitud solicitud = new Solicitud(item.id, item.nombre_obra, item.empresa, item.pais, 7, item.usuario, item.tipo_solicitud, item.activo, item.atendido);
                     list.Add(solicitud);
                 }
             }

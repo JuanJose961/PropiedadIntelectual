@@ -33,6 +33,7 @@ namespace GISMVC.Models
         public DateTime fc { get; set; }
         public int activo { get; set; } = 0;
         public string fcS { get; set; } = "";
+        public string fcH { get; set; } = "";
         public HistorialMovimientos()
         {
             id = 0;
@@ -46,6 +47,7 @@ namespace GISMVC.Models
             fc = DateTime.Parse("1969-01-01");
             activo = 0;
             fcS = "";
+            fcH = "";
         }
 
         //public static List<RegistroMarca> BusquedaHistorialMovimientos(int solicitud_tipo = 0, string id_usuario = "", int empresa = 0, int empresa_anterior = 0, int clase = 0, int pais = 0, int estatus = 0, int uso = 0, int tipo_registro_solicitud = 0, string nombre = "", string no_registro = "", string no_solicitud = "", string fecha_legalS = "", string fecha_vencimientoS = "", string fecha_concesionS = "", string fecha_quinquenio_anualidadS = "", string fecha_requerimientoS = "", string fecha_instruccionesS = "", string fecha_registroS = "", string fecha_busquedaS = "", string fecha_resultadosS = "", string fecha_comprobacionS = "", int activo = -1)
@@ -159,6 +161,8 @@ namespace GISMVC.Models
 
                             if (res.fc.Year > 1969)
                                 res.fcS = res.fc.ToString("dd/MM/yyyy");
+                            if (res.fc.Year > 1969)
+                                res.fcH = res.fc.ToString("H:mmm:ss");
                             //if (res.fecha_vencimiento.Year > 1969)
                             //    res.fecha_vencimientoS = res.fecha_vencimiento.ToString("dd/MM/yyyy");
                             //if (res.fecha_concesion.Year > 1969)

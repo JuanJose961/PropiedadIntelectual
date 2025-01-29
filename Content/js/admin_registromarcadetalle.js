@@ -745,37 +745,37 @@ $(document).on("change", "#uu_021", function (event) { //solicitud
             var existe_usuario = $('#uu_13 option[value=' + usuario + ']').length;
 
             var errores = new Array();
-            if (existe_empresa > 0) {
-                if (id == 0) $("#uu_00").val(empresa).trigger("change");
-            } else {
-                $("#uu_00").val(0).trigger("change");
-                errores.push("No se encontró la empresa");
-            }
-            if (existe_pais > 0) {
-                if (id == 0) $("#uu_09").val(pais).trigger("change"); 
-            } else {
-                $("#uu_09").val(0).trigger("change");
-                errores.push("No se encontró el país");
-            }
-            if (existe_usuario > 0) {
-                if (id == 0) $("#uu_13").val(usuario).trigger("change");
-            } else {
-                $("#uu_13").val(0).trigger("change");
-                errores.push("No se encontró al usuario");
-            }
+            //if (existe_empresa > 0) {
+            //    if (id == 0) $("#uu_00").val(empresa).trigger("change");
+            //} else {
+            //    $("#uu_00").val(0).trigger("change");
+            //    errores.push("No se encontró la empresa");
+            //}
+            //if (existe_pais > 0) {
+            //    if (id == 0) $("#uu_09").val(pais).trigger("change"); 
+            //} else {
+            //    $("#uu_09").val(0).trigger("change");
+            //    errores.push("No se encontró el país");
+            //}
+            //if (existe_usuario > 0) {
+            //    if (id == 0) $("#uu_13").val(usuario).trigger("change");
+            //} else {
+            //    $("#uu_13").val(0).trigger("change");
+            //    errores.push("No se encontró al usuario");
+            //}
 
             if (errores.length > 0) {
                 alert(errores.join("\n"));
             }
         } else {
-            $("#uu_00").val(0).trigger("change");
-            $("#uu_09").val(0).trigger("change");
-            $("#uu_13").val(0).trigger("change");
+            //$("#uu_00").val(0).trigger("change");
+            //$("#uu_09").val(0).trigger("change");
+            //$("#uu_13").val(0).trigger("change");
         }
     } else {
-        $("#uu_00").val(0).trigger("change");
-        $("#uu_09").val(0).trigger("change");
-        $("#uu_13").val(0).trigger("change");
+        //$("#uu_00").val(0).trigger("change");
+        //$("#uu_09").val(0).trigger("change");
+        //$("#uu_13").val(0).trigger("change");
     }
 
 });

@@ -351,6 +351,7 @@ namespace GISMVC.Models
                     var dt = new System.Data.DataTable();
                     var errores = "";
                     modelo.id= newuser.Id;
+                    modelo.email = newuser.Email;
                     da.Reg_UsuarioHistorial(modelo, out dt, out errores);
                     //
                     res.data_string = newuser.Id;
@@ -1354,6 +1355,7 @@ namespace GISMVC.Models
                         var errores = "";
                         modelo.name = newuser.Names;
                         //modelo.role = newuser.Roles;
+                        modelo.email=newuser.Email;
                         modelo.puesto = newuser.Puesto;
                         da.Password_UsuarioHistorial(modelo, out dt, out errores);
                         //

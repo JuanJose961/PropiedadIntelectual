@@ -210,7 +210,7 @@ function BuscarHistorialMovimientos() {
                                 },
                                 ], 
                                 order: [
-                                    [0, 'desc'], [5, 'desc']
+                                    [5, 'desc'], [0, 'desc']
                                 ]
 
                             });

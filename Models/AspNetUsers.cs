@@ -344,7 +344,15 @@ namespace GISMVC.Models
                 IdentityResult result = await manager.CreateAsync(user, modelo.password);
                 if (result.Succeeded)
                 {
+                    
                     var newuser = await manager.FindByNameAsync(modelo.username);
+                    //
+                    DataAccess da = new DataAccess();
+                    var dt = new System.Data.DataTable();
+                    var errores = "";
+                    modelo.id= newuser.Id;
+                    da.Reg_UsuarioHistorial(modelo, out dt, out errores);
+                    //
                     res.data_string = newuser.Id;
                     res.flag = true;
                 }
@@ -1339,6 +1347,16 @@ namespace GISMVC.Models
                     }
                     else
                     {
+                        //
+                        var newuser = await manager.FindByIdAsync(modelo.id);
+                        DataAccess da = new DataAccess();
+                        var dt = new System.Data.DataTable();
+                        var errores = "";
+                        modelo.name = newuser.Names;
+                        //modelo.role = newuser.Roles;
+                        modelo.puesto = newuser.Puesto;
+                        da.Password_UsuarioHistorial(modelo, out dt, out errores);
+                        //
                         res.flag = true;
                         res.description = "Datos actualizados";
                     }

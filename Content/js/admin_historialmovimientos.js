@@ -146,9 +146,9 @@ function BuscarHistorialMovimientos() {
                         var tablecontent;
                         var encabezados = "";
                         var renglones = "";
-                        encabezados = "<th style='background-color:#024775; color:white;' align='center;'>Tipo Movimiento</th><th style='background-color:#024775; color:white;' align='center;'>Modulo</th><th style='background-color:#024775; color:white;' align='center;'>Detalle</th><th style='background-color:#024775; color:white;' align='center;'>Usuario</th><th style='background-color:#024775; color:white;' align='center;'>Fecha</th>";
+                        encabezados = "<th style='background-color:#024775; color:white;' align='center;'>Id</th><th style='background-color:#024775; color:white;' align='center;'>Tipo Movimiento</th><th style='background-color:#024775; color:white;' align='center;'>Modulo</th><th style='background-color:#024775; color:white;' align='center;'>Detalle</th><th style='background-color:#024775; color:white;' align='center;'>Usuario</th><th style='background-color:#024775; color:white;' align='center;'>Fecha</th>";
                         for (let i = 0; i < registro.length; i++) {
-                            renglones += "<tr><td>" + registro[i].tipo_desc + "</td><td>" + registro[i].modulo_desc + "</td><td>" + registro[i].detalle + "</td><td>" + registro[i].usuario_desc + "</td><td>" + registro[i].fcS + "</td></tr>";
+                            renglones += "<tr><td>" + registro[i].id +"</td><td>" +registro[i].tipo_desc + "</td><td>" + registro[i].modulo_desc + "</td><td>" + registro[i].detalle + "</td><td>" + registro[i].usuario_desc + "</td><td>" + registro[i].fcS + "</td></tr>";
                         }
                         //if (cktodo.checked == false) {
                         //    encabezados = "<th style='background-color:#024775; color:white;' align='center;'>Tipo de Solicitud</th><th style='background-color:#024775; color:white;' align='center;'>Nombre</th><th style='background-color:#024775; color:white;' align='center;'>Empresa Propietaria</th><th style='background-color:#024775; color:white;' align='center;'>Enpresa Anterior</th><th style='background-color:#024775; color:white;' align='center;'>Fecha Legal</th><th style='background-color:#024775; color:white;' align='center;'>Fecha de Vencimiento</th><th style='background-color:#024775; color:white;' align='center;'>Fecha de Concesion</th><th style='background-color:#024775; color:white;' align='center;'>No. Registro</th><th style='background-color:#024775; color:white;' align='center;'>Pais</th><th style='background-color:#024775; color:white;' align='center;'>Clase</th><th style='background-color:#024775; color:white;' align='center;'>Estatus</th><th style='background-color:#024775; color:white;' align='center;'>Fecha a Pagar Quinquenios Anualidades</th><th style='background-color:#024775; color:white;' align='center;'>TipoPago</th><th style='background-color:#024775; color:white;' align='center;'>Prioridad</th><th style='background-color:#024775; color:white;' align='center;'>Fecha Vencimiento Prioridad</th><th style='background-color:#024775; color:white;' align='center;'>Uso</th><th style='background-color:#024775; color:white;' align='center;'>No. Solicitud</th><th style='background-color:#024775; color:white;' align='center;'>Tipo de Registro</th><th style='background-color:#024775; color:white;' align='center;'>Persona que Solicito Registro</th><th style='background-color:#024775; color:white;' align='center;'>Despacho</th><th style='background-color:#024775; color:white;' align='center;'>Corresponsal</th><th style='background-color:#024775; color:white;' align='center;'>Licencia</th><th style='background-color:#024775; color:white;' align='center;'>Persona que Solicito Licencia</th><th style='background-color:#024775; color:white;' align='center;'>Cesion</th><th style='background-color:#024775; color:white;' align='center;'>Persona que Solicito Cesion</th>";
@@ -203,6 +203,15 @@ function BuscarHistorialMovimientos() {
                                         "previous": "Anterior"
                                     }
                                 },
+                                'columnDefs': [{
+                                    "targets": [0],
+                                    "visible": false,
+                                    "searchable": false
+                                },
+                                ], 
+                                order: [
+                                    [0, 'desc'], [5, 'desc']
+                                ]
 
                             });
 

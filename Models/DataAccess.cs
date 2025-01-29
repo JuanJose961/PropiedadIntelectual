@@ -578,6 +578,48 @@ namespace GISMVC.Models
             return boolProcess;
         }
 
+        public Boolean Reg_UsuarioHistorial(AspNetUsers modelo,out DataTable dt, out String msgError)
+        {
+            bool boolProcess = true;
+            dt = new DataTable();
+            msgError = string.Empty;
+
+            try
+            {
+                SqlParameter[] @params = new SqlParameter[7];
+
+                int i = 0;
+                @params[0] = new SqlParameter("@id", modelo.id);
+                @params[1] = new SqlParameter("@tipo", 1);
+                @params[2] = new SqlParameter("@nombre", modelo.name);
+                @params[3] = new SqlParameter("@rol", modelo.role);
+                @params[4] = new SqlParameter("@puesto", modelo.puesto);
+                @params[5] = new SqlParameter("@usuario", modelo.usuariolg);
+                @params[6] = new SqlParameter("@usuario_nombre", modelo.usuariolg_name);
+                i++;
+                if (!bd.ExecuteProcedure(conexion, "Usuario_Historial", @params, out dt, 1000))
+                {
+                    boolProcess = false;
+                    msgError = bd._error.ToString();
+                }
+                else
+                {
+                    if (!dt.Rows[0][0].ToString().Equals("0"))
+                    {
+                        boolProcess = false;
+                        msgError = dt.Rows[0][1].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                boolProcess = false;
+                msgError = ex.ToString();
+            }
+            return boolProcess;
+        }
+
         public Boolean Upd_Usuario(AspNetUsers modelo, out DataTable dt, out String msgError)
         {
             bool boolProcess = true;
@@ -635,6 +677,48 @@ namespace GISMVC.Models
                 @params[2] = new SqlParameter("@usuario_nombre", modelo.usuariolg_name);
                 i++;
                 if (!bd.ExecuteProcedure(conexion, "upd_UsuarioActivo", @params, out dt, 1000))
+                {
+                    boolProcess = false;
+                    msgError = bd._error.ToString();
+                }
+                else
+                {
+                    if (!dt.Rows[0][0].ToString().Equals("0"))
+                    {
+                        boolProcess = false;
+                        msgError = dt.Rows[0][1].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                boolProcess = false;
+                msgError = ex.ToString();
+            }
+            return boolProcess;
+        }
+
+        public Boolean Password_UsuarioHistorial(AspNetUsers modelo, out DataTable dt, out String msgError)
+        {
+            bool boolProcess = true;
+            dt = new DataTable();
+            msgError = string.Empty;
+
+            try
+            {
+                SqlParameter[] @params = new SqlParameter[7];
+
+                int i = 0;
+                @params[0] = new SqlParameter("@id", modelo.id);
+                @params[1] = new SqlParameter("@tipo", 2);
+                @params[2] = new SqlParameter("@nombre", modelo.name);
+                @params[3] = new SqlParameter("@rol", modelo.role);
+                @params[4] = new SqlParameter("@puesto", modelo.puesto);
+                @params[5] = new SqlParameter("@usuario", modelo.usuariolg);
+                @params[6] = new SqlParameter("@usuario_nombre", modelo.usuariolg_name);
+                i++;
+                if (!bd.ExecuteProcedure(conexion, "Usuario_Historial", @params, out dt, 1000))
                 {
                     boolProcess = false;
                     msgError = bd._error.ToString();

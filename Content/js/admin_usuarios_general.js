@@ -289,7 +289,9 @@ function CambiarPass() {
 
         var sended_data = {
             id: usuario_actual.id,
-            password: p1
+            password: p1,
+            usuariolg: eu_lu.id,
+            usuariolg_name: eu_lu.name
         };
         var sended_url = services_url + "CambiarPassword";
 

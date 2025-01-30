@@ -21,8 +21,10 @@ namespace GISMVC.Models
         public bool adm_roles { get; set; } = false;
         public bool adm_dashboard { get; set; } = false;
         ////
-        public bool pi_propiedadindustrial { get; set; } = false;
-        public bool pi_propiedadintelectual { get; set; } = false;
+        public bool pi_formatospropiedadindustrial { get; set; } = false;
+        public bool pi_formatospropiedadintelectual { get; set; } = false;
+        public bool pi_registromarcaspropiedadindustrial { get; set; } = false;
+        public bool pi_registromarcaspropiedadintelectual { get; set; } = false;
         public bool pi_catalogos { get; set; } = false;
         public bool pi_Negocio { get; set; } = false;
         public bool pi_TipoCatalogo { get; set; } = false;
@@ -35,13 +37,18 @@ namespace GISMVC.Models
         public bool pi_ConvenioLicencia { get; set; } = false;
         public bool pi_ContratoCesion { get; set; } = false;
 
-        public bool pi_Marca { get; set; } = false;
-        public bool pi_AvisoComercial { get; set; } = false;
-        public bool pi_Patente { get; set; } = false;
-        public bool pi_ModeloUtilidad { get; set; } = false;
-        public bool pi_ModeloIndustrial { get; set; } = false;
-        public bool pi_DisenoIndustrial { get; set; } = false;
-        public bool pi_Obra { get; set; } = false;
+        public bool pi_FormatoMarca { get; set; } = false;
+        public bool pi_FormatoAvisoComercial { get; set; } = false;
+        public bool pi_FormatoPatente { get; set; } = false;
+        public bool pi_FormatoModeloUtilidad { get; set; } = false;
+        public bool pi_FormatoModeloIndustrial { get; set; } = false;
+        public bool pi_FormatoDisenoIndustrial { get; set; } = false;
+        public bool pi_FormatoObraArtistica { get; set; } = false;
+        public bool pi_FormatoObraVisual { get; set; } = false;
+        public bool pi_FormatoObraLiteraria { get; set; } = false;
+        public bool pi_FormatoObraAuditiva { get; set; } = false;
+        public bool pi_FormatoObraGrafica { get; set; } = false;
+        public bool pi_FormatoObraTecnologica { get; set; } = false;
         public bool pi_Marca_alta { get; set; } = false;
         public bool pi_AvisoComercial_alta { get; set; } = false;
         public bool pi_Patente_alta { get; set; } = false;
@@ -50,8 +57,18 @@ namespace GISMVC.Models
         public bool pi_DisenoIndustrial_alta { get; set; } = false;
         public bool pi_Obra_alta { get; set; } = false;
         //
-        public bool pi_RegistroMarcas { get; set; } = false;
-        public bool pi_RegistroMarca { get; set; } = false;
+        public bool pi_RegistroMarcaMarca { get; set; } = false;
+        public bool pi_RegistroMarcaAvisoComercial { get; set; } = false;
+        public bool pi_RegistroMarcaPatente { get; set; } = false;
+        public bool pi_RegistroMarcaDisenoIndustrial { get; set; } = false;
+        public bool pi_RegistroMarcaModeloUtilidad { get; set; } = false;
+        public bool pi_RegistroMarcaModeloIndustrial { get; set; } = false;
+        public bool pi_RegistroMarcaObraArtistica { get; set; } = false;
+        public bool pi_RegistroMarcaObraVisual { get; set; } = false;
+        public bool pi_RegistroMarcaObraLiteraria { get; set; } = false;
+        public bool pi_RegistroMarcaObraAuditiva { get; set; } = false;
+        public bool pi_RegistroMarcaObraGrafica { get; set; } = false;
+        public bool pi_RegistroMarcaObraTecnologica { get; set; } = false;
         //
         public bool pi_otros { get; set; } = false;
         public bool pi_RecordatorioPI { get; set; } = false;
@@ -133,46 +150,76 @@ namespace GISMVC.Models
                     if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.acceso == 1).Count() > 0)
                     {
 
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "Marca" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoMarca" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadindustrial = true;
-                            res.pi_Marca = true;
+                            res.pi_formatospropiedadindustrial = true;
+                            res.pi_FormatoMarca = true;
                             res.pi_Marca_alta = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "AvisoComercial" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoAvisoComercial" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadindustrial = true;
-                            res.pi_AvisoComercial = true;
+                            res.pi_formatospropiedadindustrial = true;
+                            res.pi_FormatoAvisoComercial = true;
                             res.pi_AvisoComercial_alta = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "Patente" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoPatente" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadindustrial = true;
-                            res.pi_Patente = true;
+                            res.pi_formatospropiedadindustrial = true;
+                            res.pi_FormatoPatente = true;
                             res.pi_Patente_alta = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "ModeloUtilidad" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoModeloUtilidad" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadindustrial = true;
-                            res.pi_ModeloUtilidad = true;
+                            res.pi_formatospropiedadindustrial = true;
+                            res.pi_FormatoModeloUtilidad = true;
                             res.pi_ModeloUtilidad_alta = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "ModeloIndustrial" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoModeloIndustrial" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadindustrial = true;
-                            res.pi_ModeloIndustrial = true;
+                            res.pi_formatospropiedadindustrial = true;
+                            res.pi_FormatoModeloIndustrial = true;
                             res.pi_ModeloIndustrial_alta = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "DisenoIndustrial" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoDisenoIndustrial" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadindustrial = true;
-                            res.pi_DisenoIndustrial = true;
+                            res.pi_formatospropiedadindustrial = true;
+                            res.pi_FormatoDisenoIndustrial = true;
                             res.pi_DisenoIndustrial_alta = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "Obra" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoObraArtistica" && i.acceso == 1).Count() > 0)
                         {
-                            res.pi_propiedadintelectual = true;
-                            res.pi_Obra = true;
+                            res.pi_formatospropiedadintelectual = true;
+                            res.pi_FormatoObraArtistica = true;
+                            res.pi_Obra_alta = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoObraVisual" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_formatospropiedadintelectual = true;
+                            res.pi_FormatoObraVisual = true;
+                            res.pi_Obra_alta = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoObraLiteraria" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_formatospropiedadintelectual = true;
+                            res.pi_FormatoObraLiteraria = true;
+                            res.pi_Obra_alta = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoObraAuditiva" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_formatospropiedadintelectual = true;
+                            res.pi_FormatoObraAuditiva = true;
+                            res.pi_Obra_alta = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoObraGrafica" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_formatospropiedadintelectual = true;
+                            res.pi_FormatoObraGrafica = true;
+                            res.pi_Obra_alta = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "FORMATOS" && i.url == "FormatoObraTecnologica" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_formatospropiedadintelectual = true;
+                            res.pi_FormatoObraTecnologica = true;
                             res.pi_Obra_alta = true;
                         }
                     }
@@ -180,18 +227,68 @@ namespace GISMVC.Models
                     //utilidad
                     if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.acceso == 1).Count() > 0)
                     {
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcas" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasMarca" && i.acceso == 1).Count() > 0)
                         {
-                            //res.pi_otros = true;
-                            res.pi_RegistroMarcas = true;
+                            res.pi_registromarcaspropiedadindustrial = true;
+                            res.pi_RegistroMarcaMarca = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarca" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasAvisoComercial" && i.acceso == 1).Count() > 0)
                         {
-                            //res.pi_otros = true;
-                            //res.pi_RegistroMarcas = true;
-                            res.pi_RegistroMarca = true;
+                            res.pi_registromarcaspropiedadindustrial = true;
+                            res.pi_RegistroMarcaAvisoComercial = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasPatente" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadindustrial = true;
+                            res.pi_RegistroMarcaPatente = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasDisenoIndustrial" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadindustrial = true;
+                            res.pi_RegistroMarcaDisenoIndustrial = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasModeloUtilidad" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadindustrial = true;
+                            res.pi_RegistroMarcaModeloUtilidad = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasModeloIndustrial" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadindustrial = true;
+                            res.pi_RegistroMarcaModeloIndustrial = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasObraArtistica" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadintelectual = true;
+                            res.pi_RegistroMarcaObraArtistica = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasObraVisual" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadintelectual = true;
+                            res.pi_RegistroMarcaObraVisual = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasObraLiteraria" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadintelectual = true;
+                            res.pi_RegistroMarcaObraLiteraria = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasObraAuditiva" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadintelectual = true;
+                            res.pi_RegistroMarcaObraAuditiva = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasObraGrafica" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadintelectual = true;
+                            res.pi_RegistroMarcaObraGrafica = true;
+                        }
+                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "UTILIDAD" && i.url == "RegistroMarcasObraTecnologica" && i.acceso == 1).Count() > 0)
+                        {
+                            res.pi_registromarcaspropiedadintelectual = true;
+                            res.pi_RegistroMarcaObraTecnologica = true;
                         }
                     }
+
                     //administracion
                     if (accesos.Where(i => i.modulo == "PI" && i.tipo == "ADMINISTRACION" && i.acceso == 1).Count() > 0)
                     {

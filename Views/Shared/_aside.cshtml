@@ -211,7 +211,7 @@
                         </ul>
                     </li>
                 }
-                if (accesos.pi_propiedadindustrial)
+                if (accesos.pi_formatospropiedadindustrial)
                 {
 
                     <li class="">
@@ -221,7 +221,7 @@
                         </a>
                         <ul>
 
-                            @if (accesos.pi_Marca)
+                            @if (accesos.pi_FormatoMarca)
                             {
                                 <li class="">
                                     <a href="~/PI/Marca" title="Marca" data-filter-tags="Marca">
@@ -229,7 +229,7 @@
                                     </a>
                                 </li>
                             }
-                            @if (accesos.pi_AvisoComercial)
+                            @if (accesos.pi_FormatoAvisoComercial)
                             {
                                 <li class="">
                                     <a href="~/PI/AvisoComercial" title="AvisoComercial" data-filter-tags="Avisos comerciales">
@@ -237,7 +237,7 @@
                                     </a>
                                 </li>
                             }
-                            @if (accesos.pi_Patente)
+                            @if (accesos.pi_FormatoPatente)
                             {
                                 <li class="">
                                     <a href="~/PI/Patente" title="Patente" data-filter-tags="Patentes">
@@ -245,7 +245,7 @@
                                     </a>
                                 </li>
                             }
-                            @if (accesos.pi_DisenoIndustrial)
+                            @if (accesos.pi_FormatoDisenoIndustrial)
                             {
                                 <li class="">
                                     <a href="~/PI/DisenoIndustrial" title="DisenoIndustrial" data-filter-tags="Diseño Industrial">
@@ -253,7 +253,7 @@
                                     </a>
                                 </li>
                             }
-                            @if (accesos.pi_ModeloUtilidad)
+                            @if (accesos.pi_FormatoModeloUtilidad)
                             {
                                 <li class="">
                                     <a href="~/PI/ModeloUtilidad" title="ModeloUtilidad" data-filter-tags="Modelo Utilidad">
@@ -261,7 +261,7 @@
                                     </a>
                                 </li>
                             }
-                            @if (accesos.pi_ModeloIndustrial)
+                            @if (accesos.pi_FormatoModeloIndustrial)
                             {
                                 <li class="">
                                     <a href="~/PI/ModeloIndustrial" title="ModeloIndustrial" data-filter-tags="Modelo Industrial">
@@ -272,7 +272,7 @@
                         </ul>
                     </li>
                 }
-                if (accesos.pi_propiedadintelectual)
+                if (accesos.pi_formatospropiedadintelectual)
                 {
 
                     <li class="">
@@ -281,33 +281,50 @@
                             <span class="nav-link-text" data-i18n="Formatos Propiedad Intelectual">Formatos P. Intelectual</span>
                         </a>
                         <ul>
-                            @if (accesos.pi_Obra)
+                            @if (accesos.pi_FormatoObraArtistica)
                             {
                                 <li class="">
                                     <a href="~/PI/Obra?tipo=Artisticas" title="Obra" data-filter-tags="Obras">
                                         <span class="nav-link-text" data-i18n="Obra">Obras Artisticas</span>
                                     </a>
                                 </li>
+                            }
+                            @if (accesos.pi_FormatoObraVisual)
+                            {
+
                                 <li class="">
                                     <a href="~/PI/Obra?tipo=Visuales" title="Obra" data-filter-tags="Obras">
                                         <span class="nav-link-text" data-i18n="Obra">Obras Visuales</span>
                                     </a>
                                 </li>
+                            }
+                            @if (accesos.pi_FormatoObraLiteraria)
+                            {
                                 <li class="">
                                     <a href="~/PI/Obra?tipo=Literarias" title="Obra" data-filter-tags="Obras">
                                         <span class="nav-link-text" data-i18n="Obra">Obras Literarias</span>
                                     </a>
                                 </li>
+                            }
+                            @if (accesos.pi_FormatoObraAuditiva)
+                            {
                                 <li class="">
                                     <a href="~/PI/Obra?tipo=Auditivas" title="Obra" data-filter-tags="Obras">
                                         <span class="nav-link-text" data-i18n="Obra">Obras Auditivas</span>
                                     </a>
                                 </li>
+                            }
+                            @if (accesos.pi_FormatoObraGrafica)
+                            {
                                 <li class="">
                                     <a href="~/PI/Obra?tipo=Graficas" title="Obra" data-filter-tags="Obras">
                                         <span class="nav-link-text" data-i18n="Obra">Obras Gráficas</span>
                                     </a>
                                 </li>
+                            }
+                            @if (accesos.pi_FormatoObraTecnologica)
+                            {
+
                                 <li class="">
                                     <a href="~/PI/Obra?tipo=Tecnologicas" title="Obra" data-filter-tags="Obras">
                                         <span class="nav-link-text" data-i18n="Obra">Obras Tecnológicas</span>
@@ -318,7 +335,7 @@
                     </li>
                 }
 
-                if (accesos.pi_RegistroMarcas)
+                if (accesos.pi_registromarcaspropiedadindustrial)
                 {
                     <li class="">
                         <a href="#" title="Propiedad Industrial" data-filter-tags="Propiedad Industrial">
@@ -326,41 +343,59 @@
                             <span class="nav-link-text" data-i18n="Propiedad Industrial">Propiedad Industrial</span>
                         </a>
                         <ul>
-                            <li class="" data-filter-tags="RegistroMarca">
-                                <a href="~/PI/RegistroMarcas?tipo=1" title="RegistroMarca" data-filter-tags="RegistroMarca">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Marcas</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroAvisosComercial">
-                                <a href="~/PI/RegistroMarcas?tipo=2" title="RegistroAvisosComercial" data-filter-tags="RegistroAvisosComercial">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Avisos Comerciales</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroPatente">
-                                <a href="~/PI/RegistroMarcas?tipo=3" title="RegistroPatente" data-filter-tags="RegistroPatente">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Patentes</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroDisenoIndustrial">
-                                <a href="~/PI/RegistroMarcas?tipo=4" title="RegistroDisenoIndustrial" data-filter-tags="RegistroDisenoIndustrial">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Diseños Industriales</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroModeloUtilidad">
-                                <a href="~/PI/RegistroMarcas?tipo=5" title="RegistroModeloUtilidad" data-filter-tags="RegistroModeloUtilidad">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Modelos Utilidades</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroModeloIndustrial">
-                                <a href="~/PI/RegistroMarcas?tipo=6" title="RegistroModeloIndustrial" data-filter-tags="RegistroModeloIndustrial">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Modelos Industriales</span>
-                                </a>
-                            </li>
-                        </ul>
+                            @if (accesos.pi_RegistroMarcaMarca)
+                            {
+                                <li class="" data-filter-tags="RegistroMarca">
+                                    <a href="~/PI/RegistroMarcas?tipo=1" title="RegistroMarca" data-filter-tags="RegistroMarca">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Marcas</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaAvisoComercial)
+                            {
+                                <li class="" data-filter-tags="RegistroAvisosComercial">
+                                    <a href="~/PI/RegistroMarcas?tipo=2" title="RegistroAvisosComercial" data-filter-tags="RegistroAvisosComercial">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Avisos Comerciales</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaPatente)
+                            {
+                                <li class="" data-filter-tags="RegistroPatente">
+                                    <a href="~/PI/RegistroMarcas?tipo=3" title="RegistroPatente" data-filter-tags="RegistroPatente">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Patentes</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaDisenoIndustrial)
+                            {
+                                <li class="" data-filter-tags="RegistroDisenoIndustrial">
+                                    <a href="~/PI/RegistroMarcas?tipo=4" title="RegistroDisenoIndustrial" data-filter-tags="RegistroDisenoIndustrial">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Diseños Industriales</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaModeloUtilidad)
+                            {
+                                <li class="" data-filter-tags="RegistroModeloUtilidad">
+                                    <a href="~/PI/RegistroMarcas?tipo=5" title="RegistroModeloUtilidad" data-filter-tags="RegistroModeloUtilidad">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Modelos Utilidades</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaModeloIndustrial)
+                            {
+                                <li class="" data-filter-tags="RegistroModeloIndustrial">
+                                    <a href="~/PI/RegistroMarcas?tipo=6" title="RegistroModeloIndustrial" data-filter-tags="RegistroModeloIndustrial">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Modelos Industriales</span>
+                                    </a>
+                                </li>
+                            }
+                            </ul>
                     </li>
                 }
 
-                if (accesos.pi_RegistroMarcas)
+                if (accesos.pi_registromarcaspropiedadintelectual)
                 {
                     <li class="">
                         <a href="#" title="Propiedad Intelectual" data-filter-tags="Propiedad Intelectual">
@@ -368,37 +403,55 @@
                             <span class="nav-link-text" data-i18n="Propiedad Intelectual">Propiedad Intelectual</span>
                         </a>
                         <ul>
-                            <li class="" data-filter-tags="RegistroObraArtistica">
-                                <a href="~/PI/RegistroMarcas?tipo=7" title="RegistroObraArtistica" data-filter-tags="RegistroObraArtistica">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Obras Artisticas</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroObraVisual">
-                                <a href="~/PI/RegistroMarcas?tipo=8" title="RegistroObraVisual" data-filter-tags="RegistroObraVisual">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Obras Visuales</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroObraLiteraria">
-                                <a href="~/PI/RegistroMarcas?tipo=9" title="RegistroObraLiteraria" data-filter-tags="RegistroObraLiteraria">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Obras Literarias</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroObraAuditiva">
-                                <a href="~/PI/RegistroMarcas?tipo=10" title="RegistroObraAuditiva" data-filter-tags="RegistroObraAuditiva">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Obras Auditivas</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroObraGrafica">
-                                <a href="~/PI/RegistroMarcas?tipo=11" title="RegistroObraGrafica" data-filter-tags="RegistroObraGrafica">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Obras Gráficas</span>
-                                </a>
-                            </li>
-                            <li class="" data-filter-tags="RegistroObraTecnologica">
-                                <a href="~/PI/RegistroMarcas?tipo=12" title="RegistroObraTecnologica" data-filter-tags="RegistroObraTecnologica">
-                                    <span class="nav-link-text" data-i18n="Branch 1">Obras Tecnológicas</span>
-                                </a>
-                            </li>
-                        </ul>
+                            @if (accesos.pi_RegistroMarcaObraArtistica)
+                            {
+                                <li class="" data-filter-tags="RegistroObraArtistica">
+                                    <a href="~/PI/RegistroMarcas?tipo=7" title="RegistroObraArtistica" data-filter-tags="RegistroObraArtistica">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Obras Artisticas</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaObraVisual)
+                            {
+                                <li class="" data-filter-tags="RegistroObraVisual">
+                                    <a href="~/PI/RegistroMarcas?tipo=8" title="RegistroObraVisual" data-filter-tags="RegistroObraVisual">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Obras Visuales</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaObraLiteraria)
+                            {
+                                <li class="" data-filter-tags="RegistroObraLiteraria">
+                                    <a href="~/PI/RegistroMarcas?tipo=9" title="RegistroObraLiteraria" data-filter-tags="RegistroObraLiteraria">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Obras Literarias</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaObraAuditiva)
+                            {
+                                <li class="" data-filter-tags="RegistroObraAuditiva">
+                                    <a href="~/PI/RegistroMarcas?tipo=10" title="RegistroObraAuditiva" data-filter-tags="RegistroObraAuditiva">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Obras Auditivas</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaObraGrafica)
+                            {
+                                <li class="" data-filter-tags="RegistroObraGrafica">
+                                    <a href="~/PI/RegistroMarcas?tipo=11" title="RegistroObraGrafica" data-filter-tags="RegistroObraGrafica">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Obras Gráficas</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (accesos.pi_RegistroMarcaObraTecnologica)
+                            {
+                                <li class="" data-filter-tags="RegistroObraTecnologica">
+                                    <a href="~/PI/RegistroMarcas?tipo=12" title="RegistroObraTecnologica" data-filter-tags="RegistroObraTecnologica">
+                                        <span class="nav-link-text" data-i18n="Branch 1">Obras Tecnológicas</span>
+                                    </a>
+                                </li>
+                            }
+                            </ul>
                     </li>
                 }
 

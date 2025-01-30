@@ -525,7 +525,8 @@ $(document).on("change", ".cb_acceso_negocio", function (event) {
     if ($(this).is(":checked")) {
         acceso = 1;
     }
-    for (var i = 0; i < accesos.length; i++) {
+    //for (var i = 0; i < accesos.length; i++) {
+    for (var i = 0; i < negocios.length; i++) {
         if (negocios[i].negocio == negocio) {
             negocios[i].activo = acceso;
             break;

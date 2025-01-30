@@ -634,7 +634,7 @@ namespace GISMVC.Controllers
                 {
                     var roles = AspNetRoles.GetAll("");
 
-                    var negocios = Negocio.Get();
+                    var negocios = NegocioPI.Get();
 
                     ViewBag.pagina = pagina;
                     ViewBag.ul = ul;

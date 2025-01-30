@@ -99,11 +99,12 @@
 @*<input type="hidden" name="tipo_registro" id="tipo_registro" value="0">*@
 
 <div class="row">
-    <p>
-        <button class="btn btn-info btn-block waves-effect waves-themed collapsed" type="button" data-toggle="collapse" data-target="#collapsefiltro" aria-expanded="false" aria-controls="collapsefiltro">Filtros</button>
-    </p>
-    <div class="row collapse in show" id="collapsefiltro">
-        <div class="col-md-3">
+    @*<p>
+            <button class="btn btn-info btn-block waves-effect waves-themed collapsed" type="button" data-toggle="collapse" data-target="#collapsefiltro" aria-expanded="false" aria-controls="collapsefiltro">Filtros</button>
+        </p>*@
+    @*<div class="row collapse in show" id="collapsefiltro">*@
+    <div class="row">
+        <div class="col-md-2">
             <div class="form-group" id="uu_00_c">
                 <label for="uu_00">Modulo <font size="2" style="color:#FF0000"> * </font></label>
                 <select class="select2 form-control input-sm custom-select" id="uu_00" autocomplete="off" style="width: 100%;">
@@ -129,7 +130,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group" id="uu_02_c">
                 <label for="uu_02">Tipo de movimiento</label>
                 <select class="select2 form-control input-sm custom-select" id="uu_02" autocomplete="off" style="width: 100%;">
@@ -154,156 +155,168 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3" id="uu_07_a">
-            <div class="form-group" id="uu_07_c">
-                <label for="uu_07">Clase </label>
-                <select class="select2 form-control input-sm custom-select" id="uu_07" autocomplete="off" style="width: 100%;">
-                    <option value="0" selected>Seleccione una opción</option>
-                    @foreach (Clase item in ViewBag.clase)
-                    {
-                        <option value="@item.id">@item.nombre</option>
-                    }
-                </select>
-            </div>
-        </div>
-        
-        <div class="col-md-3" id="uu_09_a">
-            <div class="form-group" id="uu_09_c">
-                <label for="uu_09">País</label>
-                <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
-                    <option value="0" selected>Seleccione una opción</option>
-                    @foreach (Pais item in ViewBag.pais)
-                    {
-                        <option value="@item.id">@item.nombre</option>
-                    }
-                </select>
-            </div>
-        </div>
         <div class="col-md-3">
-            <div class="form-group" id="uu_10_c">
-                <label for="uu_10">Estatus</label>
-                <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
-                    <option value="0" selected>Seleccione una opción</option>
-                    @foreach (EstatusCatalogo item in ViewBag.estatus)
-                    {
-                        <option value="@item.id">@item.nombre</option>
-                    }
-                </select>
-            </div>
-        </div>
-        <div class="col-md-3" id="uu_39_a">
-            <div class="form-group" id="uu_39_c">
-                <label for="uu_39">Uso</label>
-                <select class="select2 form-control input-sm custom-select" id="uu_39" autocomplete="off" style="width: 100%;">
-                    <option value="0" selected>Seleccione una opción</option>
-                    @foreach (Uso item in ViewBag.uso)
-                    {
-                        <option value="@item.id">@item.nombre</option>
-                    }
-                </select>
-            </div>
-        </div>
-        <div class="col-md-3" id="uu_12_a">
-            <div class="form-group" id="uu_12_c">
-                <label for="uu_12">Tipo de registro</label>
-                <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
-                    <option value="0" selected>Seleccione una opción</option>
-                    @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
-                    {
-                        <option value="@item.id">@item.nombre</option>
-                    }
-                </select>
-            </div>
-        </div>
-        @*<div class="col-md-3">
             <div class="form-group" id="uu_022_c">
-                <label>Nombre</label>
+                <label>Detalle</label>
                 <input type="text" class="form-control input-sm" id="uu_022" autocomplete="off" />
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-group" id="uu_03_c">
-                <label>Número de registro</label>
-                <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group" id="uu_11_c">
-                <label>Número de solicitud</label>
-                <input type="text" class="form-control input-sm" id="uu_11" autocomplete="off" />
-            </div>
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group" id="uu_04_c">
-                <label>Fecha legal</label>
+                <label>Fecha</label>
                 <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" readonly />
             </div>
-        </div>*@
-        @*<div class="col-md-3" id="uu_05_a">
-            <div class="form-group" id="uu_05_c">
-                <label>Fecha de vencimiento</label>
-                <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" readonly />
-            </div>
         </div>
-        <div class="col-md-3" id="uu_06_a">
-            <div class="form-group" id="uu_06_c">
-                <label id="uu_06_l">Fecha de concesión</label>
-                <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
+        @*<div class="col-md-3" id="uu_07_a">
+                <div class="form-group" id="uu_07_c">
+                    <label for="uu_07">Clase </label>
+                    <select class="select2 form-control input-sm custom-select" id="uu_07" autocomplete="off" style="width: 100%;">
+                        <option value="0" selected>Seleccione una opción</option>
+                        @foreach (Clase item in ViewBag.clase)
+                        {
+                            <option value="@item.id">@item.nombre</option>
+                        }
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="col-md-3" id="uu_37_a">
-            <div class="form-group" id="uu_37_c">
-                <label id="uu_37_l">Fecha para pagar los quinquenios o anualidades</label>
-                <input type="text" class="form-control input-sm" id="uu_37" autocomplete="off" readonly />
+
+            <div class="col-md-3" id="uu_09_a">
+                <div class="form-group" id="uu_09_c">
+                    <label for="uu_09">País</label>
+                    <select class="select2 form-control input-sm custom-select" id="uu_09" autocomplete="off" style="width: 100%;">
+                        <option value="0" selected>Seleccione una opción</option>
+                        @foreach (Pais item in ViewBag.pais)
+                        {
+                            <option value="@item.id">@item.nombre</option>
+                        }
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group" id="uu_21_c">
-                <label id="uu_21_l">Fecha requerimiento del negocio</label>
-                <input type="text" class="form-control input-sm" id="uu_21" autocomplete="off" readonly />
+            <div class="col-md-3">
+                <div class="form-group" id="uu_10_c">
+                    <label for="uu_10">Estatus</label>
+                    <select class="select2 form-control input-sm custom-select" id="uu_10" autocomplete="off" style="width: 100%;">
+                        <option value="0" selected>Seleccione una opción</option>
+                        @foreach (EstatusCatalogo item in ViewBag.estatus)
+                        {
+                            <option value="@item.id">@item.nombre</option>
+                        }
+                    </select>
+                </div>
             </div>
-        </div>*@
+            <div class="col-md-3" id="uu_39_a">
+                <div class="form-group" id="uu_39_c">
+                    <label for="uu_39">Uso</label>
+                    <select class="select2 form-control input-sm custom-select" id="uu_39" autocomplete="off" style="width: 100%;">
+                        <option value="0" selected>Seleccione una opción</option>
+                        @foreach (Uso item in ViewBag.uso)
+                        {
+                            <option value="@item.id">@item.nombre</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3" id="uu_12_a">
+                <div class="form-group" id="uu_12_c">
+                    <label for="uu_12">Tipo de registro</label>
+                    <select class="select2 form-control input-sm custom-select" id="uu_12" autocomplete="off" style="width: 100%;">
+                        <option value="0" selected>Seleccione una opción</option>
+                        @foreach (TipoRegistro item in ViewBag.tipo_registro_solicitud)
+                        {
+                            <option value="@item.id">@item.nombre</option>
+                        }
+                    </select>
+                </div>
+            </div>*@
         @*<div class="col-md-3">
-            <div class="form-group" id="uu_22_c">
-                <label>Fecha instrucciones al correponsal</label>
-                <input type="text" class="form-control input-sm" id="uu_22" autocomplete="off" readonly />
+                <div class="form-group" id="uu_022_c">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control input-sm" id="uu_022" autocomplete="off" />
+                </div>
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group" id="uu_23_c">
-                <label>Fecha solicitud de registro ante la autoridad competente</label>
-                <input type="text" class="form-control input-sm" id="uu_23" autocomplete="off" readonly />
+            <div class="col-md-3">
+                <div class="form-group" id="uu_03_c">
+                    <label>Número de registro</label>
+                    <input type="text" class="form-control input-sm" id="uu_03" autocomplete="off" />
+                </div>
             </div>
-        </div>
-        <div class="col-md-3" id="uu_24_a">
-            <div class="form-group" id="uu_24_c">
-                <label>Fecha solicitud de búsqueda</label>
-                <input type="text" class="form-control input-sm" id="uu_24" autocomplete="off" readonly />
+            <div class="col-md-3">
+                <div class="form-group" id="uu_11_c">
+                    <label>Número de solicitud</label>
+                    <input type="text" class="form-control input-sm" id="uu_11" autocomplete="off" />
+                </div>
             </div>
-        </div>
-        <div class="col-md-3" id="uu_25_a">
-            <div class="form-group" id="uu_25_c">
-                <label id="uu_25_l">Fecha información de resultados al negocio</label>
-                <input type="text" class="form-control input-sm" id="uu_25" autocomplete="off" readonly />
+            <div class="col-md-3">
+                <div class="form-group" id="uu_04_c">
+                    <label>Fecha legal</label>
+                    <input type="text" class="form-control input-sm" id="uu_04" autocomplete="off" readonly />
+                </div>
+            </div>*@
+        @*<div class="col-md-3" id="uu_05_a">
+                <div class="form-group" id="uu_05_c">
+                    <label>Fecha de vencimiento</label>
+                    <input type="text" class="form-control input-sm" id="uu_05" autocomplete="off" readonly />
+                </div>
             </div>
-        </div>*@
+            <div class="col-md-3" id="uu_06_a">
+                <div class="form-group" id="uu_06_c">
+                    <label id="uu_06_l">Fecha de concesión</label>
+                    <input type="text" class="form-control input-sm" id="uu_06" autocomplete="off" readonly />
+                </div>
+            </div>
+            <div class="col-md-3" id="uu_37_a">
+                <div class="form-group" id="uu_37_c">
+                    <label id="uu_37_l">Fecha para pagar los quinquenios o anualidades</label>
+                    <input type="text" class="form-control input-sm" id="uu_37" autocomplete="off" readonly />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group" id="uu_21_c">
+                    <label id="uu_21_l">Fecha requerimiento del negocio</label>
+                    <input type="text" class="form-control input-sm" id="uu_21" autocomplete="off" readonly />
+                </div>
+            </div>*@
+        @*<div class="col-md-3">
+                <div class="form-group" id="uu_22_c">
+                    <label>Fecha instrucciones al correponsal</label>
+                    <input type="text" class="form-control input-sm" id="uu_22" autocomplete="off" readonly />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group" id="uu_23_c">
+                    <label>Fecha solicitud de registro ante la autoridad competente</label>
+                    <input type="text" class="form-control input-sm" id="uu_23" autocomplete="off" readonly />
+                </div>
+            </div>
+            <div class="col-md-3" id="uu_24_a">
+                <div class="form-group" id="uu_24_c">
+                    <label>Fecha solicitud de búsqueda</label>
+                    <input type="text" class="form-control input-sm" id="uu_24" autocomplete="off" readonly />
+                </div>
+            </div>
+            <div class="col-md-3" id="uu_25_a">
+                <div class="form-group" id="uu_25_c">
+                    <label id="uu_25_l">Fecha información de resultados al negocio</label>
+                    <input type="text" class="form-control input-sm" id="uu_25" autocomplete="off" readonly />
+                </div>
+            </div>*@
         @*<div class="col-md-3" id="uu_26_a">
-            <div class="form-group" id="uu_26_c">
-                <label>Fecha comprobación de uso</label>
-                <input type="text" class="form-control input-sm" id="uu_26" autocomplete="off" readonly />
+                <div class="form-group" id="uu_26_c">
+                    <label>Fecha comprobación de uso</label>
+                    <input type="text" class="form-control input-sm" id="uu_26" autocomplete="off" readonly />
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
+            <div class="col-md-4">
                 <div class="form-group">
-                    <label></label>
+                    <div class="form-group">
+                        <label></label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="chektodo">
+                        <label class="custom-control-label" for="chektodo" id="chektodo_l">Todas las columnas</label>
+                    </div>
                 </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="chektodo">
-                    <label class="custom-control-label" for="chektodo" id="chektodo_l">Todas las columnas</label>
-                </div>
-            </div>
-        </div>*@
+            </div>*@
         <div class="col-md-12 text-center">
             <button type="button" class="btn btn-danger waves-effect waves-themed" onclick="Limpiar();" id="btnCancelar"><i class="fa fa-eraser"></i> Limpiar</button>
             <button type="button" class="btn btn-info" onclick="BuscarHistorialMovimientos();" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>

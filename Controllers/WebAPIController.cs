@@ -4615,7 +4615,7 @@ namespace GISMVC.Controllers
             try
             {
                 //var data = HistorialMovimientos.BusquedaHistorialMovimientos(modelo.solicitud_tipo, modelo.id_usuario, modelo.empresa, modelo.empresa_anterior, modelo.clase, modelo.pais, modelo.estatus, modelo.uso, modelo.tipo_registro_solicitud, modelo.nombre, modelo.no_registro, modelo.no_solicitud, modelo.fecha_legalS, modelo.fecha_vencimientoS, modelo.fecha_concesionS, modelo.fecha_quinquenio_anualidadS, modelo.fecha_requerimientoS, modelo.fecha_instruccionesS, modelo.fecha_registroS, modelo.fecha_busquedaS, modelo.fecha_resultadosS, modelo.fecha_comprobacionS);
-                var data = HistorialMovimientos.BusquedaHistorialMovimientos(modelo.modulo, modelo.tipo,modelo.usuario);
+                var data = HistorialMovimientos.BusquedaHistorialMovimientos(modelo.modulo, modelo.tipo,modelo.usuario,modelo.detalle,modelo.fechaS);
                 if (data.Count > 0)
                 {
                     res.flag = true;

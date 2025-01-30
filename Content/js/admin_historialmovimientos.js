@@ -81,6 +81,8 @@ function BuscarHistorialMovimientos() {
         var modulo = $("#uu_00 option:selected").val();
         var tipo = $("#uu_02 option:selected").val();
         var usuario = $("#uu_01 option:selected").val();
+        var detalle = $("#uu_022").val();
+        var fechaS = $("#uu_04").val();
         //alert(tipo);
         //var id_usuario = eu_lu.id;
         //var empresa = $("#uu_00 option:selected").val();
@@ -111,6 +113,8 @@ function BuscarHistorialMovimientos() {
                 modulo: modulo,
                 tipo: tipo,
                 usuario: usuario,
+                detalle: detalle,
+                fechaS: fechaS,
                 //id_usuario: id_usuario,
                 //empresa: empresa,
                 //empresa_anterrior: empresa_anterior,

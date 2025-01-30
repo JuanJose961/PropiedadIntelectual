@@ -34,6 +34,7 @@ namespace GISMVC.Models
         public int activo { get; set; } = 0;
         public string fcS { get; set; } = "";
         public string fcH { get; set; } = "";
+        public string fechaS { get; set; } = "";
         public HistorialMovimientos()
         {
             id = 0;
@@ -48,10 +49,11 @@ namespace GISMVC.Models
             activo = 0;
             fcS = "";
             fcH = "";
+            fechaS = "";
         }
 
         //public static List<RegistroMarca> BusquedaHistorialMovimientos(int solicitud_tipo = 0, string id_usuario = "", int empresa = 0, int empresa_anterior = 0, int clase = 0, int pais = 0, int estatus = 0, int uso = 0, int tipo_registro_solicitud = 0, string nombre = "", string no_registro = "", string no_solicitud = "", string fecha_legalS = "", string fecha_vencimientoS = "", string fecha_concesionS = "", string fecha_quinquenio_anualidadS = "", string fecha_requerimientoS = "", string fecha_instruccionesS = "", string fecha_registroS = "", string fecha_busquedaS = "", string fecha_resultadosS = "", string fecha_comprobacionS = "", int activo = -1)
-        public static List<HistorialMovimientos> BusquedaHistorialMovimientos(int modulo = 0, int tipo = 0 , string usuario = "", int activo = -1)
+        public static List<HistorialMovimientos> BusquedaHistorialMovimientos(int modulo = 0, int tipo = 0 , string usuario = "", string detalle = "", string fechaS = "", int activo = -1)
         {
             List<HistorialMovimientos> list = new List<HistorialMovimientos>();
             Funciones funcion = new Funciones();
@@ -62,7 +64,7 @@ namespace GISMVC.Models
                 var dt = new System.Data.DataTable();
                 var errores = "";
                 //if (da.Cons_proc_BusquedaAvanzadaRegistroMarca(out dt, out errores, solicitud_tipo, id_usuario, empresa, empresa_anterior, clase, pais, estatus, uso, tipo_registro_solicitud, nombre, no_registro, no_solicitud, fecha_legalS, fecha_vencimientoS, fecha_concesionS, fecha_quinquenio_anualidadS, fecha_requerimientoS, fecha_instruccionesS, fecha_registroS, fecha_busquedaS, fecha_resultadosS, fecha_comprobacionS, activo))
-                if (da.Cons_proc_HistorialMovimientos(out dt, out errores, modulo, tipo, usuario, activo))
+                if (da.Cons_proc_HistorialMovimientos(out dt, out errores, modulo, tipo, usuario,detalle,fechaS, activo))
                 {
                     if (dt.Rows.Count > 0)
                     {

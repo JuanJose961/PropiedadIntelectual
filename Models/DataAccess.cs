@@ -10912,7 +10912,7 @@ namespace GISMVC.Models
         }
 
         //public Boolean Cons_proc_HistorialMovimientos(out DataTable dt, out String msgError, int solicitud_tipo, string id_usuario, int empresa, int empresa_anterior, int clase, int pais, int estatus, int uso, int tipo_registro_solicitud, string nombre, string no_registro, string no_solicitud, string fecha_legalS, string fecha_vencimientoS, string fecha_concesionS, string fecha_quinquenio_anualidadS, string fecha_requerimientoS, string fecha_instruccionesS, string fecha_registroS, string fecha_busquedaS, string fecha_resultadosS, string fecha_comprobacionS, int activo = -1)
-        public Boolean Cons_proc_HistorialMovimientos(out DataTable dt, out String msgError,int modulo,int tipo,string usuario, int activo = -1)
+        public Boolean Cons_proc_HistorialMovimientos(out DataTable dt, out String msgError,int modulo,int tipo,string usuario,string detalle, string fechaS, int activo = -1)
         {
 
             bool boolProcess = true;
@@ -10942,13 +10942,15 @@ namespace GISMVC.Models
                 //var fecha10 = "";
                 //if (fecha_comprobacionS != "") fecha10 = Utility.FechaDefault(fecha_comprobacionS, "dd/MM/yyyy", "yyyy-MM-dd");
 
-                SqlParameter[] @params = new SqlParameter[4];
+                SqlParameter[] @params = new SqlParameter[6];
 
                 int i = 0;
                 @params[i] = new SqlParameter("@id", activo); i++;
                 @params[i] = new SqlParameter("@modulo", modulo); i++;
                 @params[i] = new SqlParameter("@tipo", tipo); i++;
                 @params[i] = new SqlParameter("@usuario", usuario); i++;
+                @params[i] = new SqlParameter("@detalle", detalle); i++;
+                @params[i] = new SqlParameter("@fechaS", fechaS); i++;
                 //@params[i] = new SqlParameter("@usuario", id_usuario); i++;
                 //@params[i] = new SqlParameter("@empresa", empresa); i++;
                 //@params[i] = new SqlParameter("@empresa_anterior", empresa_anterior); i++;

@@ -290,19 +290,19 @@ namespace GISMVC.Models
                     }
 
                     //administracion
-                    if (accesos.Where(i => i.modulo == "PI" && i.tipo == "ADMINISTRACION" && i.acceso == 1).Count() > 0)
+                    if (accesos.Where(i => i.modulo == "GENERAL" && i.tipo == "ADMINISTRACION" && i.acceso == 1).Count() > 0)
                     {
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "ADMINISTRACION" && i.url == "RecordatorioPI" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "GENERAL" && i.tipo == "ADMINISTRACION" && i.url == "RecordatorioPI" && i.acceso == 1).Count() > 0)
                         {
                             res.pi_otros = true;
                             res.pi_RecordatorioPI = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "ADMINISTRACION" && i.url == "BusquedaAvanzada" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "GENERAL" && i.tipo == "ADMINISTRACION" && i.url == "BusquedaAvanzada" && i.acceso == 1).Count() > 0)
                         {
                             res.pi_otros = true;
                             res.pi_BusquedaAvanzada = true;
                         }
-                        if (accesos.Where(i => i.modulo == "PI" && i.tipo == "ADMINISTRACION" && i.url == "HistorialMovimientos" && i.acceso == 1).Count() > 0)
+                        if (accesos.Where(i => i.modulo == "GENERAL" && i.tipo == "ADMINISTRACION" && i.url == "HistorialMovimientos" && i.acceso == 1).Count() > 0)
                         {
                             res.pi_otros = true;
                             res.pi_HistorialMovimientos = true;

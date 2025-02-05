@@ -105,9 +105,9 @@
     <div class="row collapse in show" id="collapsefiltro">
         <div class="col-md-3">
             <div class="form-group" id="uu_02_c">
-                <label for="uu_02">Tipo de solicitud</label>
+                <label for="uu_02">Tipo de solicitud <font size="2" style="color:#FF0000"> * </font></label>
                 <select class="select2 form-control input-sm custom-select" id="uu_02" autocomplete="off" style="width: 100%;">
-                    @*<option value="0" disabled selected>Seleccione una opción</option>*@
+                    <option value="0" disabled selected>Seleccione una opción</option>
                     @*<option value="0" selected>Todos</option>*@
                     @foreach (TipoSolicitud item in ViewBag.tipo_solicitud)
                     {

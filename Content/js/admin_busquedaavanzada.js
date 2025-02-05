@@ -65,7 +65,7 @@ function Validar() {
     var solicitud_tipo = $("#uu_02 option:selected").val();
     if (solicitud_tipo <=0) {
         //$("#uu_06").addClass("control-error");
-        $("#uu_02_c").append("<p class='form-error'>Selecciona una opción válida</p>");
+        $("#uu_02_c").append("<p class='form-error'>Selecciona una opcion valida</p>");
         errores += 1;
         //tab = '#tab05';
     }

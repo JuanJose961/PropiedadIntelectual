@@ -156,7 +156,7 @@ $(document).ready(function () {
         }
         document.getElementById("uu_02").value = propiedad;
         //$("#uu_02").val(propiedad).trigger("change");
-        alert(solicitud_select[0].tipo_registro);
+        //alert(solicitud_select[0].tipo_registro);
         setTimeout(function () {
             
             //$("#uu_021").val(solicitud).trigger("change");
@@ -1081,7 +1081,7 @@ function Validar() {
 
     if (errores > 0) {
         flag = false;
-        //$(".nav-link[href='" + tab + "']").click();
+        $(".nav-link[href='" + tab + "']").click();
     } else {
         flag = true;
     }

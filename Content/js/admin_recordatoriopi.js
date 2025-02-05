@@ -319,6 +319,7 @@ function ValidaUpdate01() {
         $("#uu_10").addClass("control-error");
         $("#uu_10_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
+        tab = '#tab01';
     }
     //alert(nombre);
     //if (mensaje.length == "") {
@@ -330,6 +331,7 @@ function ValidaUpdate01() {
         $("#uu_08").addClass("control-error");
         $("#uu_08_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
+        tab = '#tab01';
     }
     /*if (asignado == "NA") {
         $("#uu_01").addClass("control-error");
@@ -352,10 +354,12 @@ function ValidaUpdate01() {
         $("#uu_03").addClass("control-error");
         $("#uu_03_c").append("<p class='form-error'>Ingresa un valor válido</p>");
         errores += 1;
+        tab = '#tab01';
     } else if (dias_vencimiento == "" && tipo == 1) {
         $("#uu_03").addClass("control-error");
         $("#uu_03_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
+        tab = '#tab01';
     }
     
     //if (frecuencia.length < 0) {
@@ -363,32 +367,38 @@ function ValidaUpdate01() {
         $("#uu_04").addClass("control-error");
         $("#uu_04_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
+        tab = '#tab01';
     }
     //alert(descripcion.length);
     if (descripcion.length == "") {
         $("#uu_05").addClass("control-error");
         $("#uu_05_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
+        tab = '#tab01';
     }
     if (nombre.length == "") {
         $("#uu_07").addClass("control-error");
         $("#uu_07_c").append("<p class='form-error'>El campo está vacío</p>");
         errores += 1;
+        tab = '#tab01';
     }
     
     if (campos=="") {
         $("#uu_09").addClass("control-error");
         $("#uu_09_c").append("<p class='form-error'>Selecciona un campo</p>");
         errores += 1;
+        tab = '#tab02';
     } 
     if (tipo_solicitud == 0) {
         $("#uu_11").addClass("control-error");
         $("#uu_11_c").append("<p class='form-error'>Selecciona una opción válida</p>");
         errores += 1;
+        tab = '#tab01';
     }
 
     if (errores > 0) {
         flag = false;
+        $(".nav-link[href='" + tab + "']").click();
     } else {
         flag = true;
     }

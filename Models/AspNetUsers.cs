@@ -1354,10 +1354,9 @@ namespace GISMVC.Models
                         var dt = new System.Data.DataTable();
                         var errores = "";
                         modelo.name = newuser.Names;
-                        //modelo.role = newuser.Roles;
                         modelo.email=newuser.Email;
                         modelo.puesto = newuser.Puesto;
-                        da.Password_UsuarioHistorial(modelo, out dt, out errores);
+                        //da.Password_UsuarioHistorial(modelo, out dt, out errores); //guarda Historial por cambio de password, solo que en pruebas no esta gusrdando el usuario y nombre de quien lo hizo
                         //
                         res.flag = true;
                         res.description = "Datos actualizados";

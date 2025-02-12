@@ -1109,33 +1109,33 @@ namespace GISMVC.Controllers
             if (HttpContext.User.Identity.IsAuthenticated)
             {
                 CTMSEO pagina = new CTMSEO();
-                pagina.nombre = "Busqueda Avanzada";
+                pagina.nombre = "Historial Movimientos";
 
                 var ul = new AspNetUsers();
                 ul = AspNetUsers.GetByName(HttpContext.User.Identity.Name);
 
-                var empresa = GISMVC.Models.NegocioPI.Get();
-                var paises = GISMVC.Models.Pais.Get();
+                //var empresa = GISMVC.Models.NegocioPI.Get();
+                //var paises = GISMVC.Models.Pais.Get();
                 var usuarios = GISMVC.Models.AspNetUsers.Get();
-                var tipo_solicitud = TipoSolicitud.Get();
-                var clase = GISMVC.Models.Clase.Get();
-                var pais = GISMVC.Models.Pais.Get();
-                var estatus = GISMVC.Models.EstatusCatalogo.Get();
-                var uso = Uso.Get();
-                var tipo_registro_solicitud = GISMVC.Models.TipoRegistro.Get();
+                //var tipo_solicitud = TipoSolicitud.Get();
+                //var clase = GISMVC.Models.Clase.Get();
+                //var pais = GISMVC.Models.Pais.Get();
+                //var estatus = GISMVC.Models.EstatusCatalogo.Get();
+                //var uso = Uso.Get();
+                //var tipo_registro_solicitud = GISMVC.Models.TipoRegistro.Get();
 
 
                 ViewBag.pagina = pagina;
                 ViewBag.ul = ul;
                 ViewBag.idRol = ul.roles.id;
                 ViewBag.usuarios = usuarios;
-                ViewBag.tipo_solicitud = tipo_solicitud;
-                ViewBag.empresa = empresa;
-                ViewBag.clase = clase;
-                ViewBag.pais = pais;
-                ViewBag.estatus = estatus;
-                ViewBag.uso = uso;
-                ViewBag.tipo_registro_solicitud = tipo_registro_solicitud;
+                //ViewBag.tipo_solicitud = tipo_solicitud;
+                //ViewBag.empresa = empresa;
+                //ViewBag.clase = clase;
+                //ViewBag.pais = pais;
+                //ViewBag.estatus = estatus;
+                //ViewBag.uso = uso;
+                //ViewBag.tipo_registro_solicitud = tipo_registro_solicitud;
                 return View();
             }
             else

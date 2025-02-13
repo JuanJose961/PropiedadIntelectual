@@ -3934,33 +3934,20 @@ namespace GISMVC.Controllers
                 modelo.registro.oficio_completo = Utility.GetDateTime(modelo.registro.oficio_completoS, "dd/MM/yyyy");
                 modelo.registro.nueva_fecha_vencimiento = Utility.GetDateTime(modelo.registro.nueva_fecha_vencimientoS, "dd/MM/yyyy");
 
-                if (modelo.registro.id > 0)
-                {
+                //actualizar
+                if (modelo.registro.id > 0){
                     var preupdate = RegistroMarca.GetById(modelo.registro.id);
-                    //actualizar
                     res = RegistroMarca.Actualizar(modelo.registro);
-                    if (res.flag != false)
-                    {
+                    if (res.flag != false){
                         modelo.registro.id = res.data_int;
-
-                        //if(preupdate.estatus != modelo.registro.estatus
-                        //    && modelo.registro.estatus == 2)
-                        //{
-                        //    modelo.enviar_correo_registro = true;
-                        //}
-                        if (preupdate.estatus != modelo.registro.estatus && modelo.registro.estatus >= 2 && (preupdate.notificacion_estatus !="" || modelo.registro.notificacion_estatus!=""))
-                        {
-                            modelo.enviar_correo_registro = true;
+                        if (preupdate.estatus != modelo.registro.estatus && modelo.registro.estatus >= 2){
+                            modelo.enviar_correo_actualizar = true;
+                        }else{
+                            modelo.enviar_correo_actualizar = false;
                         }
-                        else
-                        {
-                            modelo.enviar_correo_registro = false;
-                        }
-                    }
-                    else
-                    {
-                        res.description = "Error al crear el registro";
-                        res.errors.Add("No se pudo crear el registro en el portal");
+                    }else{
+                        res.description = "Error al actualizar el registro";
+                        res.errors.Add("No se pudo actualizar el registro en el portal");
                     }
 
                     //envio de correo a notificacion_titulo y notificacion_vencimiento
@@ -3969,12 +3956,10 @@ namespace GISMVC.Controllers
 
                     //}
 
-                    //envio de correo a despacho legal por renovacion
-                    if(modelo.registro.renovacion==1 && modelo.registro.nueva_fecha_vencimiento!=preupdate.fecha_vencimiento)
-                    {
+                    //envio de correo a despacho legal por renovacion y fecha vencimineto es diferente
+                    if (modelo.registro.renovacion==1 && modelo.registro.nueva_fecha_vencimiento!=preupdate.fecha_vencimiento){
                         modelo.enviar_correo_renovacion = true;
-                        if (modelo.registro.despacho > 0)
-                        {
+                        if (modelo.registro.despacho > 0){
                             var iddesp = modelo.registro.despacho;
                             DataAccess da2 = new DataAccess();
                             var dt2 = new System.Data.DataTable();
@@ -3999,34 +3984,28 @@ namespace GISMVC.Controllers
                                 }
                             }
                         }
-                    }
-                    else
-                    {
+                    }else{
                         modelo.enviar_correo_renovacion = false;
                     }
                     
-                }
-                else
-                {
-                    //crear
+                }else{ //crear
                     res = RegistroMarca.Crear(modelo.registro);
-                    if(res.flag != false)
-                    {
+                    if(res.flag != false){
                         modelo.registro.id = res.data_int;
-                        if (modelo.registro.estatus == 2)
-                        {
-                            modelo.enviar_correo_registro = true;
+                        //if (modelo.registro.estatus == 2){
+                        if (modelo.registro.estatus >= 2){
+                                modelo.enviar_correo_registro = true;
+                        }else{
+                            modelo.enviar_correo_registro = false;
                         }
-                    }
-                    else
-                    {
+                    }else{
                         res.description = "Error al crear el registro";
                         res.errors.Add("No se pudo crear el registro en el portal");
                     }
                 }
 
                 //notificacion por correo de registro o actualizacion de solicitud
-                if (modelo.enviar_correo_registro == true && modelo.registro.estatus!=3 && modelo.registro.estatus != 8 && modelo.registro.estatus != 9)
+                if ((modelo.enviar_correo_registro == true || modelo.enviar_correo_actualizar==true) && modelo.registro.estatus!=3 && modelo.registro.estatus != 8 && modelo.registro.estatus != 9)
                 {
                     var preupdate = RegistroMarca.GetById(modelo.registro.id);
                     //correo de que ya esta en registro
@@ -4055,21 +4034,20 @@ namespace GISMVC.Controllers
                     "</html>";
                     //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
                     //email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
-                    if (modelo.registro.notificacion_estatus != "")
+                    if (modelo.enviar_correo_registro == true){
+                        email.to = "rocio.martinez@gis.com.mx"; //para el registro
+                    }else if (modelo.enviar_correo_actualizar == true && modelo.registro.notificacion_estatus != ""){
+                        email.to = "rocio.martinez@gis.com.mx,"+modelo.registro.notificacion_estatus;
+                    }else if (modelo.enviar_correo_actualizar == true &&  preupdate.notificacion_estatus != ""){
+                        email.to = "rocio.martinez@gis.com.mx,"+preupdate.notificacion_estatus;
+                    }else if(modelo.enviar_correo_actualizar == true)
                     {
-                        email.to = preupdate.notificacion_estatus;
-                        
-                    }
-                    else if (modelo.registro.notificacion_estatus != "")
-                    {
-                        email.to = modelo.registro.notificacion_estatus;
-                    }
-                    else
-                    {
+                        email.to = "rocio.martinez@gis.com.mx";
+                    }else{
                         email.to = "";
                     }
-                    //email.from = "noreply@portalproveedores.com";
-                    email.from = "juanjouaem@gmail.com";
+                    email.from = "noreply@portalproveedores.com"; //server portal juridico
+                    //email.from = "juanjouaem@gmail.com"; //server gmail, se configuro credential con j.delacruz
                     if (email.to != "") { var enviaUsuario = Utility.enviaEmail(0, email); }
                 }
 
@@ -4102,11 +4080,21 @@ namespace GISMVC.Controllers
                     "</html>";
                     //email.to = "alejandro.chairesg@gmail.com";// contrato.abogado_email;
                     //email.to = "juanjouaem@gmail.com";// contrato.abogado_email;
-                    //email.to = modelo.email_despacho;
-                    email.to = "rocio.martinez@gis.com.mx";
-                    //email.from = "noreply@portalproveedores.com";
-                    email.from = "juanjouaem@gmail.com";
-                    var enviaUsuario = Utility.enviaEmail(0, email);
+                    
+                    if (modelo.email_despacho != ""){
+                        //email.to = modelo.email_despacho;
+                        //email.to = "rocio.martinez@gis.com.mx";
+                        email.to= "rocio.martinez@gis.com.mx,"+ modelo.email_despacho;
+                    }else if(modelo.enviar_correo_renovacion == true)
+                    {
+                        email.to = "rocio.martinez@gis.com.mx";
+                    }else{
+                        email.to = "";
+                    }
+
+                    email.from = "noreply@portalproveedores.com"; //server portal juridico
+                    //email.from = "juanjouaem@gmail.com"; //server gmail, se configuro credential con j.delacruz
+                    if (email.to != "") { var enviaUsuario = Utility.enviaEmail(0, email); }
                 }
                 res.flag = true;
             }

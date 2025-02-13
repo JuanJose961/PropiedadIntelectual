@@ -257,106 +257,45 @@ namespace GISMVC.Models
 
         public static RespuestaFormato enviaEmail(int tipo, EmailTmp email)
         {
-            //RespuestaFormato res = new RespuestaFormato();
-            //try
-            //{
-            //    dll_Gis.Funciones fn = new dll_Gis.Funciones();
-            //    int port = 0;
-            //    string host = "";
-            //    string username = "";
-            //    string password = "";
-            //    bool ssl = false;
-            //    bool defaultCredentials = false;
-            //    string deliveryMethod = "";
-
-            //    Int32.TryParse(ConfigurationManager.AppSettings["SMTPPort"].ToString(), out port);
-            //    host = fn.Desencriptar(ConfigurationManager.AppSettings["SMTPHost"].ToString());
-            //    username = fn.Desencriptar(ConfigurationManager.AppSettings["SMTPUsername"].ToString());
-                
-            //    Boolean.TryParse(ConfigurationManager.AppSettings["SMTPSSL"].ToString(), out ssl);
-            //    Boolean.TryParse(ConfigurationManager.AppSettings["SMTPDefaultCredentials"].ToString(), out defaultCredentials);
-            //    deliveryMethod = ConfigurationManager.AppSettings["SMTPDeliveryMethod"].ToString();
-
-
-
-            //    MailMessage mail = new MailMessage();
-            //    SmtpClient SmtpServer = new SmtpClient(host);
-
-            //    mail.From = new MailAddress(username, "Portal Jurídico");
-
-            //    if (email.to != "")
-            //    {
-            //        var tos = email.to.Split(',').ToList();
-            //        foreach (string to in tos)
-            //        {
-            //            var copy = new MailAddress(to);
-            //            mail.To.Add(email.to);
-            //        }
-            //    }
-            //    //mail.To.Add("alejandro.chairesg@gmail.com");
-            //    //mail.To.Add("juanjouaem@gmail.com");
-            //    mail.Subject = email.subject;
-            //    mail.Body = email.mensaje;
-            //    if (email.cc != "")
-            //    {
-            //        var ccs = email.cc.Split(',').ToList();
-            //        foreach (string cci in ccs)
-            //        {
-            //            var copy = new MailAddress(cci, "CC");
-            //            mail.Bcc.Add(copy);
-            //        }
-            //    }
-            //    foreach (var f in email.files)
-            //    {
-            //        Attachment attachment = new Attachment(f);
-            //        mail.Attachments.Add(attachment);
-            //    }
-            //    mail.IsBodyHtml = true;
-            //    mail.ReplyToList.Add(new MailAddress(username, "reply-to"));
-
-            //    SmtpServer.Port = port;
-            //    SmtpServer.UseDefaultCredentials = defaultCredentials;
-            //    if (deliveryMethod == "Network")
-            //    {
-            //        SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //    }
-            //    else
-            //    {
-            //        password = fn.Desencriptar(ConfigurationManager.AppSettings["SMTPPassword"].ToString());
-            //        SmtpServer.Credentials = new System.Net.NetworkCredential(username, password);
-            //    }
-            //    SmtpServer.EnableSsl = ssl;
-            //    //ACTIVAR CORREOS
-            //    SmtpServer.Send(mail);
-            //    res.flag = true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    res.flag = false;
-            //    res.errors.Add(ex.Message);
-            //}
-
-            //return res;
+            //************Envio por server protal juridico con datos del web.config
             RespuestaFormato res = new RespuestaFormato();
             try
             {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                dll_Gis.Funciones fn = new dll_Gis.Funciones();
+                int port = 0;
+                string host = "";
+                string username = "";
+                string password = "";
+                bool ssl = false;
+                bool defaultCredentials = false;
+                string deliveryMethod = "";
 
-                mail.From = new MailAddress("j.delacruz@softdepot.mx", "Sender");
-                //mail.To.Add(email.to);
-                //mail.To.Add("j.delacruz@softdepot.mx");
+                Int32.TryParse(ConfigurationManager.AppSettings["SMTPPort"].ToString(), out port);
+                host = fn.Desencriptar(ConfigurationManager.AppSettings["SMTPHost"].ToString());
+                username = fn.Desencriptar(ConfigurationManager.AppSettings["SMTPUsername"].ToString());
+
+                Boolean.TryParse(ConfigurationManager.AppSettings["SMTPSSL"].ToString(), out ssl);
+                Boolean.TryParse(ConfigurationManager.AppSettings["SMTPDefaultCredentials"].ToString(), out defaultCredentials);
+                deliveryMethod = ConfigurationManager.AppSettings["SMTPDeliveryMethod"].ToString();
+
+
+
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient(host);
+
+                mail.From = new MailAddress(username, "Portal Jurídico");
+
                 if (email.to != "")
                 {
-                    var tos = email.to.Split(';').ToList();
+                    var tos = email.to.Split(',').ToList();
                     foreach (string to in tos)
                     {
                         var copy = new MailAddress(to);
-                        //mail.To.Add(email.to);
-                        mail.To.Add(copy);
+                        mail.To.Add(email.to);
                     }
                 }
-                //mail.To.Add(email.to);
+                //mail.To.Add("alejandro.chairesg@gmail.com");
+                //mail.To.Add("juanjouaem@gmail.com");
                 mail.Subject = email.subject;
                 mail.Body = email.mensaje;
                 if (email.cc != "")
@@ -374,12 +313,20 @@ namespace GISMVC.Models
                     mail.Attachments.Add(attachment);
                 }
                 mail.IsBodyHtml = true;
-                mail.ReplyToList.Add(new MailAddress("j.delacruz@softdepot.mx", "reply-to"));
+                mail.ReplyToList.Add(new MailAddress(username, "reply-to"));
 
-                SmtpServer.Port = 587;
-                SmtpServer.UseDefaultCredentials = true;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("j.delacruz@softdepot.mx", "qamt slev eyla bort");
-                SmtpServer.EnableSsl = true;
+                SmtpServer.Port = port;
+                SmtpServer.UseDefaultCredentials = defaultCredentials;
+                if (deliveryMethod == "Network")
+                {
+                    SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                }
+                else
+                {
+                    password = fn.Desencriptar(ConfigurationManager.AppSettings["SMTPPassword"].ToString());
+                    SmtpServer.Credentials = new System.Net.NetworkCredential(username, password);
+                }
+                SmtpServer.EnableSsl = ssl;
                 //ACTIVAR CORREOS
                 SmtpServer.Send(mail);
                 res.flag = true;
@@ -391,6 +338,62 @@ namespace GISMVC.Models
             }
 
             return res;
+
+            //*******************Envio por gmail*************************
+            //RespuestaFormato res = new RespuestaFormato();
+            //try
+            //{
+            //    MailMessage mail = new MailMessage();
+            //    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+            //    mail.From = new MailAddress("j.delacruz@softdepot.mx", "Sender");
+            //    //mail.To.Add(email.to);
+            //    //mail.To.Add("j.delacruz@softdepot.mx");
+            //    if (email.to != "")
+            //    {
+            //        var tos = email.to.Split(';').ToList();
+            //        foreach (string to in tos)
+            //        {
+            //            var copy = new MailAddress(to);
+            //            //mail.To.Add(email.to);
+            //            mail.To.Add(copy);
+            //        }
+            //    }
+            //    //mail.To.Add(email.to);
+            //    mail.Subject = email.subject;
+            //    mail.Body = email.mensaje;
+            //    if (email.cc != "")
+            //    {
+            //        var ccs = email.cc.Split(',').ToList();
+            //        foreach (string cci in ccs)
+            //        {
+            //            var copy = new MailAddress(cci, "CC");
+            //            mail.Bcc.Add(copy);
+            //        }
+            //    }
+            //    foreach (var f in email.files)
+            //    {
+            //        Attachment attachment = new Attachment(f);
+            //        mail.Attachments.Add(attachment);
+            //    }
+            //    mail.IsBodyHtml = true;
+            //    mail.ReplyToList.Add(new MailAddress("j.delacruz@softdepot.mx", "reply-to"));
+
+            //    SmtpServer.Port = 587;
+            //    SmtpServer.UseDefaultCredentials = true;
+            //    SmtpServer.Credentials = new System.Net.NetworkCredential("j.delacruz@softdepot.mx", "qamt slev eyla bort");
+            //    SmtpServer.EnableSsl = true;
+            //    //ACTIVAR CORREOS
+            //    SmtpServer.Send(mail);
+            //    res.flag = true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    res.flag = false;
+            //    res.errors.Add(ex.Message);
+            //}
+
+            //return res;
 
         }
 

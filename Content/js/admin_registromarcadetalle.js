@@ -164,15 +164,15 @@ $(document).ready(function () {
                 CheckIfOptionExists("#uu_021", solicitud_select[0].id, solicitud_select[0].nombre, true, true);
                 document.getElementById("uu_022").value = solicitud_select[0].nombre;
                 CheckIfOptionExists("#uu_10", 1, 'En búsqueda', true, true);
-                //ya funciona empresa,pais, tipo_registro, persona que refistro el formato
-                //CheckIfOptionExists("#uu_00", solicitud_select[0].empresa, true);
-                //if (propiedad >= 1 && propiedad <= 6) {
-                //    CheckIfOptionExists("#uu_09", solicitud_select[0].pais, true);
-                //}
-                //if (propiedad == 1 || propiedad == 2) { 
-                //    CheckIfOptionExists("#uu_12", solicitud_select[0].tipo_registro, true);
-                //}
-                //CheckIfOptionExists("#uu_13", solicitud_select[0].usuario, true);
+                //ya funciona empresa,pais, tipo_registro, persona que registro el formato
+                CheckIfOptionExists("#uu_00", solicitud_select[0].empresa, true);
+                if (propiedad >= 1 && propiedad <= 6) {
+                    CheckIfOptionExists("#uu_09", solicitud_select[0].pais, true);
+                }
+                if (propiedad == 1 || propiedad == 2) { 
+                    CheckIfOptionExists("#uu_12", solicitud_select[0].tipo_registro, true);
+                }
+                CheckIfOptionExists("#uu_13", solicitud_select[0].usuario, true);
             }
         }, 500);
     }

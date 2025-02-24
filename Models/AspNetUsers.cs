@@ -1356,7 +1356,7 @@ namespace GISMVC.Models
                         modelo.name = newuser.Names;
                         modelo.email=newuser.Email;
                         modelo.puesto = newuser.Puesto;
-                        da.Password_UsuarioHistorial(modelo, out dt, out errores); //guarda Historial por cambio de password, solo que en pruebas no esta gusrdando el usuario y nombre de quien lo hizo
+                        //da.Password_UsuarioHistorial(modelo, out dt, out errores); //guarda Historial por cambio de password, solo que en pruebas no esta gusrdando el usuario y nombre de quien lo hizo
                         //
                         res.flag = true;
                         res.description = "Datos actualizados";
